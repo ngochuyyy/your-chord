@@ -300,7 +300,7 @@ function ViewPlaylist() {
                     }}>
                         <div className="banner">
                             <p>No songs in your playlist yet</p>
-                            <a to={`/songCustomer/${userId}`}>Add More</a>
+                            <Link to={`/songCustomer/${userId}`} style={{ textDecoration: 'none', cursor: 'pointer' }}>Add More</Link>
                         </div>
                     </div>
                 </>
