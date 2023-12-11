@@ -238,7 +238,7 @@ function ArtistChordManager() {
                                         <p style={{
                                             fontSize: '11px', margin: '5px'
                                         }}>
-                                            Link: <Link to={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
+                                            Link: <Link to={currentItems[0].social_media_link} style={{ textDecoration: 'none' }}>{currentItems[0].social_media_link}</Link>
                                         </p>
                                     </div>
                                 )}

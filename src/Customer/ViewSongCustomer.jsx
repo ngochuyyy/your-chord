@@ -355,13 +355,13 @@ function ViewSongCustomer() {
                                     <div className="col-md-6">
                                         <p><b>Artist:</b>
                                             {viewSong.artist_name != null ?
-                                                <Link to={`/artist/${viewSong.id}/${viewSong.artist_id}`} underline="hover"> {viewSong.artist_name}</Link>
+                                                <Link to={`/artist/${viewSong.id}/${viewSong.artist_id}`} style={{ textDecoration: 'none', cursor: 'pointer' }}> {viewSong.artist_name}</Link>
                                                 :
                                                 " Updating"
                                             }
                                         </p>
                                         {viewSong.link != null ? (
-                                            <p><b>Link:</b> <Link to={viewSong.link} underline="hover">{viewSong.link.substring(0, 30)}</Link></p>
+                                            <p><b>Link:</b> <Link to={viewSong.link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{viewSong.link.substring(0, 30)}</Link></p>
                                         ) : (
                                             <p><b>Link:</b> Updating...</p>
                                         )}

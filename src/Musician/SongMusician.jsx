@@ -247,7 +247,7 @@ function SongMusician() {
                                                 )}
                                                 {song.link != null ? (
                                                     <TableCell>
-                                                        <Link to={song.link}>{song.link.substring(0, 40)}...</Link>
+                                                        <Link to={song.link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{song.link.substring(0, 40)}...</Link>
                                                     </TableCell>
                                                 ) : (
                                                     <TableCell>Updating...</TableCell>

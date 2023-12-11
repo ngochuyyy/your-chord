@@ -109,7 +109,7 @@ function ViewPlaylist() {
                                     fontWeight: 700,
                                     letterSpacing: '.3rem',
                                     color: '#0d6efd',
-                                    textDecoration: 'none',
+                                    textDecoration: 'none', cursor: 'pointer'
                                 }}
                             >
                                 <HeadsetIcon fontSize="large" />
@@ -233,11 +233,11 @@ function ViewPlaylist() {
                                                     </MenuItem>
                                                 </Menu>
                                             </div>
-                                            <Link to={`/viewSongCustomer/` + song.id} underline="none">
+                                            <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
                                                 {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
                                             </Link>
                                         </div>
-                                        <Link to={`/viewSongCustomer/` + song.id} underline="none">
+                                        <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
                                             <div className="song-details" style={{ textAlign: 'center' }}>
                                                 <b>{song.song_title}</b>
                                                 <p>Date added: {moment(song.date_added).format('YYYY/MM/DD - HH:mm:ss')}</p>

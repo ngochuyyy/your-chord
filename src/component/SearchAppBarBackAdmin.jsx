@@ -117,7 +117,7 @@ export default function SearchAppBarBackAdmin() {
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
                                 color: '#0d6efd',
-                                textDecoration: 'none',
+                                textDecoration: 'none', cursor: 'pointer'
                             }}
                         >
                             <HeadsetIcon fontSize="large" />

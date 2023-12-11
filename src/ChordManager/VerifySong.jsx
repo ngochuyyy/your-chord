@@ -127,7 +127,7 @@ function VerifySong() {
                                     fontWeight: 700,
                                     letterSpacing: '.3rem',
                                     color: '#0d6efd',
-                                    textDecoration: 'none',
+                                    textDecoration: 'none', cursor: 'pointer'
                                 }}
                             >
                                 <HeadsetIcon fontSize="large" />
@@ -261,7 +261,7 @@ function VerifySong() {
                                             )}
                                             {song.link != null ? (
                                                 <TableCell>
-                                                    <Link to={song.link}>{song.link.substring(0, 30)}...</Link>
+                                                    <Link to={song.link} style={{ textDecoration: 'none' }}>{song.link.substring(0, 30)}...</Link>
                                                 </TableCell>
                                             ) : (
                                                 <TableCell>Updating...</TableCell>

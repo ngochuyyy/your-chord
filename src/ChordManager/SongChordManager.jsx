@@ -245,7 +245,7 @@ function SongChordManager() {
                                                 )}
                                                 {song.link != null ? (
                                                     <TableCell>
-                                                        <Link to={song.link}>{song.link.substring(0, 40)}...</Link>
+                                                        <Link to={song.link} style={{ textDecoration: 'none' }}>{song.link.substring(0, 40)}...</Link>
                                                     </TableCell>
                                                 ) : (
                                                     <TableCell>Updating...</TableCell>

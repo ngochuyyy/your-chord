@@ -88,7 +88,7 @@ function ViewRequestCourse() {
                                     <div className="col-md-6 text-start pe-4">
                                         <b htmlFor="cc-link" className="text-start" style={{ marginLeft: '100px' }}>Link youtube</b>
                                         <br />
-                                        <Link to={order.link} style={{ marginLeft: '100px' }} underline='hover'>{order.link.substring(0, 40)}...</Link>
+                                        <Link to={order.link} style={{ marginLeft: '100px', textDecoration: 'none' }}>{order.link.substring(0, 40)}...</Link>
                                     </div>
                                     <div className="col-md-6 text-end pe-4">
                                         <b htmlFor="duration" className="form-label text-start" style={{ marginRight: '100px' }}>Date created:</b>

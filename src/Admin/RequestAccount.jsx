@@ -245,7 +245,7 @@ function RequestAccount() {
                                     fontWeight: 700,
                                     letterSpacing: '.3rem',
                                     color: '#0d6efd',
-                                    textDecoration: 'none',
+                                    textDecoration: 'none', cursor: 'pointer'
                                 }}
                             >
                                 <HeadsetIcon fontSize="large" />
@@ -393,7 +393,7 @@ function RequestAccount() {
                                                             </TableCell>
                                                         )}
                                                         <TableCell>
-                                                            <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2'><RemoveRedEyeIcon /></Link>
+                                                            <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
                                                         </TableCell>
                                                         <TableCell>
                                                             <CheckIcon onClick={() => handleAcceptAccountChordValidator(userAccount.username)} fontSize='large' color='success' />
@@ -535,7 +535,7 @@ function RequestAccount() {
                                                             </TableCell>
                                                         )}
                                                         <TableCell>
-                                                            <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2'><RemoveRedEyeIcon /></Link>
+                                                            <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
 
 
 

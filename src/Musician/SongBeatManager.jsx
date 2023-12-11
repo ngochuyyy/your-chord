@@ -243,7 +243,7 @@ function SongBeatManager() {
 
                                                     </div>
 
-                                                    <Link to={`/viewSongMusician/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
+                                                    <Link to={`/viewSongMusician/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none', cursor: 'pointer' }}>
                                                         <div className='column'>
                                                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                                                 <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span>

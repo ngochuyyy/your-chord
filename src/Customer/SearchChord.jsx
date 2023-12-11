@@ -411,11 +411,11 @@ function SearchChord() {
                                                             style={{ cursor: 'pointer' }}
                                                         />
                                                         <br />
-                                                        <Link style={{ cursor: 'pointer' }}
+                                                        <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
                                                             onClick={() => {
                                                                 setSelectedPlaylist(playlist);
                                                                 handleAddToPlayList();
-                                                            }} className="playlist-name-modal" underline='none'>Add to playlist</Link>
+                                                            }} className="playlist-name-modal">Add to playlist</Link>
                                                     </p>
                                                 </div>
                                             </div>

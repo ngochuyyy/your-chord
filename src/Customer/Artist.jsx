@@ -310,7 +310,7 @@ function Artist() {
                                         <p style={{
                                             fontSize: '11px', margin: '5px'
                                         }}>
-                                            Link: <Link to={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
+                                            Link: <Link to={currentItems[0].social_media_link} style={{ textDecoration: 'none' }}>{currentItems[0].social_media_link}</Link>
                                         </p>
                                     </div>
                                 )}
@@ -353,11 +353,11 @@ function Artist() {
                                                         style={{ cursor: 'pointer' }}
                                                     />
                                                     <br />
-                                                    <Link style={{ cursor: 'pointer' }}
+                                                    <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
                                                         onClick={() => {
                                                             setSelectedPlaylist(playlist);
                                                             handleAddToPlayList();
-                                                        }} className="playlist-name-modal" underline='none'>Add to playlist</Link>
+                                                        }} className="playlist-name-modal">Add to playlist</Link>
                                                 </p>
                                             </div>
                                         </div>

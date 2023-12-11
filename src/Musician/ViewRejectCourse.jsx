@@ -172,7 +172,7 @@ function ViewRejectCourse() {
                                                 style={{ marginLeft: '100px', width: '80%', padding: '8px' }}
                                             />
                                         ) : (
-                                            <Link to={editMode ? editedData.link : order.link} style={{ marginLeft: '100px' }} underline='hover'>
+                                            <Link to={editMode ? editedData.link : order.link} style={{ marginLeft: '100px', cursor: 'pointer', textDecoration: 'none' }}>
                                                 {editMode ? editedData.link.substring(0, 40) : order.link.substring(0, 40)}...
                                             </Link>
                                         )}

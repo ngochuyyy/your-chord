@@ -196,7 +196,7 @@ function SongCustomer() {
                                     fontWeight: 700,
                                     letterSpacing: '.3rem',
                                     color: '#0d6efd',
-                                    textDecoration: 'none',
+                                    textDecoration: 'none', cursor: 'pointer'
                                 }}
                             >
                                 <HeadsetIcon fontSize="large" />
@@ -215,7 +215,7 @@ function SongCustomer() {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
-                                Register as a <Link onClick={() => handleRequestAccountMusician()} sx={{ color: '#0d6efd', fontWeight: 'bold', cursor: 'pointer' }} underline='none' >Musician</Link> / <Link onClick={() => handleRequestAccountChordValidator()} sx={{ color: '#0d6efd', fontWeight: 'bold', cursor: 'pointer' }} underline='none' >Chord validator</Link> partner
+                                Register as a <Link onClick={() => handleRequestAccountMusician()} sx={{ color: '#0d6efd', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }} >Musician</Link> / <Link onClick={() => handleRequestAccountChordValidator()} sx={{ color: '#0d6efd', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}>Chord validator</Link> partner
                             </Typography>
 
                             <input
@@ -304,12 +304,12 @@ function SongCustomer() {
                                             <FavoriteIcon />
                                         </IconButton>
                                     </div>
-                                    <Link to={`/viewSongCustomer/` + song.id} underline="none">
+                                    <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
                                         {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
 
                                     </Link>
                                 </div>
-                                <Link to={`/viewSongCustomer/` + song.id} underline="none">
+                                <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
                                     <div className="song-details" style={{ textAlign: 'center' }}>
                                         <b>{song.song_title}</b>
                                     </div>
@@ -354,11 +354,13 @@ function SongCustomer() {
                                                         style={{ cursor: 'pointer' }}
                                                     />
                                                     <br />
-                                                    <Link style={{ cursor: 'pointer' }}
+                                                    <Link style={{
+                                                        cursor: 'pointer', textDecoration: 'none'
+                                                    }}
                                                         onClick={() => {
                                                             setSelectedPlaylist(playlist);
                                                             handleAddToPlayList();
-                                                        }} className="playlist-name-modal" underline='none'>Add to playlist</Link>
+                                                        }} className="playlist-name-modal">Add to playlist</Link>
                                                 </p>
                                             </div>
                                         </div>
@@ -370,7 +372,7 @@ function SongCustomer() {
                     </div>
                 </Box>
 
-            </Modal>
+            </Modal >
         </>
     );
 }

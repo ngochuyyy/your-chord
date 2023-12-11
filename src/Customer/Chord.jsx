@@ -634,7 +634,7 @@ function Chord() {
                                                         <ul style={{ paddingLeft: '100px' }}>
                                                             {selectedRoots.map((root, idx) => (
                                                                 <li key={idx}>
-                                                                    <Link underline='none' style={{ cursor: 'pointer' }} onClick={handleSearch}>
+                                                                    <Link style={{ cursor: 'pointer' }} onClick={handleSearch}>
                                                                         {root}
                                                                     </Link>
                                                                 </li>

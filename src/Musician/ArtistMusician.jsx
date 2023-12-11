@@ -142,7 +142,7 @@ function ArtistMusician() {
                                             <div key={index} style={{ borderBottom: '1px solid #ccc', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
                                                 <div style={{ padding: '10px', paddingLeft: '10px', color: 'black' }}>
 
-                                                    <Link to={`/viewSongMusician/${song.id}`} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
+                                                    <Link to={`/viewSongMusician/${song.id}`} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none', cursor: 'pointer' }}>
                                                         <div className='column'>
                                                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                                                 <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
@@ -241,7 +241,7 @@ function ArtistMusician() {
                                         <p style={{
                                             fontSize: '11px', margin: '5px'
                                         }}>
-                                            Link: <Link to={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
+                                            Link: <Link to={currentItems[0].social_media_link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{currentItems[0].social_media_link}</Link>
                                         </p>
                                     </div>
                                 )}

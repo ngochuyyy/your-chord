@@ -92,7 +92,7 @@ function OrderStatus() {
             render: (text, record) => (
                 <Space size="middle">
                     <Button type="primary" style={{ borderRadius: '40px' }}>
-                        <Link to={`/viewOrderCustomer/${record.id}`}>View</Link>
+                        <Link to={`/viewOrderCustomer/${record.id}`} style={{ textDecoration: 'none' }}>View</Link>
                     </Button>
                 </Space >
             ),
