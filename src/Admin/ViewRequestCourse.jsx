@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchAppBar from '../component/SearchAppBar';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
 import YouTube from 'react-youtube';
-import { Link } from '@mui/material';
 
 function ViewRequestCourse() {
     const [requestData, setRequestData] = useState([]);

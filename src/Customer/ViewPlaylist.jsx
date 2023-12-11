@@ -1,4 +1,3 @@
-import { Link } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
@@ -14,6 +13,7 @@ import { useParams } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Link from 'react-router-dom';
 function ViewPlaylist() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');

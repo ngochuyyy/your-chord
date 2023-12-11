@@ -1,7 +1,6 @@
-import { Link } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import InfoContainer from '../component/InfoContainer';

@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import { Link } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import SearchAppBarBackCustomer from '../component/SearchAppBarBackCustomer';
 import finger_1 from '../../src/assets/finger/finger_1.png'
@@ -17,6 +16,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import InfoContainer from '../component/InfoContainer';
+import Link from 'react-router-dom';
+
 function SearchChord() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [data, setData] = useState([]);
