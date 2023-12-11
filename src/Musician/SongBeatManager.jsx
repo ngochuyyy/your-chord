@@ -75,14 +75,6 @@ function SongBeatManager() {
         setAnchorEl(null);
         setSelectedSongId(null);
     };
-
-    const handleSongListOpen = () => {
-        setIsSongListOpen(true);
-    };
-
-    const handleSongListClose = () => {
-        setIsSongListOpen(false);
-    };
     const handleSongListToggle = () => {
         setIsSongListOpen((prev) => !prev);
     };
@@ -409,27 +401,32 @@ function SongBeatManager() {
                             </div>
                         </div>
                         <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
-                            <Button onClick={handleSongListToggle} style={{ cursor: 'pointer' }}>
+                            <Button onClick={handleSongListToggle} style={{ cursor: 'pointer', marginBottom: '10px' }}>
                                 Add a song to {`${beat_type}`}
                             </Button>
 
                             {isSongListOpen && (
-                                <div style={{ height: '500px', overflowY: 'scroll' }}>
+                                <div style={{ maxHeight: '400px', overflowY: 'scroll', padding: '10px' }}>
                                     {allSongs.map((song) => (
                                         <div
                                             key={song.id}
-                                            style={{ cursor: 'pointer' }}
+                                            style={{
+                                                cursor: 'pointer',
+                                                padding: '8px',
+                                                marginBottom: '8px',
+                                                background: '#f8f9fa',
+                                                transition: 'background 0.3s',
+                                            }}
                                             onClick={() => {
                                                 handleAddSongToBeatType(song.id);
                                                 handleSongListToggle();
                                             }}
                                         >
-                                            <h6>{song.song_title}</h6>
+                                            <h6 style={{ margin: '0', color: '#0d6efd', fontSize: '16px' }}>{song.song_title}</h6>
                                         </div>
                                     ))}
                                 </div>
                             )}
-
                         </div>
                     </div>
                 </div>
