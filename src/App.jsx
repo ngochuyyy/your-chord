@@ -1,5 +1,5 @@
 // import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { HashRouter as Router, Routes, Route, Navigate, HashRouterProvider } from 'react-router-dom';
+import { Router, Routes, Route, Navigate } from 'react-router-dom';
 
 import SignUp from './SignUp'
 import Login from './Login'
@@ -65,91 +65,90 @@ import Course from './Customer/Course'
 
 function App() {
   return (
-    <HashRouterProvider hashType="hashbang">
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={<Navigate to="/login" />}
-          />
-          <Route path='/login' element={<Login />}></Route>
-          <Route path='/signUp' element={<SignUp />}></Route>
-          <Route path='/' element={<Dashboard />}>
-            <Route path='/profile/:userId' element={<Profile />}></Route>
-            <Route path='/song' element={<Song />}></Route>
-            <Route path='/manageAccount' element={<ManageAccount />}></Route>
-            <Route path='/requestAccount' element={<RequestAccount />}></Route>
-            <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
-            <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
-            <Route path='/createSong' element={<CreateSong />}></Route>
-            <Route path='/requestCourse' element={<RequestListCourse />}></Route>
-            <Route path='/viewRequestCourse/:id/' element={<ViewRequestCourse />}></Route>
 
-          </Route>
-          <Route path='/viewSong/:id' element={<ViewSong />}></Route>
-          <Route path='/artistAdmin/:id/:artist_id' element={<ArtistAdmin />}></Route>
+    <Router>
+      <Routes>
+        <Route
+          path="/"
+          element={<Navigate to="/login" />}
+        />
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/signUp' element={<SignUp />}></Route>
+        <Route path='/' element={<Dashboard />}>
+          <Route path='/profile/:userId' element={<Profile />}></Route>
+          <Route path='/song' element={<Song />}></Route>
+          <Route path='/manageAccount' element={<ManageAccount />}></Route>
+          <Route path='/requestAccount' element={<RequestAccount />}></Route>
+          <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
+          <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
+          <Route path='/createSong' element={<CreateSong />}></Route>
+          <Route path='/requestCourse' element={<RequestListCourse />}></Route>
+          <Route path='/viewRequestCourse/:id/' element={<ViewRequestCourse />}></Route>
 
-          {/* CHORD MANAGER ROLE */}
-          <Route path='/' element={<DashboardChordManager />}>
-            <Route path='/verifySong' element={<VerifySong />}></Route>
-            <Route path='/profileChordManager/:userId' element={<ProfileChordManager />}></Route>
-            <Route path='/songChordManager' element={<SongChordManager />}></Route>
-          </Route>
-          <Route path='/viewSongChordManager/:id' element={<ViewSongChordManager />}></Route>
-          <Route path='/artistChordManager/:id/:artist_id' element={<ArtistChordManager />}></Route>
+        </Route>
+        <Route path='/viewSong/:id' element={<ViewSong />}></Route>
+        <Route path='/artistAdmin/:id/:artist_id' element={<ArtistAdmin />}></Route>
 
-
-          {/* MUSICIAN ROLE */}
-          <Route path='/' element={<DashboardMusician />}>
-            <Route path='/chordMissMusician' element={<ChordMissMusician />}></Route>
-            <Route path='/editSongMusician/:id' element={<EditSongMusician />}></Route>
-            <Route path='/profileMusician/:userId' element={<ProfileMusician />}></Route>
-            <Route path='/chordMusician' element={<ChordMusician />}></Route>
-            <Route path='/manageBeat' element={<ManageBeat />}></Route>
-            <Route path='/orderMusician' element={<OrderMusician />}></Route>
-            <Route path='/createChord' element={<CreateChord />}></Route>
-            <Route path='/songMusician' element={<SongMusician />}></Route>
-            <Route path='/rejectSong' element={<RejectSong />}></Route>
-            <Route path='/viewOrderMusician/:id/' element={<ViewOrderMusician />}></Route>
-            <Route path='/manageCourse/:userId' element={<ManageCourse />}></Route>
-            <Route path='/rejectCourse/:userId' element={<RejectCourse />}></Route>
-            <Route path='/viewRejectCourse/:id' element={<ViewRejectCourse />}></Route>
-
-          </Route>
-          <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>
-          <Route path='/songBeatManager/:user_id/:beat_type' element={<SongBeatManager />}></Route>
-          <Route path='/artistMusician/:id/:artist_id' element={<ArtistMusician />}></Route>
+        {/* CHORD MANAGER ROLE */}
+        <Route path='/' element={<DashboardChordManager />}>
+          <Route path='/verifySong' element={<VerifySong />}></Route>
+          <Route path='/profileChordManager/:userId' element={<ProfileChordManager />}></Route>
+          <Route path='/songChordManager' element={<SongChordManager />}></Route>
+        </Route>
+        <Route path='/viewSongChordManager/:id' element={<ViewSongChordManager />}></Route>
+        <Route path='/artistChordManager/:id/:artist_id' element={<ArtistChordManager />}></Route>
 
 
-          {/* CUSTOMER ROLE */}
-          <Route path='/' element={<DashboardCustomer />}>
-            <Route path='/songCustomer/:userId' element={<SongCustomer />}></Route>
-            <Route path='/profileCustomer/:userId' element={<ProfileCustomer />}></Route>
-            <Route path='/createPlaylist/:userId' element={<CreatePlaylist />}></Route>
-            <Route path='/playlist/:userId' element={<Playlist />}></Route>
-            <Route path='/viewPlaylist/:id' element={<ViewPlaylist />}></Route>
-            <Route path='/feedback/:userId' element={<Feedback />}></Route>
-            <Route path='/viewFeedbackCustomer/:id' element={<ViewFeedbackCustomer />}></Route>
-            <Route path='/viewFeedbackCustomerAll/:id' element={<ViewFeedbackCustomerAll />}></Route>
-            <Route path='/transactionHistory/:userId' element={<TransactionHistory />}></Route>
-            <Route path='/beat/:user_id/' element={<Beat />}></Route>
-            <Route path='/order/:user_id/' element={<OrderCustomer />}></Route>
-            <Route path='/orderStatus/:user_id/' element={<OrderStatus />}></Route>
-            <Route path='/viewOrderCustomer/:id/' element={<ViewOrderCustomer />}></Route>
-            <Route path='/course' element={<Course />}></Route>
+        {/* MUSICIAN ROLE */}
+        <Route path='/' element={<DashboardMusician />}>
+          <Route path='/chordMissMusician' element={<ChordMissMusician />}></Route>
+          <Route path='/editSongMusician/:id' element={<EditSongMusician />}></Route>
+          <Route path='/profileMusician/:userId' element={<ProfileMusician />}></Route>
+          <Route path='/chordMusician' element={<ChordMusician />}></Route>
+          <Route path='/manageBeat' element={<ManageBeat />}></Route>
+          <Route path='/orderMusician' element={<OrderMusician />}></Route>
+          <Route path='/createChord' element={<CreateChord />}></Route>
+          <Route path='/songMusician' element={<SongMusician />}></Route>
+          <Route path='/rejectSong' element={<RejectSong />}></Route>
+          <Route path='/viewOrderMusician/:id/' element={<ViewOrderMusician />}></Route>
+          <Route path='/manageCourse/:userId' element={<ManageCourse />}></Route>
+          <Route path='/rejectCourse/:userId' element={<RejectCourse />}></Route>
+          <Route path='/viewRejectCourse/:id' element={<ViewRejectCourse />}></Route>
 
-          </Route>
-          <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>
-          <Route path='/chord' element={<Chord />}></Route>
-          <Route path='/searchChord' element={<SearchChord />}></Route>
-          <Route path='/viewSongCustomer/:id' element={<ViewSongCustomer />}></Route>
-          <Route path='/artist/:id/:artist_id' element={<Artist />}></Route>
+        </Route>
+        <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>
+        <Route path='/songBeatManager/:user_id/:beat_type' element={<SongBeatManager />}></Route>
+        <Route path='/artistMusician/:id/:artist_id' element={<ArtistMusician />}></Route>
 
 
+        {/* CUSTOMER ROLE */}
+        <Route path='/' element={<DashboardCustomer />}>
+          <Route path='/songCustomer/:userId' element={<SongCustomer />}></Route>
+          <Route path='/profileCustomer/:userId' element={<ProfileCustomer />}></Route>
+          <Route path='/createPlaylist/:userId' element={<CreatePlaylist />}></Route>
+          <Route path='/playlist/:userId' element={<Playlist />}></Route>
+          <Route path='/viewPlaylist/:id' element={<ViewPlaylist />}></Route>
+          <Route path='/feedback/:userId' element={<Feedback />}></Route>
+          <Route path='/viewFeedbackCustomer/:id' element={<ViewFeedbackCustomer />}></Route>
+          <Route path='/viewFeedbackCustomerAll/:id' element={<ViewFeedbackCustomerAll />}></Route>
+          <Route path='/transactionHistory/:userId' element={<TransactionHistory />}></Route>
+          <Route path='/beat/:user_id/' element={<Beat />}></Route>
+          <Route path='/order/:user_id/' element={<OrderCustomer />}></Route>
+          <Route path='/orderStatus/:user_id/' element={<OrderStatus />}></Route>
+          <Route path='/viewOrderCustomer/:id/' element={<ViewOrderCustomer />}></Route>
+          <Route path='/course' element={<Course />}></Route>
 
-        </Routes>
-      </Router>
-    </HashRouterProvider>
+        </Route>
+        <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>
+        <Route path='/chord' element={<Chord />}></Route>
+        <Route path='/searchChord' element={<SearchChord />}></Route>
+        <Route path='/viewSongCustomer/:id' element={<ViewSongCustomer />}></Route>
+        <Route path='/artist/:id/:artist_id' element={<Artist />}></Route>
+
+
+
+      </Routes>
+    </Router>
   )
 }
 
