@@ -215,7 +215,7 @@ function SongCustomer() {
                                 component="div"
                                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
                             >
-                                Register as a <Link onClick={() => handleRequestAccountMusician()} sx={{ color: '#0d6efd', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }} >Musician</Link> / <Link onClick={() => handleRequestAccountChordValidator()} sx={{ color: '#0d6efd', fontWeight: 'bold', cursor: 'pointer', textDecoration: 'none' }}>Chord validator</Link> partner
+                                Register as a <Link onClick={() => handleRequestAccountMusician()} style={{ color: '#0d6efd', cursor: 'pointer', textDecoration: 'none' }} >Musician</Link> / <Link onClick={() => handleRequestAccountChordValidator()} style={{ color: '#0d6efd', cursor: 'pointer', textDecoration: 'none' }}>Chord validator</Link> partner
                             </Typography>
 
                             <input

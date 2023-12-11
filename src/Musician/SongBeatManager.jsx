@@ -10,8 +10,10 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import SearchAppBarBackMusican from '../component/SearchAppBarBackMusician';
 import InfoContainer from '../component/InfoContainer';
+import { Button } from '@mui/material';
 function SongBeatManager() {
     const [data, setData] = useState([]);
+    const [allSongs, setAllSongs] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
     const [order, setOrder] = useState('asc');
     const [modalOpen, setModalOpen] = useState(false);
@@ -48,6 +50,21 @@ function SongBeatManager() {
     };
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedSongId, setSelectedSongId] = useState(null);
+    const [isSongListOpen, setIsSongListOpen] = useState(false);
+
+
+    useEffect(() => {
+        axios.get(`${apiUrl}/getSongAdmin`)
+            .then((res) => {
+                if (res.data.Status === "Success") {
+                    setAllSongs(res.data.Result);
+                    setData(res.data.Result);
+                } else {
+                    alert("Error");
+                }
+            })
+            .catch((err) => console.log(err))
+    }, []);
     const handleMenuOpen = (event, songId) => {
         setAnchorEl(event.currentTarget);
         setSelectedSongId(songId);
@@ -59,6 +76,16 @@ function SongBeatManager() {
         setSelectedSongId(null);
     };
 
+    const handleSongListOpen = () => {
+        setIsSongListOpen(true);
+    };
+
+    const handleSongListClose = () => {
+        setIsSongListOpen(false);
+    };
+    const handleSongListToggle = () => {
+        setIsSongListOpen((prev) => !prev);
+    };
     useEffect(() => {
         axios.get(`${apiUrl}/getSongBeat/` + beat_type)
             .then((res) => {
@@ -121,7 +148,22 @@ function SongBeatManager() {
         setOrderBy(field);
         setOrder(order === 'asc');
     };
-
+    const handleAddSongToBeatType = async (songId) => {
+        try {
+            const response = await axios.put(`${apiUrl}/addSongToBeatType/${songId}/${beat_type}`);
+            if (response.data.Status === 'Success') {
+                fetchData();
+                window.location.reload(true);
+            } else {
+                alert('Error adding song to beat type.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Error adding song to beat type.');
+        } finally {
+            handleMenuClose();
+        }
+    };
 
 
     function sortData(data) {
@@ -145,6 +187,23 @@ function SongBeatManager() {
             uniqueChords.add(match[1]);
         }
         return Array.from(uniqueChords);
+    };
+    const handleDeleteSongBeat = (songId) => async () => {
+        try {
+            const response = await axios.delete(`${apiUrl}/deleteSongBeat/${songId}/${beat_type}`);
+            if (response.data.Status === 'Success') {
+                fetchData();
+                window.location.reload(true);
+
+            } else {
+                alert('Error deleting song.');
+            }
+        } catch (error) {
+            console.error(error);
+            alert('Error deleting song.');
+        } finally {
+            handleMenuClose();
+        }
     };
     useEffect(() => {
         axios.get(`${apiUrl}/getChord`)
@@ -197,6 +256,8 @@ function SongBeatManager() {
                     Updated
                 </button>
             </div>
+
+
             <div className="d-flex">
                 <div className="col-md-8" >
                     {data.length === 0 ? (
@@ -217,8 +278,10 @@ function SongBeatManager() {
                                         const songChords = extractChords(song.lyrics);
                                         const uniqueChordsSet = new Set(songChords);
                                         return (
+
                                             <div key={index} style={{ borderBottom: '1px solid #ccc', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
                                                 <div style={{ padding: '10px', paddingLeft: '10px', color: 'black' }}>
+
                                                     <div style={{ position: 'relative' }} >
                                                         <IconButton
                                                             size="large"
@@ -235,7 +298,7 @@ function SongBeatManager() {
                                                             onClose={handleMenuClose}
                                                         >
                                                             <MenuItem >
-                                                                <h6 className="text-danger">
+                                                                <h6 className="text-danger" onClick={handleDeleteSongBeat(song.id)}>
                                                                     <i className="bi bi-trash"></i> Delete
                                                                 </h6>
                                                             </MenuItem>
@@ -344,6 +407,29 @@ function SongBeatManager() {
                                     </div>
                                 ))}
                             </div>
+                        </div>
+                        <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
+                            <Button onClick={handleSongListToggle} style={{ cursor: 'pointer' }}>
+                                Add a song to {`${beat_type}`}
+                            </Button>
+
+                            {isSongListOpen && (
+                                <div style={{ height: '500px', overflowY: 'scroll' }}>
+                                    {allSongs.map((song) => (
+                                        <div
+                                            key={song.id}
+                                            style={{ cursor: 'pointer' }}
+                                            onClick={() => {
+                                                handleAddSongToBeatType(song.id);
+                                                handleSongListToggle();
+                                            }}
+                                        >
+                                            <h6>{song.song_title}</h6>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+
                         </div>
                     </div>
                 </div>
