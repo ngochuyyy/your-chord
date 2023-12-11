@@ -1,7 +1,7 @@
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom';
 
 function InfoContainer() {
     return (
@@ -10,11 +10,11 @@ function InfoContainer() {
                 <p style={{ padding: '10px', fontSize: '12px' }}>
                     Your Chord @2023
                     <br />
-                    <a to="/introduction" style={{ textDecoration: 'none' }}> Introduction</a> |
-                    <a to="/bug-report" style={{ textDecoration: 'none' }}> Report a Bug - Give Feedback</a> |
-                    <a to="/terms" style={{ textDecoration: 'none' }}> Terms of Service</a> |
-                    <a to="/copyright" style={{ textDecoration: 'none' }}> Copyright Policy</a> |
-                    <a to="/guide" style={{ textDecoration: 'none' }}> How to Guide</a>
+                    <Link to="/introduction" style={{ textDecoration: 'none' }}> Introduction</Link> |
+                    <Link to="/bug-report" style={{ textDecoration: 'none' }}> Report a Bug - Give Feedback</Link> |
+                    <Link to="/terms" style={{ textDecoration: 'none' }}> Terms of Service</Link> |
+                    <Link to="/copyright" style={{ textDecoration: 'none' }}> Copyright Policy</Link> |
+                    <Link to="/guide" style={{ textDecoration: 'none' }}> How to Guide</Link>
                 </p>
             </div>
         </>
