@@ -162,7 +162,7 @@ function ViewOrderCustomer() {
                                             <div className="mb-3 file-download">
                                                 <b>Download DOCX File:</b>
                                                 <a
-                                                    href={generateBlobUrl(new Uint8Array(docxFile.data).buffer, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
+                                                    to={generateBlobUrl(new Uint8Array(docxFile.data).buffer, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
                                                     download="document.docx"
                                                 >
                                                     Download DOCX
@@ -172,7 +172,7 @@ function ViewOrderCustomer() {
                                         {imageFile && (
                                             <div className="mb-3 file-download">
                                                 <b>Download Image:</b>
-                                                <a href={`data:image/png;base64,${imageFile}`} download="image.png">
+                                                <a to={`data:image/png;base64,${imageFile}`} download="image.png">
                                                     Download Image
                                                 </a>
                                             </div>

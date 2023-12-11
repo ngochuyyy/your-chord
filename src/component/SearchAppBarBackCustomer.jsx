@@ -190,7 +190,7 @@ export default function SearchAppBarBackCustomer() {
                                         }}>
                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                     </ListItemButton>
-                                    <ListItemButton href="/login" style={{ borderRadius: '20px' }}>
+                                    <ListItemButton to="/login" style={{ borderRadius: '20px' }}>
                                         <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
                                     </ListItemButton>
 

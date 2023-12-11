@@ -230,7 +230,7 @@ function Dashboard() {
                                                 </List>
                                                 <List sx={{ width: '40%', paddingTop: '20px' }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }}
-                                                        href={('/login')}
+                                                        to={('/login')}
                                                     >
                                                         <ListItemIcon>
                                                             <LogoutIcon color="primary" fontSize='medium' />
@@ -362,7 +362,7 @@ function Dashboard() {
                                                     </ListItemButton>
                                                 </List>
                                                 <List sx={{ width: '60%', paddingTop: '20px' }}>
-                                                    <ListItemButton href={('/login')} style={{ borderRadius: '50px' }}>
+                                                    <ListItemButton to={('/login')} style={{ borderRadius: '50px' }}>
                                                         <ListItemIcon>
                                                             <LogoutIcon color="primary" fontSize='medium' />
                                                         </ListItemIcon>

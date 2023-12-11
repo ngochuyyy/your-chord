@@ -233,11 +233,11 @@ function ViewPlaylist() {
                                                     </MenuItem>
                                                 </Menu>
                                             </div>
-                                            <Link href={`/viewSongCustomer/` + song.id} underline="none">
+                                            <Link to={`/viewSongCustomer/` + song.id} underline="none">
                                                 {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
                                             </Link>
                                         </div>
-                                        <Link href={`/viewSongCustomer/` + song.id} underline="none">
+                                        <Link to={`/viewSongCustomer/` + song.id} underline="none">
                                             <div className="song-details" style={{ textAlign: 'center' }}>
                                                 <b>{song.song_title}</b>
                                                 <p>Date added: {moment(song.date_added).format('YYYY/MM/DD - HH:mm:ss')}</p>
@@ -300,7 +300,7 @@ function ViewPlaylist() {
                     }}>
                         <div className="banner">
                             <p>No songs in your playlist yet</p>
-                            <a href={`/songCustomer/${userId}`}>Add More</a>
+                            <a to={`/songCustomer/${userId}`}>Add More</a>
                         </div>
                     </div>
                 </>

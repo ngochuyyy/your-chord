@@ -164,7 +164,7 @@ function ArtistAdmin() {
                                                         >
                                                         </button>
                                                     </div>
-                                                    <Link href={`/viewSong/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
+                                                    <Link to={`/viewSong/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
                                                         <div className='column'>
                                                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                                                 <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
@@ -263,7 +263,7 @@ function ArtistAdmin() {
                                         <p style={{
                                             fontSize: '11px', margin: '5px'
                                         }}>
-                                            Link: <Link href={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
+                                            Link: <Link to={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
                                         </p>
                                     </div>
                                 )}

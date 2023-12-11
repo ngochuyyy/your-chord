@@ -176,7 +176,7 @@ export default function SearchAppBarBackMusican() {
                                         }}>
                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                     </ListItemButton>
-                                    <ListItemButton href="/login" style={{ borderRadius: '20px' }}>
+                                    <ListItemButton to="/login" style={{ borderRadius: '20px' }}>
                                         <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
                                     </ListItemButton>
                                 </div>
@@ -313,7 +313,7 @@ export default function SearchAppBarBackMusican() {
                                         </ListItemButton>
                                     </List>
                                     <List sx={{ paddingTop: '20px' }}>
-                                        <ListItemButton href="/login" style={{ borderRadius: '20px' }} >
+                                        <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
                                             <ListItemIcon>
                                                 <LogoutIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                             </ListItemIcon>

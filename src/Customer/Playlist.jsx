@@ -155,7 +155,7 @@ function Playlist() {
                                                 arrow
                                                 placement="top">
                                                 <div className="image-overlay">
-                                                    <Link href={'/viewPlaylist/' + playlist.id} underline='none'><b>View Playlist</b></Link>
+                                                    <Link to={'/viewPlaylist/' + playlist.id} underline='none'><b>View Playlist</b></Link>
                                                 </div>
                                             </Tooltip>
                                             <div>
@@ -183,7 +183,7 @@ function Playlist() {
                                             </div>
 
                                         </div>
-                                        <Link href={'/viewPlaylist/' + playlist.id} className="playlist-name" underline='none' >
+                                        <Link to={'/viewPlaylist/' + playlist.id} className="playlist-name" underline='none' >
                                             <b >{playlist.collection_name}
                                             </b>
                                         </Link>

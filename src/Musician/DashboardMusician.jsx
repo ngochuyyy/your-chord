@@ -295,7 +295,7 @@ function DashboardMusician() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '40%', paddingTop: '20px' }}>
-                                                <ListItemButton href="/login" style={{ borderRadius: '20px' }} >
+                                                <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
@@ -468,7 +468,7 @@ function DashboardMusician() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '60%', paddingTop: '20px' }}>
-                                                <ListItemButton href="/login" style={{ borderRadius: '50px' }}>
+                                                <ListItemButton to="/login" style={{ borderRadius: '50px' }}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>

@@ -118,7 +118,7 @@ function OrderMusician() {
             render: (text, record) => (
                 <Space size="middle">
                     <Button type="primary" style={{ borderRadius: '40px' }}>
-                        <Link href={`/viewOrderMusician/${record.id}`}>View</Link>
+                        <Link to={`/viewOrderMusician/${record.id}`}>View</Link>
                     </Button>
                 </Space >
             ),

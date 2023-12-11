@@ -339,7 +339,7 @@ function DashboardCustomer() {
                                         <List sx={{
                                             width: '40%', paddingTop: '5px'
                                         }}>
-                                            <ListItemButton href="/login" style={{ borderRadius: '20px' }} >
+                                            <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
                                                 <ListItemIcon>
                                                     <LogoutIcon color="primary" fontSize='medium' />
                                                 </ListItemIcon>
@@ -551,7 +551,7 @@ function DashboardCustomer() {
                                             <List sx={{
                                                 width: '60%', paddingTop: '10px'
                                             }}>
-                                                <ListItemButton href="/login" style={{ borderRadius: '50px' }}>
+                                                <ListItemButton to="/login" style={{ borderRadius: '50px' }}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>

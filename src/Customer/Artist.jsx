@@ -212,7 +212,7 @@ function Artist() {
                                                             <FavoriteIcon />
                                                         </IconButton>
                                                     </div>
-                                                    <Link href={`/viewSongCustomer/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
+                                                    <Link to={`/viewSongCustomer/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
                                                         <div className='column'>
                                                             <div style={{ display: 'flex', alignItems: 'center' }}>
                                                                 <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
@@ -311,7 +311,7 @@ function Artist() {
                                         <p style={{
                                             fontSize: '11px', margin: '5px'
                                         }}>
-                                            Link: <Link href={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
+                                            Link: <Link to={currentItems[0].social_media_link}>{currentItems[0].social_media_link}</Link>
                                         </p>
                                     </div>
                                 )}
