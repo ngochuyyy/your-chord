@@ -10,15 +10,21 @@ function SignUp() {
     const [values, setValues] = useState({
         username: '',
         password: '',
+        confirmPassword: '',
         name: '',
         email: '',
         address: '',
         role: 'user',
     });
     const [isAccountExisted, setIsAccountExisted] = useState(false);
+    const [passwordMismatch, setPasswordMismatch] = useState(false);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const handleSignin = (event) => {
         event.preventDefault();
+        if (values.password !== values.confirmPassword) {
+            setPasswordMismatch(true);
+            return;
+        }
         axios.post(`${apiUrl}/signUp`, values)
             .then(res => {
                 if (res.data.Status === 'Success') {
@@ -76,11 +82,16 @@ function SignUp() {
                                     <Alert severity="warning">Username already exists, please try again !</Alert>
                                 </Stack>
                             )}
-
+                            {passwordMismatch && (
+                                <Stack sx={{ width: '100%' }} spacing={2}>
+                                    <Alert severity="error">Password and confirm password do not match. Please check again.</Alert>
+                                </Stack>
+                            )}
                             <span>or use your email for registration</span>
                             <input type="text" placeholder="Enter your name" onChange={e => setValues({ ...values, name: e.target.value })} required />
                             <input type="text" placeholder="Username" onChange={e => setValues({ ...values, username: e.target.value })} required />
                             <input type="password" placeholder="Password" onChange={e => setValues({ ...values, password: e.target.value })} required />
+                            <input type="password" placeholder="Confirm Password" onChange={e => setValues({ ...values, confirmPassword: e.target.value })} required />
                             <input type="text" placeholder="Enter your email" onChange={e => setValues({ ...values, email: e.target.value })} required />
                             <input type="text" placeholder="Enter your address" onChange={e => setValues({ ...values, address: e.target.value })} required />
                             <button>Sign Up</button>
