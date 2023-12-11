@@ -182,20 +182,9 @@ function RejectCourse() {
                 :
                 <>
                     <div>
-                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>REQUEST COURSE</h3>
+                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Rejected Course</h3>
                     </div>
                     <div className="px-2 py-4">
-
-                        {/* {isAcceptAccount && (
-                    <Stack sx={{ width: '100%' }} spacing={2} >
-                        <Alert severity="success">The course has been approved !</Alert>
-                    </Stack>
-                )}
-                {isRejectAccount && (
-                    <Stack sx={{ width: '100%' }} spacing={2} >
-                        <Alert severity="error">The course has been denied approval !</Alert>
-                    </Stack>
-                )} */}
                         <div className='mt-4 pd-left'>
                             {filteredRequestCourse.length === 0 ? (
                                 <>

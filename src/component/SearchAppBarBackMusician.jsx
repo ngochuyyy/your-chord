@@ -9,8 +9,6 @@ import Menu from '@mui/material/Menu';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import ModeIcon from '@mui/icons-material/Mode';
-import LogoutIcon from '@mui/icons-material/Logout';
 import ListItemText from '@mui/material/ListItemText';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -24,13 +22,13 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-import EqualizerIcon from '@mui/icons-material/Equalizer';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import FlakyIcon from '@mui/icons-material/Flaky';
 import MusicOffIcon from '@mui/icons-material/MusicOff';
 import axios from 'axios';
-
+import DvrIcon from '@mui/icons-material/Dvr';
+import AddIcon from '@mui/icons-material/Add';
 const darkTheme = createTheme({
     palette: {
         primary: {
@@ -51,6 +49,7 @@ export default function SearchAppBarBackMusican() {
     const [imageURL, setImageURL] = useState(null);
     const [openSong, setOpenSong] = useState(false);
     const [openOrder, setOpenOrder] = useState(false);
+    const [openCourse, setOpenCourse] = useState(false);
 
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const handleMenuClick = (event) => {
@@ -82,10 +81,18 @@ export default function SearchAppBarBackMusican() {
     const handleClickManageSong = () => {
         setOpenSong(!openSong);
         setOpenOrder(false);
+        setOpenCourse(false);
     };
     const handleClickOrder = () => {
         setOpenOrder(!openOrder);
         setOpenSong(false);
+        setOpenCourse(false);
+    };
+    const handleClickCourse = () => {
+        setOpenCourse(!openCourse);
+        setOpenSong(false);
+        setOpenOrder(false);
+
     };
     const menuStyles = {
         flexDirection: 'column',
@@ -259,7 +266,8 @@ export default function SearchAppBarBackMusican() {
                                                 navigate(`/manageBeat/`)
                                             }}>
                                             <ListItemIcon>
-                                                <EqualizerIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                {/* <EqualizerIcon style={{ color: '#0d6efd' }} fontSize='medium' /> */}
+                                                <i className="bi bi-vinyl-fill text-primary fs-4"></i>
                                             </ListItemIcon>
                                             <ListItemText><span className="fontDashboard">Manage Beat</span></ListItemText>
                                         </ListItemButton>
@@ -300,26 +308,41 @@ export default function SearchAppBarBackMusican() {
                                         </Collapse>
                                     </List>
                                     <List sx={{ paddingTop: '20px' }}>
-                                        <ListItemButton style={{ borderRadius: '20px' }}
-                                            className={`dashboard-button ${activeButton === 'profileMusician' ? 'clicked' : ''}`}
-                                            onClick={(e) => {
-                                                handleButtonClick(e, 'profileMusician');
-                                                navigate(`/profileMusician/` + profile.userId)
-                                            }}>
+                                        <ListItemButton onClick={handleClickCourse} style={{ borderRadius: '20px' }}>
                                             <ListItemIcon>
-                                                <ModeIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                <DvrIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                             </ListItemIcon>
-                                            <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
+                                            <ListItemText><span className="fontDashboard">Manage Course</span></ListItemText>
+                                            {openCourse ? <ExpandLess style={{ color: '#0d6efd' }} fontSize='medium' /> : <ExpandMore style={{ color: '#0d6efd' }} fontSize='medium' />}
                                         </ListItemButton>
+                                        <Collapse in={openCourse} timeout="auto" unmountOnExit>
+                                            <List sx={{ width: '100%', pl: 1 }}>
+                                                <ListItemButton style={{ borderRadius: '20px' }}
+                                                    className={`dashboard-button ${activeButton === 'manageCourse' ? 'clicked' : ''}`}
+                                                    onClick={(e) => {
+                                                        handleButtonClick(e, 'manageCourse');
+                                                        navigate(`/manageCourse/${profile.userId}`)
+                                                    }}>
+                                                    <ListItemIcon>
+                                                        <AddIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                    </ListItemIcon>
+                                                    <ListItemText><span className="fontDashboard">Create course</span></ListItemText>
+                                                </ListItemButton>
+                                                <ListItemButton style={{ borderRadius: '20px' }}
+                                                    className={`dashboard-button ${activeButton === 'rejectCourse' ? 'clicked' : ''}`}
+                                                    onClick={(e) => {
+                                                        handleButtonClick(e, 'rejectCourse');
+                                                        navigate(`/rejectCourse/${profile.userId}`)
+                                                    }}>
+                                                    <ListItemIcon>
+                                                        <SentimentVeryDissatisfiedIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                    </ListItemIcon>
+                                                    <ListItemText><span className="fontDashboard">Rejected course</span></ListItemText>
+                                                </ListItemButton>
+                                            </List>
+                                        </Collapse>
                                     </List>
-                                    <List sx={{ paddingTop: '20px' }}>
-                                        <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
-                                            <ListItemIcon>
-                                                <LogoutIcon style={{ color: '#0d6efd' }} fontSize='medium' />
-                                            </ListItemIcon>
-                                            <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
-                                        </ListItemButton>
-                                    </List>
+
                                 </div>
                             })}
                         </Menu>

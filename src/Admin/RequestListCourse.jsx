@@ -12,7 +12,7 @@ import {
     Paper,
     TableSortLabel,
 } from '@mui/material';
-// import Alert from '@mui/material/Alert';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -38,6 +38,8 @@ function RequestListCourse() {
     const [orderBy, setOrderBy] = useState("username");
     const [order, setOrder] = useState("asc");
     const [currentPage, setCurrentPage] = useState(1);
+    const [isAcceptCourse, setIsAcceptCourse] = useState(false);
+    const [isRejectCourse, setIsRejectCourse] = useState(false);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
@@ -73,7 +75,11 @@ function RequestListCourse() {
             .put(`${apiUrl}/acceptCourse/` + id)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    window.location.reload(true);
+                    setIsAcceptCourse(true);
+                    setTimeout(() => {
+                        setIsAcceptCourse(false);
+                        window.location.reload(true);
+                    }, 2500);
                 }
             })
             .catch((err) => console.log(err));
@@ -83,7 +89,11 @@ function RequestListCourse() {
             .put(`${apiUrl}/rejectCourse/` + id)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    window.location.reload(true);
+                    setIsRejectCourse(true);
+                    setTimeout(() => {
+                        setIsRejectCourse(false);
+                        window.location.reload(true);
+                    }, 2500);
                 }
             })
             .catch((err) => console.log(err));
@@ -194,16 +204,16 @@ function RequestListCourse() {
                     </div>
                     <div className="px-2 py-4">
 
-                        {/* {isAcceptAccount && (
-                    <Stack sx={{ width: '100%' }} spacing={2} >
-                        <Alert severity="success">The course has been approved !</Alert>
-                    </Stack>
-                )}
-                {isRejectAccount && (
-                    <Stack sx={{ width: '100%' }} spacing={2} >
-                        <Alert severity="error">The course has been denied approval !</Alert>
-                    </Stack>
-                )} */}
+                        {isAcceptCourse && (
+                            <Stack sx={{ width: '100%' }} spacing={2} >
+                                <Alert severity="success">The course has been approved !</Alert>
+                            </Stack>
+                        )}
+                        {isRejectCourse && (
+                            <Stack sx={{ width: '100%' }} spacing={2} >
+                                <Alert severity="error">The course has been denied approval !</Alert>
+                            </Stack>
+                        )}
                         <div className='mt-4 pd-left'>
                             {filteredRequestCourse.length === 0 ? (
                                 <>
