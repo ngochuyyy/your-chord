@@ -1,4 +1,4 @@
-import { Link } from '@mui/material';
+// import { Link } from '@mui/material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
@@ -12,7 +12,7 @@ import AppBar from '@mui/material/AppBar';
 import SortIcon from '@mui/icons-material/Sort';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
@@ -305,12 +305,12 @@ function SongCustomer() {
                                             <FavoriteIcon />
                                         </IconButton>
                                     </div>
-                                    <Link href={`/viewSongCustomer/` + song.id} underline="none">
+                                    <Link to={`/viewSongCustomer/` + song.id} underline="none">
                                         {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
 
                                     </Link>
                                 </div>
-                                <Link href={`/viewSongCustomer/` + song.id} underline="none">
+                                <Link to={`/viewSongCustomer/` + song.id} underline="none">
                                     <div className="song-details" style={{ textAlign: 'center' }}>
                                         <b>{song.song_title}</b>
                                     </div>
