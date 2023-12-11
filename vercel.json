@@ -7,6 +7,10 @@
         {
             "src": "/login",
             "dest": "/"
+        },
+        {
+            "src": "/**",
+            "dest": "/index.html"
         }
     ]
 }
