@@ -16,7 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import InfoContainer from '../component/InfoContainer';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function SearchChord() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
