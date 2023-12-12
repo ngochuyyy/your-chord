@@ -41,6 +41,8 @@ import ViewOrderMusician from './Musician/ViewOrderMusician'
 import ManageCourse from './Musician/ManageCourse'
 import RejectCourse from './Musician/RejectCourse'
 import ViewRejectCourse from './Musician/ViewRejectCourse'
+import RequestChordMusician from './Musician/RequestChordMusician';
+import EditRequestChordMusician from './Musician/EditRequestChordMusician';
 /////CUSTOMER
 import DashboardCustomer from './Customer/DashboardCustomer'
 import SongCustomer from './Customer/SongCustomer'
@@ -64,6 +66,7 @@ import Course from './Customer/Course'
 import RequestChord from './Customer/RequestChord';
 import RequestChordStatus from './Customer/RequestChordStatus';
 import ViewRequestChord from './Customer/ViewRequestChord';
+import ViewRequestChordMusician from './Musician/ViewRequestChordMusician';
 function App() {
   return (
 
@@ -115,6 +118,8 @@ function App() {
           <Route path='/manageCourse/:userId' element={<ManageCourse />}></Route>
           <Route path='/rejectCourse/:userId' element={<RejectCourse />}></Route>
           <Route path='/viewRejectCourse/:id' element={<ViewRejectCourse />}></Route>
+          <Route path='/requestChordMusician' element={<RequestChordMusician />}></Route>
+          <Route path='/viewRequestChordMusician/:id/' element={<ViewRequestChordMusician />}></Route>
 
         </Route>
         <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>
@@ -141,6 +146,7 @@ function App() {
           <Route path='/requestChord/:user_id/' element={<RequestChord />}></Route>
           <Route path='/requestChordStatus/:user_id/' element={<RequestChordStatus />}></Route>
           <Route path='/viewRequestChord/:id/' element={<ViewRequestChord />}></Route>
+          <Route path='/editRequestChordMusician/:id' element={<EditRequestChordMusician />}></Route>
 
         </Route>
         <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>

@@ -5,11 +5,9 @@ import SearchAppBar from '../component/SearchAppBar';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
-function ViewRequestChord() {
+function ViewRequestChordMusician() {
     const [requestData, setRequestData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-    const token = sessionStorage.getItem('token');
-    const userId = token.split(':')[0];
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
 
@@ -31,11 +29,8 @@ function ViewRequestChord() {
     }, [apiUrl, id]);
 
     const handleClose = () => {
-        navigate(`/requestChordStatus/${userId}`)
+        navigate(`/requestChordMusician/`)
     };
-
-
-
 
     const handleLyricChange = (event, index) => {
         const updatedOrderData = [...requestData];
@@ -60,7 +55,7 @@ function ViewRequestChord() {
                 <div className="container payment-container" style={{ width: '1200px' }}>
 
                     <div className="py-4 text-center">
-                        <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Your request</h2>
+                        <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Request chord</h2>
                     </div>
                     <div className="row">
                         <div className="col-md-4 order-md-2 mb-4" style={{ backgroundColor: "#EFFBEF", height: 'fit-content', width: '350px', padding: '10px' }}>
@@ -86,8 +81,8 @@ function ViewRequestChord() {
                                                 <p>{request.song_name}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="cc-link">Musician</b>
-                                                <p>{request.musician_id}</p>
+                                                <b htmlFor="title">Username</b>
+                                                <p>{request.user_id}</p>
                                             </div>
                                         </div>
 
@@ -134,10 +129,23 @@ function ViewRequestChord() {
                                         </div>
                                         <hr className="mb-4" />
                                         <div className="d-flex justify-content-between">
-                                            <button className="btn btn-primary" onClick={handleClose}>
-                                                Close
-                                            </button>
+                                            {request.status === 3 ?
+                                                <button className="btn btn-primary" onClick={handleClose}>
+                                                    Close
+                                                </button>
+                                                :
+                                                <>
+                                                    <button className="btn btn-primary" onClick={() => navigate(`/editRequestChordMusician/${id}`)}>
+                                                        Edit
+                                                    </button>
+                                                    <button className="btn btn-primary" onClick={handleClose}>
+                                                        Close
+                                                    </button>
+                                                </>
+                                            }
                                         </div>
+
+
                                     </form>
                                 </div>
                             ))}
@@ -149,4 +157,4 @@ function ViewRequestChord() {
     );
 }
 
-export default ViewRequestChord;
+export default ViewRequestChordMusician;

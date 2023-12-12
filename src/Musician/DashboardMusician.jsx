@@ -27,6 +27,7 @@ import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDiss
 import InfoContainer from '../component/InfoContainer';
 import DvrIcon from '@mui/icons-material/Dvr';
 import AddIcon from '@mui/icons-material/Add';
+import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
 
 function DashboardMusician() {
     const [data, setData] = useState([]);
@@ -187,6 +188,17 @@ function DashboardMusician() {
                                                                 <MusicOffIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
                                                             <ListItemText><span className="fontDashboard">Missing Chord</span></ListItemText>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '20px' }}
+                                                            className={`dashboard-button ${activeButton === 'requestChordMusician' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'requestChordMusician');
+                                                                navigate('/requestChordMusician')
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <SpatialAudioIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                            <ListItemText><span className="fontDashboard">Request Chord</span></ListItemText>
                                                         </ListItemButton>
                                                     </List>
                                                 </Collapse>

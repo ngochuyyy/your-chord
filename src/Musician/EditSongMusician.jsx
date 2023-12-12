@@ -37,7 +37,7 @@ function EditSongMusician() {
             ...data,
             [name]: value,
         });
-        setIsDataChanged(true); // Cập nhật trạng thái sự thay đổi
+        setIsDataChanged(true);
     };
 
     const handleSubmit = (event) => {

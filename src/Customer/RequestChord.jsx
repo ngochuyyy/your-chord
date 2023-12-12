@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 function RequestChord() {
     const [title, setTitle] = useState('');
-    const [lyric, setLyric] = useState('');
+    const [lyrics, setLyric] = useState('');
     const [artist, setArtist] = useState('');
     const [genre, setGenre] = useState('');
     const [link, setLink] = useState('');
@@ -25,7 +25,7 @@ function RequestChord() {
         }
         const formData = {
             song_name: title,
-            lyric: lyric,
+            lyrics: lyrics,
             artist_name: artist,
             genre: genre,
             link: link,
@@ -77,9 +77,9 @@ function RequestChord() {
                             </div>
 
                             <div className="mb-3">
-                                <label htmlFor="lyric">Lyric</label>
+                                <label htmlFor="lyrics">Lyric</label>
                                 <div className="input-group">
-                                    <textarea id='lyric' rows={15} cols={100} value={lyric} onChange={(e) => setLyric(e.target.value)} style={{ borderRadius: '10px' }} required></textarea>
+                                    <textarea id='lyrics' rows={15} cols={100} value={lyrics} onChange={(e) => setLyric(e.target.value)} style={{ borderRadius: '10px' }} required></textarea>
                                     <div className="invalid-feedback">
                                         Lyric is required.
                                     </div>
