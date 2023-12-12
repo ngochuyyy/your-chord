@@ -30,6 +30,8 @@ function ProfileChordManager() {
     const [dataProfile, setDataProfile] = useState([]);
     const { userId } = useParams();
     const [imageURL, setImageURL] = useState(null);
+    const [selectedFileName, setSelectedFileName] = useState("");
+
     const style = {
         position: 'absolute',
         top: '50%',
@@ -118,6 +120,8 @@ function ProfileChordManager() {
             const base64Image = await convertImageToBase64(file);
             const imageSource = `${base64Image}`;
             setData({ ...data, image: imageSource, imageSource });
+            setSelectedFileName(file.name);
+
         } catch (error) {
             console.error('Error converting image to Base64:', error);
         }
@@ -244,14 +248,11 @@ function ProfileChordManager() {
                                                 </div>
                                                 <span className="text-black-50">{editAccount.email}</span>
                                                 <div className="mt-2">
-                                                    {/* Sử dụng thẻ label để làm khu vực chọn tệp */}
                                                     <label htmlFor="upload-button">
                                                         <Button
                                                             startIcon={<CloudUploadIcon />}
-                                                            // Thêm nhãn cho nút
                                                             component="span"
                                                         >
-                                                            {/* Ẩn nút chọn tệp */}
                                                             <input
                                                                 type="file"
                                                                 name="image"
@@ -259,9 +260,8 @@ function ProfileChordManager() {
                                                                 style={{ display: 'none' }}
                                                                 onChange={handleImageChange}
                                                             />
-                                                            {/* Thêm nhãn vào nút */}
                                                             <Typography variant="body3" component="span">
-                                                                Upload your avatar
+                                                                {selectedFileName ? <span>{selectedFileName.substring(0, 30)}...</span> : "Upload your avatar"}
                                                             </Typography>
                                                         </Button>
                                                     </label>
