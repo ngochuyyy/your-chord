@@ -170,7 +170,7 @@ function DashboardChordManager() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '40%', paddingTop: '20px' }}>
-                                                <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
+                                                <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
@@ -240,7 +240,7 @@ function DashboardChordManager() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '60%', paddingTop: '20px' }}>
-                                                <ListItemButton style={{ borderRadius: '50px' }} onClick={{ handleSignOut }}>
+                                                <ListItemButton style={{ borderRadius: '50px' }} onClick={handleSignOut}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
@@ -257,7 +257,7 @@ function DashboardChordManager() {
                     <Outlet />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

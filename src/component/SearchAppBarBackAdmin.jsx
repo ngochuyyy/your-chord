@@ -173,7 +173,7 @@ export default function SearchAppBarBackAdmin() {
 
                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                     </ListItemButton>
-                                    <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
+                                    <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                         <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
                                     </ListItemButton>
                                 </div>

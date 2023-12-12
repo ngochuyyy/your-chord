@@ -167,7 +167,7 @@ export default function SearchAppBarBackChordManager() {
                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                     </ListItemButton>
                                     <List sx={{ paddingTop: '20px' }}>
-                                        <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
+                                        <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                             <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
                                         </ListItemButton>
                                     </List>
