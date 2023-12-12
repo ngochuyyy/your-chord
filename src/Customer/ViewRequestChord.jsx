@@ -87,7 +87,7 @@ function ViewRequestChord() {
                                             </div>
                                             <div className="col-md-6 mb-3">
                                                 <b htmlFor="cc-link">Musician</b>
-                                                <p>{request.musician_id}</p>
+                                                <p>{request.musician_id.length > 0 ? request.musician_id : "None"}</p>
                                             </div>
                                         </div>
 
