@@ -123,7 +123,7 @@ function Course() {
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>Course</h3>
                     </div>
                     {currentItems.map((order, index) => (
-                        <div key={index} className="row " style={{ background: '#ffffff', margin: '10px', borderRadius: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', width: '1370px' }}>
+                        <div key={index} className="row " style={{ background: '#ffffff', margin: '10px', borderRadius: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', width: '1400px' }}>
                             {order.videoFile && getYouTubeVideoId(order.link) ? (
                                 <>
                                     <div className="col-md-6">
