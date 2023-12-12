@@ -30,6 +30,7 @@ import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCirc
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import DvrIcon from '@mui/icons-material/Dvr';
 import HistoryIcon from '@mui/icons-material/History';
+import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
 
 import axios from 'axios';
 const darkTheme = createTheme({
@@ -270,6 +271,17 @@ export default function SearchAppBarBackCustomer() {
                                                         <SearchIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                                     </ListItemIcon>
                                                     <ListItemText><span className="fontDashboard">Search Chord</span></ListItemText>
+                                                </ListItemButton>
+                                                <ListItemButton style={{ borderRadius: '20px' }}
+                                                    className={`dashboard-button ${activeButton === 'requestChordStatus' ? 'clicked' : ''}`}
+                                                    onClick={(e) => {
+                                                        handleButtonClick(e, 'requestChordStatus');
+                                                        navigate(`/requestChordStatus/${profile.userId}`)
+                                                    }}>
+                                                    <ListItemIcon>
+                                                        <SpatialAudioIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                    </ListItemIcon>
+                                                    <ListItemText><span className="fontDashboard">Request Chord</span></ListItemText>
                                                 </ListItemButton>
                                             </List>
                                         </Collapse>
