@@ -26,7 +26,7 @@ function ViewRequestChord() {
             })
             .catch(err => {
                 console.log(err);
-                setLoading(false); // Make sure to set loading to false in case of an error
+                setLoading(false);
             });
     }, [apiUrl, id]);
 

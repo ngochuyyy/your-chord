@@ -2,8 +2,6 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import SearchAppBar from '../component/SearchAppBar';
-// import Button from '@mui/material/Button';
-// import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Modal from '@mui/material/Modal';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
@@ -25,7 +23,6 @@ function Profile() {
         job: '',
     })
 
-    // const [baseImage, setBaseImage] = useState("");
     const [open, setOpen] = useState(false);
     const [dataProfile, setDataProfile] = useState([]);
     const { userId } = useParams();

@@ -224,23 +224,18 @@ function ManageAccount() {
         })
         .filter((userAccount) => userAccount.role === 'musician' && userAccount.ban !== 'Pending')
 
-    // Pagination logic
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    // For filteredAccountUser
     const currentItems = filteredAccountUser.slice(indexOfFirstItem, indexOfLastItem);
     const totalPages = Math.ceil(filteredAccountUser.length / itemsPerPage);
 
 
-    // For filteredAccountAdmin
     const currentItemsAdmin = filteredAccountAdmin.slice(indexOfFirstItem, indexOfLastItem);
     const totalPagesAdmin = Math.ceil(filteredAccountAdmin.length / itemsPerPage);
 
-    // For filteredAccountChordManager
     const currentItemsChordManager = filteredAccountChordManager.slice(indexOfFirstItem, indexOfLastItem);
     const totalPagesChordManager = Math.ceil(filteredAccountChordManager.length / itemsPerPage);
 
-    // For filteredAccountMusician
     const currentItemsMusician = filteredAccountMusician.slice(indexOfFirstItem, indexOfLastItem);
     const totalPagesMusician = Math.ceil(filteredAccountMusician.length / itemsPerPage);
 
