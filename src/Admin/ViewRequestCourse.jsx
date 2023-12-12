@@ -101,7 +101,6 @@ function ViewRequestCourse() {
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
                                                 opts={{
-                                                    // origin: 'http://localhost:5173',
                                                     playerVars: {
                                                         modestbranding: 1,
                                                     },

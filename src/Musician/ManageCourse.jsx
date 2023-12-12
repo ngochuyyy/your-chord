@@ -137,7 +137,6 @@ function ManageCourse() {
                             <YouTube
                                 videoId={getYouTubeVideoId(link)}
                                 opts={{
-                                    // origin: 'http://localhost:5173',
                                     playerVars: {
                                         modestbranding: 1,
                                     },
