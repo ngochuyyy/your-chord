@@ -54,7 +54,7 @@ function ViewOrderCustomer() {
         const currentDate = moment();
         const durationDate = moment(record.duration);
 
-        return currentDate.isAfter(durationDate);
+        return currentDate.isAfter(durationDate) && record.status !== 3;
     };
     const handleLyricChange = (event, index) => {
         const updatedOrderData = [...orderData];

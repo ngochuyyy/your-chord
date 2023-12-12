@@ -55,38 +55,41 @@ function OrderStatus() {
             dataIndex: 'status',
             render: (text, record) => (
                 <Space size="middle">
-                    {isExpired(record) ? (
-                        <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
-                            Expired
-                        </button>
-                    ) : text === null ? (
-                        <p style={{ width: '100px', textAlign: 'center' }}>
-                            In process...
-                        </p>
-                    ) : text === 0 ? (
-                        <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
-                            Declined
-                        </button>
-                    ) : text === 1 && record.price !== null ? (
-                        <>
-                            <PayPalButton orderId={String(record.id)} orderPrice={record.price} />
-                            <Button className='btn-decline' style={{ width: '100px', textAlign: 'center' }} onClick={() => handleDecline(record.id)}>
-                                Decline
-                            </Button>
-                        </>
-                    ) : text === 2 && record.price !== null ? (
-                        <button className='btn-payment'  >
-                            Payment Successful
-                        </button>
-                    ) : text === 3 && record.price !== null ? (
+                    {text === 3 && record.price !== null ? (
                         <button className='btn-accept'>
                             Completed
                         </button>
-                    ) : null}
+                    ) : (
+                        <>
+                            {isExpired(record) ? (
+                                <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
+                                    Expired
+                                </button>
+                            ) : text === null ? (
+                                <p style={{ width: '100px', textAlign: 'center' }}>
+                                    In process...
+                                </p>
+                            ) : text === 0 ? (
+                                <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
+                                    Declined
+                                </button>
+                            ) : text === 1 && record.price !== null ? (
+                                <>
+                                    <PayPalButton orderId={String(record.id)} orderPrice={record.price} />
+                                    <Button className='btn-decline' style={{ width: '100px', textAlign: 'center' }} onClick={() => handleDecline(record.id)}>
+                                        Decline
+                                    </Button>
+                                </>
+                            ) : text === 2 && record.price !== null ? (
+                                <button className='btn-payment'  >
+                                    Payment Successful
+                                </button>
+                            ) : null}
+                        </>
+                    )}
                 </Space>
             ),
         },
-
         {
             title: 'Actions',
             render: (text, record) => (
@@ -155,7 +158,7 @@ function OrderStatus() {
         const currentDate = moment();
         const durationDate = moment(record.duration);
 
-        return currentDate.isAfter(durationDate);
+        return currentDate.isAfter(durationDate) && record.status !== 3;
     };
     // const handlePayment = (itemId) => {
     //     axios

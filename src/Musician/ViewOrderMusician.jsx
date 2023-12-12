@@ -166,7 +166,7 @@ function ViewOrderMusician() {
         const currentDate = moment();
         const durationDate = moment(record.duration);
 
-        return currentDate.isAfter(durationDate);
+        return currentDate.isAfter(durationDate) && record.status !== 3;
     };
     const handleLyricChange = (event, index) => {
         const updatedOrderData = [...orderData];
@@ -290,8 +290,7 @@ function ViewOrderMusician() {
                                         {docxFile && (
                                             <div className="mb-3 file-download">
                                                 <b>Download DOCX File:</b>
-                                                <a
-                                                    to={generateBlobUrl(new Uint8Array(docxFile.data).buffer, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
+                                                <a href={generateBlobUrl(new Uint8Array(docxFile.data).buffer, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
                                                     download="document.docx"
                                                 >
                                                     Download DOCX
@@ -301,7 +300,7 @@ function ViewOrderMusician() {
                                         {imageFile && (
                                             <div className="mb-3 file-download">
                                                 <b>Download Image:</b>
-                                                <a to={`data:image/png;base64,${imageFile}`} download="image.png">
+                                                <a href={`data:image/png;base64,${imageFile}`} download="image.png">
                                                     Download Image
                                                 </a>
                                             </div>
