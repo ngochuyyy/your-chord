@@ -63,11 +63,15 @@ function RequestChordStatus() {
                     ) : (
                         <>
                             {text === 1 ? (
-                                <p style={{ width: '100px', textAlign: 'center' }}>
+                                <p style={{ width: '100px', textAlign: 'left' }}>
                                     In process...
                                 </p>
+                            ) : text === 2 ? (
+                                <p style={{ width: '200px', textAlign: 'left' }}>
+                                    Being completed...
+                                </p>
                             ) : text === 0 ? (
-                                <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
+                                <button className='btn-decline' style={{ width: '100px', textAlign: 'left' }}>
                                     Declined
                                 </button>
                             ) : null
@@ -76,7 +80,7 @@ function RequestChordStatus() {
                     )}
                 </Space>
             ),
-            width: 150,
+            width: 200,
 
         },
         {
