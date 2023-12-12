@@ -800,7 +800,7 @@ textarea {
 
 #chordContainer {
     column-count: 2;
-    width: 1500px;
+    width: 1400px;
     column-rule: 2px dashed #ccc;
     break-inside: avoid;
 }
