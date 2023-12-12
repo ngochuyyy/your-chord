@@ -29,6 +29,7 @@ import ListAltIcon from '@mui/icons-material/ListAlt';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
 import DvrIcon from '@mui/icons-material/Dvr';
 import HistoryIcon from '@mui/icons-material/History';
+import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
 function DashboardCustomer() {
     const [data, setData] = useState([]);
     axios.defaults.withCredentials = true;
@@ -208,6 +209,17 @@ function DashboardCustomer() {
                                                             <SearchIcon color="primary" fontSize='medium' />
                                                         </ListItemIcon>
                                                         <ListItemText><span className="fontDashboard">Search Chord</span></ListItemText>
+                                                    </ListItemButton>
+                                                    <ListItemButton style={{ borderRadius: '20px' }}
+                                                        className={`dashboard-button ${activeButton === 'requestChordStatus' ? 'clicked' : ''}`}
+                                                        onClick={(e) => {
+                                                            handleButtonClick(e, 'requestChordStatus');
+                                                            navigate(`/requestChordStatus/${profile.userId}`)
+                                                        }}>
+                                                        <ListItemIcon>
+                                                            <SpatialAudioIcon color="primary" fontSize='medium' />
+                                                        </ListItemIcon>
+                                                        <ListItemText><span className="fontDashboard">Request Chord</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
                                             </Collapse>
@@ -425,6 +437,16 @@ function DashboardCustomer() {
                                                             }}>
                                                             <ListItemIcon>
                                                                 <SearchIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '50px' }}
+                                                            className={`dashboard-button ${activeButton === 'requestChordStatus' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'requestChordStatus');
+                                                                navigate(`/requestChordStatus/${profile.userId}`)
+                                                            }}>
+                                                            <ListItemIcon>
+                                                                <SpatialAudioIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
                                                         </ListItemButton>
                                                     </List>

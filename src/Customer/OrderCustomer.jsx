@@ -73,7 +73,7 @@ function OrderCustomer() {
                 <li>Posts are not duplicated</li>
                 <li>Write the full name of the song</li>
                 <li>Type in English or Vietnamese with accents</li>
-                <li>Enter full lyrics and chords. </li>
+                <li>Enter full lyrics </li>
                 <li>Do not post songs with reactionary or sensitive content that violate Vietnamese customs and traditions.</li>
               </div>
             </ul>

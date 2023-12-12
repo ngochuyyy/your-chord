@@ -61,7 +61,9 @@ import OrderStatus from './Customer/OrderStatus'
 import ViewOrderCustomer from './Customer/ViewOrderCustomer'
 import TransactionHistory from './Customer/TransactionHistory'
 import Course from './Customer/Course'
-
+import RequestChord from './Customer/RequestChord';
+import RequestChordStatus from './Customer/RequestChordStatus';
+import ViewRequestChord from './Customer/ViewRequestChord';
 function App() {
   return (
 
@@ -136,6 +138,9 @@ function App() {
           <Route path='/orderStatus/:user_id/' element={<OrderStatus />}></Route>
           <Route path='/viewOrderCustomer/:id/' element={<ViewOrderCustomer />}></Route>
           <Route path='/course' element={<Course />}></Route>
+          <Route path='/requestChord/:user_id/' element={<RequestChord />}></Route>
+          <Route path='/requestChordStatus/:user_id/' element={<RequestChordStatus />}></Route>
+          <Route path='/viewRequestChord/:id/' element={<ViewRequestChord />}></Route>
 
         </Route>
         <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>
