@@ -234,7 +234,7 @@ function Profile() {
                                     <div className="row">
                                         <div className="col-md-4 border-right">
                                             <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                                                <div className="d-flex flex-column align-items-center text-center p-3">
                                                     {editAccount.image != "" ?
                                                         <img className="profile-avatar" src={`data:image/png;base64,${editAccount.image}`} width="150px" />
                                                         :
@@ -242,6 +242,29 @@ function Profile() {
                                                     }
                                                 </div>
                                                 <span className="text-black-50">{editAccount.email}</span>
+                                                <div className="mt-2">
+                                                    {/* Sử dụng thẻ label để làm khu vực chọn tệp */}
+                                                    <label htmlFor="upload-button">
+                                                        <Button
+                                                            startIcon={<CloudUploadIcon />}
+                                                            // Thêm nhãn cho nút
+                                                            component="span"
+                                                        >
+                                                            {/* Ẩn nút chọn tệp */}
+                                                            <input
+                                                                type="file"
+                                                                name="image"
+                                                                id="upload-button"
+                                                                style={{ display: 'none' }}
+                                                                onChange={handleImageChange}
+                                                            />
+                                                            {/* Thêm nhãn vào nút */}
+                                                            <Typography variant="body3" component="span">
+                                                                Upload your avatar
+                                                            </Typography>
+                                                        </Button>
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="col-md-7 border-right">
@@ -269,14 +292,6 @@ function Profile() {
                                                 </div>
                                                 <div className="row mt-2">
                                                     <div className="col-md-12">Job: <input className="form-control" onChange={e => setData({ ...data, job: e.target.value })} value={data.job} placeholder='Your job...' /></div>
-                                                </div>
-                                                <div className="mt-2">
-                                                    <div className="col-md-6">Upload Image:
-                                                    </div>
-
-                                                    <Button component="label" variant="contained" startIcon={<CloudUploadIcon />}>
-                                                        <input type="file" name="image" onChange={handleImageChange} />
-                                                    </Button>
                                                 </div>
                                                 <div className="mt-3">
                                                     <Button variant="contained" onClick={handleSubmit} className='btn btn-success'>UPDATE
