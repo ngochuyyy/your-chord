@@ -120,46 +120,83 @@ function Course() {
                 :
                 <>
                     <div>
-                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
+                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>Course</h3>
                     </div>
                     {currentItems.map((order, index) => (
-                        <div key={index} style={{ background: '#ffffff', padding: '20px', margin: '20px', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)' }}>
-                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
-
-                                <div className="col-md-6" style={{ padding: '20px' }}>
-                                    <p style={{ marginLeft: '200px' }}><b>Course name:</b> {order.course_name}</p>
+                        <div key={index} className="row " style={{ background: '#ffffff', margin: '10px', borderRadius: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', width: '1270px' }}>
+                            {order.videoFile && getYouTubeVideoId(order.link) ? (
+                                <>
+                                    <div className="col-md-6">
+                                        <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
+                                            <div style={{ paddingLeft: '10px' }}>
+                                                <p><b>Course name:</b> {order.course_name}</p>
+                                            </div>
+                                            <div style={{ paddingLeft: '10px' }}>
+                                                <p><b>Poster:</b> {order.userId}</p>
+                                            </div>
+                                        </div>
+                                        <div className="mb-2 d-flex justify-content-center">
+                                            {getYouTubeVideoId(order.link) && (
+                                                <YouTube
+                                                    videoId={getYouTubeVideoId(order.link)}
+                                                    opts={{
+                                                        playerVars: {
+                                                            modestbranding: 1,
+                                                        },
+                                                        host: 'https://www.youtube-nocookie.com',
+                                                        width: 600,
+                                                        height: 340,
+                                                    }}
+                                                />
+                                            )}
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6">
+                                        <div className="d-flex justify-content-end">
+                                            {order.videoFile && (
+                                                <video controls width="600" height="350" controlsList="nodownload" style={{ marginTop: '55px' }}>
+                                                    <source src={generateBlobUrl(new Uint8Array(order.videoFile.data).buffer, 'video/*')} type="video/mp4" />
+                                                </video>
+                                            )}
+                                        </div>
+                                    </div>
+                                </>
+                            ) : (
+                                <div className="col-md-12">
+                                    <div className="mt-2" style={{ display: 'flex', flexDirection: 'row' }}>
+                                        <div style={{ padding: '10px' }}>
+                                            <p><b>Course name:</b> {order.course_name}</p>
+                                        </div>
+                                        <div style={{ padding: '10px' }}>
+                                            <p><b>Poster:</b> {order.userId}</p>
+                                        </div>
+                                    </div>
+                                    <div className="mb-2 d-flex justify-content-center">
+                                        {getYouTubeVideoId(order.link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(order.link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                    width: 600,
+                                                    height: 340,
+                                                }}
+                                            />
+                                        )}
+                                        {order.videoFile && (
+                                            <video controls width="600" height="350" controlsList="nodownload">
+                                                <source src={generateBlobUrl(new Uint8Array(order.videoFile.data).buffer, 'video/*')} type="video/mp4" />
+                                            </video>
+                                        )}
+                                    </div>
                                 </div>
-                                <div className="col-md-6" style={{ padding: '20px' }}>
-                                    <p style={{ marginLeft: '200px' }}><b>Poster:</b> {order.userId}</p>
-                                </div>
-                            </div>
-                            <div className="col-md-12 mb-3 d-flex justify-content-center">
-                                {getYouTubeVideoId(order.link) && (
-                                    <YouTube
-                                        videoId={getYouTubeVideoId(order.link)}
-                                        opts={{
-                                            playerVars: {
-                                                modestbranding: 1,
-                                            },
-                                            host: 'https://www.youtube-nocookie.com',
-                                        }}
-                                    />
-
-
-                                )}
-                            </div>
-                            {order.videoFile && <hr style={{ width: '70%', margin: 'auto' }} className="mb-4" />}
-                            <div className="col-md-12 d-flex justify-content-center">
-                                {order.videoFile && (
-                                    <video controls width="640" height="400" controlsList="nodownload">
-                                        <source src={generateBlobUrl(new Uint8Array(order.videoFile.data).buffer, 'video/*')} type="video/mp4" />
-                                    </video>
-                                )}
-                            </div>
-
+                            )}
                         </div>
-
                     ))}
+
+
                     <Stack spacing={2} direction="row" justifyContent="center" mt={3}>
                         <Pagination
                             count={totalPages}
@@ -169,7 +206,6 @@ function Course() {
                             size="large"
                         />
                     </Stack>
-
                 </>
             }
         </>
