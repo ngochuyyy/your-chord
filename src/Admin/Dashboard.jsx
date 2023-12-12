@@ -41,10 +41,6 @@ function Dashboard() {
     let showDate = new Date();
     let displaytodaysdate = showDate.getFullYear() + '-' + (showDate.getMonth() + 1) + '-' + showDate.getDate();
     useEffect(() => {
-        const currentRoute = window.location.pathname;
-        if (currentRoute === '/manageAccount') {
-            setActiveButton('manageAccount');
-        }
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
         axios.get(`${apiUrl}/getProfile/` + userId)
@@ -60,9 +56,12 @@ function Dashboard() {
                 }
             })
             .catch(err => console.log(err));
+        if (!activeButton) {
+            setActiveButton('manageAccount');
+            localStorage.setItem('activeButtonAdmin', 'manageAccount');
+        }
 
-
-    }, [userId]);
+    }, [userId, activeButton]);
     const handleToggleCollapse = () => {
         const newCollapsedState = !collapsed;
         setCollapsed(newCollapsedState);
@@ -75,6 +74,10 @@ function Dashboard() {
         e.preventDefault();
         setActiveButton(buttonName);
         localStorage.setItem('activeButtonAdmin', buttonName);
+    };
+    const handleSignOut = () => {
+        localStorage.removeItem('activeButtonAdmin');
+        navigate("/login");
     };
     return (
         <div className={`container-fluid${collapsed ? ' collapsed' : ''}`}>
@@ -229,9 +232,7 @@ function Dashboard() {
                                                     </ListItemButton>
                                                 </List>
                                                 <List sx={{ width: '40%', paddingTop: '20px' }}>
-                                                    <ListItemButton style={{ borderRadius: '20px' }}
-                                                        to={('/login')}
-                                                    >
+                                                    <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
                                                         <ListItemIcon>
                                                             <LogoutIcon color="primary" fontSize='medium' />
                                                         </ListItemIcon>
@@ -362,7 +363,7 @@ function Dashboard() {
                                                     </ListItemButton>
                                                 </List>
                                                 <List sx={{ width: '60%', paddingTop: '20px' }}>
-                                                    <ListItemButton to={('/login')} style={{ borderRadius: '50px' }}>
+                                                    <ListItemButton style={{ borderRadius: '50px' }} onClick={{ handleSignOut }}>
                                                         <ListItemIcon>
                                                             <LogoutIcon color="primary" fontSize='medium' />
                                                         </ListItemIcon>

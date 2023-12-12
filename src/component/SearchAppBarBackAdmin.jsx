@@ -92,6 +92,10 @@ export default function SearchAppBarBackAdmin() {
         setActiveButton(buttonName);
         localStorage.setItem('activeButtonAdmin', buttonName);
     };
+    const handleSignOut = () => {
+        localStorage.removeItem('activeButtonAdmin');
+        navigate("/login");
+    };
     return (
         <Box sx={{ top: 0, position: "sticky", zIndex: '3' }}>
             <ThemeProvider theme={darkTheme}>
@@ -169,7 +173,7 @@ export default function SearchAppBarBackAdmin() {
 
                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                     </ListItemButton>
-                                    <ListItemButton to="/login" style={{ borderRadius: '20px' }}>
+                                    <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
                                         <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
                                     </ListItemButton>
                                 </div>

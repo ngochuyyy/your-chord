@@ -108,6 +108,10 @@ export default function SearchAppBarBackMusican() {
         setActiveButton(buttonName);
         localStorage.setItem('activeButtonMusician', buttonName);
     };
+    const handleSignOut = () => {
+        localStorage.removeItem('activeButtonMusician');
+        navigate("/login");
+    };
     return (
         <Box sx={{ top: 0, position: "sticky", zIndex: '3' }}>
             <ThemeProvider theme={darkTheme}>
@@ -183,7 +187,7 @@ export default function SearchAppBarBackMusican() {
                                         }}>
                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                     </ListItemButton>
-                                    <ListItemButton to="/login" style={{ borderRadius: '20px' }}>
+                                    <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
                                         <ListItemText><span className="fontDashboard">Logout</span></ListItemText>
                                     </ListItemButton>
                                 </div>

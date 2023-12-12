@@ -72,7 +72,6 @@ function DashboardCustomer() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
     useEffect(() => {
-
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
         axios.get(`${apiUrl}/getProfile/` + userId)
@@ -84,19 +83,24 @@ function DashboardCustomer() {
                         setImageURL(profileImages);
                     }
                 } else {
-                    alert("Error")
+                    alert("Error");
                 }
             })
             .catch(err => console.log(err));
-        const currentRoute = window.location.pathname;
-        if (currentRoute === `/songCustomer/${userId}`) {
+        if (!activeButton) {
             setActiveButton('songCustomer');
+            localStorage.setItem('activeButtonCustomer', 'songCustomer');
         }
-    }, [userId])
+    }, [userId, activeButton]);
+
     const handleButtonClick = (e, buttonName) => {
         e.preventDefault();
         setActiveButton(buttonName);
         localStorage.setItem('activeButtonCustomer', buttonName);
+    };
+    const handleSignOut = () => {
+        localStorage.removeItem('activeButtonCustomer');
+        navigate("/login");
     };
 
     return (
@@ -339,7 +343,7 @@ function DashboardCustomer() {
                                         <List sx={{
                                             width: '40%', paddingTop: '5px'
                                         }}>
-                                            <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
+                                            <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                                 <ListItemIcon>
                                                     <LogoutIcon color="primary" fontSize='medium' />
                                                 </ListItemIcon>
@@ -551,7 +555,7 @@ function DashboardCustomer() {
                                             <List sx={{
                                                 width: '60%', paddingTop: '10px'
                                             }}>
-                                                <ListItemButton to="/login" style={{ borderRadius: '50px' }}>
+                                                <ListItemButton style={{ borderRadius: '50px' }} onClick={handleSignOut}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>

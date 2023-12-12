@@ -17,7 +17,6 @@ import Collapse from '@mui/material/Collapse';
 import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import EqualizerIcon from '@mui/icons-material/Equalizer';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
-// import ListAltIcon from '@mui/icons-material/ListAlt';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import FlakyIcon from '@mui/icons-material/Flaky';
@@ -67,7 +66,11 @@ function DashboardMusician() {
                 }
             })
             .catch(err => console.log(err));
-    }, [userId])
+        if (!activeButton) {
+            setActiveButton('chordMusician');
+            localStorage.setItem('activeButtonMusician', 'chordMusician');
+        }
+    }, [userId, activeButton]);
     const handleClickManageSong = () => {
         setOpenSong(!openSong);
         setOpenOrder(false);
@@ -92,6 +95,10 @@ function DashboardMusician() {
         e.preventDefault();
         setActiveButton(buttonName);
         localStorage.setItem('activeButtonMusician', buttonName);
+    };
+    const handleSignOut = () => {
+        localStorage.removeItem('activeButtonMusician');
+        navigate("/login");
     };
     return (
 
@@ -295,7 +302,7 @@ function DashboardMusician() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '40%', paddingTop: '20px' }}>
-                                                <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
+                                                <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }} >
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
@@ -468,7 +475,7 @@ function DashboardMusician() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '60%', paddingTop: '20px' }}>
-                                                <ListItemButton to="/login" style={{ borderRadius: '50px' }}>
+                                                <ListItemButton style={{ borderRadius: '50px' }} onClick={{ handleSignOut }}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>

@@ -39,10 +39,6 @@ function DashboardChordManager() {
     let showDate = new Date();
     let displaytodaysdate = showDate.getFullYear() + '-' + (showDate.getMonth() + 1) + '-' + showDate.getDate();
     useEffect(() => {
-        const currentRoute = window.location.pathname;
-        if (currentRoute === '/songChordManager') {
-            setActiveButton('songChordManager');
-        }
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
         axios.get(`${apiUrl}/getProfile/` + userId)
@@ -58,7 +54,11 @@ function DashboardChordManager() {
                 }
             })
             .catch(err => console.log(err));
-    }, [userId])
+        if (!activeButton) {
+            setActiveButton('songChordManager');
+            localStorage.setItem('activeButtonChordManager', 'songChordManager');
+        }
+    }, [userId, activeButton]);
     const handleClick = () => {
         setOpen(!open);
     };
@@ -71,6 +71,10 @@ function DashboardChordManager() {
         e.preventDefault();
         setActiveButton(buttonName);
         localStorage.setItem('activeButtonChordManager', buttonName);
+    };
+    const handleSignOut = () => {
+        localStorage.removeItem('activeButtonChordManager');
+        navigate("/login");
     };
     return (
 
@@ -166,7 +170,7 @@ function DashboardChordManager() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '40%', paddingTop: '20px' }}>
-                                                <ListItemButton to="/login" style={{ borderRadius: '20px' }} >
+                                                <ListItemButton style={{ borderRadius: '20px' }} onClick={{ handleSignOut }}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
@@ -236,7 +240,7 @@ function DashboardChordManager() {
                                                 </ListItemButton>
                                             </List>
                                             <List sx={{ width: '60%', paddingTop: '20px' }}>
-                                                <ListItemButton to="/login" style={{ borderRadius: '50px' }}>
+                                                <ListItemButton style={{ borderRadius: '50px' }} onClick={{ handleSignOut }}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
