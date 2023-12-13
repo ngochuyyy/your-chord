@@ -63,7 +63,7 @@ function TransactionHistory() {
                                     <td>{transaction.user_id}</td>
                                     <td>{moment(transaction.date_payment).format("YYYY-MM-DD HH:mm:ss")}</td>
                                     <td style={{ color: 'green', fontWeight: 'bold' }}>{transaction.price}</td>
-                                    <td style={{ textAlign: 'center' }}>PAYPAL</td>
+                                    <td style={{ textAlign: 'center', fontWeight: 'bold' }}>PAYPAL</td>
                                 </tr>
                             ))}
                         </tbody>
