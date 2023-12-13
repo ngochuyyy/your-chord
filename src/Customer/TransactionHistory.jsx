@@ -50,7 +50,7 @@ function TransactionHistory() {
                                 <th scope="col">Order ID</th>
                                 <th scope="col">Customer</th>
                                 <th scope="col">Transaction Time</th>
-                                <th scope="col">Price</th>
+                                <th scope="col">Price ($)</th>
                                 <th scope="col" style={{ textAlign: 'center' }}>
                                     Payment method
                                 </th>
