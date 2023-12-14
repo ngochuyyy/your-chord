@@ -6,7 +6,7 @@ import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AppBarLogin from './component/AppBarLogin';
 function Login() {
-    // const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const navigate = useNavigate();
     axios.defaults.withCredentials = true;
     const [values, setValues] = useState({
@@ -18,7 +18,7 @@ function Login() {
     const [isLoginDisable, setIsLoginDisable] = useState(false);
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post(`https://your-chord-be.vercel.app/login`, values)
+        axios.post(`${apiUrl}/login`, values)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     const token = res.data.token;
