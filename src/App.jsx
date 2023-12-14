@@ -1,4 +1,5 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import SignUp from './SignUp'
 import Login from './Login'
@@ -69,8 +70,8 @@ import ViewRequestChord from './Customer/ViewRequestChord';
 import ViewRequestChordMusician from './Musician/ViewRequestChordMusician';
 function App() {
   return (
-
-    <Router>
+    <BrowserRouter>
+      {/* <Router> */}
       <Routes>
         <Route
           path="/"
@@ -158,7 +159,8 @@ function App() {
 
 
       </Routes>
-    </Router>
+      {/* </Router> */}
+    </BrowserRouter>
   )
 }
 
