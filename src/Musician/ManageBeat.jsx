@@ -32,7 +32,7 @@ function ManageBeat() {
     const fetchData = async () => {
         try {
             const countRequests = beatGenresData.map((beat) =>
-                axios.get(`${apiUrl}/countSongBeat/${beat.beat_id.toLowerCase()}`)
+                axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
             );
 
             const countResponses = await Promise.all(countRequests);
