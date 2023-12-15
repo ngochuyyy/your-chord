@@ -51,9 +51,7 @@ function SongBeatManager() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [selectedSongId, setSelectedSongId] = useState(null);
     const [isSongListOpen, setIsSongListOpen] = useState(false);
-
-
-    useEffect(() => {
+    const handleOpenSong = () => {
         axios.get(`${apiUrl}/getSongAdmin`)
             .then((res) => {
                 if (res.data.Status === "Success") {
@@ -64,7 +62,9 @@ function SongBeatManager() {
                 }
             })
             .catch((err) => console.log(err))
-    }, []);
+    };
+
+
     const handleMenuOpen = (event, songId) => {
         setAnchorEl(event.currentTarget);
         setSelectedSongId(songId);
@@ -401,7 +401,7 @@ function SongBeatManager() {
                             </div>
                         </div>
                         <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
-                            <Button onClick={handleSongListToggle} style={{ cursor: 'pointer', marginBottom: '10px' }}>
+                            <Button onClick={handleSongListToggle} onChange={handleOpenSong} style={{ cursor: 'pointer', marginBottom: '10px' }}>
                                 Add a song to {`${beat_type}`}
                             </Button>
 
