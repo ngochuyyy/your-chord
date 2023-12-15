@@ -12,7 +12,7 @@ function ManageBeat() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
     const beatGenresData = [
-        { beat_id: 'ballad', beat_name: 'Ballad' },
+        { beat_id: 'Ballad', beat_name: 'Ballad' },
         { beat_id: 'BluesTune', beat_name: 'Blues Tune' },
         { beat_id: 'DiscoTune', beat_name: 'Disco Tune' },
         { beat_id: 'SlowTune', beat_name: 'Slow Tune' },
