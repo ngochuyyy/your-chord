@@ -13,26 +13,26 @@ function ManageBeat() {
 
     const beatGenresData = [
         { beat_id: 'Ballad', beat_name: 'Ballad' },
-        // { beat_id: 'BluesTune', beat_name: 'Blues Tune' },
-        // { beat_id: 'DiscoTune', beat_name: 'Disco Tune' },
-        // { beat_id: 'SlowTune', beat_name: 'Slow Tune' },
-        // { beat_id: 'BolleroTune', beat_name: 'Bollero Tune' },
-        // { beat_id: 'FoxTune', beat_name: 'Fox Tune' },
-        // { beat_id: 'ValseTune', beat_name: 'Valse Tune' },
-        // { beat_id: 'TangoTune', beat_name: 'Tango Tune' },
-        // { beat_id: 'PopTune', beat_name: 'Pop Tune' },
-        // { beat_id: 'BostonTune', beat_name: 'Boston Tune' },
-        // { beat_id: 'WaltzTune', beat_name: 'Waltz' },
-        // { beat_id: 'Chachachadance', beat_name: 'Chachacha Dance' },
-        // { beat_id: 'RockTune', beat_name: 'Rock Tune' },
-        // { beat_id: 'Dhumbadance', beat_name: 'Dhumba Dance' },
-        // { beat_id: 'BossaNova', beat_name: 'Bossa Nova' },
+        { beat_id: 'BluesTune', beat_name: 'Blues Tune' },
+        { beat_id: 'DiscoTune', beat_name: 'Disco Tune' },
+        { beat_id: 'SlowTune', beat_name: 'Slow Tune' },
+        { beat_id: 'BolleroTune', beat_name: 'Bollero Tune' },
+        { beat_id: 'FoxTune', beat_name: 'Fox Tune' },
+        { beat_id: 'ValseTune', beat_name: 'Valse Tune' },
+        { beat_id: 'TangoTune', beat_name: 'Tango Tune' },
+        { beat_id: 'PopTune', beat_name: 'Pop Tune' },
+        { beat_id: 'BostonTune', beat_name: 'Boston Tune' },
+        { beat_id: 'WaltzTune', beat_name: 'Waltz' },
+        { beat_id: 'Chachachadance', beat_name: 'Chachacha Dance' },
+        { beat_id: 'RockTune', beat_name: 'Rock Tune' },
+        { beat_id: 'Dhumbadance', beat_name: 'Dhumba Dance' },
+        { beat_id: 'BossaNova', beat_name: 'Bossa Nova' },
     ];
 
     const fetchData = async () => {
         try {
             const countRequests = beatGenresData.map((beat) =>
-                axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
+                axios.get(`${apiUrl}/countSongBeat/${beat.beat_id.toLowerCase()}`)
             );
 
             const countResponses = await Promise.all(countRequests);
