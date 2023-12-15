@@ -8,5 +8,8 @@
             "src": "/login",
             "dest": "/"
         }
-    ]
+    ],
+    "env": {
+        "VITE_REACT_APP_API_URL": "https://your-chord-be.vercel.app"
+    }
 }
