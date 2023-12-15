@@ -12,21 +12,21 @@ function ManageBeat() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
     const beatGenresData = [
-        { beat_id: 'ballad', beat_name: 'Ballad' },
-        { beat_id: 'bluestune', beat_name: 'Blues Tune' },
-        { beat_id: 'discoTune', beat_name: 'Disco Tune' },
-        { beat_id: 'slowtune', beat_name: 'Slow Tune' },
-        { beat_id: 'bollerotune', beat_name: 'Bollero Tune' },
-        { beat_id: 'foxtune', beat_name: 'Fox Tune' },
-        { beat_id: 'valsetune', beat_name: 'Valse Tune' },
-        { beat_id: 'tangotune', beat_name: 'Tango Tune' },
-        { beat_id: 'poptune', beat_name: 'Pop Tune' },
-        { beat_id: 'bostontune', beat_name: 'Boston Tune' },
-        { beat_id: 'waltztune', beat_name: 'Waltz' },
-        { beat_id: 'chachachadance', beat_name: 'Chachacha Dance' },
-        { beat_id: 'rocktune', beat_name: 'Rock Tune' },
-        { beat_id: 'dhumbadance', beat_name: 'Dhumba Dance' },
-        { beat_id: 'bossaNova', beat_name: 'Bossa Nova' },
+        { beat_id: 'Ballad', beat_name: 'Ballad' },
+        { beat_id: 'BluesTune', beat_name: 'Blues Tune' },
+        { beat_id: 'DiscoTune', beat_name: 'Disco Tune' },
+        { beat_id: 'SlowTune', beat_name: 'Slow Tune' },
+        { beat_id: 'BolleroTune', beat_name: 'Bollero Tune' },
+        { beat_id: 'FoxTune', beat_name: 'Fox Tune' },
+        { beat_id: 'ValseTune', beat_name: 'Valse Tune' },
+        { beat_id: 'TangoTune', beat_name: 'Tango Tune' },
+        { beat_id: 'PopTune', beat_name: 'Pop Tune' },
+        { beat_id: 'BostonTune', beat_name: 'Boston Tune' },
+        { beat_id: 'WaltzTune', beat_name: 'Waltz' },
+        { beat_id: 'Chachachadance', beat_name: 'Chachacha Dance' },
+        { beat_id: 'RockTune', beat_name: 'Rock Tune' },
+        { beat_id: 'Dhumbadance', beat_name: 'Dhumba Dance' },
+        { beat_id: 'BossaNova', beat_name: 'Bossa Nova' },
     ];
 
     const fetchData = async () => {
