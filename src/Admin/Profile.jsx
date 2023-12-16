@@ -28,7 +28,7 @@ function Profile() {
     const { userId } = useParams();
     const [imageURL, setImageURL] = useState(null);
     const [selectedFileName, setSelectedFileName] = useState("");
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const style = {
         position: 'absolute',
@@ -44,26 +44,22 @@ function Profile() {
     };
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     useEffect(() => {
-        setLoading(true);
         axios.get(`${apiUrl}/getProfile/` + userId)
             .then(res => {
-                if (res.data.Status === "Success") {
-                    setLoading(false);
-                    setData({
-                        ...data,
-                        name: res.data.Result[0].name,
-                        email: res.data.Result[0].email,
-                        address: res.data.Result[0].address,
-                        role: res.data.Result[0].role,
-                        username: res.data.Result[0].username,
-                        ban: res.data.Result[0].ban,
-                        surname: res.data.Result[0].surname,
-                        phoneNumber: res.data.Result[0].phoneNumber,
-                        job: res.data.Result[0].job,
-                        image: res.data.Result[0].image,
-                        registration_time: res.data.Result[0].registration_time,
-                    })
-                }
+                setData({
+                    ...data,
+                    name: res.data.Result[0].name,
+                    email: res.data.Result[0].email,
+                    address: res.data.Result[0].address,
+                    role: res.data.Result[0].role,
+                    username: res.data.Result[0].username,
+                    ban: res.data.Result[0].ban,
+                    surname: res.data.Result[0].surname,
+                    phoneNumber: res.data.Result[0].phoneNumber,
+                    job: res.data.Result[0].job,
+                    image: res.data.Result[0].image,
+                    registration_time: res.data.Result[0].registration_time,
+                })
                 if (res.data.Result.length > 0) {
                     const profileImages = res.data.Result.map(data => `${data.image}`);
                     setImageURL(profileImages);
