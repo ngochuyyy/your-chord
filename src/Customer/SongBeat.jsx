@@ -87,7 +87,6 @@ function SongBeat() {
             .then((res) => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result);
-                    console.log(res.data.Result)
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(data => `${data.image}`);
                         setImageURL(songImages);
