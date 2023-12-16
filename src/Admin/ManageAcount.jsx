@@ -69,6 +69,8 @@ function ManageAccount() {
     const [order, setOrder] = useState("asc");
     const [imageURL, setImageURL] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
+
     const itemsPerPage = 5;
 
     const primaryColor = '#F1F1FB';
@@ -80,11 +82,14 @@ function ManageAccount() {
     };
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     useEffect(() => {
-        axios
-            .get(`${apiUrl}/getAccount`)
+        setLoading(true);
+
+        axios.get(`${apiUrl}/getAccount`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result);
+                    setLoading(false);
+
                 } else {
                     alert('Error');
                 }
@@ -93,10 +98,11 @@ function ManageAccount() {
     }, []);
 
     const handleDelete = (username) => {
-        axios
-            .delete(`${apiUrl}/deleteAccount/` + username)
+        setLoading(true);
+        axios.delete(`${apiUrl}/deleteAccount/` + username)
             .then((res) => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     window.location.reload(true);
                     setIsDeleted(true);
                     setTimeout(() => {
@@ -108,10 +114,11 @@ function ManageAccount() {
     };
 
     const handleBanAccount = (username) => {
-        axios
-            .put(`${apiUrl}/banAccount/` + username)
+        setLoading(true);
+        axios.put(`${apiUrl}/banAccount/` + username)
             .then((res) => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     setIsBanAccount(true);
                     setTimeout(() => {
                         setIsBanAccount(false);
@@ -123,10 +130,11 @@ function ManageAccount() {
     };
 
     const handleUnBanAccount = (username) => {
-        axios
-            .put(`${apiUrl}/unBanAccount/` + username)
+        setLoading(true);
+        axios.put(`${apiUrl}/unBanAccount/` + username)
             .then((res) => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     setIsUnBanAccount(true);
                     setTimeout(() => {
                         setIsUnBanAccount(false);
@@ -138,11 +146,12 @@ function ManageAccount() {
     };
 
     const handleProfile = (username) => {
+        setLoading(true);
         setOpen(true);
-        axios
-            .get(`${apiUrl}/getAccount/` + username)
+        axios.get(`${apiUrl}/getAccount/` + username)
             .then((res) => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     setDataProfile(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const profileImages = res.data.Result.map(data => `${data.image}`);
@@ -321,6 +330,7 @@ function ManageAccount() {
                         )}
                         <div className='mt-4 pd-left'>
                             {filteredAccountUser.length === 0 ? (
+
                                 <>
 
                                     <TableContainer component={Paper}>
@@ -353,9 +363,17 @@ function ManageAccount() {
                                             </TableHead>
                                         </Table>
                                     </TableContainer>
-                                    <div>
-                                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
-                                    </div>
+                                    {loading ? (
+                                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                            <div className="spinner-border text-primary" role="status">
+                                                <p className="visually-hidden">Loading...</p>
+                                            </div>
+                                        </div>
+                                    ) :
+                                        <div>
+                                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                                        </div>
+                                    }
                                 </>
                             ) : (
 

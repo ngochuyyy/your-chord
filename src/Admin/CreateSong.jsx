@@ -13,7 +13,6 @@ import SearchAppBar from '../component/SearchAppBar';
 
 function CreateSong() {
     const navigate = useNavigate();
-
     const [activeStep, setActiveStep] = useState(0);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 

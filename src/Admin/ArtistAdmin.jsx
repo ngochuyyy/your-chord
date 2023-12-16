@@ -103,11 +103,12 @@ function ArtistAdmin() {
     }, [])
     const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData };
     const handleDelete = (song_id, artist_id) => {
-        axios
-            .delete(`${apiUrl}/deleteSongArtist/${artist_id}/${song_id}`)
+        setLoading(true);
+        axios.delete(`${apiUrl}/deleteSongArtist/${artist_id}/${song_id}`)
 
             .then((res) => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     window.location.reload(true);
                 }
             })
