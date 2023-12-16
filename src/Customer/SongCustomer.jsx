@@ -290,11 +290,11 @@ function SongCustomer() {
                 </Stack>
             )}
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-                    <div className="spinner-border text-primary" role="status">
+                <div className="d-flex flex-column align-items-center" style={{ minHeight: '100vh' }}>
+                    <div className="spinner-border text-primary mb-2" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                    <p className="ms-3">Loading...</p>
+                    <p className="text-success">Loading...</p>
                 </div>
             )
                 :
