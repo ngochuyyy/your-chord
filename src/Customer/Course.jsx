@@ -10,6 +10,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
+import Loading from '../component/Loading';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -111,11 +112,7 @@ function Course() {
                 </ThemeProvider>
             </Box>
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                </div>
+                <Loading />
             )
                 :
                 <>
