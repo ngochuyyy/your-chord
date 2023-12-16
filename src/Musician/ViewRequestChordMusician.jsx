@@ -49,7 +49,6 @@ function ViewRequestChordMusician() {
                         <span className="visually-hidden">Loading...</span>
                     </div>
                     <p>Loading...</p>
-                    <p>Loading...</p>
                 </div>
             )
                 :

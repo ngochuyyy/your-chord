@@ -129,6 +129,7 @@ function ViewRejectCourse() {
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
+                    <p>Loading...</p>
                 </div>
             )
                 :
