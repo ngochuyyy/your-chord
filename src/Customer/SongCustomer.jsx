@@ -24,7 +24,7 @@ function SongCustomer() {
     const [dataPlaylist, setDataPlaylist] = useState([]);
     const [isRequestAccount, setIsRequestAccount] = useState(false);
     const [selectedBeatType, setSelectedBeatType] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
