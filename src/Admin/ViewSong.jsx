@@ -76,7 +76,6 @@ function ViewSong() {
         axios.get(`${apiUrl}/getChord`)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    setLoading(false);
                     const chordData = res.data.Result.map(chord => ({
                         name: chord.chord_name,
                         image: chord.image,

@@ -13,7 +13,6 @@ function ArtistAdmin() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const { artist_id } = useParams();
     const [loading, setLoading] = useState(true);
-
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
@@ -27,7 +26,6 @@ function ArtistAdmin() {
 
     useEffect(() => {
         setLoading(true);
-
         axios.get(`${apiUrl}/getSongArtist/` + artist_id, data)
             .then(res => {
                 if (res.data.Status === "Success") {
