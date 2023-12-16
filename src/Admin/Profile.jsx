@@ -44,6 +44,7 @@ function Profile() {
     };
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     useEffect(() => {
+        setLoading(true);
 
         axios.get(`${apiUrl}/getProfile/` + userId)
             .then(res => {
@@ -65,6 +66,8 @@ function Profile() {
                     const profileImages = res.data.Result.map(data => `${data.image}`);
                     setImageURL(profileImages);
                 }
+                setLoading(false);
+
             })
             .catch(err => console.log(err));
     }, [])
