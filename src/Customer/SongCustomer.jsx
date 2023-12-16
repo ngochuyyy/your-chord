@@ -54,11 +54,9 @@ function SongCustomer() {
     };
 
     const handleFavorite = () => {
-        setLoading(true)
         axios.get(`${apiUrl}/getPlaylist/` + userId)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    setLoading(false)
                     setDataPlaylist(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(playlist => `${playlist.image}`);
@@ -294,7 +292,7 @@ function SongCustomer() {
             {loading ? (
                 <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <div className="spinner-border text-primary" role="status">
-                        <span className="visually-hidden">Loading...</span>
+                        <p>Loading...</p>
                     </div>
                 </div>
             )
