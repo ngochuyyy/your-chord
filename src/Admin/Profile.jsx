@@ -68,7 +68,6 @@ function Profile() {
                     const profileImages = res.data.Result.map(data => `${data.image}`);
                     setImageURL(profileImages);
                 }
-                setLoading(false);
             })
             .catch(err => console.log(err));
     }, [])
