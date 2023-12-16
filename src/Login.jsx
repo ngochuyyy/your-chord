@@ -62,55 +62,54 @@ function Login() {
     return (
         <>
             <AppBarLogin />
-            {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
-                </div>
-            )
-                :
-                <>
-                    <div className="body-login">
-                        <div className="container-login">
-                            <div className="form-container sign-in">
-                                <form onSubmit={handleSubmit}>
-                                    <h1>Login</h1>
-                                    {isLoginFailed && (
-                                        <Stack sx={{ width: '100%' }} spacing={2} >
-                                            <Alert severity="error">Wrong username or password !</Alert>
-                                        </Stack>
-                                    )}
-                                    {isLoginPending && (
-                                        <Stack sx={{ width: '100%' }} spacing={2} >
-                                            <Alert severity="info">Your account status is currently pending. The admin will review your account after 3 days!</Alert>
-                                        </Stack>
-                                    )}
-                                    {isLoginDisable && (
-                                        <Stack sx={{ width: '100%' }} spacing={2} >
-                                            <Alert severity="error">Your account has been disabled by the administrator !</Alert>
-                                        </Stack>
-                                    )}
+            <div className="body-login">
+                <div className="container-login">
+                    <div className="form-container sign-in">
+                        <form onSubmit={handleSubmit}>
+                            <h1>Login</h1>
+                            {isLoginFailed && (
+                                <Stack sx={{ width: '100%' }} spacing={2} >
+                                    <Alert severity="error">Wrong username or password !</Alert>
+                                </Stack>
+                            )}
+                            {isLoginPending && (
+                                <Stack sx={{ width: '100%' }} spacing={2} >
+                                    <Alert severity="info">Your account status is currently pending. The admin will review your account after 3 days!</Alert>
+                                </Stack>
+                            )}
+                            {isLoginDisable && (
+                                <Stack sx={{ width: '100%' }} spacing={2} >
+                                    <Alert severity="error">Your account has been disabled by the administrator !</Alert>
+                                </Stack>
+                            )}
 
-                                    <input type="text" placeholder="Username" onChange={e => setValues({ ...values, username: e.target.value })} required />
-                                    <input type="password" placeholder="Password" onChange={e => setValues({ ...values, password: e.target.value })} required />
-                                    <button>Sign In</button>
-                                </form>
-                            </div>
-                            <div className="toggle-container">
-                                <div className="toggle">
-                                    <div className="toggle-panel toggle-right">
-                                        <h1>Welcome Back!</h1>
-                                        <p>Enter your personal details to use all of site features</p>
-                                        <button className="hidden" id="login" onClick={() => navigate("/signUp")}>Sign Up</button>
+                            <input type="text" placeholder="Username" onChange={e => setValues({ ...values, username: e.target.value })} required />
+                            <input type="password" placeholder="Password" onChange={e => setValues({ ...values, password: e.target.value })} required />
+                            {loading ? (
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span>
                                     </div>
                                 </div>
+                            ) :
+                                <button>Sign In</button>
+                            }
+                        </form>
+                    </div>
+                    <div className="toggle-container">
+                        <div className="toggle">
+                            <div className="toggle-panel toggle-right">
+                                <h1>Welcome Back!</h1>
+                                <p>Enter your personal details to use all of site features</p>
+                                <button className="hidden" id="login" onClick={() => navigate("/signUp")}>Sign Up</button>
                             </div>
                         </div>
-                        <script src="script.js"></script>
                     </div>
-                </>
-            }
+                </div>
+                <script src="script.js"></script>
+            </div>
+
+
         </>
     )
 }
