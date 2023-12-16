@@ -86,7 +86,7 @@ function Login() {
                             <input type="text" placeholder="Username" onChange={e => setValues({ ...values, username: e.target.value })} required />
                             <input type="password" placeholder="Password" onChange={e => setValues({ ...values, password: e.target.value })} required />
                             {loading ? (
-                                <div className="d-flex justify-content-center align-items-center">
+                                <div className="d-flex flex-column justify-content-center align-items-center">
                                     <div className="spinner-border text-primary" role="status">
                                         <span className="visually-hidden">Loading...</span>
                                     </div>

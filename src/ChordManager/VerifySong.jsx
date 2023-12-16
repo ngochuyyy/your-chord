@@ -226,7 +226,7 @@ function VerifySong() {
                             </Table>
                         </TableContainer>
                         {loading ? (
-                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                            <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
                                 <div className="spinner-border text-primary" role="status">
                                     <p className="visually-hidden">Loading...</p>
                                 </div>

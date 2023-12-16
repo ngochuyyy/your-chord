@@ -294,7 +294,7 @@ function SongCustomer() {
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                    <p className="text-success">Loading...</p>
+                    <p>Loading...</p>
                 </div>
             )
                 :
@@ -349,10 +349,11 @@ function SongCustomer() {
                             <h2 className="mb-1 pd-top" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Playlist</h2>
                         </div>
                         {loading ? (
-                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '100px' }}>
+                            <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '100px' }}>
                                 <div className="spinner-border text-primary" role="status">
                                     <p className="visually-hidden">Loading...</p>
                                 </div>
+                                <p>Loading...</p>
                             </div>
                         ) :
                             <>

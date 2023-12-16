@@ -93,7 +93,7 @@ function SignUp() {
                             <input type="text" placeholder="Enter your email" onChange={e => setValues({ ...values, email: e.target.value })} required />
                             <input type="text" placeholder="Enter your address" onChange={e => setValues({ ...values, address: e.target.value })} required />
                             {loading ? (
-                                <div className="d-flex justify-content-center align-items-center">
+                                <div className="d-flex flex-column justify-content-center align-items-center">
                                     <div className="spinner-border text-primary" role="status">
                                         <span className="visually-hidden">Loading...</span>
                                     </div>
