@@ -28,7 +28,7 @@ import DvrIcon from '@mui/icons-material/Dvr';
 function Dashboard() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [datachord, setDataChord] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [imageURL, setImageURL] = useState(null);
     const [openSong, setOpenSong] = useState(false);
     const [activeButton, setActiveButton] = useState(
