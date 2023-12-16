@@ -118,7 +118,7 @@ function ArtistAdmin() {
         <>
             <SearchAppBarBackAdmin />
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center">
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <div className="spinner-border text-primary" role="status">
                         <p className="visually-hidden">Loading...</p>
                     </div>
