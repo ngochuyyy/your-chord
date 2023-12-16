@@ -41,6 +41,8 @@ function ViewSong() {
     const [, setIsAnyPopupOpen] = useState(false);
     const [transpose, setTranspose] = useState(0);
     const [imageURL, setImageURL] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
         '& .MuiToggleButtonGroup-grouped': {
@@ -58,9 +60,11 @@ function ViewSong() {
         },
     }));
     useEffect(() => {
+        setLoading(true);
         axios.get(`${apiUrl}/getSong/` + id, data)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setData(res.data.Result);
                     setImageURL(`data:image/png;base64, ${res.data.Result.image}`);
 
@@ -72,6 +76,7 @@ function ViewSong() {
         axios.get(`${apiUrl}/getChord`)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     const chordData = res.data.Result.map(chord => ({
                         name: chord.chord_name,
                         image: chord.image,
@@ -343,202 +348,218 @@ function ViewSong() {
                             });
                         });
                     }
+
+
                     return <div key={index}>
-                        <h3 className="d-flex justify-content-center"><b style={{ color: '#0d6efd' }}>{viewSong.song_title}</b></h3>
-                        <div className="row mt-5 d-flex justify-content-center">
-                            <div className="col-md-7">
-                                <div className="row">
-                                    <div className="col-md-6">
-                                        <p><b>Artist:</b>
-                                            {viewSong.artist_name != null ?
-                                                <Link to={`/artistAdmin/${viewSong.id}/${viewSong.artist_id}`} style={{ textDecoration: 'none' }}> {viewSong.artist_name}</Link>
-                                                :
-                                                " Updating"
-                                            }
-                                        </p>
-                                        {viewSong.link != null ? (
-                                            <p><b>Link:</b> <Link to={viewSong.link} style={{ textDecoration: 'none' }}>{viewSong.link.substring(0, 30)}</Link></p>
-                                        ) : (
-                                            <p><b>Link:</b> Updating...</p>
-                                        )}
+                        {
+                            loading ? (
+                                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span>
                                     </div>
-                                    <div className="col-md-6">
-                                        <p><b>Date created:</b> {moment(viewSong.created_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
-                                        {viewSong.updated_at != null ? (
-                                            <p><b>Date updated:</b> {moment(viewSong.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
-                                        ) : (
-                                            <p><b>Date updated:</b> Not updated</p>
-                                        )}
-                                    </div>
-
                                 </div>
-                            </div>
-                        </div>
-                        <div className='d-flex flex-column align-items-center'>
-                            <div onMouseLeave={handleCloseAllPopups}>
-                                {Object.keys(chordData).map((chordName) => (
-                                    <div key={chordName} >
-                                        {renderChordPopup(chordName, chordData[chordName])}
+                            )
+                                :
+                                <>
+                                    <h3 className="d-flex justify-content-center"><b style={{ color: '#0d6efd' }}>{viewSong.song_title}</b></h3>
+                                    <div className="row mt-5 d-flex justify-content-center">
+                                        <div className="col-md-7">
+                                            <div className="row">
+                                                <div className="col-md-6">
+                                                    <p><b>Artist:</b>
+                                                        {viewSong.artist_name != null ?
+                                                            <Link to={`/artistAdmin/${viewSong.id}/${viewSong.artist_id}`} style={{ textDecoration: 'none' }}> {viewSong.artist_name}</Link>
+                                                            :
+                                                            " Updating"
+                                                        }
+                                                    </p>
+                                                    {viewSong.link != null ? (
+                                                        <p><b>Link:</b> <Link to={viewSong.link} style={{ textDecoration: 'none' }}>{viewSong.link.substring(0, 30)}</Link></p>
+                                                    ) : (
+                                                        <p><b>Link:</b> Updating...</p>
+                                                    )}
+                                                </div>
+                                                <div className="col-md-6">
+                                                    <p><b>Date created:</b> {moment(viewSong.created_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
+                                                    {viewSong.updated_at != null ? (
+                                                        <p><b>Date updated:</b> {moment(viewSong.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
+                                                    ) : (
+                                                        <p><b>Date updated:</b> Not updated</p>
+                                                    )}
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                ))}
-                            </div>
-                            <div className="px-2">
-                                <div className="row">
-                                    <div className="card_song" style={{ width: 'fit-content' }}>
-                                        <Paper
-                                            elevation={1}
-                                            sx={{
-                                                display: 'flex',
-                                                border: (theme) => `1px solid ${theme.palette.divider}`,
-                                                alignItems: 'center',
-                                                justifyContent: 'space-between',
-                                                flexWrap: 'wrap',
-                                            }}
-                                        >
-                                            <Tooltip title={<p>Decrease Key</p>}
-                                                arrow
-                                                placement="top">
-                                                <Button onClick={decreaseKey}><RemoveIcon /></Button>
-                                            </Tooltip>
-                                            <p style={{ color: "#0d6efd" }}><b>{firstChord}</b></p>
-                                            <Tooltip title={<p>Increase Key</p>}
-                                                arrow
-                                                placement="top">
-                                                <Button onClick={increaseKey}><AddIcon /></Button>
-                                            </Tooltip>
-                                            <StyledToggleButtonGroup
-                                                size="small"
-                                                value={alignment}
-                                                exclusive
-                                                onChange={handleAlignment}
-                                                aria-label="text alignment"
-                                                sx={{
-                                                    marginRight: 'auto',
-                                                }}
-                                            >
-                                                <ToggleButton value="left" aria-label="left aligned" onClick={handleChordLeft}>
-                                                    <FormatAlignLeftIcon />
-                                                </ToggleButton>
-                                                <ToggleButton value="center" aria-label="centered" onClick={handleChordCenter}>
-                                                    <FormatAlignCenterIcon />
-                                                </ToggleButton>
-                                                <ToggleButton value="right" aria-label="right aligned" onClick={handleChordRight}>
-                                                    <FormatAlignRightIcon />
-                                                </ToggleButton>
-                                                <StyledToggleButtonGroup
-                                                    size="small"
-                                                    value={formats}
-                                                    onChange={handleFormat}
-                                                    aria-label="text formatting"
-                                                >
-                                                    {isBold ?
-                                                        <ToggleButton value="bold" aria-label="bold" onClick={handleChordOnBold}>
-                                                            <FormatBoldIcon />
-                                                        </ToggleButton>
-                                                        :
-                                                        <ToggleButton value="bold" aria-label="bold" onClick={handleChordOffBold}>
-                                                            <FormatBoldIcon />
-                                                        </ToggleButton>
-                                                    }
-
-                                                </StyledToggleButtonGroup>
-
-                                            </StyledToggleButtonGroup>
-                                            <Divider flexItem orientation="vertical" sx={{ mx: 0.5, my: 1 }} />
-                                            <StyledToggleButtonGroup
-                                                size="small"
-                                                value={formats}
-                                                onChange={handleFormat}
-                                                aria-label="text formatting"
-                                            >
-                                                <Tooltip title={<p>On/Off Chord</p>}
-                                                    arrow
-                                                    placement="top">
-                                                    {isOn ?
-                                                        <ToggleButton value="#F1F1FB" onClick={handleChordOn}>
-                                                            <VisibilityOffIcon fontSize="medium" />  Chord
-                                                        </ToggleButton>
-
-                                                        :
-                                                        <ToggleButton value="#F1F1FB" onClick={handleChordOff}>
-                                                            <RemoveRedEyeIcon fontSize="medium" />  Chord
-                                                        </ToggleButton>
-                                                    }
-                                                </Tooltip>
-                                            </StyledToggleButtonGroup>
-                                        </Paper>
-
-                                        <div className="pd-left">
-
-                                            <div className="d-flex align-items-center  mb-md-1 mt-md-3  text-white row">
-                                                <div className="container">
-                                                    <div
-                                                        id="chordContainer"
-                                                        className={`font ${isBold ? 'bold' : ''}`}
-                                                        style={{
-                                                            textAlign: isRight ? 'right' : isLeft ? 'left' : 'center',
-                                                            fontWeight: isBold ? 'bold' : 'normal',
+                                    <div className='d-flex flex-column align-items-center'>
+                                        <div onMouseLeave={handleCloseAllPopups}>
+                                            {Object.keys(chordData).map((chordName) => (
+                                                <div key={chordName} >
+                                                    {renderChordPopup(chordName, chordData[chordName])}
+                                                </div>
+                                            ))}
+                                        </div>
+                                        <div className="px-2">
+                                            <div className="row">
+                                                <div className="card_song" style={{ width: 'fit-content' }}>
+                                                    <Paper
+                                                        elevation={1}
+                                                        sx={{
+                                                            display: 'flex',
+                                                            border: (theme) => `1px solid ${theme.palette.divider}`,
+                                                            alignItems: 'center',
+                                                            justifyContent: 'space-between',
+                                                            flexWrap: 'wrap',
                                                         }}
-                                                        onMouseEnter={() => {
-                                                            if (isOn) {
-                                                                const firstChordName = Object.keys(chordData);
-                                                                toggleChordPopup(firstChordName, true);
-                                                            }
-                                                        }}
-                                                        dangerouslySetInnerHTML={{ __html: songChord }}>
+                                                    >
+                                                        <Tooltip title={<p>Decrease Key</p>}
+                                                            arrow
+                                                            placement="top">
+                                                            <Button onClick={decreaseKey}><RemoveIcon /></Button>
+                                                        </Tooltip>
+                                                        <p style={{ color: "#0d6efd" }}><b>{firstChord}</b></p>
+                                                        <Tooltip title={<p>Increase Key</p>}
+                                                            arrow
+                                                            placement="top">
+                                                            <Button onClick={increaseKey}><AddIcon /></Button>
+                                                        </Tooltip>
+                                                        <StyledToggleButtonGroup
+                                                            size="small"
+                                                            value={alignment}
+                                                            exclusive
+                                                            onChange={handleAlignment}
+                                                            aria-label="text alignment"
+                                                            sx={{
+                                                                marginRight: 'auto',
+                                                            }}
+                                                        >
+                                                            <ToggleButton value="left" aria-label="left aligned" onClick={handleChordLeft}>
+                                                                <FormatAlignLeftIcon />
+                                                            </ToggleButton>
+                                                            <ToggleButton value="center" aria-label="centered" onClick={handleChordCenter}>
+                                                                <FormatAlignCenterIcon />
+                                                            </ToggleButton>
+                                                            <ToggleButton value="right" aria-label="right aligned" onClick={handleChordRight}>
+                                                                <FormatAlignRightIcon />
+                                                            </ToggleButton>
+                                                            <StyledToggleButtonGroup
+                                                                size="small"
+                                                                value={formats}
+                                                                onChange={handleFormat}
+                                                                aria-label="text formatting"
+                                                            >
+                                                                {isBold ?
+                                                                    <ToggleButton value="bold" aria-label="bold" onClick={handleChordOnBold}>
+                                                                        <FormatBoldIcon />
+                                                                    </ToggleButton>
+                                                                    :
+                                                                    <ToggleButton value="bold" aria-label="bold" onClick={handleChordOffBold}>
+                                                                        <FormatBoldIcon />
+                                                                    </ToggleButton>
+                                                                }
+
+                                                            </StyledToggleButtonGroup>
+
+                                                        </StyledToggleButtonGroup>
+                                                        <Divider flexItem orientation="vertical" sx={{ mx: 0.5, my: 1 }} />
+                                                        <StyledToggleButtonGroup
+                                                            size="small"
+                                                            value={formats}
+                                                            onChange={handleFormat}
+                                                            aria-label="text formatting"
+                                                        >
+                                                            <Tooltip title={<p>On/Off Chord</p>}
+                                                                arrow
+                                                                placement="top">
+                                                                {isOn ?
+                                                                    <ToggleButton value="#F1F1FB" onClick={handleChordOn}>
+                                                                        <VisibilityOffIcon fontSize="medium" />  Chord
+                                                                    </ToggleButton>
+
+                                                                    :
+                                                                    <ToggleButton value="#F1F1FB" onClick={handleChordOff}>
+                                                                        <RemoveRedEyeIcon fontSize="medium" />  Chord
+                                                                    </ToggleButton>
+                                                                }
+                                                            </Tooltip>
+                                                        </StyledToggleButtonGroup>
+                                                    </Paper>
+
+                                                    <div className="pd-left">
+
+                                                        <div className="d-flex align-items-center  mb-md-1 mt-md-3  text-white row">
+                                                            <div className="container">
+                                                                <div
+                                                                    id="chordContainer"
+                                                                    className={`font ${isBold ? 'bold' : ''}`}
+                                                                    style={{
+                                                                        textAlign: isRight ? 'right' : isLeft ? 'left' : 'center',
+                                                                        fontWeight: isBold ? 'bold' : 'normal',
+                                                                    }}
+                                                                    onMouseEnter={() => {
+                                                                        if (isOn) {
+                                                                            const firstChordName = Object.keys(chordData);
+                                                                            toggleChordPopup(firstChordName, true);
+                                                                        }
+                                                                    }}
+                                                                    dangerouslySetInnerHTML={{ __html: songChord }}>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <h5 className="font" style={{ color: "#0d6efd", fontWeight: 'bold' }}>Danh sách các hợp âm:</h5>
+                                                        {[...uniqueChords] != "" ?
+                                                            <div className="chord-list-container" style={{ maxWidth: '1400px' }} >
+                                                                {[...uniqueChords].map((chordName) => (
+                                                                    <div key={chordName} className="chord-box" style={{ position: 'relative', paddingLeft: '40px' }}>
+                                                                        <p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>{chordData[chordName].name}</p>
+                                                                        {imageURL &&
+                                                                            <img src={chordData[chordName].image} alt={chordData[chordName].name} style={{ width: '120px', height: '100px' }} />
+                                                                        }
+                                                                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                                                                            <IconButton
+                                                                                style={{ padding: '1px' }}
+                                                                                color="#0d6efd"
+                                                                                onClick={() => decreaseKey('decrease')}
+                                                                                size="small"
+                                                                            >
+                                                                                <ArrowLeftIcon style={{ color: 'white' }} />
+                                                                            </IconButton>
+
+                                                                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                                                                <p style={{ margin: 8, color: 'black', fontSize: '13px' }}><b>Đổi tông</b></p>
+                                                                            </div>
+                                                                            <IconButton
+                                                                                style={{ padding: '1px' }}
+                                                                                color="#0d6efd"
+                                                                                size="small"
+                                                                                onClick={() => increaseKey('increase')}
+                                                                            >
+                                                                                <ArrowRightIcon style={{ color: 'white' }} />
+                                                                            </IconButton>
+                                                                        </div>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                            : ""
+                                                        }
+
+                                                    </div>
+
+                                                    <div className="footer" style={{ paddingBottom: '20px', paddingLeft: '10px' }}>
+                                                        <hr />
+                                                        <Button variant="contained" onClick={() => navigate(-1)} className='btn-success'>CLOSE
+                                                        </Button>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <h5 className="font" style={{ color: "#0d6efd", fontWeight: 'bold' }}>Danh sách các hợp âm:</h5>
-                                            {[...uniqueChords] != "" ?
-                                                <div className="chord-list-container" style={{ maxWidth: '1400px' }} >
-                                                    {[...uniqueChords].map((chordName) => (
-                                                        <div key={chordName} className="chord-box" style={{ position: 'relative', paddingLeft: '40px' }}>
-                                                            <p style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>{chordData[chordName].name}</p>
-                                                            {imageURL &&
-                                                                <img src={chordData[chordName].image} alt={chordData[chordName].name} style={{ width: '120px', height: '100px' }} />
-                                                            }
-                                                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                                                                <IconButton
-                                                                    style={{ padding: '1px' }}
-                                                                    color="#0d6efd"
-                                                                    onClick={() => decreaseKey('decrease')}
-                                                                    size="small"
-                                                                >
-                                                                    <ArrowLeftIcon style={{ color: 'white' }} />
-                                                                </IconButton>
-
-                                                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                                                                    <p style={{ margin: 8, color: 'black', fontSize: '13px' }}><b>Đổi tông</b></p>
-                                                                </div>
-                                                                <IconButton
-                                                                    style={{ padding: '1px' }}
-                                                                    color="#0d6efd"
-                                                                    size="small"
-                                                                    onClick={() => increaseKey('increase')}
-                                                                >
-                                                                    <ArrowRightIcon style={{ color: 'white' }} />
-                                                                </IconButton>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                                : ""
-                                            }
-
-                                        </div>
-
-                                        <div className="footer" style={{ paddingBottom: '20px', paddingLeft: '10px' }}>
-                                            <hr />
-                                            <Button variant="contained" onClick={() => navigate(-1)} className='btn-success'>CLOSE
-                                            </Button>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                </>
+                        }
                     </div>
+
+
 
                 })}
             </div>
