@@ -13,15 +13,19 @@ import Avatar from '@mui/material/Avatar';
 export default function BottomAppBar() {
     const [data, setData] = useState([]);
     const [imageURL, setImageURL] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     axios.defaults.withCredentials = true;
     let showDate = new Date();
     let displaytodaysdate = showDate.getFullYear() + '-' + (showDate.getMonth() + 1) + '-' + showDate.getDate();
     useEffect(() => {
+        setLoading(true);
+
         axios.get(`${apiUrl}/getFeedback`)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setData(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const profileImages = res.data.Result.map(data => `${data.image}`);
@@ -42,65 +46,89 @@ export default function BottomAppBar() {
 
             if (date1 === date2 && filterDate === 'today') {
                 return (
+                    <>
+                        {loading ? (
+                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <p className="visually-hidden">Loading...</p>
+                                </div>
+                            </div>
+                        ) :
+                            <>
+                                <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
+                                    <td>
+                                        <ListItem >
+                                            <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
+                                                <Avatar>
+                                                    {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
-                    <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
-                        <td>
-                            <ListItem >
-                                <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
-                                    <Avatar>
-                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText className="font" primary={
+                                                <b>{feedbackUser.username} </b>
+                                            }
+                                                secondary={feedbackUser.email.length > 17 ?
+                                                    <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                                    :
+                                                    <b>{feedbackUser.email} </b>
+                                                } />
+                                        </ListItem>
 
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText className="font" primary={
-                                    <b>{feedbackUser.username} </b>
-                                }
-                                    secondary={feedbackUser.email.length > 17 ?
-                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                    </td>
+                                    <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                                    {feedbackUser.status === 1 ?
+                                        <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
                                         :
-                                        <b>{feedbackUser.email} </b>
-                                    } />
-                            </ListItem>
-
-                        </td>
-                        <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
-                        {feedbackUser.status === 1 ?
-                            <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
-                            :
-                            <td className="text-warning"><b>Not reply</b></td>
+                                        <td className="text-warning"><b>Not reply</b></td>
+                                    }
+                                </tr>
+                            </>
                         }
-                    </tr>
+                    </>
                 );
             }
 
             if (date1 > date2 && filterDate === 'recently') {
                 return (
-                    <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
-                        <td>
-                            <ListItem >
-                                <ListItemAvatar >
-                                    <Avatar>
-                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                    <>
+                        {loading ? (
+                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <p className="visually-hidden">Loading...</p>
+                                </div>
+                            </div>
+                        ) :
+                            <>
+                                <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
+                                    <td>
+                                        <ListItem >
+                                            <ListItemAvatar >
+                                                <Avatar>
+                                                    {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText className="font" primary={
-                                    <b>{feedbackUser.username} </b>
-                                }
-                                    secondary={feedbackUser.email.length > 17 ?
-                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                                </Avatar>
+                                            </ListItemAvatar>
+                                            <ListItemText className="font" primary={
+                                                <b>{feedbackUser.username} </b>
+                                            }
+                                                secondary={feedbackUser.email.length > 17 ?
+                                                    <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                                    :
+                                                    <b>{feedbackUser.email} </b>
+                                                } />
+                                        </ListItem>
+                                    </td>
+                                    <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                                    {feedbackUser.status === 1 ?
+                                        <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
                                         :
-                                        <b>{feedbackUser.email} </b>
-                                    } />
-                            </ListItem>
-                        </td>
-                        <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
-                        {feedbackUser.status === 1 ?
-                            <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
-                            :
-                            <td className="text-warning"><b>Not reply</b></td>
+                                        <td className="text-warning"><b>Not reply</b></td>
+                                    }
+                                </tr>
+                            </>
+
                         }
-                    </tr>
+                    </>
                 );
             }
 
