@@ -248,6 +248,7 @@ function RequestListCourse() {
                                     <div className="spinner-border text-primary" role="status">
                                         <p className="visually-hidden">Loading...</p>
                                     </div>
+                                    <p>Loading...</p>
                                 </div>
                             ) :
                                 <div>
