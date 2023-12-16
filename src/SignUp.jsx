@@ -16,10 +16,12 @@ function SignUp() {
         address: '',
         role: 'user',
     });
+    const [loading, setLoading] = useState(false);
     const [isAccountExisted, setIsAccountExisted] = useState(false);
     const [passwordMismatch, setPasswordMismatch] = useState(false);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const handleSignin = (event) => {
+        setLoading(true);
         event.preventDefault();
         if (values.password !== values.confirmPassword) {
             setPasswordMismatch(true);
@@ -28,6 +30,7 @@ function SignUp() {
         axios.post(`${apiUrl}/signUp`, values)
             .then(res => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     navigate("/login");
                 } else {
                     setIsAccountExisted(true);
@@ -89,7 +92,15 @@ function SignUp() {
                             <input type="password" placeholder="Confirm Password" onChange={e => setValues({ ...values, confirmPassword: e.target.value })} required />
                             <input type="text" placeholder="Enter your email" onChange={e => setValues({ ...values, email: e.target.value })} required />
                             <input type="text" placeholder="Enter your address" onChange={e => setValues({ ...values, address: e.target.value })} required />
-                            <button>Sign Up</button>
+                            {loading ? (
+                                <div className="d-flex justify-content-center align-items-center">
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            ) :
+                                <button>Sign Up</button>
+                            }
                         </form>
                     </div>
                     <div className="toggle-container">
