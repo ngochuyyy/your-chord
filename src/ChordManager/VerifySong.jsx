@@ -23,6 +23,7 @@ import {
 
 } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
+import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 function VerifySong() {
     const [data, setData] = useState([])
@@ -31,6 +32,10 @@ function VerifySong() {
     const [order, setOrder] = useState("asc");
     const [currentPage, setCurrentPage] = useState(1);
     const [imageURL, setImageURL] = useState(null);
+    const [isVerifySong, setIsVerifySong] = useState(false);
+    const [isRejectSong, setIsRejectSong] = useState(false);
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
     const itemsPerPage = 5;
     const primaryColor = "#F1F1FB";
@@ -59,19 +64,32 @@ function VerifySong() {
             .catch(err => console.log(err));
     }, [])
     const handleVerify = (id) => {
+        setLoading(true);
         axios.put(`${apiUrl}/verifySong/` + id)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    window.location.reload(true);
+                    setLoading(false);
+
+                    setIsVerifySong(true);
+                    setTimeout(() => {
+                        setIsVerifySong(false);
+                        window.location.reload(true);
+                    }, 2500);
                 }
             })
             .catch(err => console.log(err));
     }
     const handleReject = (id) => {
+        setLoading(true);
         axios.put(`${apiUrl}/rejectSong/` + id)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    window.location.reload(true);
+                    setLoading(false);
+                    setIsRejectSong(true);
+                    setTimeout(() => {
+                        setIsRejectSong(false);
+                        window.location.reload(true);
+                    }, 2500);
                 }
             })
             .catch(err => console.log(err));
@@ -154,6 +172,16 @@ function VerifySong() {
             <div className="d-flex flex-column align-items-center pt-4">
                 <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Verify Song</h3>
             </div>
+            {isVerifySong && (
+                <Stack sx={{ width: '100%' }} spacing={2} >
+                    <Alert severity="warning">Account disabled !</Alert>
+                </Stack>
+            )}
+            {isRejectSong && (
+                <Stack sx={{ width: '100%' }} spacing={2} >
+                    <Alert severity="info">Account enabled !</Alert>
+                </Stack>
+            )}
             <div className="mt-4 pd-left">
                 {filteredSongs.length === 0 ? (
                     <>
@@ -197,9 +225,17 @@ function VerifySong() {
                                 </TableHead>
                             </Table>
                         </TableContainer>
-                        <div>
-                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
-                        </div>
+                        {loading ? (
+                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <p className="visually-hidden">Loading...</p>
+                                </div>
+                            </div>
+                        ) :
+                            <div>
+                                <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                            </div>
+                        }
                     </>
                 ) : (
 
