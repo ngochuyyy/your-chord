@@ -919,7 +919,7 @@ function ManageAccount() {
             >
                 <Box sx={style} >
                     {loading ? (
-                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '100px' }}>
                             <div className="spinner-border text-primary" role="status">
                                 <p className="visually-hidden">Loading...</p>
                             </div>
