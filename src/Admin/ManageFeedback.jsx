@@ -43,92 +43,66 @@ export default function BottomAppBar() {
         return data.map((feedbackUser, index) => {
             const date1 = moment(displaytodaysdate).format("YYYY-MM-DD");
             const date2 = moment(feedbackUser.date_feedback).format("YYYY-MM-DD");
-
             if (date1 === date2 && filterDate === 'today') {
                 return (
-                    <>
-                        {loading ? (
-                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
-                                <div className="spinner-border text-primary" role="status">
-                                    <p className="visually-hidden">Loading...</p>
-                                </div>
-                            </div>
-                        ) :
-                            <>
-                                <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
-                                    <td>
-                                        <ListItem >
-                                            <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
-                                                <Avatar>
-                                                    {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                    <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
+                        <td>
+                            <ListItem >
+                                <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
+                                    <Avatar>
+                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
-                                                </Avatar>
-                                            </ListItemAvatar>
-                                            <ListItemText className="font" primary={
-                                                <b>{feedbackUser.username} </b>
-                                            }
-                                                secondary={feedbackUser.email.length > 17 ?
-                                                    <b>{feedbackUser.email.substring(0, 17)}...</b>
-                                                    :
-                                                    <b>{feedbackUser.email} </b>
-                                                } />
-                                        </ListItem>
-
-                                    </td>
-                                    <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
-                                    {feedbackUser.status === 1 ?
-                                        <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText className="font" primary={
+                                    <b>{feedbackUser.username} </b>
+                                }
+                                    secondary={feedbackUser.email.length > 17 ?
+                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
                                         :
-                                        <td className="text-warning"><b>Not reply</b></td>
-                                    }
-                                </tr>
-                            </>
+                                        <b>{feedbackUser.email} </b>
+                                    } />
+                            </ListItem>
+
+                        </td>
+                        <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        {feedbackUser.status === 1 ?
+                            <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
+                            :
+                            <td className="text-warning"><b>Not reply</b></td>
                         }
-                    </>
+                    </tr>
                 );
             }
 
             if (date1 > date2 && filterDate === 'recently') {
                 return (
-                    <>
-                        {loading ? (
-                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
-                                <div className="spinner-border text-primary" role="status">
-                                    <p className="visually-hidden">Loading...</p>
-                                </div>
-                            </div>
-                        ) :
-                            <>
-                                <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
-                                    <td>
-                                        <ListItem >
-                                            <ListItemAvatar >
-                                                <Avatar>
-                                                    {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                    <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
+                        <td>
+                            <ListItem >
+                                <ListItemAvatar >
+                                    <Avatar>
+                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
-                                                </Avatar>
-                                            </ListItemAvatar>
-                                            <ListItemText className="font" primary={
-                                                <b>{feedbackUser.username} </b>
-                                            }
-                                                secondary={feedbackUser.email.length > 17 ?
-                                                    <b>{feedbackUser.email.substring(0, 17)}...</b>
-                                                    :
-                                                    <b>{feedbackUser.email} </b>
-                                                } />
-                                        </ListItem>
-                                    </td>
-                                    <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
-                                    {feedbackUser.status === 1 ?
-                                        <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText className="font" primary={
+                                    <b>{feedbackUser.username} </b>
+                                }
+                                    secondary={feedbackUser.email.length > 17 ?
+                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
                                         :
-                                        <td className="text-warning"><b>Not reply</b></td>
-                                    }
-                                </tr>
-                            </>
-
+                                        <b>{feedbackUser.email} </b>
+                                    } />
+                            </ListItem>
+                        </td>
+                        <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        {feedbackUser.status === 1 ?
+                            <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
+                            :
+                            <td className="text-warning"><b>Not reply</b></td>
                         }
-                    </>
+                    </tr>
                 );
             }
 
@@ -149,56 +123,72 @@ export default function BottomAppBar() {
                     <ListItem>
                         <ListItemText primary="Today" style={{ color: '#0d6efd' }} />
                     </ListItem>
-                    <List sx={{ mb: 2 }}>
-                        <div className='mt-4 pd-left'>
-                            {!renderTableRows('today').some(row => row !== null) ?
-                                (
-
-                                    <div className="text-center"><b>No comment available</b></div>
-                                )
-                                :
-                                <table className='custom-table table'>
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {renderTableRows('today')}
-                                    </tbody>
-                                </table>
-                            }
+                    {loading ? (
+                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                            <div className="spinner-border text-primary" role="status">
+                                <p className="visually-hidden">Loading...</p>
+                            </div>
                         </div>
-                    </List>
+                    ) :
+                        <List sx={{ mb: 2 }}>
+                            <div className='mt-4 pd-left'>
+                                {!renderTableRows('today').some(row => row !== null) ?
+                                    (
+
+                                        <div className="text-center"><b>No comment available</b></div>
+                                    )
+                                    :
+                                    <table className='custom-table table'>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {renderTableRows('today')}
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </List>
+                    }
                     {/* LIST RECENTLY */}
                     <ListItem>
                         <ListItemText primary="Recently" style={{ color: '#0d6efd' }} />
                     </ListItem>
-                    <List sx={{ mb: 2 }}>
-                        <div className='mt-4 pd-left'>
-                            {!renderTableRows('recently').some(row => row !== null) ?
-                                (
-
-                                    <div className="text-center"><b>No comment available</b></div>
-                                )
-                                :
-                                <table className='custom-table table'>
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Date</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {renderTableRows('recently')}
-                                    </tbody>
-                                </table>
-                            }
+                    {loading ? (
+                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                            <div className="spinner-border text-primary" role="status">
+                                <p className="visually-hidden">Loading...</p>
+                            </div>
                         </div>
-                    </List>
+                    ) :
+                        <List sx={{ mb: 2 }}>
+                            <div className='mt-4 pd-left'>
+                                {!renderTableRows('recently').some(row => row !== null) ?
+                                    (
+
+                                        <div className="text-center"><b>No comment available</b></div>
+                                    )
+                                    :
+                                    <table className='custom-table table'>
+                                        <thead>
+                                            <tr>
+                                                <th></th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {renderTableRows('recently')}
+                                        </tbody>
+                                    </table>
+                                }
+                            </div>
+                        </List>
+                    }
                 </div>
             </React.Fragment>
         </>
