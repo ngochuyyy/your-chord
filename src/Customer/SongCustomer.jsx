@@ -24,6 +24,7 @@ function SongCustomer() {
     const [dataPlaylist, setDataPlaylist] = useState([]);
     const [isRequestAccount, setIsRequestAccount] = useState(false);
     const [selectedBeatType, setSelectedBeatType] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -53,9 +54,11 @@ function SongCustomer() {
     };
 
     const handleFavorite = () => {
+        setLoading(true)
         axios.get(`${apiUrl}/getPlaylist/` + userId)
             .then((res) => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false)
                     setDataPlaylist(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(playlist => `${playlist.image}`);
@@ -69,10 +72,12 @@ function SongCustomer() {
             .catch((err) => console.log(err));
     };
     useEffect(() => {
+        setLoading(true)
         axios.get(`${apiUrl}/getSongAdmin`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result);
+
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(data => `${data.image}`);
                         setImageURL(songImages);
@@ -89,10 +94,12 @@ function SongCustomer() {
         setOrder(order === 'asc');
     };
     const handleFilterByBeatType = (beatType) => {
+        setLoading(true)
         if (beatType) {
             axios.get(`${apiUrl}/getSongsByGenre/${beatType}`)
                 .then((res) => {
                     if (res.data.Status === 'Success') {
+                        setLoading(false)
                         setData(res.data.Result);
                         if (res.data.Result.length > 0) {
                             const songImages = res.data.Result.map(data => `${data.image}`);
@@ -283,43 +290,53 @@ function SongCustomer() {
                     <Alert severity="info">Request account successfully, your account status is currently pending. The admin will review your account after 3 days!</Alert>
                 </Stack>
             )}
-
-            {filteredSongs.length === 0 ? (
-                <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
-            ) : (
-                <div className="song-list-container">
-                    {filteredSongs.map((song, index) => (
-                        <div key={index}>
-                            <div style={{ position: 'relative' }}>
-                                <div className="song-list-item">
-                                    <div >
-                                        <IconButton
-                                            onClick={() => { handleFavorite(data.userId), setSelectedSong(song) }}
-                                            size="large"
-                                            aria-label="like"
-                                            color="error"
-                                            style={{ position: 'absolute', top: 0, right: 0 }}
-                                            className="favorite-button"
-                                        >
-                                            <FavoriteIcon />
-                                        </IconButton>
-                                    </div>
-                                    <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
-                                        {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
-
-                                    </Link>
-                                </div>
-                                <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
-                                    <div className="song-details" style={{ textAlign: 'center' }}>
-                                        <b>{song.song_title}</b>
-                                    </div>
-                                </Link>
-                            </div>
-                        </div>
-                    ))}
+            {loading ? (
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
                 </div>
+            )
+                :
+                <>
+                    {filteredSongs.length === 0 ? (
+                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
+                    ) : (
+                        <div className="song-list-container">
+                            {filteredSongs.map((song, index) => (
+                                <div key={index}>
+                                    <div style={{ position: 'relative' }}>
+                                        <div className="song-list-item">
+                                            <div >
+                                                <IconButton
+                                                    onClick={() => { handleFavorite(data.userId), setSelectedSong(song) }}
+                                                    size="large"
+                                                    aria-label="like"
+                                                    color="error"
+                                                    style={{ position: 'absolute', top: 0, right: 0 }}
+                                                    className="favorite-button"
+                                                >
+                                                    <FavoriteIcon />
+                                                </IconButton>
+                                            </div>
+                                            <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
+                                                {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
 
-            )}
+                                            </Link>
+                                        </div>
+                                        <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
+                                            <div className="song-details" style={{ textAlign: 'center' }}>
+                                                <b>{song.song_title}</b>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    )}
+                </>
+            }
 
             <Modal
                 open={modalOpen}
@@ -331,44 +348,53 @@ function SongCustomer() {
                         <div className="w-100 text-center">
                             <h2 className="mb-1 pd-top" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Playlist</h2>
                         </div>
-
-                        {dataPlaylist.map((playlist, index) => (
-                            <div key={index} className="m-4 p-2 playlist-container ">
-                                <div className="container rounded " style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div className="d-flex flex-column align-items-center text-center">
-                                        <div className="rounded-image-container">
-                                            {imageURL && (
-                                                <img
-                                                    className="rounded-square-image"
-                                                    src={`data:image/png;base64,${playlist.image}`}
-                                                />
-                                            )}
-                                            <div className="image-overlay">
-                                                <p className="playlist-name-modal">
-                                                    <AddIcon
-                                                        onClick={() => {
-                                                            setSelectedPlaylist(playlist);
-                                                            handleAddToPlayList();
-                                                        }}
-                                                        fontSize='large'
-                                                        style={{ cursor: 'pointer' }}
-                                                    />
-                                                    <br />
-                                                    <Link style={{
-                                                        cursor: 'pointer', textDecoration: 'none'
-                                                    }}
-                                                        onClick={() => {
-                                                            setSelectedPlaylist(playlist);
-                                                            handleAddToPlayList();
-                                                        }} className="playlist-name-modal">Add to playlist</Link>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <b className="playlist-name-modal">{playlist.collection_name}</b>
-                                    </div>
+                        {loading ? (
+                            <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '100px' }}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <p className="visually-hidden">Loading...</p>
                                 </div>
                             </div>
-                        ))}
+                        ) :
+                            <>
+                                {dataPlaylist.map((playlist, index) => (
+                                    <div key={index} className="m-4 p-2 playlist-container ">
+                                        <div className="container rounded " style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                            <div className="d-flex flex-column align-items-center text-center">
+                                                <div className="rounded-image-container">
+                                                    {imageURL && (
+                                                        <img
+                                                            className="rounded-square-image"
+                                                            src={`data:image/png;base64,${playlist.image}`}
+                                                        />
+                                                    )}
+                                                    <div className="image-overlay">
+                                                        <p className="playlist-name-modal">
+                                                            <AddIcon
+                                                                onClick={() => {
+                                                                    setSelectedPlaylist(playlist);
+                                                                    handleAddToPlayList();
+                                                                }}
+                                                                fontSize='large'
+                                                                style={{ cursor: 'pointer' }}
+                                                            />
+                                                            <br />
+                                                            <Link style={{
+                                                                cursor: 'pointer', textDecoration: 'none'
+                                                            }}
+                                                                onClick={() => {
+                                                                    setSelectedPlaylist(playlist);
+                                                                    handleAddToPlayList();
+                                                                }} className="playlist-name-modal">Add to playlist</Link>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <b className="playlist-name-modal">{playlist.collection_name}</b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </>
+                        }
                     </div>
                 </Box>
 
