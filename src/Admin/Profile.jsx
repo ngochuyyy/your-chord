@@ -89,10 +89,14 @@ function Profile() {
             .catch(err => console.log(err));
     }
     const handleSubmit = async (event) => {
+        setLoading(true);
+
         event.preventDefault();
         axios.put(`${apiUrl}/updateProfile/` + userId, data)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
+
                     window.location.reload(true);
                 }
             })
