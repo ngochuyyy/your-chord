@@ -24,7 +24,7 @@ function SongCustomer() {
     const [dataPlaylist, setDataPlaylist] = useState([]);
     const [isRequestAccount, setIsRequestAccount] = useState(false);
     const [selectedBeatType, setSelectedBeatType] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -94,12 +94,10 @@ function SongCustomer() {
         setOrder(order === 'asc');
     };
     const handleFilterByBeatType = (beatType) => {
-        setLoading(true)
         if (beatType) {
             axios.get(`${apiUrl}/getSongsByGenre/${beatType}`)
                 .then((res) => {
                     if (res.data.Status === 'Success') {
-                        setLoading(false)
                         setData(res.data.Result);
                         if (res.data.Result.length > 0) {
                             const songImages = res.data.Result.map(data => `${data.image}`);
