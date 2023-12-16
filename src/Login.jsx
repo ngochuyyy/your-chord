@@ -13,19 +13,17 @@ function Login() {
         username: '',
         password: ''
     })
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [isLoginFailed, setIsLoginFailed] = useState(false);
     const [isLoginPending, setIsLoginPending] = useState(false);
     const [isLoginDisable, setIsLoginDisable] = useState(false);
     const handleSubmit = (event) => {
         setLoading(true);
-
         event.preventDefault();
         axios.post(`${apiUrl}/login`, values)
             .then(res => {
                 if (res.data.Status === 'Success') {
                     setLoading(false);
-
                     const token = res.data.token;
                     const userId = `${values.username}:${token}`;
                     sessionStorage.setItem('token', userId);
