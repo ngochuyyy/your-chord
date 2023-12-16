@@ -124,7 +124,7 @@ export default function BottomAppBar() {
                         <ListItemText primary="Today" style={{ color: '#0d6efd' }} />
                     </ListItem>
                     {loading ? (
-                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '30px' }}>
                             <div className="spinner-border text-primary" role="status">
                                 <p className="visually-hidden">Loading...</p>
                             </div>
@@ -159,7 +159,7 @@ export default function BottomAppBar() {
                         <ListItemText primary="Recently" style={{ color: '#0d6efd' }} />
                     </ListItem>
                     {loading ? (
-                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '30px' }}>
                             <div className="spinner-border text-primary" role="status">
                                 <p className="visually-hidden">Loading...</p>
                             </div>
