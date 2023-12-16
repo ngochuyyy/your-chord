@@ -112,7 +112,7 @@ function Course() {
                 </ThemeProvider>
             </Box>
             {loading ? (
-                <Loading />
+                <Loading color="success" text="Please wait..." />
             )
                 :
                 <>
