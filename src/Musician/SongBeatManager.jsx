@@ -58,6 +58,7 @@ function SongBeatManager() {
             .then((res) => {
                 if (res.data.Status === "Success") {
                     setAllSongs(res.data.Result);
+                    setData(res.data.Result);
                 } else {
                     alert("Error");
                 }
