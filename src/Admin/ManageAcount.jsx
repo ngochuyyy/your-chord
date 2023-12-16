@@ -515,9 +515,17 @@ function ManageAccount() {
                                             </TableHead>
                                         </Table>
                                     </TableContainer>
-                                    <div>
-                                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
-                                    </div>
+                                    {loading ? (
+                                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                            <div className="spinner-border text-primary" role="status">
+                                                <p className="visually-hidden">Loading...</p>
+                                            </div>
+                                        </div>
+                                    ) :
+                                        <div>
+                                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                                        </div>
+                                    }
                                 </>
                             ) : (
 
@@ -657,9 +665,17 @@ function ManageAccount() {
                                             </TableHead>
                                         </Table>
                                     </TableContainer>
-                                    <div>
-                                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
-                                    </div>
+                                    {loading ? (
+                                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                            <div className="spinner-border text-primary" role="status">
+                                                <p className="visually-hidden">Loading...</p>
+                                            </div>
+                                        </div>
+                                    ) :
+                                        <div>
+                                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                                        </div>
+                                    }
                                 </>
                             ) : (
                                 <TableContainer component={Paper}>
@@ -798,9 +814,17 @@ function ManageAccount() {
                                             </TableHead>
                                         </Table>
                                     </TableContainer>
-                                    <div>
-                                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
-                                    </div>
+                                    {loading ? (
+                                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                            <div className="spinner-border text-primary" role="status">
+                                                <p className="visually-hidden">Loading...</p>
+                                            </div>
+                                        </div>
+                                    ) :
+                                        <div>
+                                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                                        </div>
+                                    }
                                 </>
                             ) : (
 
@@ -894,78 +918,88 @@ function ManageAccount() {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style} >
-                    {dataProfile.map((viewAccount, index) => {
-                        return <div key={index}>
-                            <Typography id="modal-modal-title" variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <span style={{ flex: '1 1 auto' }}>Profile - <b>{viewAccount.name}</b></span>
-                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setOpen(false)}></button>
-                            </Typography>
-                            <div className="container rounded bg-white mt-6 mb-5">
-                                <div className="row">
-                                    <div className="col-md-4 border-right">
-                                        <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                            <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                {imageURL && (
-                                                    viewAccount.image !== '' ?
-                                                        <img className="profile-avatar-account" src={`data:image/png;base64,${viewAccount.image}`} width="150px" />
-                                                        :
-                                                        <AccountCircleIcon fontSize="large" />
-                                                )}
-                                            </div>
-                                            <span className="text-black-50">{viewAccount.email}</span>
-                                        </div>
-                                    </div>
-                                    <div className="col-md-7 border-right">
-                                        <div className="py-5">
-                                            <div className="row mt-2">
-                                                <div className="col-md-6"><b>Name: </b><p>{viewAccount.name}</p></div>
-                                                {viewAccount.surname ?
-                                                    <div className="col-md-6"><b>Sur name: </b><p>{viewAccount.surname}</p></div>
-                                                    :
-                                                    <div className="col-md-6"><b>Sur name: </b><p>None</p></div>
-
-                                                }
-                                            </div>
-                                            <div className="row mt-2">
-                                                <div className="col-md-6"><label><b>Active: </b></label>
-                                                    {viewAccount.ban === 'Enable' ? (
-                                                        <p style={{ color: 'green' }}><b>{viewAccount.ban}</b></p>
-                                                    ) : (
-                                                        <p style={{ color: 'red' }}><b>{viewAccount.ban}</b></p>
-                                                    )}
-                                                </div>
-                                                <div className="col-md-6"><label>
-                                                    <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
-                                                    <b>Register date: </b></label><p>{moment(viewAccount.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
-                                                <div className="col-md-6"><label><b>Username: </b></label><p>{viewAccount.username}</p></div>
-                                                <div className="col-md-6"><label><b>Role: </b></label><p>{viewAccount.role}</p></div>
-
-                                                {viewAccount.phoneNumber !== "" ?
-                                                    <div className="col-md-12"><b>Phone number: </b><p>{viewAccount.phoneNumber}</p></div>
-                                                    : <div className="col-md-12"><b>Phone number: </b><p>None</p></div>
-                                                }
-                                                {viewAccount.address !== "" ?
-                                                    <div className="col-md-12"><b>Address Line: </b><p>{viewAccount.address}</p></div>
-                                                    :
-                                                    <div className="col-md-12"><b>Address Line: </b><p>None</p></div>
-                                                }
-                                                {viewAccount.email !== "" ?
-                                                    <div className="col-md-12"><b>Email: </b><p>{viewAccount.email}</p></div>
-                                                    :
-                                                    <div className="col-md-12"><b>Email: </b><p>None</p></div>
-                                                }
-                                                {viewAccount.job !== "" ?
-                                                    <div className="col-md-12"><b>Job: </b><p>{viewAccount.job}</p></div>
-                                                    :
-                                                    <div className="col-md-12"><b>Job: </b><p>None</p></div>
-                                                }
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    {loading ? (
+                        <div className="d-flex justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                            <div className="spinner-border text-primary" role="status">
+                                <p className="visually-hidden">Loading...</p>
                             </div>
-                        </div>;
-                    })}
+                        </div>
+                    ) :
+                        <>
+                            {dataProfile.map((viewAccount, index) => {
+                                return <div key={index}>
+                                    <Typography id="modal-modal-title" variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <span style={{ flex: '1 1 auto' }}>Profile - <b>{viewAccount.name}</b></span>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setOpen(false)}></button>
+                                    </Typography>
+                                    <div className="container rounded bg-white mt-6 mb-5">
+                                        <div className="row">
+                                            <div className="col-md-4 border-right">
+                                                <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                                                    <div className="d-flex flex-column align-items-center text-center p-3 py-5">
+                                                        {imageURL && (
+                                                            viewAccount.image !== '' ?
+                                                                <img className="profile-avatar-account" src={`data:image/png;base64,${viewAccount.image}`} width="150px" />
+                                                                :
+                                                                <AccountCircleIcon fontSize="large" />
+                                                        )}
+                                                    </div>
+                                                    <span className="text-black-50">{viewAccount.email}</span>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-7 border-right">
+                                                <div className="py-5">
+                                                    <div className="row mt-2">
+                                                        <div className="col-md-6"><b>Name: </b><p>{viewAccount.name}</p></div>
+                                                        {viewAccount.surname ?
+                                                            <div className="col-md-6"><b>Sur name: </b><p>{viewAccount.surname}</p></div>
+                                                            :
+                                                            <div className="col-md-6"><b>Sur name: </b><p>None</p></div>
+
+                                                        }
+                                                    </div>
+                                                    <div className="row mt-2">
+                                                        <div className="col-md-6"><label><b>Active: </b></label>
+                                                            {viewAccount.ban === 'Enable' ? (
+                                                                <p style={{ color: 'green' }}><b>{viewAccount.ban}</b></p>
+                                                            ) : (
+                                                                <p style={{ color: 'red' }}><b>{viewAccount.ban}</b></p>
+                                                            )}
+                                                        </div>
+                                                        <div className="col-md-6"><label>
+                                                            <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
+                                                            <b>Register date: </b></label><p>{moment(viewAccount.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
+                                                        <div className="col-md-6"><label><b>Username: </b></label><p>{viewAccount.username}</p></div>
+                                                        <div className="col-md-6"><label><b>Role: </b></label><p>{viewAccount.role}</p></div>
+
+                                                        {viewAccount.phoneNumber !== "" ?
+                                                            <div className="col-md-12"><b>Phone number: </b><p>{viewAccount.phoneNumber}</p></div>
+                                                            : <div className="col-md-12"><b>Phone number: </b><p>None</p></div>
+                                                        }
+                                                        {viewAccount.address !== "" ?
+                                                            <div className="col-md-12"><b>Address Line: </b><p>{viewAccount.address}</p></div>
+                                                            :
+                                                            <div className="col-md-12"><b>Address Line: </b><p>None</p></div>
+                                                        }
+                                                        {viewAccount.email !== "" ?
+                                                            <div className="col-md-12"><b>Email: </b><p>{viewAccount.email}</p></div>
+                                                            :
+                                                            <div className="col-md-12"><b>Email: </b><p>None</p></div>
+                                                        }
+                                                        {viewAccount.job !== "" ?
+                                                            <div className="col-md-12"><b>Job: </b><p>{viewAccount.job}</p></div>
+                                                            :
+                                                            <div className="col-md-12"><b>Job: </b><p>None</p></div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>;
+                            })}
+                        </>
+                    }
                 </Box>
             </Modal>
         </>
