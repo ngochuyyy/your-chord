@@ -28,7 +28,7 @@ function Profile() {
     const { userId } = useParams();
     const [imageURL, setImageURL] = useState(null);
     const [selectedFileName, setSelectedFileName] = useState("");
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const style = {
         position: 'absolute',
