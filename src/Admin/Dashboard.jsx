@@ -23,8 +23,8 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import InfoContainer from '../component/InfoContainer';
 import DvrIcon from '@mui/icons-material/Dvr';
-import Stack from '@mui/material/Stack';
-import Skeleton from '@mui/material/Skeleton';
+// import Stack from '@mui/material/Stack';
+// import Skeleton from '@mui/material/Skeleton';
 function Dashboard() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [datachord, setDataChord] = useState([]);
@@ -108,11 +108,11 @@ function Dashboard() {
                                             (
                                                 <>
                                                     {loading ? (
-                                                        <Stack spacing={1}>
-                                                            <Skeleton variant="circular" width={40} height={40} />
-                                                            <Skeleton variant="rectangular" width={210} height={60} />
-                                                            <Skeleton variant="rounded" width={210} height={60} />
-                                                        </Stack>
+                                                        <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                                                            <div className="spinner-border text-primary" role="status">
+                                                                <span className="visually-hidden">Loading...</span>
+                                                            </div>
+                                                        </div>
                                                     )
                                                         :
                                                         <>
