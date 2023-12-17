@@ -7,6 +7,7 @@ function Beat() {
     const navigate = useNavigate();
     const [beatGenres, setBeatGenres] = useState([]);
     const [beatSongCounts, setBeatSongCounts] = useState({});
+    const [loading, setLoading] = useState(true);
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -31,17 +32,15 @@ function Beat() {
 
     const fetchData = async () => {
         try {
+            setLoading(true);
             const countRequests = beatGenresData.map((beat) =>
                 axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
             );
-
             const countResponses = await Promise.all(countRequests);
-
             const updatedGenres = beatGenresData.map((beat, index) => ({
                 ...beat,
                 song_count: countResponses[index].data.songCount,
             }));
-
             const songCountsMap = {};
             updatedGenres.forEach((beat) => {
                 songCountsMap[beat.beat_id] = beat.song_count;
@@ -49,8 +48,10 @@ function Beat() {
 
             setBeatGenres(updatedGenres);
             setBeatSongCounts(songCountsMap);
+            setLoading(false);
         } catch (error) {
             console.error(error);
+            setLoading(false);
         }
     };
 
@@ -67,25 +68,36 @@ function Beat() {
                         Beat
                     </h3>
                 </div>
-                <div className="d-grid" style={{ padding: '5px' }}>
-                    <div className="list-grid">
-                        {beatGenres.map((beatGenre, index) => (
-                            <div
-                                key={index}
-                                className={`item-grid item-${index + 1}`}
-                                onClick={() => navigate(`/songBeat/${userId}/${beatGenre.beat_id.toLowerCase()}`)}
-                                style={{ cursor: 'pointer', border: '1px solid #ccc' }}
-                            >
-                                <h3>{beatGenre.beat_name}</h3>
-                                <h6 style={{ fontWeight: 'bold' }}>
-                                    {beatSongCounts[beatGenre.beat_id] !== undefined
-                                        ? `${beatSongCounts[beatGenre.beat_id]} bài`
-                                        : '0 bài'}
-                                </h6>
+                {
+                    loading ? (
+                        <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                            <div className="spinner-border text-primary" role="status">
+                                <span className="visually-hidden">Loading...</span>
                             </div>
-                        ))}
-                    </div>
-                </div>
+                            <p>Loading...</p>
+                        </div>
+                    )
+                        :
+                        <div className="d-grid" style={{ padding: '5px' }}>
+                            <div className="list-grid">
+                                {beatGenres.map((beatGenre, index) => (
+                                    <div
+                                        key={index}
+                                        className={`item-grid item-${index + 1}`}
+                                        onClick={() => navigate(`/songBeat/${userId}/${beatGenre.beat_id.toLowerCase()}`)}
+                                        style={{ cursor: 'pointer', border: '1px solid #ccc' }}
+                                    >
+                                        <h3>{beatGenre.beat_name}</h3>
+                                        <h6 style={{ fontWeight: 'bold' }}>
+                                            {beatSongCounts[beatGenre.beat_id] !== undefined
+                                                ? `${beatSongCounts[beatGenre.beat_id]} bài`
+                                                : '0 bài'}
+                                        </h6>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                }
             </div>
         </>
     );
