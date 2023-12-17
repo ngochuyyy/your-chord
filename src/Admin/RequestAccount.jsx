@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {
     Table,
@@ -13,7 +12,6 @@ import {
     TableSortLabel,
     Modal,
 } from '@mui/material';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
@@ -29,8 +27,6 @@ import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CheckIcon from '@mui/icons-material/Check';
-import CloseIcon from '@mui/icons-material/Close';
 import Pagination from '@mui/material/Pagination';
 import { Button } from 'antd';
 
@@ -339,10 +335,7 @@ function RequestAccount() {
                                                             <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Register date</b>
                                                         </TableSortLabel>
                                                     </TableCell>
-                                                    <TableCell><b>Active</b></TableCell>
-                                                    <TableCell></TableCell>
-                                                    <TableCell>Accept</TableCell>
-                                                    <TableCell>Reject</TableCell>
+                                                    <TableCell><b>Action</b></TableCell>
                                                 </TableRow>
                                             </TableHead>
                                         </Table>
@@ -427,9 +420,6 @@ function RequestAccount() {
                                                                 Decline
                                                             </Button>
                                                         </TableCell>
-                                                        {/* <TableCell>
-                                                            <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
-                                                        </TableCell> */}
                                                     </TableRow>
 
                                                 ))}
@@ -498,10 +488,7 @@ function RequestAccount() {
                                                             <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Register date</b>
                                                         </TableSortLabel>
                                                     </TableCell>
-                                                    <TableCell><b>Active</b></TableCell>
-                                                    <TableCell></TableCell>
-                                                    <TableCell>Accept</TableCell>
-                                                    <TableCell>Reject</TableCell>
+                                                    <TableCell><b>Action</b></TableCell>
                                                 </TableRow>
                                             </TableHead>
                                         </Table>
@@ -545,10 +532,7 @@ function RequestAccount() {
                                                         <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Register date</b>
                                                     </TableSortLabel>
                                                 </TableCell>
-                                                <TableCell><b>Active</b></TableCell>
-                                                <TableCell></TableCell>
-                                                <TableCell>Accept</TableCell>
-                                                <TableCell>Reject</TableCell>
+                                                <TableCell>Action</TableCell>
 
 
                                             </TableRow>
@@ -556,7 +540,7 @@ function RequestAccount() {
                                         <TableBody>
                                             {
                                                 currentItemsMusician.map((userAccount, index) => (
-                                                    <TableRow key={index}>
+                                                    <TableRow key={index} onClick={() => handleProfile(userAccount.username)} style={{ cursor: 'pointer' }}>
                                                         <TableCell><PersonIcon /></TableCell>
                                                         <TableCell>{userAccount.username}</TableCell>
                                                         {userAccount.role === 'musician' &&
@@ -573,22 +557,22 @@ function RequestAccount() {
                                                             </TableCell>
                                                         )}
                                                         <TableCell>
-                                                            <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
-
-
-
-                                                        </TableCell>
-                                                        <TableCell>
-                                                            <CheckIcon onClick={() => handleAcceptAccountMusician(userAccount.username)} fontSize='large' color='success' />
-
-
-
-                                                        </TableCell>
-                                                        <TableCell>
-
-                                                            <CloseIcon onClick={() => handleRejectAccountMusician(userAccount.username)} fontSize='large' color='error' />
-
-
+                                                            <Button
+                                                                style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleAcceptAccountMusician(userAccount.username);
+                                                                }}>
+                                                                Accept
+                                                            </Button>
+                                                            <Button
+                                                                style={{ width: '100px', textAlign: 'center', backgroundColor: '#dc3545', color: '#fff', marginLeft: '5px', borderRadius: '40px' }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleRejectAccountMusician(userAccount.username);
+                                                                }}>
+                                                                Decline
+                                                            </Button>
                                                         </TableCell>
                                                     </TableRow>
 
