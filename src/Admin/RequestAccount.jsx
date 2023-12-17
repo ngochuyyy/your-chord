@@ -32,6 +32,8 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import Pagination from '@mui/material/Pagination';
+import { Button } from 'antd';
+
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -384,16 +386,13 @@ function RequestAccount() {
                                                         <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Register date</b>
                                                     </TableSortLabel>
                                                 </TableCell>
-                                                <TableCell><b>Active</b></TableCell>
-                                                <TableCell></TableCell>
-                                                <TableCell>Accept</TableCell>
-                                                <TableCell>Reject</TableCell>
+                                                <TableCell><b>Action</b></TableCell>
                                             </TableRow>
                                         </TableHead>
                                         <TableBody>
                                             {
                                                 currentItemsChordValidator.map((userAccount, index) => (
-                                                    <TableRow key={index}>
+                                                    <TableRow key={index} onClick={() => handleProfile(userAccount.username)} style={{ cursor: 'pointer' }}>
                                                         <TableCell><PersonIcon /></TableCell>
                                                         <TableCell>{userAccount.username}</TableCell>
                                                         {userAccount.role === 'chord' &&
@@ -409,15 +408,28 @@ function RequestAccount() {
                                                                 <b>{userAccount.ban}</b>
                                                             </TableCell>
                                                         )}
+
                                                         <TableCell>
+                                                            <Button
+                                                                style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleAcceptAccountChordValidator(userAccount.username);
+                                                                }}>
+                                                                Accept
+                                                            </Button>
+                                                            <Button
+                                                                style={{ width: '100px', textAlign: 'center', backgroundColor: '#dc3545', color: '#fff', marginLeft: '5px', borderRadius: '40px' }}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleRejectAccountChordValidator(userAccount.username);
+                                                                }}>
+                                                                Decline
+                                                            </Button>
+                                                        </TableCell>
+                                                        {/* <TableCell>
                                                             <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
-                                                        </TableCell>
-                                                        <TableCell>
-                                                            <CheckIcon onClick={() => handleAcceptAccountChordValidator(userAccount.username)} fontSize='large' color='success' />
-                                                        </TableCell>
-                                                        <TableCell>
-                                                            <CloseIcon onClick={() => handleRejectAccountChordValidator(userAccount.username)} fontSize='large' color='error' />
-                                                        </TableCell>
+                                                        </TableCell> */}
                                                     </TableRow>
 
                                                 ))}
