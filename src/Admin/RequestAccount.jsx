@@ -64,6 +64,7 @@ function RequestAccount() {
     const [orderBy, setOrderBy] = useState("username");
     const [order, setOrder] = useState("asc");
     const [currentPage, setCurrentPage] = useState(1);
+    const [imageURL, setImageURL] = useState(null);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const primaryColor = '#F1F1FB';
     const itemsPerPage = 5;
@@ -80,6 +81,10 @@ function RequestAccount() {
                 if (res.data.Status === 'Success') {
                     setLoading(false);
                     setData(res.data.Result);
+                    if (res.data.Result.length > 0) {
+                        const profileImages = res.data.Result.map(data => `${data.image}`);
+                        setImageURL(profileImages);
+                    }
                 } else {
                     alert('Error');
                 }
@@ -605,11 +610,12 @@ function RequestAccount() {
                                             <div className="col-md-4 border-right">
                                                 <div className="d-flex flex-column align-items-center text-center p-3 py-5">
                                                     <div className="d-flex flex-column align-items-center text-center p-3 py-5">
-                                                        {viewAccount.image !== '' ?
-                                                            <img className="rounded-circle mt-6 border" src={`${apiUrl}/images/` + viewAccount.image} width="150px" />
-                                                            :
-                                                            <AccountCircleIcon fontSize="large" />
-                                                        }
+                                                        {imageURL && (
+                                                            viewAccount.image !== '' ?
+                                                                <img className="profile-avatar-account" src={`data:image/png;base64,${viewAccount.image}`} width="150px" />
+                                                                :
+                                                                <AccountCircleIcon fontSize="large" />
+                                                        )}
                                                     </div>
                                                     <span className="text-black-50">{viewAccount.email}</span>
                                                 </div>
@@ -617,10 +623,15 @@ function RequestAccount() {
                                             <div className="col-md-7 border-right">
                                                 <div className="py-5">
                                                     <div className="row mt-2">
-                                                        <div className="col-md-6"><label><b>Name: </b></label><input className="form-control" value={viewAccount.name} readOnly /></div>
-                                                        <div className="col-md-6"><label><b>Surname: </b></label><input className="form-control" value={viewAccount.surname} readOnly /></div>
+                                                        <div className="col-md-6"><b>Name: </b><p>{viewAccount.name}</p></div>
+                                                        {viewAccount.surname ?
+                                                            <div className="col-md-6"><b>Sur name: </b><p>{viewAccount.surname}</p></div>
+                                                            :
+                                                            <div className="col-md-6"><b>Sur name: </b><p>None</p></div>
+
+                                                        }
                                                     </div>
-                                                    <div className="row mt-4">
+                                                    <div className="row mt-2">
                                                         <div className="col-md-6"><label><b>Active: </b></label>
                                                             {viewAccount.ban === 'Enable' ? (
                                                                 <p style={{ color: 'green' }}><b>{viewAccount.ban}</b></p>
@@ -628,25 +639,37 @@ function RequestAccount() {
                                                                 <p style={{ color: 'red' }}><b>{viewAccount.ban}</b></p>
                                                             )}
                                                         </div>
-                                                        <div className="col-md-6"><label><b>Register date: </b></label><p>{moment(viewAccount.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
+                                                        <div className="col-md-6"><label>
+                                                            <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
+                                                            <b>Register date: </b></label><p>{moment(viewAccount.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
                                                         <div className="col-md-6"><label><b>Username: </b></label><p>{viewAccount.username}</p></div>
                                                         <div className="col-md-6"><label><b>Role: </b></label><p>{viewAccount.role}</p></div>
-                                                        {viewAccount.phoneNumber === 0 ? (
-                                                            <div className="col-md-12"><label>Phone number: </label><input className="form-control" value={""} readOnly /></div>
-                                                        ) : (
-                                                            <div className="col-md-12"><label>Phone number: </label><input className="form-control" value={viewAccount.phoneNumber} readOnly /></div>
-                                                        )}
-                                                        <div className="col-md-12"><label>Address Line: </label><input className="form-control" value={viewAccount.address} readOnly /></div>
-                                                        <div className="col-md-12"><label>Email: </label><input className="form-control" value={viewAccount.email} readOnly /></div>
-                                                    </div>
-                                                    <div className="row mt-4">
-                                                        <div className="col-md-12"><label>Job: </label><input className="form-control" value={viewAccount.job} readOnly /></div>
+
+                                                        {viewAccount.phoneNumber !== "" ?
+                                                            <div className="col-md-12"><b>Phone number: </b><p>{viewAccount.phoneNumber}</p></div>
+                                                            : <div className="col-md-12"><b>Phone number: </b><p>None</p></div>
+                                                        }
+                                                        {viewAccount.address !== "" ?
+                                                            <div className="col-md-12"><b>Address Line: </b><p>{viewAccount.address}</p></div>
+                                                            :
+                                                            <div className="col-md-12"><b>Address Line: </b><p>None</p></div>
+                                                        }
+                                                        {viewAccount.email !== "" ?
+                                                            <div className="col-md-12"><b>Email: </b><p>{viewAccount.email}</p></div>
+                                                            :
+                                                            <div className="col-md-12"><b>Email: </b><p>None</p></div>
+                                                        }
+                                                        {viewAccount.job !== "" ?
+                                                            <div className="col-md-12"><b>Job: </b><p>{viewAccount.job}</p></div>
+                                                            :
+                                                            <div className="col-md-12"><b>Job: </b><p>None</p></div>
+                                                        }
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>;
+                                </div>
                             })}
                         </>
                     }
