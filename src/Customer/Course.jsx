@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import YouTube from 'react-youtube';
-import Stack from '@mui/material/Stack';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,7 +8,8 @@ import Typography from '@mui/material/Typography';
 import SearchIcon from '@mui/icons-material/Search';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import Pagination from '@mui/material/Pagination';
+import Tab from '@mui/material/Tab';
+import Tabs from '@mui/material/Tabs';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -22,10 +22,15 @@ const darkTheme = createTheme({
 function Course() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [loading, setLoading] = useState(true);
-    const itemsPerPage = 5;
+    const [selectedCourse, setSelectedCourse] = useState(null);
+    const handleTabChange = (event, newValue) => {
+        setSelectedCourse(newValue);
+    };
+    useEffect(() => {
+        setSelectedCourse(null);
+    }, [search]);
     useEffect(() => {
         setLoading(true);
         axios
@@ -34,6 +39,7 @@ function Course() {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result);
                     setLoading(false);
+                    setSelectedCourse(res.data.Result.length > 0 ? 0 : null);
                 } else {
                     alert('Error');
                 }
@@ -59,10 +65,6 @@ function Course() {
                     request.status === 2
                 );
         });
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = filteredRequestCourse.slice(indexOfFirstItem, indexOfLastItem);
-    const totalPages = Math.ceil(filteredRequestCourse.length / itemsPerPage);
     return (
         <>
             <Box sx={{ top: 0, position: 'sticky', zIndex: '3' }}>
@@ -80,7 +82,7 @@ function Course() {
                                     fontWeight: 700,
                                     letterSpacing: '.3rem',
                                     color: '#0d6efd',
-                                    textDecoration: 'none', cursor: 'pointer'
+                                    textDecoration: 'none',
                                 }}
                             >
                                 <HeadsetIcon fontSize="large" />
@@ -111,102 +113,72 @@ function Course() {
                 </ThemeProvider>
             </Box>
             {loading ? (
-                <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                    <p>Loading...</p>
                 </div>
             )
                 :
                 <>
                     <div>
-                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>Course</h3>
+                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
-                    {currentItems.map((order, index) => (
-                        <div key={index} className="row " style={{ background: '#ffffff', margin: '10px', borderRadius: '20px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', width: '1380px' }}>
-                            {order.videoFile && getYouTubeVideoId(order.link) ? (
-                                <>
-                                    <div className="col-md-6">
-                                        <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
-                                            <div style={{ paddingLeft: '10px' }}>
-                                                <p><b>Course name:</b> {order.course_name}</p>
-                                            </div>
-                                            <div style={{ paddingLeft: '10px' }}>
-                                                <p><b>Poster:</b> {order.userId}</p>
-                                            </div>
-                                        </div>
-                                        <div className="mb-2 d-flex justify-content-center">
-                                            {getYouTubeVideoId(order.link) && (
-                                                <YouTube
-                                                    videoId={getYouTubeVideoId(order.link)}
-                                                    opts={{
-                                                        playerVars: {
-                                                            modestbranding: 1,
-                                                        },
-                                                        host: 'https://www.youtube-nocookie.com',
-                                                        width: 600,
-                                                        height: 340,
-                                                    }}
-                                                />
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div className="col-md-6">
-                                        <div className="d-flex justify-content-end">
-                                            {order.videoFile && (
-                                                <video controls width="600" height="350" controlsList="nodownload" style={{ marginTop: '55px' }}>
-                                                    <source src={generateBlobUrl(new Uint8Array(order.videoFile.data).buffer, 'video/*')} type="video/mp4" />
-                                                </video>
-                                            )}
-                                        </div>
-                                    </div>
-                                </>
-                            ) : (
-                                <div className="col-md-12">
-                                    <div className="mt-2" style={{ display: 'flex', flexDirection: 'row' }}>
-                                        <div style={{ padding: '10px' }}>
-                                            <p><b>Course name:</b> {order.course_name}</p>
-                                        </div>
-                                        <div style={{ padding: '10px' }}>
-                                            <p><b>Poster:</b> {order.userId}</p>
-                                        </div>
-                                    </div>
-                                    <div className="mb-2 d-flex justify-content-center">
-                                        {getYouTubeVideoId(order.link) && (
-                                            <YouTube
-                                                videoId={getYouTubeVideoId(order.link)}
-                                                opts={{
-                                                    playerVars: {
-                                                        modestbranding: 1,
-                                                    },
-                                                    host: 'https://www.youtube-nocookie.com',
-                                                    width: 600,
-                                                    height: 340,
-                                                }}
+                    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                        <Tabs
+                            orientation="vertical"
+                            value={selectedCourse}
+                            onChange={handleTabChange}
+                            sx={{
+                                position: 'flex',
+                                right: 10,
+                                borderRight: 1,
+                                borderColor: 'divider',
+                                width: '15%',
+                                height: '43vh',
+                                overflowY: 'auto',
+                            }}>
+                            {filteredRequestCourse.map((course, index) => (
+                                <Tab key={index} label={<b>{course.course_name}</b>} />
+                            ))}
+                        </Tabs>
+
+                        <Box sx={{ width: '55%', margin: 'auto' }}>
+                            {selectedCourse !== null && (
+                                <div>
+                                    <h3 style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>
+                                        {filteredRequestCourse[selectedCourse].course_name}
+                                    </h3>
+                                    <p>
+                                        <b>Poster:</b> {filteredRequestCourse[selectedCourse].userId}
+                                    </p>
+                                    {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
+                                        <YouTube
+                                            videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
+                                            opts={{
+                                                playerVars: {
+                                                    modestbranding: 1,
+                                                },
+                                                host: 'https://www.youtube-nocookie.com',
+                                            }}
+                                        />
+                                    )}
+
+                                    {filteredRequestCourse[selectedCourse].videoFile && (
+                                        <video controls width="640" height="400" controlsList="nodownload">
+                                            <source
+                                                src={generateBlobUrl(
+                                                    new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
+                                                    'video/*'
+                                                )}
+                                                type="video/mp4"
                                             />
-                                        )}
-                                        {order.videoFile && (
-                                            <video controls width="600" height="350" controlsList="nodownload">
-                                                <source src={generateBlobUrl(new Uint8Array(order.videoFile.data).buffer, 'video/*')} type="video/mp4" />
-                                            </video>
-                                        )}
-                                    </div>
+                                        </video>
+                                    )}
                                 </div>
                             )}
-                        </div>
-                    ))}
-
-
-                    <Stack spacing={2} direction="row" justifyContent="center" mt={3}>
-                        <Pagination
-                            count={totalPages}
-                            page={currentPage}
-                            onChange={(event, value) => setCurrentPage(value)}
-                            color="primary"
-                            size="large"
-                        />
-                    </Stack>
+                        </Box>
+                    </Box>
                 </>
             }
         </>
