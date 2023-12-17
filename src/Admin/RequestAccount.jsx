@@ -392,16 +392,6 @@ function RequestAccount() {
                                                             <TableCell>Chord Validator</TableCell>
                                                         }
                                                         <TableCell>{moment(userAccount.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</TableCell>
-                                                        {userAccount.ban === 'Enable' ? (
-                                                            <TableCell style={{ color: 'green' }}>
-                                                                <b>{userAccount.ban}</b>
-                                                            </TableCell>
-                                                        ) : (
-                                                            <TableCell style={{ color: 'red' }}>
-                                                                <b>{userAccount.ban}</b>
-                                                            </TableCell>
-                                                        )}
-
                                                         <TableCell>
                                                             <Button
                                                                 style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
@@ -547,15 +537,6 @@ function RequestAccount() {
                                                             <TableCell>Musician</TableCell>
                                                         }
                                                         <TableCell>{moment(userAccount.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</TableCell>
-                                                        {userAccount.ban === 'Enable' ? (
-                                                            <TableCell style={{ color: 'green' }}>
-                                                                <b>{userAccount.ban}</b>
-                                                            </TableCell>
-                                                        ) : (
-                                                            <TableCell style={{ color: 'red' }}>
-                                                                <b>{userAccount.ban}</b>
-                                                            </TableCell>
-                                                        )}
                                                         <TableCell>
                                                             <Button
                                                                 style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
