@@ -44,8 +44,9 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 700,
+    width: 1000,
     height: 700,
+    borderRadius: 5,
     bgcolor: 'background.paper',
     boxShadow: 24,
     p: 4,
@@ -595,8 +596,9 @@ function RequestAccount() {
                         <>
                             {dataProfile.map((viewAccount, index) => {
                                 return <div key={index}>
-                                    <Typography id="modal-modal-title" display={"inline"} variant="h6" component="h2">
-                                        Profile - <b>{viewAccount.name}</b>
+                                    <Typography id="modal-modal-title" variant="h6" component="h2" style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                        <span style={{ flex: '1 1 auto' }}>Profile - <b>{viewAccount.name}</b></span>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={() => setOpen(false)}></button>
                                     </Typography>
                                     <div className="container rounded bg-white mt-6 mb-5">
                                         <div className="row">
