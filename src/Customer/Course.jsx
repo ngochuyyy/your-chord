@@ -124,19 +124,18 @@ function Course() {
                     <div>
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
-                    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '50px' }}>
                         <Tabs
                             orientation="vertical"
                             value={selectedCourse}
                             onChange={handleTabChange}
                             sx={{
-                                marginLeft: '10px',
                                 position: 'flex',
-                                right: 10,
                                 borderRight: 1,
                                 borderColor: 'divider',
-                                width: '17%',
-                                height: '43vh',
+                                width: '20%',
+                                height: '68vh',
+                                overflowY: 'auto',
                             }}>
                             {filteredRequestCourse.map((course, index) => (
                                 <Tab key={index} label={<b>{course.course_name}</b>} />
