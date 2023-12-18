@@ -240,7 +240,7 @@ function ViewFeedback() {
                                                         </div>
                                                     })}
                                                 </div>
-                                                {data.reply.length > 0 ?
+                                                {data.reply !== null ?
                                                     (
                                                         <>
 
