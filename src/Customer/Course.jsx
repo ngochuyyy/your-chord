@@ -134,7 +134,7 @@ function Course() {
                                 borderRight: 1,
                                 borderColor: 'divider',
                                 width: '20%',
-                                height: '68vh',
+                                height: '66vh',
                                 overflowY: 'auto',
                             }}>
                             {filteredRequestCourse.map((course, index) => (
