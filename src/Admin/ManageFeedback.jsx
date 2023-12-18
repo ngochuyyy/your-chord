@@ -116,80 +116,79 @@ export default function BottomAppBar() {
                 <div className='d-flex flex-column align-items-center pt-4'>
                     <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Manage Feedback</h3>
                 </div>
-
-                {/* LIST TODAY */}
-                <div style={{ borderRadius: '20px', border: '1px solid #ccc', margin: '10px' }}>
-
-                    <ListItem>
-                        <ListItemText primary="Today" style={{ color: '#0d6efd' }} />
-                    </ListItem>
-                    {loading ? (
-                        <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '30px' }}>
+                {
+                    loading ? (
+                        <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                             <div className="spinner-border text-primary" role="status">
-                                <p className="visually-hidden">Loading...</p>
+                                <span className="visually-hidden">Loading...</span>
                             </div>
+                            <p>Loading...</p>
                         </div>
-                    ) :
-                        <List sx={{ mb: 2 }}>
-                            <div className='mt-4 pd-left'>
-                                {!renderTableRows('today').some(row => row !== null) ?
-                                    (
+                    )
+                        :
+                        <>
+                            <div style={{ borderRadius: '20px', border: '1px solid #ccc', margin: '10px' }}>
 
-                                        <div className="text-center"><b>No comment available</b></div>
-                                    )
-                                    :
-                                    <table className='custom-table table'>
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {renderTableRows('today')}
-                                        </tbody>
-                                    </table>
-                                }
-                            </div>
-                        </List>
-                    }
-                    {/* LIST RECENTLY */}
-                    <ListItem>
-                        <ListItemText primary="Recently" style={{ color: '#0d6efd' }} />
-                    </ListItem>
-                    {loading ? (
-                        <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '30px', marginBottom: '20px' }}>
-                            <div className="spinner-border text-primary" role="status">
-                                <p className="visually-hidden">Loading...</p>
-                            </div>
-                        </div>
-                    ) :
-                        <List sx={{ mb: 2 }}>
-                            <div className='mt-4 pd-left'>
-                                {!renderTableRows('recently').some(row => row !== null) ?
-                                    (
+                                <ListItem>
+                                    <ListItemText primary="Today" style={{ color: '#0d6efd' }} />
+                                </ListItem>
 
-                                        <div className="text-center"><b>No comment available</b></div>
-                                    )
-                                    :
-                                    <table className='custom-table table'>
-                                        <thead>
-                                            <tr>
-                                                <th></th>
-                                                <th>Date</th>
-                                                <th>Status</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {renderTableRows('recently')}
-                                        </tbody>
-                                    </table>
-                                }
+                                <List sx={{ mb: 2 }}>
+                                    <div className='mt-4 pd-left'>
+                                        {!renderTableRows('today').some(row => row !== null) ?
+                                            (
+
+                                                <div className="text-center"><b>No comment available</b></div>
+                                            )
+                                            :
+                                            <table className='custom-table table'>
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {renderTableRows('today')}
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </List>
+
+                                {/* LIST RECENTLY */}
+                                <ListItem>
+                                    <ListItemText primary="Recently" style={{ color: '#0d6efd' }} />
+                                </ListItem>
+
+                                <List sx={{ mb: 2 }}>
+                                    <div className='mt-4 pd-left'>
+                                        {!renderTableRows('recently').some(row => row !== null) ?
+                                            (
+
+                                                <div className="text-center"><b>No comment available</b></div>
+                                            )
+                                            :
+                                            <table className='custom-table table'>
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th>Date</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {renderTableRows('recently')}
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </List>
+
                             </div>
-                        </List>
-                    }
-                </div>
+                        </>
+                }
             </React.Fragment>
         </>
     );
