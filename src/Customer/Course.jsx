@@ -135,7 +135,6 @@ function Course() {
                                 borderColor: 'divider',
                                 width: '20%',
                                 height: '66vh',
-                                overflowY: 'auto',
                             }}>
                             {filteredRequestCourse.map((course, index) => (
                                 <Tab key={index} label={<b>{course.course_name}</b>} />
