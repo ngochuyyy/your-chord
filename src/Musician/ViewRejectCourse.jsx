@@ -73,7 +73,7 @@ function ViewRejectCourse() {
             });
 
             if (response.data.Status === 'Success') {
-                window.location.reload();
+                navigate(`/rejectCourse/${userId}`)
             } else {
                 alert('Error updating course');
             }
