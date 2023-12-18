@@ -39,7 +39,7 @@ function Chord() {
     const [imageURL, setImageURL] = useState(null);
     const [selectedRoots, setSelectedRoots] = useState(null);
     const [selectedMode, setSelectedMode] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(null);
     const handleModeClick = (mode) => {
         // Set the selected mode
         setSelectedMode(mode);
