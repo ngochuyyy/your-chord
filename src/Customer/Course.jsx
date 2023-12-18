@@ -124,7 +124,7 @@ function Course() {
                     <div>
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
-                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '50px' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
                         <Tabs
                             orientation="vertical"
                             value={selectedCourse}
