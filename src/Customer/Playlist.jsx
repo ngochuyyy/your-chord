@@ -137,10 +137,11 @@ function Playlist() {
                 <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Library</h3>
             </div>
             {loading ? (
-                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
+                    <p>Loading...</p>
                 </div>
             )
                 :
