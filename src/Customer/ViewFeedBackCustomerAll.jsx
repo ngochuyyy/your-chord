@@ -221,7 +221,7 @@ function ViewFeedbackCustomerAll() {
                                                     </div>
                                                 })}
                                             </div>
-                                            {data.reply.length > 0 ?
+                                            {data.reply !== 0 ?
 
 
                                                 (
