@@ -221,7 +221,7 @@ function ViewFeedbackCustomerAll() {
                                                     </div>
                                                 })}
                                             </div>
-                                            {data.reply !== "" ?
+                                            {data.reply !== null ?
 
 
                                                 (
