@@ -39,6 +39,7 @@ function Chord() {
     const [imageURL, setImageURL] = useState(null);
     const [selectedRoots, setSelectedRoots] = useState(null);
     const [selectedMode, setSelectedMode] = useState(null);
+    const [loading, setLoading] = useState(false);
     const handleModeClick = (mode) => {
         // Set the selected mode
         setSelectedMode(mode);
@@ -210,6 +211,7 @@ function Chord() {
         setButtonClickedChord(false);
     };
     const handleSearch = () => {
+        setLoading(true);
         setSelectedChord({
             root: optionsRoot[selectedIndexRoot],
             scale: optionsScale[selectedIndexScale]?.titles[selectedTitleIndex],
@@ -235,6 +237,7 @@ function Chord() {
                         setImageURL(`data:image/png;base64, ${res.data.Result.image}`);
                         setButtonClickedChord(true);
                         setButtonClickedDictionary(false);
+                        setLoading(false);
                     } else {
                         alert('Error');
                     }
@@ -600,13 +603,22 @@ function Chord() {
                                                     </FormControl>
                                                 </div>
                                                 <div style={{ marginTop: '50px' }}>
-
-                                                    {imageURL && dataScale.map((info, index) => (
-                                                        <div key={index} >
-
-                                                            <img src={`${info.image}`} />
+                                                    {loading ? (
+                                                        <div className="d-flex flex-column justify-content-center align-items-center">
+                                                            <div className="spinner-border text-primary" role="status">
+                                                                <p className="visually-hidden">Loading...</p>
+                                                            </div>
                                                         </div>
-                                                    ))}
+                                                    ) :
+                                                        <>
+                                                            {imageURL && dataScale.map((info, index) => (
+                                                                <div key={index} >
+
+                                                                    <img src={`${info.image}`} />
+                                                                </div>
+                                                            ))}
+                                                        </>
+                                                    }
                                                 </div>
                                             </div>
                                         </div>
