@@ -130,13 +130,13 @@ function Course() {
                             value={selectedCourse}
                             onChange={handleTabChange}
                             sx={{
+                                marginLeft: '10px',
                                 position: 'flex',
                                 right: 10,
                                 borderRight: 1,
                                 borderColor: 'divider',
-                                width: '15%',
+                                width: '17%',
                                 height: '43vh',
-                                overflowY: 'auto',
                             }}>
                             {filteredRequestCourse.map((course, index) => (
                                 <Tab key={index} label={<b>{course.course_name}</b>} />
