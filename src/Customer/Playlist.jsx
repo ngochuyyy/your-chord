@@ -150,7 +150,7 @@ function Playlist() {
                         <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
                     ) : (
                         <>
-                            <div className="d-flex flex-wrap justify-content-start">
+                            <div className="d-flex flex-wrap justify-content-start" style={{ marginLeft: '20px' }}>
 
                                 {filteredPlaylist.map((playlist, index) => (
                                     <div key={index} className="m-4 p-4">
