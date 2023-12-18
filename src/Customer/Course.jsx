@@ -10,6 +10,7 @@ import HeadsetIcon from '@mui/icons-material/Headset';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
+import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -145,7 +146,7 @@ function Course() {
                             {selectedCourse !== null && (
                                 <div>
                                     <h3 style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>
-                                        {filteredRequestCourse[selectedCourse].course_name}
+                                        <PlayCircleIcon color='primary' /> {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p>
                                         <b>Poster:</b> {filteredRequestCourse[selectedCourse].userId}
