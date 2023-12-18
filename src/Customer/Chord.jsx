@@ -14,10 +14,10 @@ import MenuList from '@mui/material/MenuList';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import LyricsIcon from '@mui/icons-material/Lyrics';
 import SettingsIcon from '@mui/icons-material/Settings';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
+// import Radio from '@mui/material/Radio';
+// import RadioGroup from '@mui/material/RadioGroup';
+// import FormControlLabel from '@mui/material/FormControlLabel';
+// import FormControl from '@mui/material/FormControl';
 import SearchAppBarBackCustomer from '../component/SearchAppBarBackCustomer';
 import InfoContainer from '../component/InfoContainer';
 function Chord() {
@@ -588,7 +588,7 @@ function Chord() {
                                                         )}
                                                     </Popper>
                                                 </div>
-                                                <div className="col-md-6">
+                                                {/* <div className="col-md-6">
                                                     <label>Musical note: </label>
                                                     <br />
                                                     <FormControl>
@@ -601,13 +601,14 @@ function Chord() {
                                                             <FormControlLabel value="Degree" control={<Radio />} label="Flat" />
                                                         </RadioGroup>
                                                     </FormControl>
-                                                </div>
+                                                </div> */}
                                                 <div style={{ marginTop: '50px' }}>
                                                     {loading ? (
                                                         <div className="d-flex flex-column justify-content-center align-items-center">
                                                             <div className="spinner-border text-primary" role="status">
                                                                 <p className="visually-hidden">Loading...</p>
                                                             </div>
+                                                            <p>Loading...</p>
                                                         </div>
                                                     ) :
                                                         <>
@@ -633,7 +634,6 @@ function Chord() {
                                                 <p>Include all the listed scales below represented on the guitar fretboard.</p>
                                             </div>
                                             <div className="col-md-12">
-                                                {/* Display selected mode and roots */}
                                                 {selectedMode ? (
                                                     <div>
                                                         <h5>
@@ -663,7 +663,6 @@ function Chord() {
                                                             <ul style={{ paddingLeft: '100px' }}>
                                                                 {category.modes.map((mode, idx) => (
                                                                     <li key={idx}>
-                                                                        {/* Handle click on mode link */}
                                                                         <span
                                                                             style={{ cursor: 'pointer', color: '#0d6efd' }}
                                                                             onClick={() => handleModeClick(mode)}
