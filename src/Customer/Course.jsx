@@ -136,9 +136,18 @@ function Course() {
                                 borderColor: 'divider',
                                 width: '20%',
                                 height: '66vh',
-                            }}>
+                            }}
+                        >
                             {filteredRequestCourse.map((course, index) => (
-                                <Tab key={index} label={<b>{course.course_name}</b>} />
+                                <Tab
+                                    key={index}
+                                    label={
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                            <b>{course.course_name}</b>
+                                        </div>
+                                    }
+                                />
                             ))}
                         </Tabs>
 
@@ -146,7 +155,7 @@ function Course() {
                             {selectedCourse !== null && (
                                 <div>
                                     <h3 style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>
-                                        <PlayCircleIcon color='primary' /> {filteredRequestCourse[selectedCourse].course_name}
+                                        {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p>
                                         <b>Poster:</b> {filteredRequestCourse[selectedCourse].userId}
