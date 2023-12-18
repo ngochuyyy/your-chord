@@ -17,6 +17,7 @@ function Playlist() {
     const { userId } = useParams();
     const [search, setSearch] = useState("");
     const [imageURL, setImageURL] = useState(null);
+    const [loading, setLoading] = useState(null);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [playlistSongsCount, setPlaylistSongsCount] = useState([]);
     const darkTheme = createTheme({
@@ -38,9 +39,11 @@ function Playlist() {
         setSelectedPlaylistId(null);
     };
     const fetchPlaylistData = async () => {
+        setLoading(true);
         try {
             const playlistResponse = await axios.get(`${apiUrl}/getPlaylist/` + userId);
             if (playlistResponse.data.Status === "Success") {
+                setLoading(false);
                 setData(playlistResponse.data.Result);
                 if (playlistResponse.data.Result.length > 0) {
                     const playlistImages = playlistResponse.data.Result.map(playlist => `${playlist.image}`);
@@ -133,66 +136,77 @@ function Playlist() {
             <div className='d-flex flex-column align-items-center pt-4'>
                 <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Library</h3>
             </div>
-            {filteredPlaylist.length === 0 ? (
-                <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
-            ) : (
-                <>
-                    <div className="d-flex flex-wrap justify-content-start">
-
-                        {filteredPlaylist.map((playlist, index) => (
-                            <div key={index} className="m-4 p-4">
-                                <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                    <div className="d-flex flex-column align-items-center text-center">
-                                        <div className="rounded-image-container">
-                                            {imageURL && (
-                                                <img
-                                                    className="rounded-square-image"
-                                                    src={`data:image/png;base64,${playlist.image}`}
-                                                />
-                                            )}
-                                            <Tooltip title={<b>{playlistSongsCount[playlist.id]} Tracks</b>}
-                                                arrow
-                                                placement="top">
-                                                <div className="image-overlay">
-                                                    <Link to={'/viewPlaylist/' + playlist.id} style={{ textDecoration: 'none' }}><b>View Playlist</b></Link>
-                                                </div>
-                                            </Tooltip>
-                                            <div>
-                                                <IconButton
-                                                    size="large"
-                                                    aria-label="menu"
-                                                    aria-haspopup="true"
-                                                    onClick={(event) => handleMenuOpen(event, playlist.id)}
-                                                    style={{ position: 'absolute', top: 0, right: 0 }}
-                                                    className="favorite-button"
-                                                >
-                                                    <i className="bi-three-dots-vertical text-white fs-20"></i>
-                                                </IconButton>
-                                                <Menu
-                                                    anchorEl={anchorEl}
-                                                    open={selectedPlaylistId === playlist.id && Boolean(anchorEl)}
-                                                    onClose={handleMenuClose}
-                                                >
-                                                    <MenuItem onClick={() => handleDelete(playlist.id)}>
-                                                        <h6 className="text-danger">
-                                                            <i className="bi bi-trash"></i> Delete
-                                                        </h6>
-                                                    </MenuItem>
-                                                </Menu>
-                                            </div>
-
-                                        </div>
-                                        <Link to={'/viewPlaylist/' + playlist.id} className="playlist-name" style={{ textDecoration: 'none' }} >
-                                            <b >{playlist.collection_name}
-                                            </b>
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+            {loading ? (
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
+                </div>
+            )
+                :
+                <>
+                    {filteredPlaylist.length === 0 ? (
+                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
+                    ) : (
+                        <>
+                            <div className="d-flex flex-wrap justify-content-start">
+
+                                {filteredPlaylist.map((playlist, index) => (
+                                    <div key={index} className="m-4 p-4">
+                                        <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                            <div className="d-flex flex-column align-items-center text-center">
+                                                <div className="rounded-image-container">
+                                                    {imageURL && (
+                                                        <img
+                                                            className="rounded-square-image"
+                                                            src={`data:image/png;base64,${playlist.image}`}
+                                                        />
+                                                    )}
+                                                    <Tooltip title={<b>{playlistSongsCount[playlist.id]} Tracks</b>}
+                                                        arrow
+                                                        placement="top">
+                                                        <div className="image-overlay">
+                                                            <Link to={'/viewPlaylist/' + playlist.id} style={{ textDecoration: 'none' }}><b>View Playlist</b></Link>
+                                                        </div>
+                                                    </Tooltip>
+                                                    <div>
+                                                        <IconButton
+                                                            size="large"
+                                                            aria-label="menu"
+                                                            aria-haspopup="true"
+                                                            onClick={(event) => handleMenuOpen(event, playlist.id)}
+                                                            style={{ position: 'absolute', top: 0, right: 0 }}
+                                                            className="favorite-button"
+                                                        >
+                                                            <i className="bi-three-dots-vertical text-white fs-20"></i>
+                                                        </IconButton>
+                                                        <Menu
+                                                            anchorEl={anchorEl}
+                                                            open={selectedPlaylistId === playlist.id && Boolean(anchorEl)}
+                                                            onClose={handleMenuClose}
+                                                        >
+                                                            <MenuItem onClick={() => handleDelete(playlist.id)}>
+                                                                <h6 className="text-danger">
+                                                                    <i className="bi bi-trash"></i> Delete
+                                                                </h6>
+                                                            </MenuItem>
+                                                        </Menu>
+                                                    </div>
+
+                                                </div>
+                                                <Link to={'/viewPlaylist/' + playlist.id} className="playlist-name" style={{ textDecoration: 'none' }} >
+                                                    <b >{playlist.collection_name}
+                                                    </b>
+                                                </Link>
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </>
+                    )}
                 </>
-            )}
+            }
         </>
     );
 }
