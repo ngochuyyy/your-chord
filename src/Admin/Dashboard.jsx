@@ -44,7 +44,6 @@ function Dashboard() {
         const userId = token.split(':')[0];
         if (!token) {
             navigate("/login");
-            return;
         }
         axios.get(`${apiUrl}/getProfile/` + userId)
             .then(res => {
