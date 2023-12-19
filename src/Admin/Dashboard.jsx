@@ -42,7 +42,7 @@ function Dashboard() {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
-        if (!userId) {
+        if (!token) {
             navigate(`/login`);
             return;
         }
@@ -81,7 +81,6 @@ function Dashboard() {
     const handleSignOut = () => {
         localStorage.removeItem('activeButtonAdmin');
         sessionStorage.removeItem('token');
-
         navigate("/login");
 
     };
