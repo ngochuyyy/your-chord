@@ -68,7 +68,6 @@ import RequestChord from './Customer/RequestChord';
 import RequestChordStatus from './Customer/RequestChordStatus';
 import ViewRequestChord from './Customer/ViewRequestChord';
 import ViewRequestChordMusician from './Musician/ViewRequestChordMusician';
-import PrivateRoute from './PrivateRoute';
 function App() {
   return (
     // <BrowserRouter>
@@ -81,9 +80,9 @@ function App() {
         <Route path='/login' element={<Login />}></Route>
         <Route path='/signUp' element={<SignUp />}></Route>
         <Route path='/' element={<Dashboard />}>
-          <PrivateRoute path='/profile/:userId' element={<Profile />}></PrivateRoute>
-          <PrivateRoute path='/song' element={<Song />}></PrivateRoute>
-          <PrivateRoute path='/manageAccount' element={<ManageAccount />}></PrivateRoute>
+          <Route path='/profile/:userId' element={<Profile />}></Route>
+          <Route path='/song' element={<Song />}></Route>
+          <Route path='/manageAccount' element={<ManageAccount />}></Route>
           <Route path='/requestAccount' element={<RequestAccount />}></Route>
           <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
           <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
