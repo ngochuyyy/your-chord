@@ -42,6 +42,10 @@ function Dashboard() {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
+        if (!userId) {
+            navigate(`/login`);
+            return;
+        }
         axios.get(`${apiUrl}/getProfile/` + userId)
             .then(res => {
                 if (res.data.Status === "Success") {
@@ -76,7 +80,10 @@ function Dashboard() {
     };
     const handleSignOut = () => {
         localStorage.removeItem('activeButtonAdmin');
+        sessionStorage.removeItem('token');
+
         navigate("/login");
+
     };
     return (
         <div className={`container-fluid${collapsed ? ' collapsed' : ''}`}>
