@@ -38,18 +38,21 @@ function Login() {
                     }
                 }
                 if (res.data.Status === 'Error') {
+                    setLoading(false);
                     setIsLoginFailed(true);
                     setTimeout(() => {
                         setIsLoginFailed(false);
                     }, 2000)
                 }
                 if (res.data.ban === 'Pending') {
+                    setLoading(false);
                     setIsLoginPending(true);
                     setTimeout(() => {
                         setIsLoginPending(false);
                     }, 2000);
                 }
                 else if (res.data.ban === 'Disable') {
+                    setLoading(false);
                     setIsLoginDisable(true);
                     setTimeout(() => {
                         setIsLoginDisable(false);
