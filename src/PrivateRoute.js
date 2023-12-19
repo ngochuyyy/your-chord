@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Route, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const isAuthenticated = () => {
     // Implement your authentication logic here
@@ -13,7 +13,7 @@ const isAuthenticated = () => {
 //     return null; // This component doesn't render anything
 // };
 
-const PrivateRoute = ({ element: Element, ...rest }) => {
+const PrivateRoute = ({ ...rest }) => {
     const token = sessionStorage.getItem('token');
     const userId = token ? token.split(':')[0] : null;
     const navigate = useNavigate();
@@ -23,7 +23,6 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
         navigate('/login');
     }
 
-    return <Route {...rest} element={<Element />} />;
 };
 
 PrivateRoute.propTypes = {
