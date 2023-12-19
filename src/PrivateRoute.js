@@ -7,19 +7,20 @@ const isAuthenticated = () => {
     return !!token; // Example: Check if the token exists
 };
 
-const RedirectLogin = () => {
-    const navigate = useNavigate();
-    navigate('/login');
-    return null; // This component doesn't render anything
-};
+// const RedirectLogin = () => {
+//     const navigate = useNavigate();
+//     navigate('/login');
+//     return null; // This component doesn't render anything
+// };
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
     const token = sessionStorage.getItem('token');
     const userId = token ? token.split(':')[0] : null;
+    const navigate = useNavigate();
 
     if (!isAuthenticated() || (userId && userId !== rest.userId)) {
         // Redirect to login if not authenticated or userId is different
-        return <RedirectLogin />;
+        navigate('/login');
     }
 
     return <Route {...rest} element={<Element />} />;
