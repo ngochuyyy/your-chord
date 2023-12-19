@@ -1,17 +1,28 @@
-import { useNavigate } from 'react-router-dom';
-import { isAuthenticated } from './authService'; // Adjust the import according to your authService
+import PropTypes from 'prop-types';
+import { Navigate, Route } from 'react-router-dom';
 
-const PrivateRoute = ({ ...rest }) => {
-    const navigate = useNavigate();
+const isAuthenticated = () => {
+    // Implement your authentication logic here
+    const token = sessionStorage.getItem('token');
+    return !!token; // Example: Check if the token exists
+};
+
+const PrivateRoute = ({ element: Element, ...rest }) => {
     const token = sessionStorage.getItem('token');
     const userId = token ? token.split(':')[0] : null;
 
     if (!isAuthenticated() || (userId && userId !== rest.userId)) {
         // Redirect to login if not authenticated or userId is different
-        navigate('/login');
-        return null; // You can return null or any other content if needed
+        return <Navigate to="/login" />;
     }
 
+    return <Route {...rest} element={<Element />} />;
+};
+
+PrivateRoute.propTypes = {
+    element: PropTypes.elementType.isRequired,
+    userId: PropTypes.string,
+    // Add any other props you are using in 'rest'
 };
 
 export default PrivateRoute;
