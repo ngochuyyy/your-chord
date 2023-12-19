@@ -88,6 +88,7 @@ export default function SearchAppBarBackChordManager() {
     };
     const handleSignOut = () => {
         localStorage.removeItem('activeButtonChordManager');
+        sessionStorage.removeItem('token');
         navigate("/login");
     };
     return (

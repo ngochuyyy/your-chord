@@ -98,6 +98,7 @@ function DashboardMusician() {
         localStorage.setItem('activeButtonMusician', buttonName);
     };
     const handleSignOut = () => {
+        sessionStorage.removeItem('token');
         localStorage.removeItem('activeButtonMusician');
         navigate("/login");
     };

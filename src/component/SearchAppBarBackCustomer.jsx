@@ -115,6 +115,7 @@ export default function SearchAppBarBackCustomer() {
     };
     const handleSignOut = () => {
         localStorage.removeItem('activeButtonCustomer');
+        sessionStorage.removeItem('token');
         navigate("/login");
     };
     return (

@@ -100,6 +100,7 @@ function DashboardCustomer() {
         localStorage.setItem('activeButtonCustomer', buttonName);
     };
     const handleSignOut = () => {
+        sessionStorage.removeItem('token');
         localStorage.removeItem('activeButtonCustomer');
         navigate("/login");
     };

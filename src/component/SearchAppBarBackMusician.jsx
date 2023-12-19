@@ -110,6 +110,7 @@ export default function SearchAppBarBackMusican() {
     };
     const handleSignOut = () => {
         localStorage.removeItem('activeButtonMusician');
+        sessionStorage.removeItem('token');
         navigate("/login");
     };
     return (

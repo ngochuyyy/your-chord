@@ -94,6 +94,7 @@ export default function SearchAppBarBackAdmin() {
     };
     const handleSignOut = () => {
         localStorage.removeItem('activeButtonAdmin');
+        sessionStorage.removeItem('token');
         navigate("/login");
     };
     return (
