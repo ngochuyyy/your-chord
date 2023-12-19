@@ -1,4 +1,5 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+// ... other imports
 // import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -72,7 +73,7 @@ import ViewRequestChord from './Customer/ViewRequestChord';
 import ViewRequestChordMusician from './Musician/ViewRequestChordMusician';
 function App() {
   const [userRole, setUserRole] = useState(null);
-
+  const navigate = useNavigate();  // Move useNavigate to the top level
   useEffect(() => {
     const token = sessionStorage.getItem('token');
 
@@ -113,7 +114,7 @@ function App() {
         </>
       );
     }
-    Navigate('/login');
+    navigate('/login');
 
   };
 
@@ -131,7 +132,7 @@ function App() {
         </>
       );
     }
-    Navigate('/login');
+    navigate('/login');
 
   };
   const renderMusicianRoutes = () => {
@@ -162,7 +163,7 @@ function App() {
         </>
       );
     }
-    Navigate('/login');
+    navigate('/login');
 
   };
   const renderUsernRoutes = () => {
@@ -198,7 +199,7 @@ function App() {
         </>
       );
     }
-    Navigate('/login');
+    navigate('/login');
 
   };
   return (
