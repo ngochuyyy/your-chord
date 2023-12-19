@@ -42,6 +42,9 @@ function Dashboard() {
     useEffect(() => {
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
+        if (!userId) {
+            navigate("/login");
+        }
         axios.get(`${apiUrl}/getProfile/` + userId)
             .then(res => {
                 if (res.data.Status === "Success") {
