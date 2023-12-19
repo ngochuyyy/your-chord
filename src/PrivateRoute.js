@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
-import { Navigate, Route } from 'react-router-dom';
+import { Route, useNavigate } from 'react-router-dom';
 
 const isAuthenticated = () => {
     // Implement your authentication logic here
     const token = sessionStorage.getItem('token');
     return !!token; // Example: Check if the token exists
+};
+
+const RedirectLogin = () => {
+    const navigate = useNavigate();
+    navigate('/login');
+    return null; // This component doesn't render anything
 };
 
 const PrivateRoute = ({ element: Element, ...rest }) => {
@@ -13,7 +19,7 @@ const PrivateRoute = ({ element: Element, ...rest }) => {
 
     if (!isAuthenticated() || (userId && userId !== rest.userId)) {
         // Redirect to login if not authenticated or userId is different
-        return <Navigate to="/login" />;
+        return <RedirectLogin />;
     }
 
     return <Route {...rest} element={<Element />} />;
