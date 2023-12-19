@@ -75,19 +75,24 @@ function App() {
 
   useEffect(() => {
     const token = sessionStorage.getItem('token');
-    const userId = token.split(':')[0];
-    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-    axios.get(`${apiUrl}/getProfile/` + userId)
-      .then(res => {
-        if (res.data.Status === "Success") {
-          setUserRole(res.data.role); // assuming the role is available in the API response
-        } else {
-          alert("Error");
-        }
-      })
-      .catch(err => console.log(err));
+    // Check if token exists before attempting to split
+    if (token) {
+      const userId = token.split(':')[0];
+      const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
+      axios.get(`${apiUrl}/getProfile/` + userId)
+        .then(res => {
+          if (res.data.Status === "Success") {
+            setUserRole(res.data.role); // assuming the role is available in the API response
+          } else {
+            alert("Error");
+          }
+        })
+        .catch(err => console.log(err));
+    }
   }, []);
+
   const renderAdminRoutes = () => {
     if (userRole === 'admin') {
       return (
