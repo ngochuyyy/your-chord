@@ -113,7 +113,8 @@ function App() {
         </>
       );
     }
-    return null;
+    Navigate('/login');
+
   };
 
   const renderChordManagerRoutes = () => {
@@ -130,7 +131,8 @@ function App() {
         </>
       );
     }
-    return null;
+    Navigate('/login');
+
   };
   const renderMusicianRoutes = () => {
     if (userRole === 'musician') {
@@ -160,7 +162,8 @@ function App() {
         </>
       );
     }
-    return null;
+    Navigate('/login');
+
   };
   const renderUsernRoutes = () => {
     if (userRole === 'user') {
@@ -195,7 +198,8 @@ function App() {
         </>
       );
     }
-    return null;
+    Navigate('/login');
+
   };
   return (
     // <BrowserRouter>
