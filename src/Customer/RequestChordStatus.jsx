@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Link } from 'react-router-dom'
-import Tooltip from '@material-ui/core/Tooltip';
 
 
 function RequestChordStatus() {
@@ -148,17 +147,10 @@ function RequestChordStatus() {
                             }))}
                         />
 
-                        <Tooltip title={
-                            <p>New request</p>
 
-                        }
-                            arrow
-                            placement="bottom"
-                        >
-                            <Button type="primary" style={{ borderRadius: '40px' }}>
-                                <Link to={`/requestChord/${userId}`} style={{ textDecoration: 'none' }}>Add new request</Link>
-                            </Button>
-                        </Tooltip>
+                        <Button type="primary" style={{ borderRadius: '40px' }}>
+                            <Link to={`/requestChord/${userId}`} style={{ textDecoration: 'none' }}>Add new request</Link>
+                        </Button>
 
                     </div>
 
