@@ -17,7 +17,7 @@ function RequestChordStatus() {
         {
             title: 'Request ID',
             dataIndex: 'id',
-            width: 100,
+            width: 150,
         },
         {
             title: 'Username',
@@ -78,7 +78,7 @@ function RequestChordStatus() {
                     )}
                 </Space>
             ),
-            width: 200,
+            width: 150,
 
         },
         {
