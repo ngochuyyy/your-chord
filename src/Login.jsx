@@ -82,6 +82,9 @@ function Login() {
             .then((res) => {
                 if (res.data.Status === 'Success') {
                     setResetPasswordSuccess(true);
+                    setTimeout(() => {
+                        setResetPasswordSuccess(false);
+                    }, 2000);
                     setShowResetPassword(false);
                 } else {
                     setResetPasswordNotSuccess(true);
