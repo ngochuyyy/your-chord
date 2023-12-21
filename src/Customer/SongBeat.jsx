@@ -245,7 +245,7 @@ function SongBeat() {
                     <>
                         <div className="d-flex">
                             <div className="col-md-8" >
-                                {data.length === 0 && !loading ? (
+                                {data.length === 0 ? (
                                     <div style={{
                                         margin: '10px', marginTop: '80px', textAlign: 'center'
                                     }}>
