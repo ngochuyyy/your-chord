@@ -21,6 +21,8 @@ function ViewPlaylist() {
     const [order, setOrder] = useState('asc');
     const { id } = useParams();
     const [imageURL, setImageURL] = useState(null);
+    const [loading, setLoading] = useState(true);
+
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
     const darkTheme = createTheme({
@@ -44,9 +46,11 @@ function ViewPlaylist() {
         setSelectedPlaylistId(null);
     };
     useEffect(() => {
+        setLoading(true);
         axios.get(`${apiUrl}/viewPlaylist/` + id)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setData([...res.data.Result]);
                     if (res.data.Result.length > 0) {
                         const playlistImages = res.data.Result.map(playlist => `${playlist.image}`);
@@ -133,62 +137,72 @@ function ViewPlaylist() {
                     </AppBar>
                 </ThemeProvider>
             </Box>
-            {data.length > 0 ?
-                <>
-                    <div className="sort-button-container">
-                        <button
-                            className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
-                            onClick={() => handleSort('created_at')}
-                        >
-                            New
-                        </button>
-                        <button
-                            className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
-                            onClick={() => handleSort('updated_at')}
-                        >
-                            Updated
-                        </button>
-                        <button
-                            className={`sort-button ${orderBy === 'date_added' ? 'active' : ''}`}
-                            onClick={() => handleSort('date_added')}
-                        >
-                            Added
-                        </button>
-                        <button className={`sort-button ${orderBy === 'popular' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Popular
-                        </button>
-                        <button className={`sort-button ${orderBy === 'pop' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Pop
-                        </button>
-                        <button className={`sort-button ${orderBy === 'rock' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Rock
-                        </button>
-                        <button className={`sort-button ${orderBy === 'jazz' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Jazz
-                        </button>
-                        <button className={`sort-button ${orderBy === 'acoustic' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Acoustic
-                        </button>
-                        <button className={`sort-button ${orderBy === 'ballad' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Ballad
-                        </button>
-                        <button className={`sort-button ${orderBy === 'r&b' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> R&b
-                        </button>
+            {loading ? (
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                    <div className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
                     </div>
-                    <div className="song-list-container">
-                        {sortData(data)
-                            .filter((song) => {
-                                return search.toLowerCase() === ''
-                                    ? song
-                                    : song.song_title.toLowerCase().includes(search);
-                            })
-                            .map((song, index) => (
-                                <div key={index} >
-                                    <div style={{ position: 'relative' }}>
-                                        <div className="song-list-item">
-                                            <div >
-                                                {/* <IconButton
+                    <p>Loading...</p>
+                </div>
+            )
+                :
+                <>
+                    {data.length > 0 ?
+                        <>
+                            <div className="sort-button-container">
+                                <button
+                                    className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
+                                    onClick={() => handleSort('created_at')}
+                                >
+                                    New
+                                </button>
+                                <button
+                                    className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
+                                    onClick={() => handleSort('updated_at')}
+                                >
+                                    Updated
+                                </button>
+                                <button
+                                    className={`sort-button ${orderBy === 'date_added' ? 'active' : ''}`}
+                                    onClick={() => handleSort('date_added')}
+                                >
+                                    Added
+                                </button>
+                                <button className={`sort-button ${orderBy === 'popular' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Popular
+                                </button>
+                                <button className={`sort-button ${orderBy === 'pop' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Pop
+                                </button>
+                                <button className={`sort-button ${orderBy === 'rock' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Rock
+                                </button>
+                                <button className={`sort-button ${orderBy === 'jazz' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Jazz
+                                </button>
+                                <button className={`sort-button ${orderBy === 'acoustic' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Acoustic
+                                </button>
+                                <button className={`sort-button ${orderBy === 'ballad' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Ballad
+                                </button>
+                                <button className={`sort-button ${orderBy === 'r&b' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> R&b
+                                </button>
+                            </div>
+                            <div className="song-list-container">
+                                {sortData(data)
+                                    .filter((song) => {
+                                        return search.toLowerCase() === ''
+                                            ? song
+                                            : song.song_title.toLowerCase().includes(search);
+                                    })
+                                    .map((song, index) => (
+                                        <div key={index} >
+                                            <div style={{ position: 'relative' }}>
+                                                <div className="song-list-item">
+                                                    <div >
+                                                        {/* <IconButton
                                                     size="large"
                                                     aria-label="menu"
                                                     aria-controls="song-menu"
@@ -211,98 +225,100 @@ function ViewPlaylist() {
                                                         </h6>
                                                     </MenuItem>
                                                 </Menu> */}
-                                                <IconButton
-                                                    size="large"
-                                                    aria-label="menu"
-                                                    aria-haspopup="true"
-                                                    onClick={(event) => handleMenuOpen(event, song.id)}
-                                                    style={{ position: 'absolute', top: 0, right: 0 }}
-                                                    className="favorite-button"
-                                                >
-                                                    <i className="bi-three-dots-vertical text-white fs-20"></i>
-                                                </IconButton>
-                                                <Menu
-                                                    anchorEl={anchorEl}
-                                                    open={selectedPlaylistId === song.id && Boolean(anchorEl)}
-                                                    onClose={handleMenuClose}
-                                                >
-                                                    <MenuItem onClick={() => handleDelete(song.song_id, song.collection_id)}>
-                                                        <h6 className="text-danger">
-                                                            <i className="bi bi-trash"></i> Delete
-                                                        </h6>
-                                                    </MenuItem>
-                                                </Menu>
-                                            </div>
-                                            <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
-                                                {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
-                                            </Link>
-                                        </div>
-                                        <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
-                                            <div className="song-details" style={{ textAlign: 'center' }}>
-                                                <b>{song.song_title}</b>
-                                                <p>Date added: {moment(song.date_added).format('YYYY/MM/DD - HH:mm:ss')}</p>
+                                                        <IconButton
+                                                            size="large"
+                                                            aria-label="menu"
+                                                            aria-haspopup="true"
+                                                            onClick={(event) => handleMenuOpen(event, song.id)}
+                                                            style={{ position: 'absolute', top: 0, right: 0 }}
+                                                            className="favorite-button"
+                                                        >
+                                                            <i className="bi-three-dots-vertical text-white fs-20"></i>
+                                                        </IconButton>
+                                                        <Menu
+                                                            anchorEl={anchorEl}
+                                                            open={selectedPlaylistId === song.id && Boolean(anchorEl)}
+                                                            onClose={handleMenuClose}
+                                                        >
+                                                            <MenuItem onClick={() => handleDelete(song.song_id, song.collection_id)}>
+                                                                <h6 className="text-danger">
+                                                                    <i className="bi bi-trash"></i> Delete
+                                                                </h6>
+                                                            </MenuItem>
+                                                        </Menu>
+                                                    </div>
+                                                    <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
+                                                        {imageURL && <img className="song-thumbnail" src={`data:image/png;base64,${song.thumbnail}`} alt="Song Thumbnail" />}
+                                                    </Link>
+                                                </div>
+                                                <Link to={`/viewSongCustomer/` + song.id} style={{ textDecoration: 'none' }}>
+                                                    <div className="song-details" style={{ textAlign: 'center' }}>
+                                                        <b>{song.song_title}</b>
+                                                        <p>Date added: {moment(song.date_added).format('YYYY/MM/DD - HH:mm:ss')}</p>
 
+                                                    </div>
+                                                </Link>
                                             </div>
-                                        </Link>
-                                    </div>
+                                        </div>
+                                    ))}
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className="sort-button-container">
+                                <button
+                                    className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
+                                    onClick={() => handleSort('created_at')}
+                                >
+                                    New
+                                </button>
+                                <button
+                                    className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
+                                    onClick={() => handleSort('updated_at')}
+                                >
+                                    Updated
+                                </button>
+                                <button
+                                    className={`sort-button ${orderBy === 'date_added' ? 'active' : ''}`}
+                                    onClick={() => handleSort('date_added')}
+                                >
+                                    Added
+                                </button>
+                                <button className={`sort-button ${orderBy === 'popular' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Popular
+                                </button>
+                                <button className={`sort-button ${orderBy === 'pop' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Pop
+                                </button>
+                                <button className={`sort-button ${orderBy === 'rock' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Rock
+                                </button>
+                                <button className={`sort-button ${orderBy === 'jazz' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Jazz
+                                </button>
+                                <button className={`sort-button ${orderBy === 'acoustic' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Acoustic
+                                </button>
+                                <button className={`sort-button ${orderBy === 'ballad' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> Ballad
+                                </button>
+                                <button className={`sort-button ${orderBy === 'r&b' ? 'active' : ''}`}>
+                                    <SortIcon className="sort-icon" /> R&b
+                                </button>
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                height: '60vh',
+                            }}>
+                                <div className="banner">
+                                    <p>No songs in your playlist yet</p>
+                                    <Link to={`/songCustomer/${userId}`} style={{ textDecoration: 'none', cursor: 'pointer' }}>Add More</Link>
                                 </div>
-                            ))}
-                    </div>
-                </>
-                :
-                <>
-                    <div className="sort-button-container">
-                        <button
-                            className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
-                            onClick={() => handleSort('created_at')}
-                        >
-                            New
-                        </button>
-                        <button
-                            className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
-                            onClick={() => handleSort('updated_at')}
-                        >
-                            Updated
-                        </button>
-                        <button
-                            className={`sort-button ${orderBy === 'date_added' ? 'active' : ''}`}
-                            onClick={() => handleSort('date_added')}
-                        >
-                            Added
-                        </button>
-                        <button className={`sort-button ${orderBy === 'popular' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Popular
-                        </button>
-                        <button className={`sort-button ${orderBy === 'pop' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Pop
-                        </button>
-                        <button className={`sort-button ${orderBy === 'rock' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Rock
-                        </button>
-                        <button className={`sort-button ${orderBy === 'jazz' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Jazz
-                        </button>
-                        <button className={`sort-button ${orderBy === 'acoustic' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Acoustic
-                        </button>
-                        <button className={`sort-button ${orderBy === 'ballad' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> Ballad
-                        </button>
-                        <button className={`sort-button ${orderBy === 'r&b' ? 'active' : ''}`}>
-                            <SortIcon className="sort-icon" /> R&b
-                        </button>
-                    </div>
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '60vh',
-                    }}>
-                        <div className="banner">
-                            <p>No songs in your playlist yet</p>
-                            <Link to={`/songCustomer/${userId}`} style={{ textDecoration: 'none', cursor: 'pointer' }}>Add More</Link>
-                        </div>
-                    </div>
+                            </div>
+                        </>
+                    }
                 </>
             }
         </>
