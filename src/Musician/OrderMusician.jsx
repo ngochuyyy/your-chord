@@ -71,7 +71,7 @@ function OrderMusician() {
             dataIndex: 'status',
             render: (text, record) => (
                 <Space size="middle">
-                    {isExpired(record) ? (
+                    {isExpired(record) && text !== 3 ? (
                         <button className='btn-decline'  >
                             Expired
                         </button>
@@ -93,7 +93,7 @@ function OrderMusician() {
                                                 Waiting for payment
                                             </button>
                                         ) : record.status === 2 ? (
-                                            <button className='btn-accept'>
+                                            <button className='btn-do'>
                                                 Do it
                                             </button>
                                         ) : record.status === 3 ? (

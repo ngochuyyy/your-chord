@@ -61,7 +61,7 @@ function OrderStatus() {
                         </button>
                     ) : (
                         <>
-                            {isExpired(record) ? (
+                            {isExpired(record) && text !== 3 ? (
                                 <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
                                     Expired
                                 </button>
