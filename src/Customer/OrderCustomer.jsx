@@ -50,11 +50,8 @@ function OrderCustomer() {
     // Calculate the time difference in milliseconds
     const timeDifference = selectedDate.getTime() - currentDate.getTime();
 
-    // Convert milliseconds to seconds
-    const timeDifferenceInSeconds = timeDifference / 1000;
-
     // Check if the duration is at least 24 hours (86400 seconds)
-    if (timeDifferenceInSeconds >= 24 * 60 * 60) {
+    if (timeDifference >= 24 * 60 * 60 * 1000) {
       setDuration(date);
     } else {
       console.error('Selected duration must be at least 24 hours from the current date and time.');
