@@ -46,7 +46,7 @@ function OrderStatus() {
             width: 200,
             render: (text) => (
                 <Space size="middle">
-                    {text ? moment(text).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
+                    {text ? moment(text).format('YYYY-MM-DD') : 'N/A'}
                 </Space>
             ),
         },
@@ -175,19 +175,16 @@ function OrderStatus() {
 
     const handlePaymentConfirmation = async (orderId, paymentDetails) => {
         try {
-            // Log information about the PayPal transaction before making the API call
             console.log('Before PayPal API Call - Order ID:', orderId, 'Payment Details:', paymentDetails);
 
             const response = await axios.put(`${apiUrl}/updateOrderStatus/${orderId}`, {
                 status: 'COMPLETED',
-                paymentDetails: paymentDetails, // You may adjust this based on your backend requirements
+                paymentDetails: paymentDetails,
             });
 
-            // Log information about the PayPal transaction after making the API call
             console.log('After PayPal API Call - Response:', response);
             if (response.data.Status === 'Success') {
-                // window.location.reload(true);
-
+                window.location.reload(true);
                 const updatedOrderData = orderData.map(item => {
                     if (item.id === orderId) {
                         item.status = 2;

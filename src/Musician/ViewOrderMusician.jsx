@@ -270,9 +270,9 @@ function ViewOrderMusician() {
                                             <div className="col-md-6 mb-3">
                                                 <b htmlFor="duration" className="form-label">Duration</b>
                                                 {isExpired(order) && order.status !== 3 ?
-                                                    <p style={{ color: 'red', fontWeight: 'bold' }}>{moment(order.duration).format('YYYY-MM-DD  HH:mm:ss')}</p>
+                                                    <p style={{ color: 'red', fontWeight: 'bold' }}>{moment(order.duration).format('YYYY-MM-DD')}</p>
                                                     :
-                                                    <p style={{ color: 'green', fontWeight: 'bold' }}>{moment(order.duration).format('YYYY-MM-DD  HH:mm:ss')}</p>
+                                                    <p style={{ color: 'green', fontWeight: 'bold' }}>{moment(order.duration).format('YYYY-MM-DD')}</p>
 
                                                 }                                            </div>
                                             <div className="col-md-6 mb-3">

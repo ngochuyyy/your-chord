@@ -29,7 +29,7 @@ function OrderMusician() {
             width: 200,
             render: (text) => (
                 <Space size="middle">
-                    {text ? moment(text).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
+                    {text ? moment(text).format('YYYY-MM-DD') : 'N/A'}
                 </Space>
             ),
         },
