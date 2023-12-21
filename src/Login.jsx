@@ -191,7 +191,7 @@ function Login() {
                                             paddingLeft: '300px',
                                         }}
                                     >
-                                        <Link className='font' onClick={() => setShowResetPassword(true)}>Forgot Password?</Link>
+                                        <Link className='font' onClick={() => setShowResetPassword(true)}>Change Password</Link>
                                     </div>
                                     {loading ? (
                                         <div className="d-flex flex-column justify-content-center align-items-center">
