@@ -46,18 +46,13 @@ function OrderCustomer() {
   const handleDurationChange = (date) => {
     const currentDate = new Date();
     const selectedDate = new Date(date);
-
-    // Calculate the time difference in milliseconds
-    const timeDifference = selectedDate.getTime() - currentDate.getTime();
-
-    // Check if the duration is at least 24 hours (86400 seconds)
-    if (timeDifference >= 24 * 60 * 60 * 1000) {
+    const timeDifference = selectedDate - currentDate;
+    if (timeDifference >= 24 * 60 * 1000) {
       setDuration(date);
     } else {
       console.error('Selected duration must be at least 24 hours from the current date and time.');
     }
   };
-
 
 
   return (
@@ -120,11 +115,7 @@ function OrderCustomer() {
                     id="duration"
                     selected={duration}
                     onChange={handleDurationChange}
-                    showTimeSelect
-                    timeFormat="HH:mm"
-                    timeIntervals={15}
-                    timeCaption="time"
-                    dateFormat="yyyy-MM-dd HH:mm:ss"
+                    dateFormat="yyyy-MM-dd"
                     className="form-control"
                     minDate={new Date()}
                     required
