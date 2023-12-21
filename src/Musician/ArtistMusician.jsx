@@ -17,6 +17,7 @@ function ArtistMusician() {
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(true);
     const itemsPerPage = 5;
     // Pagination logic
     const indexOfLastItem = currentPage * itemsPerPage;
@@ -25,10 +26,11 @@ function ArtistMusician() {
     const totalPages = Math.ceil(data.length / itemsPerPage);
 
     useEffect(() => {
-
+        setLoading(true);
         axios.get(`${apiUrl}/getSongArtist/` + artist_id, data)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setData(res.data.Result);
                     console.log(res.data.Result)
 
@@ -105,151 +107,161 @@ function ArtistMusician() {
     return (
         <>
             <SearchAppBarBackMusican />
-            <div className="sort-button-container">
-                <button
-                    className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
-                    onClick={() => handleSort('created_at')}
-                >
-                    New
-                </button>
-                <button
-                    className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
-                    onClick={() => handleSort('updated_at')}
-                >
-                    Updated
-                </button>
-            </div>
-            <div className="d-flex">
-                <div className="col-md-8" >
-                    {data.length === 0 ? (
-                        <div style={{
-                            margin: '10px', marginTop: '80px', textAlign: 'center'
-                        }}>
-                            <p style={{ color: '#0d6efd', fontWeight: 'bold' }}>No results found</p>
-                        </div>
-                    )
-                        :
-                        (
-                            <div style={{
-                                borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '80px', marginLeft: '50px'
-                            }}>
-
-                                {
-                                    sortData(currentItems).map((song, index) => {
-                                        const songChords = extractChords(song.lyrics);
-                                        const uniqueChordsSet = new Set(songChords);
-                                        return (
-                                            <div key={index} style={{ borderBottom: '1px solid #ccc', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
-                                                <div style={{ padding: '10px', paddingLeft: '10px', color: 'black' }}>
-
-                                                    <Link to={`/viewSongMusician/${song.id}`} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none', cursor: 'pointer' }}>
-                                                        <div className='column'>
-                                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                                <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
-                                                                <span style={{ fontSize: '20px', marginRight: '10px', paddingLeft: '10px' }}>{song.artist_name}</span>
-                                                                <div style={{ display: 'flex', textAlign: 'center' }}>
-
-                                                                    {songChords.map((chord, chordIndex) => (
-                                                                        <div
-                                                                            key={chordIndex}
-                                                                            style={{
-                                                                                padding: '5px',
-                                                                                marginRight: '15px',
-                                                                                marginBottom: '5px',
-                                                                                background: '#eee',
-                                                                                boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                                                                                borderRadius: '5px'
-                                                                            }}
-                                                                        >
-                                                                            {chord}
-                                                                        </div>
-                                                                    ))}
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <span style={{ color: 'gray', fontStyle: 'italic' }}>{song.lyrics.substring(0, 100)}...</span>
-                                                        <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-                                                            {Array.from(uniqueChordsSet).slice(0, 5).map((chordName, index) => (
-                                                                <div key={index} className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
-                                                                    <p style={{ marginTop: '5px' }}>{chordData[chordName]?.name}</p>
-                                                                    {chordData[chordName]?.image && (
-                                                                        <img src={chordData[chordName].image} alt={chordData[chordName].name} style={{ width: '120px', height: '100px' }} />
-                                                                    )}
-                                                                </div>
-                                                            ))}
-                                                            {Array.from(uniqueChordsSet).length > 5 && (
-                                                                <div className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
-                                                                    <p style={{ marginTop: '5px', fontSize: '15px' }}>View more</p>
-                                                                </div>
-                                                            )}
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            </div>
-                                        );
-                                    })}
-
-                            </div>
-                        )
-                    }
-                    <Stack spacing={2} direction="row" justifyContent="center" mt={4}>
-                        <Pagination
-                            count={totalPages}
-                            page={currentPage}
-                            onChange={(event, value) => setCurrentPage(value)}
-                            color="primary"
-                            size="large"
-                        />
-                    </Stack>
-                </div>
-
-
-                <div className="col-md-4">
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed' }}>
-                        <b style={{ color: '#0d6efd', fontWeight: 'bold', textAlign: 'center', marginTop: '50px' }}>Information</b>
-                        <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
-                            <div className="flex-row" style={{
-                                display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'
-                            }}>
-                                {currentItems.length > 0 && (
-                                    <div
-                                        style={{
-                                            width: 'fit-content',
-                                            padding: '0 11px',
-                                            borderRadius: '5px',
-                                            margin: '5px',
-                                            display: 'flex',
-                                            flexDirection: 'column',
-                                            alignItems: 'center',
-                                            justifyContent: 'center',
-                                            textAlign: 'center',
-                                            border: '1px solid #f1f1f1'
-                                        }}
-                                    >
-                                        <img src={currentItems[0].image_artist} alt={currentItems[0].artist_name} style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
-                                        <p style={{
-                                            fontSize: '11px', margin: '5px'
-                                        }}>
-                                            {currentItems[0].artist_name}
-                                        </p>
-                                        <p style={{
-                                            fontSize: '11px', margin: '5px'
-                                        }}>
-                                            Date of birth: {moment(currentItems[0].date_of_birth).format("YYYY - MM - DD")}
-                                        </p>
-                                        <p style={{
-                                            fontSize: '11px', margin: '5px'
-                                        }}>
-                                            Link: <Link to={currentItems[0].social_media_link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{currentItems[0].social_media_link}</Link>
-                                        </p>
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+            {loading ? (
+                <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                    <div className="spinner-border text-primary" role="status">
+                        <p className="visually-hidden">Loading...</p>
                     </div>
                 </div>
-            </div >
+            ) :
+                <>
+                    <div className="sort-button-container">
+                        <button
+                            className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
+                            onClick={() => handleSort('created_at')}
+                        >
+                            New
+                        </button>
+                        <button
+                            className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
+                            onClick={() => handleSort('updated_at')}
+                        >
+                            Updated
+                        </button>
+                    </div>
+                    <div className="d-flex">
+                        <div className="col-md-8" >
+                            {data.length === 0 ? (
+                                <div style={{
+                                    margin: '10px', marginTop: '80px', textAlign: 'center'
+                                }}>
+                                    <p style={{ color: '#0d6efd', fontWeight: 'bold' }}>No results found</p>
+                                </div>
+                            )
+                                :
+                                (
+                                    <div style={{
+                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '80px', marginLeft: '50px'
+                                    }}>
+
+                                        {
+                                            sortData(currentItems).map((song, index) => {
+                                                const songChords = extractChords(song.lyrics);
+                                                const uniqueChordsSet = new Set(songChords);
+                                                return (
+                                                    <div key={index} style={{ borderBottom: '1px solid #ccc', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
+                                                        <div style={{ padding: '10px', paddingLeft: '10px', color: 'black' }}>
+
+                                                            <Link to={`/viewSongMusician/${song.id}`} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none', cursor: 'pointer' }}>
+                                                                <div className='column'>
+                                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                                        <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
+                                                                        <span style={{ fontSize: '20px', marginRight: '10px', paddingLeft: '10px' }}>{song.artist_name}</span>
+                                                                        <div style={{ display: 'flex', textAlign: 'center' }}>
+
+                                                                            {songChords.map((chord, chordIndex) => (
+                                                                                <div
+                                                                                    key={chordIndex}
+                                                                                    style={{
+                                                                                        padding: '5px',
+                                                                                        marginRight: '15px',
+                                                                                        marginBottom: '5px',
+                                                                                        background: '#eee',
+                                                                                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                                                                                        borderRadius: '5px'
+                                                                                    }}
+                                                                                >
+                                                                                    {chord}
+                                                                                </div>
+                                                                            ))}
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <span style={{ color: 'gray', fontStyle: 'italic' }}>{song.lyrics.substring(0, 100)}...</span>
+                                                                <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+                                                                    {Array.from(uniqueChordsSet).slice(0, 5).map((chordName, index) => (
+                                                                        <div key={index} className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
+                                                                            <p style={{ marginTop: '5px' }}>{chordData[chordName]?.name}</p>
+                                                                            {chordData[chordName]?.image && (
+                                                                                <img src={chordData[chordName].image} alt={chordData[chordName].name} style={{ width: '120px', height: '100px' }} />
+                                                                            )}
+                                                                        </div>
+                                                                    ))}
+                                                                    {Array.from(uniqueChordsSet).length > 5 && (
+                                                                        <div className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
+                                                                            <p style={{ marginTop: '5px', fontSize: '15px' }}>View more</p>
+                                                                        </div>
+                                                                    )}
+                                                                </div>
+                                                            </Link>
+                                                        </div>
+                                                    </div>
+                                                );
+                                            })}
+
+                                    </div>
+                                )
+                            }
+                            <Stack spacing={2} direction="row" justifyContent="center" mt={4}>
+                                <Pagination
+                                    count={totalPages}
+                                    page={currentPage}
+                                    onChange={(event, value) => setCurrentPage(value)}
+                                    color="primary"
+                                    size="large"
+                                />
+                            </Stack>
+                        </div>
+
+
+                        <div className="col-md-4">
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed' }}>
+                                <b style={{ color: '#0d6efd', fontWeight: 'bold', textAlign: 'center', marginTop: '50px' }}>Information</b>
+                                <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
+                                    <div className="flex-row" style={{
+                                        display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'
+                                    }}>
+                                        {currentItems.length > 0 && (
+                                            <div
+                                                style={{
+                                                    width: 'fit-content',
+                                                    padding: '0 11px',
+                                                    borderRadius: '5px',
+                                                    margin: '5px',
+                                                    display: 'flex',
+                                                    flexDirection: 'column',
+                                                    alignItems: 'center',
+                                                    justifyContent: 'center',
+                                                    textAlign: 'center',
+                                                    border: '1px solid #f1f1f1'
+                                                }}
+                                            >
+                                                <img src={currentItems[0].image_artist} alt={currentItems[0].artist_name} style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
+                                                <p style={{
+                                                    fontSize: '11px', margin: '5px'
+                                                }}>
+                                                    {currentItems[0].artist_name}
+                                                </p>
+                                                <p style={{
+                                                    fontSize: '11px', margin: '5px'
+                                                }}>
+                                                    Date of birth: {moment(currentItems[0].date_of_birth).format("YYYY - MM - DD")}
+                                                </p>
+                                                <p style={{
+                                                    fontSize: '11px', margin: '5px'
+                                                }}>
+                                                    Link: <Link to={currentItems[0].social_media_link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{currentItems[0].social_media_link}</Link>
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div >
+                </>
+            }
             <InfoContainer />
         </>
     );
