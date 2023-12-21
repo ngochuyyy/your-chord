@@ -21,14 +21,17 @@ function Login() {
     const [resetPasswordNotSuccess, setResetPasswordNotSuccess] = useState(false);
     const [confirmPasswordNotMatch, setConfirmPasswordNotMatch] = useState(false);
     const [username, setUsername] = useState('');
+    const [loading, setLoading] = useState(false);
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const handleSubmit = (event) => {
         event.preventDefault();
+        setLoading(true);
         axios.post(`${apiUrl}/login`, values)
             .then(res => {
                 if (res.data.Status === 'Success') {
+                    setLoading(false);
                     const token = res.data.token;
                     const userId = `${values.username}:${token}`;
                     sessionStorage.setItem('token', userId);
@@ -43,18 +46,21 @@ function Login() {
                     }
                 }
                 if (res.data.Status === 'Error') {
+                    setLoading(false);
                     setIsLoginFailed(true);
                     setTimeout(() => {
                         setIsLoginFailed(false);
                     }, 2000)
                 }
                 if (res.data.ban === 'Pending') {
+                    setLoading(false);
                     setIsLoginPending(true);
                     setTimeout(() => {
                         setIsLoginPending(false);
                     }, 2000);
                 }
                 else if (res.data.ban === 'Disable') {
+                    setLoading(false);
                     setIsLoginDisable(true);
                     setTimeout(() => {
                         setIsLoginDisable(false);
@@ -186,7 +192,15 @@ function Login() {
                                     >
                                         <Link className='font' onClick={() => setShowResetPassword(true)}>Forgot Password?</Link>
                                     </div>
-                                    <button>Sign In</button>
+                                    {loading ? (
+                                        <div className="d-flex flex-column justify-content-center align-items-center">
+                                            <div className="spinner-border text-primary" role="status">
+                                                <span className="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+                                    ) :
+                                        <button>Sign In</button>
+                                    }
                                 </>
                             )}
                         </form>
