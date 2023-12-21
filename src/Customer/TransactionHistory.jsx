@@ -45,7 +45,7 @@ function TransactionHistory() {
                             Transaction History
                         </h3>
                     </div>
-                    <table className="table" style={{ width: '900px', marginTop: '30px', marginBottom: '120px' }}>
+                    <table className="table" style={{ width: '1200px', marginTop: '30px', marginBottom: '120px' }}>
                         <thead>
                             <tr style={{ border: '2px' }}>
                                 <th scope="col">Order ID</th>
