@@ -165,8 +165,8 @@ function EditRequestChordMusician() {
                                     <hr className="mb-4" />
                                     <div className="d-flex justify-content-between">
                                         <button
+                                            className="btn btn-primary"
                                             type="submit"
-                                            className="btn btn-success"
                                         >
                                             Save
                                         </button>
