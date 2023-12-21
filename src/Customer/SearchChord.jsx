@@ -33,6 +33,7 @@ function SearchChord() {
     const [c7ChordsData, setDataC7Chords] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
+    const [loading, setLoading] = useState(false);
     const itemsPerPage = 5;
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
@@ -107,6 +108,7 @@ function SearchChord() {
         }
     };
     const handleSearch = () => {
+        setLoading(true)
         const chordInput = document.getElementById('chordInput').value.toLowerCase();
         const encodedChordInput = encodeURIComponent(chordInput);
         const extractChords = (lyrics) => {
@@ -125,7 +127,7 @@ function SearchChord() {
         axios.get(`${apiUrl}/getSongAdmin?chord_name=${encodedChordInput}`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-
+                    setLoading(false)
                     const filteredResults = res.data.Result.filter((song) => {
                         const songChords = extractChords(song.lyrics);
                         if (searchChords.every(searchChord => songChords.includes(searchChord.trim()))) {
@@ -239,142 +241,155 @@ function SearchChord() {
                                     </div>
                                 </div>
                             </div>
-                            {data.length > 0 ? (
-                                <div className="row" style={{ paddingLeft: '100px' }}>
-                                    <div className="col-md-8" >
-                                        <h5 style={{ color: '#0d6efd', paddingLeft: '10px' }}>
-                                            Search Results: <b>{searchedChords}</b> - {data.length} song found
-                                        </h5>
+                            {
+                                loading ? (
+                                    <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                                        <div className="spinner-border text-primary" role="status">
+                                            <span className="visually-hidden">Loading...</span>
+                                        </div>
+                                        <p>Loading...</p>
+                                    </div>
+                                )
+                                    :
+                                    <>
+                                        {data.length > 0 ? (
+                                            <div className="row" style={{ paddingLeft: '100px' }}>
+                                                <div className="col-md-8" >
+                                                    <h5 style={{ color: '#0d6efd', paddingLeft: '10px' }}>
+                                                        Search Results: <b>{searchedChords}</b> - {data.length} song found
+                                                    </h5>
 
-                                        <div style={{ borderRadius: '10px', border: '1px solid #ccc', margin: '10px' }}>
-                                            {currentItems.map((song, index) => {
-                                                const songChords = extractChords(song.lyrics);
-                                                const uniqueChordsSet = new Set(songChords);
+                                                    <div style={{ borderRadius: '10px', border: '1px solid #ccc', margin: '10px' }}>
+                                                        {currentItems.map((song, index) => {
+                                                            const songChords = extractChords(song.lyrics);
+                                                            const uniqueChordsSet = new Set(songChords);
 
-                                                return (
-                                                    <div key={index} style={{ borderBottom: '1px solid #ccc', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
-                                                        <div style={{ padding: '10px', paddingLeft: '10px', color: 'black' }}>
-                                                            <div style={{ position: 'relative' }} >
-                                                                <IconButton
-                                                                    onClick={() => { handleFavorite(data.userId), setSelectedSong(song) }}
-                                                                    size="large"
-                                                                    aria-label="like"
-                                                                    color="error"
-                                                                    style={{ position: 'absolute', top: 0, right: 0 }}
-                                                                    className="favorite-button"
-                                                                >
-                                                                    <FavoriteIcon />
-                                                                </IconButton>
-                                                            </div>
-                                                            <Link to={`/viewSongCustomer/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
-                                                                <div className='column'>
-                                                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                                        <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span>
-                                                                        <div style={{ display: 'flex', textAlign: 'center' }}>
-
-                                                                            {songChords.map((chord, chordIndex) => (
-                                                                                <div
-                                                                                    key={chordIndex}
-                                                                                    style={{
-                                                                                        padding: '5px',
-                                                                                        marginRight: '15px',
-                                                                                        marginBottom: '5px',
-                                                                                        background: '#eee',
-                                                                                        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-                                                                                        borderRadius: '5px'
-                                                                                    }}
-                                                                                >
-                                                                                    {chord}
-                                                                                </div>
-                                                                            ))}
-
+                                                            return (
+                                                                <div key={index} style={{ borderBottom: '1px solid #ccc', borderBottomLeftRadius: '10px', borderBottomRightRadius: '10px' }}>
+                                                                    <div style={{ padding: '10px', paddingLeft: '10px', color: 'black' }}>
+                                                                        <div style={{ position: 'relative' }} >
+                                                                            <IconButton
+                                                                                onClick={() => { handleFavorite(data.userId), setSelectedSong(song) }}
+                                                                                size="large"
+                                                                                aria-label="like"
+                                                                                color="error"
+                                                                                style={{ position: 'absolute', top: 0, right: 0 }}
+                                                                                className="favorite-button"
+                                                                            >
+                                                                                <FavoriteIcon />
+                                                                            </IconButton>
                                                                         </div>
+                                                                        <Link to={`/viewSongCustomer/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
+                                                                            <div className='column'>
+                                                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                                                    <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span>
+                                                                                    <div style={{ display: 'flex', textAlign: 'center' }}>
+
+                                                                                        {songChords.map((chord, chordIndex) => (
+                                                                                            <div
+                                                                                                key={chordIndex}
+                                                                                                style={{
+                                                                                                    padding: '5px',
+                                                                                                    marginRight: '15px',
+                                                                                                    marginBottom: '5px',
+                                                                                                    background: '#eee',
+                                                                                                    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+                                                                                                    borderRadius: '5px'
+                                                                                                }}
+                                                                                            >
+                                                                                                {chord}
+                                                                                            </div>
+                                                                                        ))}
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <span style={{ color: 'gray', fontStyle: 'italic' }}>{song.lyrics.substring(0, 100)}...</span>
+                                                                            <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
+                                                                                {Array.from(uniqueChordsSet).slice(0, 5).map((chordName, index) => (
+                                                                                    <div key={index} className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
+                                                                                        <p style={{ marginTop: '5px' }}>{chordData[chordName]?.name}</p>
+                                                                                        {chordData[chordName]?.image && (
+                                                                                            <img src={chordData[chordName].image} alt={chordData[chordName].name} style={{ width: '120px', height: '100px' }} />
+                                                                                        )}
+                                                                                    </div>
+                                                                                ))}
+                                                                                {Array.from(uniqueChordsSet).length > 5 && (
+                                                                                    <div className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
+                                                                                        <p style={{ marginTop: '5px', fontSize: '15px' }}>View more</p>
+                                                                                    </div>
+                                                                                )}
+                                                                            </div>
+                                                                        </Link>
                                                                     </div>
                                                                 </div>
-                                                                <span style={{ color: 'gray', fontStyle: 'italic' }}>{song.lyrics.substring(0, 100)}...</span>
-                                                                <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-                                                                    {Array.from(uniqueChordsSet).slice(0, 5).map((chordName, index) => (
-                                                                        <div key={index} className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
-                                                                            <p style={{ marginTop: '5px' }}>{chordData[chordName]?.name}</p>
-                                                                            {chordData[chordName]?.image && (
-                                                                                <img src={chordData[chordName].image} alt={chordData[chordName].name} style={{ width: '120px', height: '100px' }} />
-                                                                            )}
-                                                                        </div>
-                                                                    ))}
-                                                                    {Array.from(uniqueChordsSet).length > 5 && (
-                                                                        <div className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
-                                                                            <p style={{ marginTop: '5px', fontSize: '15px' }}>View more</p>
-                                                                        </div>
-                                                                    )}
-                                                                </div>
-                                                            </Link>
-                                                        </div>
+                                                            );
+                                                        })}
                                                     </div>
-                                                );
-                                            })}
-                                        </div>
-                                        <Stack spacing={2} direction="row" justifyContent="center" mt={3}>
-                                            <Pagination
-                                                count={totalPages}
-                                                page={currentPage}
-                                                onChange={(event, value) => setCurrentPage(value)}
-                                                color="primary"
-                                                size="large"
-                                            />
-                                        </Stack>
-                                    </div>
-
-                                    <div className="col-md-4">
-                                        <div style={{
-                                            backgroundColor: '#f0f0f0',
-                                            padding: '10px',
-                                            marginBottom: '20px',
-                                            height: 'auto',
-                                            textAlign: 'center',
-                                            width: '350px',
-                                            margin: '10px',
-                                            borderRadius: '10px',
-                                            marginTop: '30px'
-                                        }}>
-                                            <h4 style={{ color: '#0d6efd', fontWeight: 'bold' }}>How to Read Chords</h4>
-                                            <p>Here a guide to reading chords and finger positions:</p>
-                                            <ul>
-                                                <li style={{ textAlign: 'left' }}>Finger Positions:</li>
-                                                <div className="row" style={{ textAlign: 'left', paddingLeft: '50px', paddingTop: '10px' }}>
-                                                    <div className="column" >
-                                                        <img src={finger_1} style={{ height: '60%' }} /> <b> Index finger</b>
-                                                    </div>
-                                                    <div className="column" >
-                                                        <img src={finger_2} style={{ height: '60%' }} /> <b> Middle finger</b>
-                                                    </div>
-                                                    <div className="column" >
-                                                        <img src={finger_3} style={{ height: '60%' }} /> <b> Ring finger</b>
-                                                    </div>
-                                                    <div className="column" >
-                                                        <img src={finger_4} style={{ height: '60%' }} /> <b> Pinky finger</b>
-                                                    </div>
-
+                                                    <Stack spacing={2} direction="row" justifyContent="center" mt={3}>
+                                                        <Pagination
+                                                            count={totalPages}
+                                                            page={currentPage}
+                                                            onChange={(event, value) => setCurrentPage(value)}
+                                                            color="primary"
+                                                            size="large"
+                                                        />
+                                                    </Stack>
                                                 </div>
-                                            </ul>
-                                            <ul style={{ textAlign: 'left' }}>
-                                                <li><b style={{ fontSize: '10px' }}>O:</b> String on the first fret (open string)</li>
-                                                <li><b style={{ fontSize: '12px' }}>X:</b> Unfretted string</li>
-                                                <li><b style={{ fontSize: '12px' }}>3fr:</b> Third fret on the guitar</li>
-                                            </ul>
+
+                                                <div className="col-md-4">
+                                                    <div style={{
+                                                        backgroundColor: '#f0f0f0',
+                                                        padding: '10px',
+                                                        marginBottom: '20px',
+                                                        height: 'auto',
+                                                        textAlign: 'center',
+                                                        width: '350px',
+                                                        margin: '10px',
+                                                        borderRadius: '10px',
+                                                        marginTop: '30px'
+                                                    }}>
+                                                        <h4 style={{ color: '#0d6efd', fontWeight: 'bold' }}>How to Read Chords</h4>
+                                                        <p>Here a guide to reading chords and finger positions:</p>
+                                                        <ul>
+                                                            <li style={{ textAlign: 'left' }}>Finger Positions:</li>
+                                                            <div className="row" style={{ textAlign: 'left', paddingLeft: '50px', paddingTop: '10px' }}>
+                                                                <div className="column" >
+                                                                    <img src={finger_1} style={{ height: '60%' }} /> <b> Index finger</b>
+                                                                </div>
+                                                                <div className="column" >
+                                                                    <img src={finger_2} style={{ height: '60%' }} /> <b> Middle finger</b>
+                                                                </div>
+                                                                <div className="column" >
+                                                                    <img src={finger_3} style={{ height: '60%' }} /> <b> Ring finger</b>
+                                                                </div>
+                                                                <div className="column" >
+                                                                    <img src={finger_4} style={{ height: '60%' }} /> <b> Pinky finger</b>
+                                                                </div>
+
+                                                            </div>
+                                                        </ul>
+                                                        <ul style={{ textAlign: 'left' }}>
+                                                            <li><b style={{ fontSize: '10px' }}>O:</b> String on the first fret (open string)</li>
+                                                            <li><b style={{ fontSize: '12px' }}>X:</b> Unfretted string</li>
+                                                            <li><b style={{ fontSize: '12px' }}>3fr:</b> Third fret on the guitar</li>
+                                                        </ul>
 
 
-                                        </div>
-                                    </div>
-                                </div>
-                            ) : (
-                                searchedChords && data.length === 0 &&
-                                <div className="d-flex justify-content-center">
-                                    <h5 style={{ color: '#0d6efd', fontWeight: 'bold' }}>
-                                        Not Found
-                                    </h5>
-                                </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            searchedChords && data.length === 0 &&
+                                            <div className="d-flex justify-content-center">
+                                                <h5 style={{ color: '#0d6efd', fontWeight: 'bold' }}>
+                                                    Not Found
+                                                </h5>
+                                            </div>
 
-                            )}
+                                        )}
+                                    </>
+                            }
                         </div>
                     </div>
                 </div>
