@@ -14,9 +14,10 @@ function EditRequestChordMusician() {
     const navigate = useNavigate();
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const { id } = useParams();
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        axios
-            .get(`${apiUrl}/getRequestChord/` + id)
+        setLoading(true);
+        axios.get(`${apiUrl}/getRequestChord/` + id)
             .then((res) => {
                 setData({
                     ...data,
@@ -29,6 +30,7 @@ function EditRequestChordMusician() {
                     request_date: res.data.Result[0].request_date
                 });
             })
+        setLoading(false)
             .catch((err) => console.log(err));
     }, []);
 
@@ -66,36 +68,44 @@ function EditRequestChordMusician() {
                 <div className="py-4 text-center">
                     <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Request chord</h2>
                 </div>
-                <div className="row">
-                    <div className="col-md-4 order-md-2 mb-4" style={{ backgroundColor: "#EFFBEF", height: 'fit-content', width: '350px', padding: '10px' }}>
-                        <h5 className="text-center mb-3">
-                            <span>Notes</span>
-                        </h5>
-                        <ul className="list-group mb-3">
-                            <div className='notes' style={{ marginLeft: '50px' }}>
-                                <li>Write the full name of the song</li>
-                                <li>Type in English or Vietnamese with accents</li>
-                                <li>Enter full lyricc</li>
-                                <li>Do not post songs with reactionary or sensitive content that violate Vietnamese customs and traditions.</li>
-                            </div>
-                        </ul>
+                {loading ? (
+                    <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '200px' }}>
+                        <div className="spinner-border text-primary" role="status">
+                            <p className="visually-hidden">Loading...</p>
+                        </div>
                     </div>
-                    <div className="col-md-8 order-md-1">
-
-                        <form className="needs-validation" onSubmit={handleSubmit}>
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <b htmlFor="title">Song title</b>
-                                    <p>{data.song_name}</p>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <b htmlFor="title">Username</b>
-                                    <p>{data.user_id}</p>
-                                </div>
+                ) :
+                    <>
+                        <div className="row">
+                            <div className="col-md-4 order-md-2 mb-4" style={{ backgroundColor: "#EFFBEF", height: 'fit-content', width: '350px', padding: '10px' }}>
+                                <h5 className="text-center mb-3">
+                                    <span>Notes</span>
+                                </h5>
+                                <ul className="list-group mb-3">
+                                    <div className='notes' style={{ marginLeft: '50px' }}>
+                                        <li>Write the full name of the song</li>
+                                        <li>Type in English or Vietnamese with accents</li>
+                                        <li>Enter full lyricc</li>
+                                        <li>Do not post songs with reactionary or sensitive content that violate Vietnamese customs and traditions.</li>
+                                    </div>
+                                </ul>
                             </div>
+                            <div className="col-md-8 order-md-1">
 
-                            <div className="mb-3">
-                                {/* <div className="input-group">
+                                <form className="needs-validation" onSubmit={handleSubmit}>
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <b htmlFor="title">Song title</b>
+                                            <p>{data.song_name}</p>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <b htmlFor="title">Username</b>
+                                            <p>{data.user_id}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="mb-3">
+                                        {/* <div className="input-group">
                                     <textarea
                                         cols="80"
                                         rows="20"
@@ -110,65 +120,67 @@ function EditRequestChordMusician() {
                                         Lyric is required.
                                     </div>
                                 </div> */}
-                                <div className="col-12">
-                                    <b htmlFor="lyric">Lyric</b>
+                                        <div className="col-12">
+                                            <b htmlFor="lyric">Lyric</b>
 
-                                    <div className="input-group">
-                                        <div className="row">
-                                            <div className="numbers pd-right">
-                                                <textarea
-                                                    cols="80"
-                                                    rows="20"
-                                                    name="lyrics"
-                                                    onChange={handleInputChange}
-                                                    value={data.lyrics}
-                                                    style={{ width: '100%' }}
-                                                >
-                                                    {data.lyrics}
-                                                </textarea>
+                                            <div className="input-group">
+                                                <div className="row">
+                                                    <div className="numbers pd-right">
+                                                        <textarea
+                                                            cols="80"
+                                                            rows="20"
+                                                            name="lyrics"
+                                                            onChange={handleInputChange}
+                                                            value={data.lyrics}
+                                                            style={{ width: '100%' }}
+                                                        >
+                                                            {data.lyrics}
+                                                        </textarea>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <b htmlFor="artist">Artist</b>
+                                            <p>{data.artist_name}</p>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <b htmlFor="duration" className="form-label">Date created:</b>
+                                            <p>{moment(data.request_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="col-md-6 mb-3">
+                                            <b htmlFor="cc-genre">Genre</b>
+                                            <p>{data.genre}</p>
+                                        </div>
+                                        <div className="col-md-6 mb-3">
+                                            <b htmlFor="cc-link">Link</b>
+                                            <p>{data.link}</p>
+                                        </div>
+                                    </div>
+                                    <hr className="mb-4" />
+                                    <div className="d-flex justify-content-between">
+                                        <Button
+                                            type="submit"
+                                            variant="contained"
+                                            className="btn btn-success"
+                                        >
+                                            Save
+                                        </Button>
+                                    </div>
+
+
+                                </form>
+
                             </div>
-
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <b htmlFor="artist">Artist</b>
-                                    <p>{data.artist_name}</p>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <b htmlFor="duration" className="form-label">Date created:</b>
-                                    <p>{moment(data.request_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-md-6 mb-3">
-                                    <b htmlFor="cc-genre">Genre</b>
-                                    <p>{data.genre}</p>
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <b htmlFor="cc-link">Link</b>
-                                    <p>{data.link}</p>
-                                </div>
-                            </div>
-                            <hr className="mb-4" />
-                            <div className="d-flex justify-content-between">
-                                <Button
-                                    type="submit"
-                                    variant="contained"
-                                    className="btn btn-success"
-                                >
-                                    Save
-                                </Button>
-                            </div>
-
-
-                        </form>
-
-                    </div>
-                </div>
+                        </div>
+                    </>
+                }
             </div>
 
         </>

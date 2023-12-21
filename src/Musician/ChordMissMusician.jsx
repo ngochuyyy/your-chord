@@ -29,6 +29,7 @@ function ChordMissMusician() {
     const [order, setOrder] = useState("asc");
     const [currentPage, setCurrentPage] = useState(1);
     const [imageURL, setImageURL] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const itemsPerPage = 5;
@@ -43,9 +44,11 @@ function ChordMissMusician() {
         },
     });
     useEffect(() => {
+        setLoading(true);
         axios.get(`${apiUrl}/getSongChordManager`)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setData(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(data => `${data.image}`);
@@ -193,9 +196,18 @@ function ChordMissMusician() {
                                 </TableHead>
                             </Table>
                         </TableContainer>
-                        <div>
-                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
-                        </div>
+                        {loading ? (
+                            <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <p className="visually-hidden">Loading...</p>
+                                </div>
+                                <p>Loading...</p>
+                            </div>
+                        ) :
+                            <div>
+                                <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                            </div>
+                        }
                     </>
                 ) : (
 
