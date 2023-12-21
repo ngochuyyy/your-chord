@@ -20,11 +20,6 @@ function RequestChordStatus() {
             width: 150,
         },
         {
-            title: 'Username',
-            dataIndex: 'user_id',
-        },
-
-        {
             title: 'Song name',
             dataIndex: 'song_name',
         },
