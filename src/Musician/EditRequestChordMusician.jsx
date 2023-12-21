@@ -172,7 +172,7 @@ function EditRequestChordMusician() {
                                         >
                                             Save
                                         </Button>
-                                        <button className="btn btn-primary" onClick={navigate(-1)}>
+                                        <button className="btn btn-primary" onClick={() => navigate(-1)}>
                                             Close
                                         </button>
                                     </div>
