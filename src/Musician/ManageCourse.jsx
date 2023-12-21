@@ -40,10 +40,10 @@ function ManageCourse() {
     const handleSubmitOrder = async () => {
         try {
             setIsSubmitting(true);
-            if (!getYouTubeVideoId(link)) {
-                setOpenErrorVideo(true);
-                return;
-            }
+            // if (!getYouTubeVideoId(link)) {
+            //     setOpenErrorVideo(true);
+            //     return;
+            // }
 
             const formData = new FormData();
             formData.append('videoFile', videoFile);
