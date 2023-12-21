@@ -48,7 +48,7 @@ function OrderCustomer() {
     const selectedDate = new Date(date);
     const timeDifference = selectedDate - currentDate;
 
-    if (timeDifference >= 24 * 60 * 60 * 1000) {
+    if (timeDifference >= 24 * 60 * 1000) {
       setDuration(date);
     } else {
       console.error('Selected duration must be at least 24 hours from the current date and time.');
