@@ -156,7 +156,7 @@ function RequestChordStatus() {
                             placement="bottom"
                         >
                             <Button type="primary" style={{ borderRadius: '40px' }}>
-                                <Link to={`/requestChord/${userId}`} >ADD NEW REQUEST</Link>
+                                <Link to={`/requestChord/${userId}`} style={{ textDecoration: 'none' }}>Add new request</Link>
                             </Button>
                         </Tooltip>
 
