@@ -23,11 +23,6 @@ function OrderStatus() {
             width: 100,
         },
         {
-            title: 'Username',
-            dataIndex: 'user_id',
-        },
-
-        {
             title: 'Genre',
             dataIndex: 'genre',
         },
