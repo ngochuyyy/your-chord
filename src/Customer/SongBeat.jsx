@@ -180,9 +180,11 @@ function SongBeat() {
         return Array.from(uniqueChords);
     };
     useEffect(() => {
+        setLoading(true);
         axios.get(`${apiUrl}/getChord`)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     const chordData = res.data.Result.map(chord => ({
                         name: chord.chord_name,
                         image: chord.image,
@@ -243,7 +245,7 @@ function SongBeat() {
                     <>
                         <div className="d-flex">
                             <div className="col-md-8" >
-                                {data.length === 0 ? (
+                                {data.length === 0 && !loading ? (
                                     <div style={{
                                         margin: '10px', marginTop: '80px', textAlign: 'center'
                                     }}>
