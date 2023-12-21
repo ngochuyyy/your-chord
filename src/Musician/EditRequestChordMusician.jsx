@@ -2,7 +2,6 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchAppBar from '../component/SearchAppBar';
-import { Button } from '@mui/material';
 import moment from 'moment';
 function EditRequestChordMusician() {
     const [data, setData] = useState({
@@ -165,13 +164,12 @@ function EditRequestChordMusician() {
                                     </div>
                                     <hr className="mb-4" />
                                     <div className="d-flex justify-content-between">
-                                        <Button
+                                        <button
                                             type="submit"
-                                            variant="contained"
                                             className="btn btn-success"
                                         >
                                             Save
-                                        </Button>
+                                        </button>
                                         <button className="btn btn-primary" onClick={() => navigate(-1)}>
                                             Close
                                         </button>
