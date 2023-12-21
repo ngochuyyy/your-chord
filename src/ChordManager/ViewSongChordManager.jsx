@@ -41,7 +41,7 @@ function ViewSongChordManager() {
     const [, setIsAnyPopupOpen] = useState(false);
     const [transpose, setTranspose] = useState(0);
     const [imageURL, setImageURL] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
@@ -60,7 +60,6 @@ function ViewSongChordManager() {
         },
     }));
     useEffect(() => {
-        setLoading(true);
         axios.get(`${apiUrl}/getSong/` + id, data)
             .then(res => {
                 if (res.data.Status === "Success") {

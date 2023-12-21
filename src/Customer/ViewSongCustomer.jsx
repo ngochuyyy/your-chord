@@ -46,7 +46,7 @@ function ViewSongCustomer() {
     const [transpose, setTranspose] = useState(0);
     const [imageURL, setImageURL] = useState(null);
     const [hoveredTooltip, setHoveredTooltip] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
         '& .MuiToggleButtonGroup-grouped': {
@@ -64,7 +64,6 @@ function ViewSongCustomer() {
         },
     }));
     useEffect(() => {
-        setLoading(true);
         axios.get(`${apiUrl}/getSong/` + id, data)
             .then(res => {
                 if (res.data.Status === "Success") {
