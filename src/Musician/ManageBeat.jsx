@@ -7,6 +7,8 @@ function ManageBeat() {
     const navigate = useNavigate();
     const [beatGenres, setBeatGenres] = useState([]);
     const [beatSongCounts, setBeatSongCounts] = useState({});
+    const [loading, setLoading] = useState(true);
+
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -30,6 +32,7 @@ function ManageBeat() {
     ];
 
     const fetchData = async () => {
+        setLoading(true);
         try {
             const countRequests = beatGenresData.map((beat) =>
                 axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
@@ -46,9 +49,9 @@ function ManageBeat() {
             updatedGenres.forEach((beat) => {
                 songCountsMap[beat.beat_id] = beat.song_count;
             });
-
             setBeatGenres(updatedGenres);
             setBeatSongCounts(songCountsMap);
+            setLoading(false);
         } catch (error) {
             console.error(error);
         }
@@ -67,25 +70,35 @@ function ManageBeat() {
                         Manage Beat
                     </h3>
                 </div>
-                <div className="d-grid" style={{ padding: '5px' }}>
-                    <div className="list-grid">
-                        {beatGenres.map((beatGenre, index) => (
-                            <div
-                                key={index}
-                                className={`item-grid item-${index + 1}`}
-                                onClick={() => navigate(`/songBeatManager/${userId}/${beatGenre.beat_id.toLowerCase()}`)}
-                                style={{ cursor: 'pointer', border: '1px solid #ccc' }}
-                            >
-                                <h3>{beatGenre.beat_name}</h3>
-                                <h6 style={{ fontWeight: 'bold' }}>
-                                    {beatSongCounts[beatGenre.beat_id] !== undefined
-                                        ? `${beatSongCounts[beatGenre.beat_id]} bài`
-                                        : '0 bài'}
-                                </h6>
-                            </div>
-                        ))}
+                {loading ? (
+                    <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <p>Loading...</p>
                     </div>
-                </div>
+                )
+                    :
+                    <div className="d-grid" style={{ padding: '5px' }}>
+                        <div className="list-grid">
+                            {beatGenres.map((beatGenre, index) => (
+                                <div
+                                    key={index}
+                                    className={`item-grid item-${index + 1}`}
+                                    onClick={() => navigate(`/songBeatManager/${userId}/${beatGenre.beat_id.toLowerCase()}`)}
+                                    style={{ cursor: 'pointer', border: '1px solid #ccc' }}
+                                >
+                                    <h3>{beatGenre.beat_name}</h3>
+                                    <h6 style={{ fontWeight: 'bold' }}>
+                                        {beatSongCounts[beatGenre.beat_id] !== undefined
+                                            ? `${beatSongCounts[beatGenre.beat_id]} bài`
+                                            : '0 bài'}
+                                    </h6>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                }
             </div>
         </>
     );

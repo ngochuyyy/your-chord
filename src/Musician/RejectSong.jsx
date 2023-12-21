@@ -29,6 +29,7 @@ function RejectSong() {
     const [order, setOrder] = useState("asc");
     const [currentPage, setCurrentPage] = useState(1);
     const [imageURL, setImageURL] = useState(null);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const itemsPerPage = 5;
     const primaryColor = "#F1F1FB";
@@ -42,9 +43,11 @@ function RejectSong() {
     });
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     useEffect(() => {
+        setLoading(true);
         axios.get(`${apiUrl}/getSongReject`)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setData(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(data => `${data.image}`);
@@ -149,78 +152,130 @@ function RejectSong() {
                 <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }} >Not Approved</h3>
             </div>
             <div className='mt-4 pd-left'>
-                <TableContainer component={Paper}>
-                    <Table>
-                        <TableHead sx={{ backgroundColor: primaryColor }}>
-                            <TableRow>
-                                <TableCell><b>ID</b></TableCell>
-                                <TableCell></TableCell>
-                                <TableCell>
-                                    <TableSortLabel
-                                    >
-                                        <b>Name song</b>
-                                    </TableSortLabel>
-                                </TableCell>
-                                <TableCell><b>Link</b></TableCell>
-                                <TableCell>
-                                    <TableSortLabel
-                                        onClick={() => handleSort("created_at")}
-                                    >
-                                        <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date created</b>
-                                    </TableSortLabel>
-                                </TableCell>
-                                <TableCell>
-                                    <TableSortLabel
-                                        onClick={() => handleSort("updated_at")}
-                                    >
-                                        <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date updated</b>
-                                    </TableSortLabel>
-                                </TableCell>
-                                <TableCell><b>Status</b></TableCell>
-                                <TableCell></TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {
-                                currentItems.map((song, index) => (
-                                    <TableRow key={index} onClick={() => navigate(`/viewSongMusician/` + song.id)} style={{ cursor: 'pointer' }}>
-                                        <TableCell>{song.id}</TableCell>
-                                        <TableCell>
-                                            {imageURL && <img className="song_image" src={`data:image/png;base64,${song.thumbnail}`} />}
+                {filteredSongs.length === 0 ? (
 
+                    <>
+
+                        <TableContainer component={Paper}>
+                            <Table>
+                                <TableHead sx={{ backgroundColor: primaryColor }}>
+                                    <TableRow>
+                                        <TableCell><b>ID</b></TableCell>
+                                        <TableCell></TableCell>
+                                        <TableCell>
+                                            <TableSortLabel
+                                            >
+                                                <b>Name song</b>
+                                            </TableSortLabel>
+                                        </TableCell>
+                                        <TableCell><b>Link</b></TableCell>
+                                        <TableCell>
+                                            <TableSortLabel
+                                                onClick={() => handleSort("created_at")}
+                                            >
+                                                <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date created</b>
+                                            </TableSortLabel>
                                         </TableCell>
                                         <TableCell>
-                                            {song.song_title.length > 30 ?
-                                                <b>{song.song_title.substring(0, 20)}...</b> :
-                                                <b>{song.song_title} </b>
-                                            }
+                                            <TableSortLabel
+                                                onClick={() => handleSort("updated_at")}
+                                            >
+                                                <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date updated</b>
+                                            </TableSortLabel>
                                         </TableCell>
-                                        {song.link != null ?
-                                            <TableCell><Link to={song.link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{song.link.substring(0, 40)}...</Link></TableCell> :
-                                            <TableCell>Updating...</TableCell>
-                                        }
-                                        <TableCell>{moment(song.created_at).format('YYYY/MM/DD - HH:mm:ss')}</TableCell>
-                                        {song.updated_at != null ?
-                                            <TableCell>{moment(song.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</TableCell> :
-                                            <TableCell>Not update</TableCell>
-                                        }
-                                        <TableCell className="text-warning"><b>Waiting Approve</b></TableCell>
-                                        <TableCell>
-                                            {song.status === 0 ?
-                                                <Link
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        handleDelete(song.id);
-                                                    }} className='btn btn-sm btn-danger'><DeleteIcon /></Link>
-                                                :
-                                                ""
-                                            }
-                                        </TableCell>
+                                        <TableCell><b>Status</b></TableCell>
+                                        <TableCell></TableCell>
                                     </TableRow>
-                                ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                                </TableHead>
+                            </Table>
+                        </TableContainer>
+                        {loading ? (
+                            <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '50px' }}>
+                                <div className="spinner-border text-primary" role="status">
+                                    <p className="visually-hidden">Loading...</p>
+                                </div>
+                                <p>Loading...</p>
+                            </div>
+                        ) :
+                            <div>
+                                <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                            </div>
+                        }
+                    </>
+                ) : (
+                    <TableContainer component={Paper}>
+                        <Table>
+                            <TableHead sx={{ backgroundColor: primaryColor }}>
+                                <TableRow>
+                                    <TableCell><b>ID</b></TableCell>
+                                    <TableCell></TableCell>
+                                    <TableCell>
+                                        <TableSortLabel
+                                        >
+                                            <b>Name song</b>
+                                        </TableSortLabel>
+                                    </TableCell>
+                                    <TableCell><b>Link</b></TableCell>
+                                    <TableCell>
+                                        <TableSortLabel
+                                            onClick={() => handleSort("created_at")}
+                                        >
+                                            <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date created</b>
+                                        </TableSortLabel>
+                                    </TableCell>
+                                    <TableCell>
+                                        <TableSortLabel
+                                            onClick={() => handleSort("updated_at")}
+                                        >
+                                            <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date updated</b>
+                                        </TableSortLabel>
+                                    </TableCell>
+                                    <TableCell><b>Status</b></TableCell>
+                                    <TableCell></TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {
+                                    currentItems.map((song, index) => (
+                                        <TableRow key={index} onClick={() => navigate(`/viewSongMusician/` + song.id)} style={{ cursor: 'pointer' }}>
+                                            <TableCell>{song.id}</TableCell>
+                                            <TableCell>
+                                                {imageURL && <img className="song_image" src={`data:image/png;base64,${song.thumbnail}`} />}
+
+                                            </TableCell>
+                                            <TableCell>
+                                                {song.song_title.length > 30 ?
+                                                    <b>{song.song_title.substring(0, 20)}...</b> :
+                                                    <b>{song.song_title} </b>
+                                                }
+                                            </TableCell>
+                                            {song.link != null ?
+                                                <TableCell><Link to={song.link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{song.link.substring(0, 40)}...</Link></TableCell> :
+                                                <TableCell>Updating...</TableCell>
+                                            }
+                                            <TableCell>{moment(song.created_at).format('YYYY/MM/DD - HH:mm:ss')}</TableCell>
+                                            {song.updated_at != null ?
+                                                <TableCell>{moment(song.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</TableCell> :
+                                                <TableCell>Not update</TableCell>
+                                            }
+                                            <TableCell className="text-warning"><b>Waiting Approve</b></TableCell>
+                                            <TableCell>
+                                                {song.status === 0 ?
+                                                    <Link
+                                                        onClick={(e) => {
+                                                            e.stopPropagation();
+                                                            handleDelete(song.id);
+                                                        }} className='btn btn-sm btn-danger'><DeleteIcon /></Link>
+                                                    :
+                                                    ""
+                                                }
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                )}
                 <Stack spacing={2} direction="row" justifyContent="center" mt={3}>
                     <Pagination
                         count={totalPages}
