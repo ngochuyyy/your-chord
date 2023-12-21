@@ -29,8 +29,9 @@ function EditRequestChordMusician() {
                     user_id: res.data.Result[0].user_id,
                     request_date: res.data.Result[0].request_date
                 });
+                setLoading(false)
+
             })
-        setLoading(false)
             .catch((err) => console.log(err));
     }, []);
 
