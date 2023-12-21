@@ -187,7 +187,8 @@ function Login() {
                                     <div
                                         style={{
                                             textAlign: 'right',
-                                            marginTop: '5px', // Adjust the margin as needed
+                                            marginTop: '10px',
+                                            paddingLeft: '300px',
                                         }}
                                     >
                                         <Link className='font' onClick={() => setShowResetPassword(true)}>Forgot Password?</Link>
