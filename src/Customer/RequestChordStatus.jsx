@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import { Link } from 'react-router-dom'
-import AddIcon from '@mui/icons-material/Add';
 import Tooltip from '@material-ui/core/Tooltip';
 
 
@@ -116,16 +115,6 @@ function RequestChordStatus() {
         fetchOrderData();
     }, [userId]);
 
-    // const handleDecline = (itemId) => {
-    //     axios
-    //         .put(`${apiUrl}/declineOrder/` + itemId)
-    //         .then((res) => {
-    //             if (res.data.Status === 'Success') {
-    //                 window.location.reload(true);
-    //             }
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
     return (
         <>
             <SearchAppBar />
@@ -167,7 +156,7 @@ function RequestChordStatus() {
                             placement="bottom"
                         >
                             <Button type="primary" style={{ borderRadius: '40px' }}>
-                                <Link to={`/requestChord/${userId}`} ><AddIcon /></Link>
+                                <Link to={`/requestChord/${userId}`} >ADD NEW REQUEST</Link>
                             </Button>
                         </Tooltip>
 

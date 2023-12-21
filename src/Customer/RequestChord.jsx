@@ -11,12 +11,14 @@ function RequestChord() {
     const [artist, setArtist] = useState('');
     const [genre, setGenre] = useState('');
     const [link, setLink] = useState('');
+    const [loading, setLoading] = useState(false);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
     const navigate = useNavigate();
 
     const handleConfirmOrder = async (event) => {
+        setLoading(true);
         event.preventDefault();
         const form = event.target;
         if (!form.checkValidity()) {
@@ -33,6 +35,7 @@ function RequestChord() {
         try {
             const response = await axios.post(`${apiUrl}/requestChord/${userId}`, formData);
             if (response.data.Status === 'Success') {
+                setLoading(false);
                 navigate(`/requestChordStatus/${userId}`);
             }
 
@@ -118,7 +121,15 @@ function RequestChord() {
                                 </div>
                             </div>
                             <hr className="mb-4" />
-                            <button className="btn btn-primary btn-block" type="submit">Confirm order</button>
+                            {loading ? (
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <div className="spinner-border text-primary" role="status">
+                                        <span className="visually-hidden">Loading...</span>
+                                    </div>
+                                </div>
+                            ) :
+                                <button className="btn btn-primary btn-block" type="submit">Confirm order</button>
+                            }
                         </form>
                     </div>
                 </div>
