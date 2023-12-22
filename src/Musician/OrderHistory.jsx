@@ -75,7 +75,7 @@ function OrderHistory() {
                 <div className="d-flex flex-column align-items-center pt-2">
                     <div className="d-flex flex-column align-items-center pt-4">
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>
-                            Transaction History
+                            Order History
                         </h3>
                     </div>
                     <Table columns={columns} dataSource={data} style={{ width: '1200px', marginTop: '30px', marginBottom: '120px' }} />
