@@ -1,5 +1,6 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 import SignUp from './SignUp'
 import Login from './Login'
@@ -68,11 +69,22 @@ import RequestChord from './Customer/RequestChord';
 import RequestChordStatus from './Customer/RequestChordStatus';
 import ViewRequestChord from './Customer/ViewRequestChord';
 import ViewRequestChordMusician from './Musician/ViewRequestChordMusician';
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 function App() {
   return (
     // <BrowserRouter>
 
     <Router>
+      <ScrollToTop />
+
       <Routes>
         <Route
           path="/"
