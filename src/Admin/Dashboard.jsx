@@ -203,7 +203,7 @@ function Dashboard() {
                                                         <ListItemIcon>
                                                             <DvrIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                                         </ListItemIcon>
-                                                        <ListItemText><span className="fontDashboard">Course</span></ListItemText>
+                                                        <ListItemText><span className="fontDashboard">Request Course</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
                                                 <List sx={{ width: '40%', paddingTop: '20px' }}>
