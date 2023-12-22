@@ -277,7 +277,7 @@ export default function Feedback() {
                                             {!renderTableRows('recently').some(row => row !== null) ?
                                                 (
 
-                                                    <div className="text-center"><em>No comment available</em></div>
+                                                    <div className="text-center"><b>No comment available</b></div>
                                                 )
                                                 :
                                                 <table className='custom-table table'>
@@ -339,7 +339,7 @@ export default function Feedback() {
                                             {!renderTableRows('recently').some(row => row !== null) ?
                                                 (
 
-                                                    <div className="text-center"><em>No comment available</em></div>
+                                                    <div className="text-center"><b>No comment available</b></div>
                                                 )
                                                 :
                                                 <table className='custom-table table'>
