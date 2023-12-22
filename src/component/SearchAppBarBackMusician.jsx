@@ -23,7 +23,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCircle';
-import ListAltIcon from '@mui/icons-material/ListAlt';
+import HistoryIcon from '@mui/icons-material/History';
 import FlakyIcon from '@mui/icons-material/Flaky';
 import MusicOffIcon from '@mui/icons-material/MusicOff';
 import axios from 'axios';
@@ -299,15 +299,15 @@ export default function SearchAppBarBackMusican() {
                                                     <ListItemText><span className="fontDashboard">Order</span></ListItemText>
                                                 </ListItemButton>
                                                 <ListItemButton style={{ borderRadius: '20px' }}
-                                                    className={`dashboard-button ${activeButton === 'transactionHistory' ? 'clicked' : ''}`}
+                                                    className={`dashboard-button ${activeButton === 'orderHistory' ? 'clicked' : ''}`}
                                                     onClick={(e) => {
-                                                        handleButtonClick(e, 'transactionHistory');
-                                                        navigate(`/transactionHistory/`)
-                                                    }}>
+                                                        handleButtonClick(e, 'orderHistory');
+                                                        navigate(`/orderHistory/${profile.userId}`)
+                                                    }}  >
                                                     <ListItemIcon>
-                                                        <ListAltIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                        <HistoryIcon color="primary" fontSize='medium' />
                                                     </ListItemIcon>
-                                                    <ListItemText><span className="fontDashboard">Transaction History</span></ListItemText>
+                                                    <ListItemText><span className="fontDashboard">History</span></ListItemText>
                                                 </ListItemButton>
                                             </List>
                                         </Collapse>
