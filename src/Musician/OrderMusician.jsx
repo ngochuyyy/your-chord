@@ -43,7 +43,7 @@ function OrderMusician() {
             dataIndex: 'description',
         },
         {
-            title: 'Price',
+            title: 'Price ($)',
             dataIndex: 'price',
             width: 200,
             render: (text, record) => (
