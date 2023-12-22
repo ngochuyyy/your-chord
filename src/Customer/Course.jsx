@@ -29,6 +29,9 @@ function Course() {
     const handleTabChange = (event, newValue) => {
         setSelectedCourse(newValue);
         setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+        }, 1000);
     };
     useEffect(() => {
         setSelectedCourse(null);
