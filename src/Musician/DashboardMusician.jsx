@@ -28,6 +28,7 @@ import InfoContainer from '../component/InfoContainer';
 import DvrIcon from '@mui/icons-material/Dvr';
 import AddIcon from '@mui/icons-material/Add';
 import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
+import HistoryIcon from '@mui/icons-material/History';
 
 function DashboardMusician() {
     const [data, setData] = useState([]);
@@ -250,6 +251,17 @@ function DashboardMusician() {
                                                                 <PlaylistAddCheckCircleIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
                                                             <ListItemText><span className="fontDashboard">Order</span></ListItemText>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '20px' }}
+                                                            className={`dashboard-button ${activeButton === 'orderHistory' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'transactionHistory');
+                                                                navigate(`/orderHistory/${profile.userId}`)
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <HistoryIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                            <ListItemText><span className="fontDashboard">Transaction History</span></ListItemText>
                                                         </ListItemButton>
                                                         {/* <ListItemButton style={{ borderRadius: '20px' }}
                                                                 className={`dashboard-button ${activeButton === 'transactionHistory' ? 'clicked' : ''}`}

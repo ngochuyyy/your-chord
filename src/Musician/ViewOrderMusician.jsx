@@ -237,12 +237,15 @@ function ViewOrderMusician() {
                                 <div key={index}>
                                     <form className="needs-validation" noValidate>
                                         <div className="row">
-                                            <div className="mb-3">
+                                            <div className="col-md-6 mb-3">
                                                 <b htmlFor="title">Song title</b>
                                                 <p>{order.song_name}</p>
                                             </div>
+                                            <div className="col-md-6 mb-3">
+                                                <b htmlFor="artist">Artist</b>
+                                                <p>{order.artist_name}</p>
+                                            </div>
                                         </div>
-
                                         <div className="mb-3">
                                             <b htmlFor="lyric">Lyric</b>
                                             <div className="input-group">
@@ -260,11 +263,6 @@ function ViewOrderMusician() {
                                                     Lyric is required.
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div className="mb-3">
-                                            <b htmlFor="artist">Artist</b>
-                                            <p>{order.artist_name}</p>
                                         </div>
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
