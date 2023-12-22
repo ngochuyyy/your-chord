@@ -176,7 +176,7 @@ function ViewRejectCourse() {
                                                 fullWidth
                                                 value={editedData.link}
                                                 onChange={handleInputChange}
-                                                style={{ marginLeft: '100px', marginBottom: '20px', width: '350px' }}
+                                                style={{ marginLeft: '100px', marginBottom: '20px', width: '500px' }}
                                             />
                                         ) : (
                                             <Link to={editMode ? editedData.link : order.link} style={{ marginLeft: '100px', cursor: 'pointer', textDecoration: 'none' }}>
