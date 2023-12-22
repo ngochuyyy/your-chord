@@ -255,13 +255,13 @@ function DashboardMusician() {
                                                         <ListItemButton style={{ borderRadius: '20px' }}
                                                             className={`dashboard-button ${activeButton === 'orderHistory' ? 'clicked' : ''}`}
                                                             onClick={(e) => {
-                                                                handleButtonClick(e, 'transactionHistory');
+                                                                handleButtonClick(e, 'orderHistory');
                                                                 navigate(`/orderHistory/${profile.userId}`)
                                                             }}  >
                                                             <ListItemIcon>
                                                                 <HistoryIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
-                                                            <ListItemText><span className="fontDashboard">Transaction History</span></ListItemText>
+                                                            <ListItemText><span className="fontDashboard">History</span></ListItemText>
                                                         </ListItemButton>
                                                         {/* <ListItemButton style={{ borderRadius: '20px' }}
                                                                 className={`dashboard-button ${activeButton === 'transactionHistory' ? 'clicked' : ''}`}
@@ -437,6 +437,16 @@ function DashboardMusician() {
                                                             }}  >
                                                             <ListItemIcon>
                                                                 <PlaylistAddCheckCircleIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '50px' }}
+                                                            className={`dashboard-button ${activeButton === 'orderHistory' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'orderHistory');
+                                                                navigate(`/orderHistory/${profile.userId}`)
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <HistoryIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
                                                         </ListItemButton>
                                                         {/* <ListItemButton style={{ borderRadius: '50px' }}
