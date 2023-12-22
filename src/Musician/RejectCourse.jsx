@@ -271,7 +271,7 @@ function RejectCourse() {
                                                     <TableCell>{moment(request.upload_date).format('YYYY/MM/DD - HH:mm:ss')}</TableCell>
                                                     : <TableCell>Invalid Date</TableCell>
                                                 }
-                                                <TableCell>Pending...</TableCell>
+                                                <TableCell>Rejected</TableCell>
                                                 <TableCell>
                                                     <Button
                                                         style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
