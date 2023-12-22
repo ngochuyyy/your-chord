@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
 import YouTube from 'react-youtube';
+import TextField from '@mui/material/TextField';
 
 function ViewRejectCourse() {
     const [requestData, setRequestData] = useState([]);
@@ -145,16 +146,19 @@ function ViewRejectCourse() {
                                 <div className="row">
                                     <div className="col-md-6 text-start pe-4">
                                         <b htmlFor="title" style={{ marginLeft: '100px' }}>Course name:</b>
-                                        <p style={{ marginLeft: '100px' }}>{editMode ? (
-                                            <input
-                                                type="text"
-                                                name="course_name"
-                                                value={editedData.course_name}
-                                                onChange={handleInputChange}
-                                            />
-                                        ) : (
-                                            order.course_name
-                                        )}</p>
+                                        <p style={{ marginLeft: '100px' }}>
+                                            {editMode ? (
+                                                <TextField
+                                                    name="course_name"
+                                                    variant="outlined"
+                                                    fullWidth
+                                                    value={editedData.course_name}
+                                                    onChange={handleInputChange}
+                                                />
+                                            ) : (
+                                                order.course_name
+                                            )}
+                                        </p>
                                     </div>
                                     <div className="col-md-6 text-end pe-4">
                                         <b htmlFor="duration" className="form-label" style={{ marginRight: '100px' }}>Poster / Uploader:</b>
@@ -166,12 +170,13 @@ function ViewRejectCourse() {
                                         <b htmlFor="cc-link" className="text-start" style={{ marginLeft: '100px' }}>Link youtube</b>
                                         <br />
                                         {editMode ? (
-                                            <input
-                                                type="text"
+                                            <TextField
                                                 name="link"
+                                                variant="outlined"
+                                                fullWidth
                                                 value={editedData.link}
                                                 onChange={handleInputChange}
-                                                style={{ marginLeft: '100px', width: '80%', padding: '8px' }}
+                                                style={{ marginLeft: '100px' }}
                                             />
                                         ) : (
                                             <Link to={editMode ? editedData.link : order.link} style={{ marginLeft: '100px', cursor: 'pointer', textDecoration: 'none' }}>
