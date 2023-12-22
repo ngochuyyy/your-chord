@@ -76,21 +76,18 @@ function ProfileChordManager() {
         axios.get(`${apiUrl}/getAccount/` + userId)
             .then(res => {
                 if (res.data.Status === "Success") {
+                    setLoading(false);
                     setDataProfile(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const profileImages = res.data.Result.map(editAccount => `${editAccount.image}`);
                         setImageURL(profileImages);
                     }
-                    setLoading(false);
+
                 } else {
-                    alert("Error");
-                    setLoading(false);
+                    alert("Error")
                 }
             })
-            .catch(err => {
-                console.log(err);
-                setLoading(false);
-            });
+            .catch(err => console.log(err));
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
