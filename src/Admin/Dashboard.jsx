@@ -94,10 +94,10 @@ function Dashboard() {
                                     <button className="btn btn-sm" >
                                         {collapsed ?
                                             <ArrowRightIcon onClick={handleToggleCollapse} color='primary' fontSize='medium'
-                                                style={{ position: 'absolute', right: '-20%', top: '16%', width: '35px', height: '35px', background: '#fff', borderRadius: '40px' }} />
+                                                style={{ position: 'absolute', right: '-20%', top: '14%', width: '35px', height: '35px', background: '#fff', borderRadius: '40px' }} />
                                             :
                                             <ArrowLeftIcon onClick={handleToggleCollapse} color='primary' fontSize='medium'
-                                                style={{ position: 'absolute', right: '-6%', top: '16%', width: '35px', height: '35px', background: '#fff', borderRadius: '40px' }} />}
+                                                style={{ position: 'absolute', right: '-6%', top: '14%', width: '35px', height: '35px', background: '#fff', borderRadius: '40px' }} />}
                                     </button>
                                     {!collapsed ?
                                         (
