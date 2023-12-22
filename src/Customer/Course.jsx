@@ -137,8 +137,7 @@ function Course() {
                                 borderColor: 'divider',
                                 width: '20%',
                                 height: '64vh',
-                            }}
-                        >
+                            }}>
                             {filteredRequestCourse.map((course, index) => (
                                 <Tab
                                     key={index}
@@ -161,29 +160,39 @@ function Course() {
                                     <p>
                                         <b>Poster:</b> {filteredRequestCourse[selectedCourse].userId}
                                     </p>
-                                    {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
-                                        <YouTube
-                                            videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
-                                            opts={{
-                                                playerVars: {
-                                                    modestbranding: 1,
-                                                },
-                                                host: 'https://www.youtube-nocookie.com',
-                                            }}
-                                        />
-                                    )}
 
-                                    {filteredRequestCourse[selectedCourse].videoFile && (
-                                        <video controls width="640" height="400" controlsList="nodownload">
-                                            <source
-                                                src={generateBlobUrl(
-                                                    new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
-                                                    'video/*'
-                                                )}
-                                                type="video/mp4"
+
+                                    <div style={{
+                                        width: 'fit-content',
+                                        backgroundColor: '#ccc',
+                                        padding: '10px',
+                                        borderRadius: '10px',
+                                        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                    }}>
+                                        {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                }}
                                             />
-                                        </video>
-                                    )}
+                                        )}
+
+                                        {filteredRequestCourse[selectedCourse].videoFile && (
+                                            <video controls width="640" height="400" controlsList="nodownload">
+                                                <source
+                                                    src={generateBlobUrl(
+                                                        new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
+                                                        'video/*'
+                                                    )}
+                                                    type="video/mp4"
+                                                />
+                                            </video>
+                                        )}
+                                    </div>
                                 </div>
                             )}
                         </Box>
