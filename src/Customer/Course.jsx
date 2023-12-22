@@ -136,7 +136,7 @@ function Course() {
                                 borderRight: 1,
                                 borderColor: 'divider',
                                 width: '20%',
-                                height: '64vh',
+                                height: '65vh',
                             }}>
                             {filteredRequestCourse.map((course, index) => (
                                 <Tab
