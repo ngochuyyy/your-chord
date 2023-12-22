@@ -18,7 +18,7 @@ import Stack from '@mui/material/Stack';
 function SongCustomer() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
-    const [orderBy, setOrderBy] = useState('created_at');
+    const [orderBy, setOrderBy] = useState('all');
     const [order, setOrder] = useState('asc');
     const [modalOpen, setModalOpen] = useState(false);
     const [dataPlaylist, setDataPlaylist] = useState([]);
@@ -89,6 +89,10 @@ function SongCustomer() {
     }, []);
 
     const handleSort = (field) => {
+        if (field === 'all') {
+            window.location.reload(true);
+            return;
+        }
         setOrderBy(field);
         setOrder(order === 'asc');
     };
@@ -236,6 +240,12 @@ function SongCustomer() {
                 </ThemeProvider>
             </Box>
             <div className="sort-button-container">
+                <button
+                    className={`sort-button ${orderBy === 'all' ? 'active' : ''}`}
+                    onClick={() => handleSort('all')}
+                >
+                    All
+                </button>
                 <button
                     className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
                     onClick={() => handleSort('created_at')}
