@@ -28,6 +28,7 @@ function Course() {
     const [selectedCourse, setSelectedCourse] = useState(null);
     const handleTabChange = (event, newValue) => {
         setSelectedCourse(newValue);
+        setLoading(true);
     };
     useEffect(() => {
         setSelectedCourse(null);
