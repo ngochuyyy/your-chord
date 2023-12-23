@@ -23,6 +23,10 @@ function OrderStatus() {
             width: 100,
         },
         {
+            title: 'Musician',
+            dataIndex: 'musician_id',
+        },
+        {
             title: 'Genre',
             dataIndex: 'genre',
         },
@@ -236,6 +240,7 @@ function OrderStatus() {
                                 status: item.status,
                                 price: item.price,
                                 duration: item.duration,
+                                musician_id: item.musician_id,
 
                             }))}
                         />

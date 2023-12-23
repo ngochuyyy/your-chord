@@ -3,11 +3,11 @@ import SearchAppBar from '../component/SearchAppBar';
 import { Space, Table, Input, Button } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from '@mui/material';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
 
 
-function OrderMusician() {
+function OrderMusicianAccept() {
     const [orderData, setOrderData] = useState([]);
     const [editedItemId, setEditedItemId] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -44,7 +44,7 @@ function OrderMusician() {
             dataIndex: 'description',
         },
         {
-            title: 'Price ($)',
+            title: 'Price',
             dataIndex: 'price',
             width: 200,
             render: (text, record) => (
@@ -119,7 +119,7 @@ function OrderMusician() {
             render: (text, record) => (
                 <Space size="middle">
                     <Button type="primary" style={{ borderRadius: '40px' }}>
-                        <Link to={`/viewOrderMusician/${record.id}`} style={{ textDecoration: 'none', cursor: 'pointer' }}>View</Link>
+                        <Link href={`/viewOrderMusician/${record.id}`}>View</Link>
                     </Button>
                 </Space >
             ),
@@ -132,20 +132,21 @@ function OrderMusician() {
                 setLoading(true);
                 const response = await axios.get(`${apiUrl}/getOrder`);
                 if (response.data.Status === 'Success') {
-                    const filteredData = response.data.data.filter(item => item.musician_id === null);
+                    // Lọc chỉ những đơn hàng có musician_id là null
+                    const filteredData = response.data.data.filter(item => item.musician_id === userId);
                     setOrderData(filteredData);
                 } else {
                     console.error('Failed to fetch order data:', response.data.Error);
                 }
             } catch (error) {
                 console.error('Error fetching order data:', error.message);
-            }
-            finally {
+            } finally {
                 setLoading(false);
             }
         };
         fetchOrderData();
     }, []);
+
     const handlePriceChange = (itemId, newPrice) => {
         setOrderData((prevData) => {
             return prevData.map((item) =>
@@ -195,12 +196,13 @@ function OrderMusician() {
     };
 
 
-    const handleAccept = (itemId) => {
+    // Sửa hàm handleAccept trong mã frontend
+    const handleAccept = (itemId, userId) => {
         axios
-            .put(`${apiUrl}/acceptOrder/` + itemId)
+            .put(`${apiUrl}/acceptOrder/${itemId}/${userId}`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    window.location.reload(true);
+                    console.log("success")
                 }
             })
             .catch((err) => console.log(err));
@@ -220,17 +222,16 @@ function OrderMusician() {
         const currentDate = moment();
         const durationDate = moment(record.duration);
 
-        return currentDate.isAfter(durationDate) && record.status !== 3;
+        return currentDate.isAfter(durationDate);
     };
     return (
         <>
             <SearchAppBar />
             {loading ? (
-                <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <div className="spinner-border text-primary" role="status">
                         <span className="visually-hidden">Loading...</span>
                     </div>
-                    <p>Loading...</p>
                 </div>
             )
                 :
@@ -259,4 +260,4 @@ function OrderMusician() {
         </>
     );
 }
-export default OrderMusician;
+export default OrderMusicianAccept;

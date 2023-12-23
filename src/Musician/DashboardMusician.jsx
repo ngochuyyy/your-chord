@@ -29,6 +29,7 @@ import DvrIcon from '@mui/icons-material/Dvr';
 import AddIcon from '@mui/icons-material/Add';
 import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
 import HistoryIcon from '@mui/icons-material/History';
+import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
 
 function DashboardMusician() {
     const [data, setData] = useState([]);
@@ -250,7 +251,18 @@ function DashboardMusician() {
                                                             <ListItemIcon>
                                                                 <PlaylistAddCheckCircleIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
-                                                            <ListItemText><span className="fontDashboard">Order</span></ListItemText>
+                                                            <ListItemText><span className="fontDashboard">List Order</span></ListItemText>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '20px' }}
+                                                            className={`dashboard-button ${activeButton === 'orderMusicianAccept' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'orderMusicianAccept');
+                                                                navigate(`/orderMusicianAccept/${profile.userId}`)
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <BookmarkAddedIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                            <ListItemText><span className="fontDashboard">Your Order</span></ListItemText>
                                                         </ListItemButton>
                                                         <ListItemButton style={{ borderRadius: '20px' }}
                                                             className={`dashboard-button ${activeButton === 'orderHistory' ? 'clicked' : ''}`}
