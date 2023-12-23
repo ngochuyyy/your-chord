@@ -195,12 +195,12 @@ function OrderMusician() {
     };
 
 
-    const handleAccept = (itemId) => {
+    const handleAccept = (itemId, userId) => {
         axios
-            .put(`${apiUrl}/acceptOrder/` + itemId)
+            .put(`${apiUrl}/acceptOrder/${itemId}/${userId}`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    window.location.reload(true);
+                    console.log("success")
                 }
             })
             .catch((err) => console.log(err));
