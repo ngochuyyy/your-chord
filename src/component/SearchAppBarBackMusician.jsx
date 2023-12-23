@@ -317,7 +317,7 @@ export default function SearchAppBarBackMusican() {
                                                         navigate(`/orderHistory/${profile.userId}`)
                                                     }}  >
                                                     <ListItemIcon>
-                                                        <HistoryIcon color="primary" fontSize='medium' />
+                                                        <HistoryIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                                     </ListItemIcon>
                                                     <ListItemText><span className="fontDashboard">History</span></ListItemText>
                                                 </ListItemButton>
