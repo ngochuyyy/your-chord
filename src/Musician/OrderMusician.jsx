@@ -58,7 +58,7 @@ function OrderMusician() {
                     {editedItemId === record.id ? (
                         <Button
                             type="primary"
-                            onClick={() => handleSavePrice(record.id, record.price)}
+                            onClick={() => handleSavePrice(record.id, record.price, userId)}
                             style={{ marginTop: '10px' }}
                         >
                             Save
@@ -97,16 +97,13 @@ function OrderMusician() {
                                             <button className='btn-do'>
                                                 Do it
                                             </button>
-                                        ) : record.status === 3 ? (
+                                        ) : record.status === 3 && (
                                             <button className='btn-accept'>
                                                 Completed
                                             </button>
                                         )
-                                            : (
-                                                <Button className='btn-accept' onClick={() => handleAccept(record.id, userId)}>
-                                                    Accept
-                                                </Button>
-                                            )}
+
+                                    }
                                 </>
                             )}
                         </>
@@ -162,11 +159,11 @@ function OrderMusician() {
     };
 
 
-    const handleSavePrice = async (itemId, newPrice) => {
+    const handleSavePrice = async (itemId, newPrice, userId) => {
         try {
             const orderToUpdate = orderData.find(item => item.id === itemId);
             if (orderToUpdate && (orderToUpdate.status === 0 || orderToUpdate.status === null)) {
-                const response = await axios.put(`${apiUrl}/updatePrice/${itemId}`, {
+                const response = await axios.put(`${apiUrl}/acceptOrder/${itemId}/${userId}`, {
                     newPrice: newPrice,
                 });
 
@@ -178,9 +175,9 @@ function OrderMusician() {
                         );
                     });
 
-                    if (orderToUpdate.status === 0) {
-                        handleAccept(itemId);
-                    }
+                    // if (orderToUpdate.status === 0) {
+                    //     handleAccept(itemId);
+                    // }
                 } else {
                     console.error('Failed to save price:', response.data.Error);
                 }
@@ -195,16 +192,16 @@ function OrderMusician() {
     };
 
 
-    const handleAccept = (itemId, userId) => {
-        axios
-            .put(`${apiUrl}/acceptOrder/${itemId}/${userId}`)
-            .then((res) => {
-                if (res.data.Status === 'Success') {
-                    console.log("success")
-                }
-            })
-            .catch((err) => console.log(err));
-    };
+    // const handleAccept = (itemId, userId) => {
+    //     axios
+    //         .put(`${apiUrl}/acceptOrder/${itemId}/${userId}`)
+    //         .then((res) => {
+    //             if (res.data.Status === 'Success') {
+    //                 console.log("success")
+    //             }
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
 
     const handleDecline = (itemId) => {
         axios
