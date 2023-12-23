@@ -175,9 +175,9 @@ function OrderMusician() {
                         );
                     });
 
-                    // if (orderToUpdate.status === 0) {
-                    //     handleAccept(itemId);
-                    // }
+                    if (orderToUpdate.status === 0) {
+                        handleAccept(itemId);
+                    }
                 } else {
                     console.error('Failed to save price:', response.data.Error);
                 }
@@ -192,16 +192,16 @@ function OrderMusician() {
     };
 
 
-    // const handleAccept = (itemId, userId) => {
-    //     axios
-    //         .put(`${apiUrl}/acceptOrder/${itemId}/${userId}`)
-    //         .then((res) => {
-    //             if (res.data.Status === 'Success') {
-    //                 console.log("success")
-    //             }
-    //         })
-    //         .catch((err) => console.log(err));
-    // };
+    const handleAccept = (itemId) => {
+        axios
+            .put(`${apiUrl}/acceptOrder/${itemId}/`)
+            .then((res) => {
+                if (res.data.Status === 'Success') {
+                    console.log("success")
+                }
+            })
+            .catch((err) => console.log(err));
+    };
 
     const handleDecline = (itemId) => {
         axios
