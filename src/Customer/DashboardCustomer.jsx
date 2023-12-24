@@ -175,7 +175,7 @@ function DashboardCustomer() {
                                                 <ListItemIcon>
                                                     <DvrIcon color="primary" fontSize='medium' />
                                                 </ListItemIcon>
-                                                <ListItemText><span className="fontDashboard">Basic Course</span></ListItemText>
+                                                <ListItemText><span className="fontDashboard">Course</span></ListItemText>
                                             </ListItemButton>
                                         </List>
 

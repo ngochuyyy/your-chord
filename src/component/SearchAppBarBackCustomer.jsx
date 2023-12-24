@@ -238,7 +238,7 @@ export default function SearchAppBarBackCustomer() {
                                             <ListItemIcon>
                                                 <DvrIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                             </ListItemIcon>
-                                            <ListItemText><span className="fontDashboard">Basic Course</span></ListItemText>
+                                            <ListItemText><span className="fontDashboard">Course</span></ListItemText>
                                         </ListItemButton>
                                     </List>
                                     <List sx={{ paddingTop: '20px' }}>
