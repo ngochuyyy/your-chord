@@ -90,12 +90,13 @@ function SongCustomer() {
 
     const handleSort = (field) => {
         if (field === 'all') {
-            window.location.reload(true);
-            return;
+            // Reset the genre filter
+            setSelectedBeatType(null);
         }
         setOrderBy(field);
         setOrder(order === 'asc');
     };
+
     const handleFilterByBeatType = (beatType) => {
         setLoading(true)
         if (beatType) {
