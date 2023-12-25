@@ -98,6 +98,7 @@ function SongCustomer() {
     };
 
     const handleFilterByBeatType = (beatType) => {
+        handleSort(null);
         setLoading(true)
         if (beatType) {
             axios.get(`${apiUrl}/getSongsByGenre/${beatType}`)
