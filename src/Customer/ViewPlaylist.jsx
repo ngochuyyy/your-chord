@@ -17,7 +17,7 @@ import { Link } from 'react-router-dom';
 function ViewPlaylist() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
-    const [orderBy, setOrderBy] = useState('created_at');
+    const [orderBy, setOrderBy] = useState('updated_at');
     const [order, setOrder] = useState('asc');
     const { id } = useParams();
     const [imageURL, setImageURL] = useState(null);
@@ -151,12 +151,6 @@ function ViewPlaylist() {
                         <>
                             <div className="sort-button-container">
                                 <button
-                                    className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
-                                    onClick={() => handleSort('created_at')}
-                                >
-                                    New
-                                </button>
-                                <button
                                     className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
                                     onClick={() => handleSort('updated_at')}
                                 >
@@ -167,27 +161,6 @@ function ViewPlaylist() {
                                     onClick={() => handleSort('date_added')}
                                 >
                                     Added
-                                </button>
-                                <button className={`sort-button ${orderBy === 'popular' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> Popular
-                                </button>
-                                <button className={`sort-button ${orderBy === 'pop' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> Pop
-                                </button>
-                                <button className={`sort-button ${orderBy === 'rock' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> Rock
-                                </button>
-                                <button className={`sort-button ${orderBy === 'jazz' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> Jazz
-                                </button>
-                                <button className={`sort-button ${orderBy === 'acoustic' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> Acoustic
-                                </button>
-                                <button className={`sort-button ${orderBy === 'ballad' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> Ballad
-                                </button>
-                                <button className={`sort-button ${orderBy === 'r&b' ? 'active' : ''}`}>
-                                    <SortIcon className="sort-icon" /> R&b
                                 </button>
                             </div>
                             <div className="song-list-container">
