@@ -90,8 +90,8 @@ function SongCustomer() {
 
     const handleSort = (field) => {
         if (field === 'all') {
-            // Reset the genre filter
             setSelectedBeatType(null);
+            window.location.reload(true);
         }
         setOrderBy(field);
         setOrder(order === 'asc');
