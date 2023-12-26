@@ -3,7 +3,7 @@ import SearchAppBar from '../component/SearchAppBar';
 import { Space, Table, Input, Button } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from '@mui/material';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 
@@ -115,7 +115,7 @@ function OrderMusicianAccept() {
             render: (text, record) => (
                 <Space size="middle">
                     <Button type="primary" style={{ borderRadius: '40px' }}>
-                        <Link href={`/viewOrderMusician/${record.id}`}>View</Link>
+                        <Link to={`/viewOrderMusician/${record.id}`}>View</Link>
                     </Button>
                 </Space >
             ),
