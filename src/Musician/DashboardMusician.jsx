@@ -30,6 +30,7 @@ import AddIcon from '@mui/icons-material/Add';
 import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
 import HistoryIcon from '@mui/icons-material/History';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
+import { red } from '@mui/material/colors';
 
 function DashboardMusician() {
     const [data, setData] = useState([]);
@@ -129,10 +130,14 @@ function DashboardMusician() {
                                             <ListItem >
                                                 <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
                                                     <Avatar>
-                                                        {imageURL &&
+                                                        {imageURL && profile.image != "" ?
                                                             (
                                                                 <img src={`data:image/png;base64,${profile.image}`} className='profile_image' />
                                                             )
+                                                            :
+                                                            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                                U
+                                                            </Avatar>
                                                         }
                                                     </Avatar>
                                                 </ListItemAvatar>
