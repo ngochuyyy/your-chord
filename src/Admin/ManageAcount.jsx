@@ -947,7 +947,7 @@ function ManageAccount() {
                                                             viewAccount.image !== '' ?
                                                                 <img className="profile-avatar-account" src={`data:image/png;base64,${viewAccount.image}`} width="150px" />
                                                                 :
-                                                                <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px', fontSize: '5rem' }} aria-label="recipe">
+                                                                <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px', fontSize: '5rem', borderRadius: "30%" }} aria-label="recipe">
                                                                     U
                                                                 </Avatar>
                                                         )}
