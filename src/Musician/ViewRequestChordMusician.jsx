@@ -137,7 +137,11 @@ function ViewRequestChordMusician() {
                                                 :
                                                 <>
 
-                                                    {request.status !== null ?
+                                                    {request.status === 1 ?
+                                                        <button className="btn btn-primary" onClick={handleClose}>
+                                                            Close
+                                                        </button>
+                                                        :
                                                         <>
                                                             <button className="btn btn-primary" onClick={() => navigate(`/editRequestChordMusician/${id}`)}>
                                                                 Edit
@@ -146,11 +150,6 @@ function ViewRequestChordMusician() {
                                                                 Close
                                                             </button>
                                                         </>
-
-                                                        :
-                                                        <button className="btn btn-primary" onClick={handleClose}>
-                                                            Close
-                                                        </button>
                                                     }
                                                 </>
                                             }
