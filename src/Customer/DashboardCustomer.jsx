@@ -30,6 +30,8 @@ import PlaylistAddCheckCircleIcon from '@mui/icons-material/PlaylistAddCheckCirc
 import DvrIcon from '@mui/icons-material/Dvr';
 import HistoryIcon from '@mui/icons-material/History';
 import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
+import { red } from '@mui/material/colors';
+
 function DashboardCustomer() {
     const [data, setData] = useState([]);
     axios.defaults.withCredentials = true;
@@ -129,10 +131,14 @@ function DashboardCustomer() {
                                         <ListItem>
                                             <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none">
                                                 <Avatar>
-                                                    {imageURL &&
+                                                    {imageURL && profile.image != "" ?
                                                         (
                                                             <img src={`data:image/png;base64,${profile.image}`} className='profile_image' />
                                                         )
+                                                        :
+                                                        <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                            U
+                                                        </Avatar>
                                                     }
                                                 </Avatar>
                                             </ListItemAvatar>

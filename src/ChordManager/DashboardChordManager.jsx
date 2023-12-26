@@ -20,6 +20,7 @@ import ModeIcon from '@mui/icons-material/Mode';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import { red } from '@mui/material/colors';
 
 function DashboardChordManager() {
     const [data, setData] = useState([]);
@@ -102,10 +103,14 @@ function DashboardChordManager() {
                                             <ListItem >
                                                 <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
                                                     <Avatar>
-                                                        {imageURL &&
+                                                        {imageURL && profile.image != "" ?
                                                             (
                                                                 <img src={`data:image/png;base64,${profile.image}`} className='profile_image' />
                                                             )
+                                                            :
+                                                            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                                U
+                                                            </Avatar>
                                                         }
                                                     </Avatar>
                                                 </ListItemAvatar>

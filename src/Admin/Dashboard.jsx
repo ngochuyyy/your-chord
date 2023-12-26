@@ -23,6 +23,8 @@ import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import InfoContainer from '../component/InfoContainer';
 import DvrIcon from '@mui/icons-material/Dvr';
+import { red } from '@mui/material/colors';
+
 function Dashboard() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [datachord, setDataChord] = useState([]);
@@ -105,10 +107,14 @@ function Dashboard() {
                                                 <ListItem >
                                                     <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
                                                         <Avatar>
-                                                            {imageURL &&
+                                                            {imageURL && profile.image != "" ?
                                                                 (
                                                                     <img src={`data:image/png;base64,${profile.image}`} className='profile_image' />
                                                                 )
+                                                                :
+                                                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                                    U
+                                                                </Avatar>
                                                             }
                                                         </Avatar>
                                                     </ListItemAvatar>
