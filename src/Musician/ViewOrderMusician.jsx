@@ -97,7 +97,7 @@ function ViewOrderMusician() {
     };
 
 
-    const handleSubmitorder = async () => {
+    const handleSubmitOrder = async () => {
         try {
             setIsSubmitting(true);
 
@@ -115,7 +115,7 @@ function ViewOrderMusician() {
             });
 
             if (updateResponse.data.Status === 'Success') {
-                navigate("/orderMusician")
+                navigate(`/orderMusicianAccept/${id}`)
             } else {
                 console.error('Failed to submit order');
             }
@@ -377,7 +377,7 @@ function ViewOrderMusician() {
                                             ) : (
                                                 <>
                                                     {order.status === 2 && (
-                                                        <button className="btn btn-primary" onClick={handleSubmitorder} disabled={isSubmitting}>
+                                                        <button className="btn btn-primary" onClick={handleSubmitOrder} disabled={isSubmitting}>
                                                             {isSubmitting ? 'Submitting...' : 'Submit'}
                                                         </button>
                                                     )}
