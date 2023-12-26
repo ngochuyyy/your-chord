@@ -143,11 +143,12 @@ function ViewRequestChordMusician() {
                                                         </button>
                                                         :
                                                         <>
-                                                            <button className="btn btn-primary" onClick={handleClose}>
-                                                                Close
-                                                            </button>
+
                                                             <button className="btn btn-primary" onClick={() => navigate(`/editRequestChordMusician/${id}`)}>
                                                                 Edit
+                                                            </button>
+                                                            <button className="btn btn-primary" onClick={handleClose}>
+                                                                Close
                                                             </button>
                                                         </>
                                                     }
