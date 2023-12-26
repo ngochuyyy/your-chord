@@ -12,6 +12,8 @@ import moment from 'moment'
 import Box from '@mui/material/Box';
 import { Button } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { red } from '@mui/material/colors';
+import Avatar from '@mui/material/Avatar';
 
 function ProfileMusician() {
     const [data, setData] = useState({
@@ -149,7 +151,10 @@ function ProfileMusician() {
 
 
                                 :
-                                <AccountCircleIcon fontSize="large" />
+                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" className="profile-avatar">
+                                    U
+                                </Avatar>
+
                         )
                         }
                         <p style={{ marginTop: '20px' }}>{data.email}</p>
