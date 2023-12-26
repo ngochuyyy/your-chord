@@ -151,7 +151,7 @@ function ProfileMusician() {
 
 
                                 :
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe" className="profile-avatar">
+                                <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px' }} aria-label="recipe">
                                     U
                                 </Avatar>
 
