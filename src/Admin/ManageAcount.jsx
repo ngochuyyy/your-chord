@@ -31,8 +31,9 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Pagination from '@mui/material/Pagination';
+import { red } from '@mui/material/colors';
+import Avatar from '@mui/material/Avatar';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -946,8 +947,11 @@ function ManageAccount() {
                                                             viewAccount.image !== '' ?
                                                                 <img className="profile-avatar-account" src={`data:image/png;base64,${viewAccount.image}`} width="150px" />
                                                                 :
-                                                                <AccountCircleIcon fontSize="large" />
+                                                                <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px', fontSize: '5rem' }} aria-label="recipe">
+                                                                    U
+                                                                </Avatar>
                                                         )}
+
                                                     </div>
                                                     <span className="text-black-50">{viewAccount.email}</span>
                                                 </div>
