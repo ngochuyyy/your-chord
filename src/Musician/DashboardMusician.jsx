@@ -461,6 +461,16 @@ function DashboardMusician() {
                                                             </ListItemIcon>
                                                         </ListItemButton>
                                                         <ListItemButton style={{ borderRadius: '50px' }}
+                                                            className={`dashboard-button ${activeButton === 'orderMusicianAccept' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'orderMusicianAccept');
+                                                                navigate(`/orderMusicianAccept/${profile.userId}`)
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <BookmarkAddedIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '50px' }}
                                                             className={`dashboard-button ${activeButton === 'orderHistory' ? 'clicked' : ''}`}
                                                             onClick={(e) => {
                                                                 handleButtonClick(e, 'orderHistory');
