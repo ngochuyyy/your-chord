@@ -254,10 +254,14 @@ function Dashboard() {
                                             <>
                                                 <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 pt-4 text-white text-decoration-none pd-left">
                                                     <Avatar>
-                                                        {imageURL &&
+                                                        {imageURL && profile.image != "" ?
                                                             (
                                                                 <img src={`data:image/png;base64,${profile.image}`} className='profile_image' />
                                                             )
+                                                            :
+                                                            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                                                                U
+                                                            </Avatar>
                                                         }
                                                     </Avatar>
                                                 </ListItemAvatar>
