@@ -96,11 +96,8 @@ export default function BottomAppBar() {
                                     } />
                             </ListItem>
                         </td>
-                        <td>
-                            <ListItem>
-                                {moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}
-                            </ListItem>
-
+                        <td style={{ verticalAlign: 'middle' }}>
+                            {moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}
                         </td>
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
