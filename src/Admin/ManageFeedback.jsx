@@ -48,7 +48,7 @@ export default function BottomAppBar() {
                     <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
                         <td>
                             <ListItem >
-                                <ListItemAvatar className="d-flex align-items-center pb-3 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
+                                <ListItemAvatar className="d-flex align-items-center pb-2 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
                                     <Avatar>
                                         {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
@@ -80,7 +80,7 @@ export default function BottomAppBar() {
                     <tr key={index} onClick={() => navigate(`/viewFeedback/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
                         <td>
                             <ListItem >
-                                <ListItemAvatar >
+                                <ListItemAvatar className="d-flex align-items-center pb-2 mb-md-1 mt-md-3 me-md-auto text-white text-decoration-none" >
                                     <Avatar>
                                         {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
