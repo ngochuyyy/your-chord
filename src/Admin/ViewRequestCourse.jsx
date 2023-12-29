@@ -92,7 +92,7 @@ function ViewRequestCourse() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-8 text-end">
+                                    <div className="col-md-6 text-end">
                                         {getYouTubeVideoId(order.link) && (
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
