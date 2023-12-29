@@ -100,7 +100,7 @@ function ViewRequestCourse() {
                                                     playerVars: {
                                                         modestbranding: 1,
                                                     },
-                                                    width: 480,
+                                                    width: 600,
                                                     host: 'https://www.youtube-nocookie.com',
                                                 }}
                                             />
