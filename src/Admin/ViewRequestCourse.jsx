@@ -93,7 +93,6 @@ function ViewRequestCourse() {
                                         </div>
                                     </div>
                                     <div className="col-md-6 text-end pe-4">
-                                        {/* Right side */}
                                         {getYouTubeVideoId(order.link) && (
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
@@ -105,9 +104,6 @@ function ViewRequestCourse() {
                                                 }}
                                             />
                                         )}
-                                    </div>
-                                    <div className="col-md-6 text-end pe-4">
-                                        {/* Right side */}
                                         {getYouTubeVideoId(order.link) && (
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
@@ -125,6 +121,24 @@ function ViewRequestCourse() {
                                             </video>
                                         )}
                                     </div>
+                                    {/* <div className="col-md-6 text-end pe-4">
+                                        {getYouTubeVideoId(order.link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(order.link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                }}
+                                            />
+                                        )}
+                                        {videoFile && (
+                                            <video controls width="640" height="400">
+                                                <source src={generateBlobUrl(new Uint8Array(videoFile.data).buffer, 'video/*')} type="video/mp4" />
+                                            </video>
+                                        )}
+                                    </div> */}
                                 </div>
                                 {/* <div className="row">
                                     <div className="col-md-6 mb-3 d-flex justify-content-center">
