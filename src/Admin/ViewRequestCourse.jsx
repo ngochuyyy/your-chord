@@ -92,13 +92,6 @@ function ViewRequestCourse() {
                                     </div>
                                     <div className="col-md-6 text-end pe-4">
                                         {/* Right side */}
-                                        <div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-6 mb-3 d-flex justify-content-center">
                                         {getYouTubeVideoId(order.link) && (
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
@@ -110,6 +103,21 @@ function ViewRequestCourse() {
                                                 }}
                                             />
                                         )}
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-md-6 mb-3 d-flex justify-content-center">
+                                        {/* {getYouTubeVideoId(order.link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(order.link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                }}
+                                            />
+                                        )} */}
                                     </div>
                                     <div className="col-md-6 mb-3 d-flex justify-content-center">
                                         {videoFile && (
