@@ -92,7 +92,7 @@ function ViewRequestCourse() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-md-6 text-end">
+                                    <div className="col-md-8 text-end">
                                         {getYouTubeVideoId(order.link) && (
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
@@ -100,7 +100,7 @@ function ViewRequestCourse() {
                                                     playerVars: {
                                                         modestbranding: 1,
                                                     },
-                                                    width: 600,
+                                                    width: 580,
                                                     host: 'https://www.youtube-nocookie.com',
                                                 }}
                                             />
