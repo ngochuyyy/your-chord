@@ -84,7 +84,7 @@ function ViewRequestCourse() {
                                             <br />
                                             <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 40)}...</Link>
                                             <br />
-                                            <b htmlFor="duration" className="form-label text-start">Date created:</b>
+                                            <b htmlFor="duration" className="form-label text-start pd-top">Date created:</b>
                                             <p>{moment(order.upload_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
                                             <b htmlFor="duration" className="form-label">Poster / Uploader:</b>
                                             <p>{order.userId}</p>
