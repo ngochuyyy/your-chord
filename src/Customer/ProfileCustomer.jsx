@@ -5,7 +5,6 @@ import SearchAppBar from '../component/SearchAppBar';
 // import Button from '@mui/material/Button';
 // import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import Modal from '@mui/material/Modal';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import moment from 'moment'
@@ -256,8 +255,9 @@ function ProfileCustomer() {
                                                             {editAccount.image != "" ?
                                                                 <img className="profile-avatar" src={`data:image/png;base64,${editAccount.image}`} width="150px" />
                                                                 :
-                                                                <AccountCircleIcon fontSize="large" />
-                                                            }
+                                                                <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px', fontSize: '5rem' }} aria-label="recipe">
+                                                                    U
+                                                                </Avatar>}
                                                         </div>
                                                         <span className="text-black-50">{editAccount.email}</span>
                                                         <div className="mt-2">
