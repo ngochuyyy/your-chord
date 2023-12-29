@@ -66,38 +66,38 @@ function ViewRequestCourse() {
                     <p>Loading...</p>
                 </div>
             )
-                :
-
-                <div className="container payment-container" style={{ width: '1200px', height: 'fit-content' }}>
-                    <div className="py-4 text-center">
-                        <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Request Course</h2>
-                    </div>
-                    <div className="row">
+                : (
+                    <div className="container payment-container" style={{ width: '1200px', height: 'fit-content' }}>
                         {requestData.map((order, index) => (
                             <div key={index}>
-                                <div className="row">
-                                    <div className="col-md-6 text-start pe-4">
-                                        <b htmlFor="title" style={{ marginLeft: '100px' }}>Course name:</b>
-                                        <p style={{ marginLeft: '100px' }}>{order.course_name}</p>
-                                    </div>
-                                    <div className="col-md-6 text-end pe-4">
-                                        <b htmlFor="duration" className="form-label" style={{ marginRight: '100px' }}>Poster / Uploader:</b>
-                                        <p style={{ marginRight: '100px' }}>{order.userId}</p>
-                                    </div>
+                                <div className="py-4 text-center">
+                                    <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Request Course</h2>
                                 </div>
                                 <div className="row">
                                     <div className="col-md-6 text-start pe-4">
-                                        <b htmlFor="cc-link" className="text-start" style={{ marginLeft: '100px' }}>Link youtube</b>
-                                        <br />
-                                        <Link to={order.link} style={{ marginLeft: '100px', textDecoration: 'none' }}>{order.link.substring(0, 40)}...</Link>
+                                        {/* Left side */}
+                                        <div>
+                                            <b htmlFor="title">Course name:</b>
+                                            <p>{order.course_name}</p>
+
+                                            <b htmlFor="cc-link" className="text-start">Link youtube</b>
+                                            <br />
+                                            <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 40)}...</Link>
+
+                                            <b htmlFor="duration" className="form-label text-start">Date created:</b>
+                                            <p>{moment(order.upload_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
+                                        </div>
                                     </div>
                                     <div className="col-md-6 text-end pe-4">
-                                        <b htmlFor="duration" className="form-label text-start" style={{ marginRight: '100px' }}>Date created:</b>
-                                        <p style={{ marginRight: '100px' }}>{moment(order.upload_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
+                                        {/* Right side */}
+                                        <div>
+                                            <b htmlFor="duration" className="form-label">Poster / Uploader:</b>
+                                            <p>{order.userId}</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-12 mb-3 d-flex justify-content-center">
+                                    <div className="col-md-6 mb-3 d-flex justify-content-center">
                                         {getYouTubeVideoId(order.link) && (
                                             <YouTube
                                                 videoId={getYouTubeVideoId(order.link)}
@@ -110,9 +110,7 @@ function ViewRequestCourse() {
                                             />
                                         )}
                                     </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-md-12 mb-3 d-flex justify-content-center">
+                                    <div className="col-md-6 mb-3 d-flex justify-content-center">
                                         {videoFile && (
                                             <video controls width="640" height="400">
                                                 <source src={generateBlobUrl(new Uint8Array(videoFile.data).buffer, 'video/*')} type="video/mp4" />
@@ -131,8 +129,7 @@ function ViewRequestCourse() {
                             </div>
                         ))}
                     </div>
-                </div>
-            }
+                )}
         </>
     );
 }
