@@ -309,7 +309,7 @@ function RequestAccount() {
                         )}
                         {isRejectAccount && (
                             <Stack sx={{ width: '100%' }} spacing={2} >
-                                <Alert severity="error">The account has been denied approval !</Alert>
+                                <Alert severity="error">The account has been denied !</Alert>
                             </Stack>
                         )}
                         <div className='mt-4 pd-left'>
