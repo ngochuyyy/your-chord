@@ -67,6 +67,15 @@ function SignUp() {
     //         console.error('Error during signup:', error);
     //     }
     // };
+    const isEmailValid = (email) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    };
+
+    const handleEmailChange = (e) => {
+        const email = e.target.value;
+        setValues({ ...values, email, isEmailValid: isEmailValid(email) });
+    };
     return (
         <>
             <AppBarLogin />
@@ -85,12 +94,16 @@ function SignUp() {
                                     <Alert severity="error">Password and confirm password do not match. Please check again.</Alert>
                                 </Stack>
                             )}
-                            <span>or use your email for registration</span>
+                            {values.email && !values.isEmailValid && (
+                                <Stack sx={{ width: '100%' }} spacing={2}>
+                                    <Alert severity="error">Invalid email format. Please enter a valid email address.</Alert>
+                                </Stack>
+                            )}
                             <input type="text" placeholder="Enter your name" onChange={e => setValues({ ...values, name: e.target.value })} required />
                             <input type="text" placeholder="Username" onChange={e => setValues({ ...values, username: e.target.value })} required />
                             <input type="password" placeholder="Password" onChange={e => setValues({ ...values, password: e.target.value })} required />
                             <input type="password" placeholder="Confirm Password" onChange={e => setValues({ ...values, confirmPassword: e.target.value })} required />
-                            <input type="text" placeholder="Enter your email" onChange={e => setValues({ ...values, email: e.target.value })} required />
+                            <input type="text" placeholder="Enter your email" onChange={handleEmailChange} required />
                             <input type="text" placeholder="Enter your address" onChange={e => setValues({ ...values, address: e.target.value })} required />
                             {loading ? (
                                 <div className="d-flex flex-column justify-content-center align-items-center">
