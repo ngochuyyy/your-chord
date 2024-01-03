@@ -20,7 +20,7 @@ function SignUp() {
     const [isAccountExisted, setIsAccountExisted] = useState(false);
     const [passwordMismatch, setPasswordMismatch] = useState(false);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-    const handleSignin = (event) => {
+    const handleSignUp = (event) => {
         setLoading(true);
         event.preventDefault();
         if (values.password !== values.confirmPassword) {
@@ -43,40 +43,14 @@ function SignUp() {
                     navigate("/login");
                 } else {
                     setIsAccountExisted(true);
+                    setLoading(false);
                     setTimeout(() => {
                         setIsAccountExisted(false);
-                    }, 3500);
+                    }, 2000);
 
                 }
             });
     }
-    // const handleSignin = async (event) => {
-    //     event.preventDefault();
-
-    //     try {
-    //         const signUpResponse = await axios.post(`${apiUrl}/signUp`, values);
-
-    //         if (signUpResponse.data.Status === 'Success') {
-    //             navigate("/login", { state: { email: values.email } });
-
-    //             const mailOptions = {
-    //                 from: values.email,
-    //                 to: values.email,
-    //                 subject: 'Đăng ký thành công',
-    //                 text: 'Chúc mừng! Bạn đã đăng ký thành công.'
-    //             };
-
-    //             const sendEmailResponse = await axios.post(`${apiUrl}/sendEmail`, mailOptions);
-    //         } else {
-    //             setIsAccountExisted(true);
-    //             setTimeout(() => {
-    //                 setIsAccountExisted(false);
-    //             }, 3500);
-    //         }
-    //     } catch (error) {
-    //         console.error('Error during signup:', error);
-    //     }
-    // };
     const isEmailValid = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
@@ -92,7 +66,7 @@ function SignUp() {
             <div className="body-login">
                 <div className="container-login">
                     <div className="form-container sign-in">
-                        <form onSubmit={handleSignin}>
+                        <form onSubmit={handleSignUp}>
                             <h1>Create Account</h1>
                             {isAccountExisted && (
                                 <Stack sx={{ width: '100%' }} spacing={2} >
