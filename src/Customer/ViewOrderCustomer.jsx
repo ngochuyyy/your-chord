@@ -104,11 +104,16 @@ function ViewOrderCustomer() {
                                 <div key={index}>
                                     <form className="needs-validation" noValidate>
                                         <div className="row">
-                                            <div className="mb-3">
+                                            <div className="col-md-6 mb-3">
                                                 <b htmlFor="title">Song title</b>
                                                 <p>{order.song_name}</p>
                                             </div>
+                                            <div className="col-md-6 mb-3">
+                                                <b htmlFor="cc-link">Musician</b>
+                                                <p>{order.musician_id === null ? "None" : order.musician_id}</p>
+                                            </div>
                                         </div>
+
 
                                         <div className="mb-3">
                                             <b htmlFor="lyric">Lyric</b>
