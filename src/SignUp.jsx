@@ -25,8 +25,20 @@ function SignUp() {
         event.preventDefault();
         if (values.password !== values.confirmPassword) {
             setPasswordMismatch(true);
+            setTimeout(() => {
+                setPasswordMismatch(false);
+            }, 2000);
             return;
         }
+        if (!values.isEmailValid) {
+            setLoading(true);
+            setTimeout(() => {
+                setLoading(false);
+            }, 2000);
+
+            return;
+        }
+
         axios.post(`${apiUrl}/signUp`, values)
             .then(res => {
                 if (res.data.Status === 'Success') {
@@ -37,6 +49,7 @@ function SignUp() {
                     setTimeout(() => {
                         setIsAccountExisted(false);
                     }, 3500);
+
                 }
             });
     }
