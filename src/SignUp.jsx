@@ -31,11 +31,7 @@ function SignUp() {
             return;
         }
         if (!values.isEmailValid) {
-            setLoading(true);
-            setTimeout(() => {
-                setLoading(false);
-            }, 2000);
-
+            setLoading(false);
             return;
         }
 
