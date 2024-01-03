@@ -25,6 +25,7 @@ function SignUp() {
         event.preventDefault();
         if (values.password !== values.confirmPassword) {
             setPasswordMismatch(true);
+            setLoading(false);
             setTimeout(() => {
                 setPasswordMismatch(false);
             }, 2000);
