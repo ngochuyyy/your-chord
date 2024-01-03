@@ -23,6 +23,7 @@ function RequestChord() {
         const form = event.target;
         if (!form.checkValidity()) {
             form.reportValidity();
+            setLoading(false);
             return;
         }
         const formData = {
