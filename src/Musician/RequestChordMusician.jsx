@@ -64,7 +64,7 @@ function RequestChordMusician() {
                                 Declined
                             </button>
                         ) : record.status === 2 ? (
-                            <button style={{ backgroundColor: 'yellow', borderColor: 'yellow' }}>
+                            <button className='btn' style={{ backgroundColor: 'yellow', borderColor: 'yellow' }}>
                                 Do task
                             </button>
                         ) : (
