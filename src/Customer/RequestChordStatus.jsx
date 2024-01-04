@@ -47,6 +47,11 @@ function RequestChordStatus() {
         {
             title: 'Musician ID',
             dataIndex: 'musician_id',
+            render: (text) => (
+                <Space size="middle">
+                    {text ? text : 'Waiting for the recipient'}
+                </Space>
+            ),
         },
         {
             title: 'Status',
