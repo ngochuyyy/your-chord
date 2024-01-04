@@ -17,6 +17,8 @@ function ManageCourse() {
     const [openErrorVideo, setOpenErrorVideo] = useState(false);
     const [courseName, setCourseName] = useState('');
     const [link, setLink] = useState('');
+    const [atLeastOneSelected, setAtLeastOneSelected] = useState(false);
+
 
     const navigate = useNavigate();
 
@@ -40,10 +42,16 @@ function ManageCourse() {
     const handleSubmitOrder = async () => {
         try {
             setIsSubmitting(true);
-            // if (!getYouTubeVideoId(link)) {
-            //     setOpenErrorVideo(true);
-            //     return;
-            // }
+
+            if (!courseName) {
+                alert('Please enter the course name.');
+                return;
+            }
+
+            if (!videoFile && !getYouTubeVideoId(link)) {
+                setAtLeastOneSelected(true);
+                return;
+            }
 
             const formData = new FormData();
             formData.append('videoFile', videoFile);
@@ -58,7 +66,7 @@ function ManageCourse() {
 
             if (updateResponse.data.Status === 'Success') {
                 console.log('Upload successfully');
-                window.location.reload(true)
+                window.location.reload(true);
             } else {
                 console.error('Failed to upload video');
             }
@@ -82,6 +90,13 @@ function ManageCourse() {
                     <Stack sx={{ width: '100%' }} spacing={2}>
                         <Alert severity="error">
                             Invalid file type. Please upload a video.
+                        </Alert>
+                    </Stack>
+                )}
+                {atLeastOneSelected && !videoFile && !getYouTubeVideoId(link) && (
+                    <Stack sx={{ width: '100%' }} spacing={2}>
+                        <Alert severity="error">
+                            Please select at least one: upload a video or provide a YouTube link.
                         </Alert>
                     </Stack>
                 )}
