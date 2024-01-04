@@ -258,7 +258,7 @@ function RejectSong() {
                                                 <TableCell>{moment(song.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</TableCell> :
                                                 <TableCell>Not update</TableCell>
                                             }
-                                            <TableCell className="text-warning"><b>Waiting Approve</b></TableCell>
+                                            <TableCell style={{ color: 'red' }}><b>Rejected</b></TableCell>
                                             <TableCell>
                                                 {song.status === 0 ?
                                                     <Link
