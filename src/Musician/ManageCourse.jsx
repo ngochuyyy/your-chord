@@ -17,6 +17,8 @@ function ManageCourse() {
     const [courseName, setCourseName] = useState('');
     const [link, setLink] = useState('');
     const [atLeastOneSelected, setAtLeastOneSelected] = useState(false);
+    const [uploadSuccess, setUploadSuccess] = useState(false);
+
 
     const handleVideoChange = (event) => {
         const file = event.target.files[0];
@@ -64,8 +66,11 @@ function ManageCourse() {
             });
 
             if (updateResponse.data.Status === 'Success') {
-                console.log('Upload successfully');
-                window.location.reload(true);
+                setUploadSuccess(true);
+                setTimeout(() => {
+                    setUploadSuccess(false);
+                    window.location.reload(true);
+                }, 3000);
             } else {
                 console.error('Failed to upload video');
             }
@@ -96,6 +101,13 @@ function ManageCourse() {
                     <Stack sx={{ width: '100%' }} spacing={2}>
                         <Alert severity="error">
                             Please select at least one: upload a video or provide a YouTube link.
+                        </Alert>
+                    </Stack>
+                )}
+                {uploadSuccess && (
+                    <Stack sx={{ width: '100%' }} spacing={2}>
+                        <Alert severity="success">
+                            Upload successfully !
                         </Alert>
                     </Stack>
                 )}
