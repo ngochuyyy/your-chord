@@ -34,7 +34,7 @@ function VerifySong() {
     const [imageURL, setImageURL] = useState(null);
     const [isVerifySong, setIsVerifySong] = useState(false);
     const [isRejectSong, setIsRejectSong] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     const itemsPerPage = 5;
