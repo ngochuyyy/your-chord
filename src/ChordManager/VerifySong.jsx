@@ -34,7 +34,7 @@ function VerifySong() {
     const [imageURL, setImageURL] = useState(null);
     const [isVerifySong, setIsVerifySong] = useState(false);
     const [isRejectSong, setIsRejectSong] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
     const itemsPerPage = 5;
@@ -64,7 +64,6 @@ function VerifySong() {
             .catch(err => console.log(err));
     }, [])
     const handleVerify = (id) => {
-        setLoading(true);
         axios.put(`${apiUrl}/verifySong/` + id)
             .then(res => {
                 if (res.data.Status === "Success") {
@@ -80,7 +79,6 @@ function VerifySong() {
             .catch(err => console.log(err));
     }
     const handleReject = (id) => {
-        setLoading(true);
         axios.put(`${apiUrl}/rejectSong/` + id)
             .then(res => {
                 if (res.data.Status === "Success") {
