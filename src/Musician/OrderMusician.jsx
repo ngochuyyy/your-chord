@@ -95,7 +95,7 @@ function OrderMusician() {
                                             </button>
                                         ) : record.status === 2 ? (
                                             <button className='btn-do'>
-                                                Do it
+                                                Do task
                                             </button>
                                         ) : record.status === 3 && (
                                             <button className='btn-accept'>
