@@ -49,10 +49,12 @@ function VerifySong() {
         },
     });
     useEffect(() => {
+        setLoading(true)
         axios.get(`${apiUrl}/getSongChordManager`)
             .then(res => {
                 if (res.data.Status === "Success") {
                     setData(res.data.Result);
+                    setLoading(false);
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(data => `${data.image}`);
                         setImageURL(songImages);
