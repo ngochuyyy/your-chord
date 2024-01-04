@@ -38,11 +38,6 @@ function OrderMusicianAccept() {
             title: 'Genre',
             dataIndex: 'genre',
         },
-
-        {
-            title: 'Description',
-            dataIndex: 'description',
-        },
         {
             title: 'Price',
             dataIndex: 'price',

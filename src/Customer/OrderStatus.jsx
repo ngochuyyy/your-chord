@@ -31,10 +31,6 @@ function OrderStatus() {
             dataIndex: 'genre',
         },
         {
-            title: 'Description',
-            dataIndex: 'description',
-        },
-        {
             title: 'Price ($)',
             dataIndex: 'price',
             width: 200,
