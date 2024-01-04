@@ -68,7 +68,8 @@ function RequestChordMusician() {
                                 width: "100px",
                                 border: "transparent",
                                 backgroundColor: "yellow",
-                                borderRadius: "16px"
+                                borderRadius: "16px",
+                                padding: "3px 10px",
                             }}>
                                 Do task
                             </button>
