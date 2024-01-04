@@ -142,6 +142,7 @@ function App() {
           <Route path='/viewRequestChordMusician/:id/' element={<ViewRequestChordMusician />}></Route>
           <Route path='/orderHistory/:userId/' element={<OrderHistory />}></Route>
           <Route path='/orderMusicianAccept/:userId/' element={<OrderMusicianAccept />}></Route>
+          <Route path='/editRequestChordMusician/:id' element={<EditRequestChordMusician />}></Route>
 
         </Route>
         <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>
@@ -168,7 +169,6 @@ function App() {
           <Route path='/requestChord/:user_id/' element={<RequestChord />}></Route>
           <Route path='/requestChordStatus/:user_id/' element={<RequestChordStatus />}></Route>
           <Route path='/viewRequestChord/:id/' element={<ViewRequestChord />}></Route>
-          <Route path='/editRequestChordMusician/:id' element={<EditRequestChordMusician />}></Route>
 
         </Route>
         <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>
