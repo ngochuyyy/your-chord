@@ -120,7 +120,7 @@ function OrderHistory() {
 
     useEffect(() => {
         setLoading(true);
-        axios.get(`${apiUrl}/history/${userId}`)
+        axios.get(`${apiUrl}/historyMusician/${userId}`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
                     setOrderData(res.data.Result);
