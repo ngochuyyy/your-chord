@@ -18,7 +18,8 @@ function OrderHistory() {
             .get(`${apiUrl}/history/${userId}`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    setData(res.data.Result);
+                    const filteredData = res.data.Result.filter(order => order.status === 3 && order.musician_id === userId);
+                    setData(filteredData);
                 }
             })
             .catch((err) => {
