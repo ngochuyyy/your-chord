@@ -119,24 +119,19 @@ function OrderHistory() {
     ];
 
     useEffect(() => {
-        const fetchOrderData = async () => {
-            try {
-                setLoading(true);
-                const response = await axios.get(`${apiUrl}/historyMusician/${userId}`);
-                if (response.data.Status === 'Success') {
-                    const filteredData = response.data.data.filter(item => item.musician_id === userId && item.status === 3);
-                    setOrderData(filteredData);
-                } else {
-                    console.error('Failed to fetch order data:', response.data.Error);
+        setLoading(true);
+        axios.get(`${apiUrl}/history/${userId}`)
+            .then((res) => {
+                if (res.data.Status === 'Success') {
+                    setOrderData(res.data.Result);
                 }
-            } catch (error) {
-                console.error('Error fetching order data:', error.message);
-            }
-            finally {
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
                 setLoading(false);
-            }
-        };
-        fetchOrderData();
+            });
     }, []);
     const handlePriceChange = (itemId, newPrice) => {
         setOrderData((prevData) => {
