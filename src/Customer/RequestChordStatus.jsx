@@ -45,6 +45,10 @@ function RequestChordStatus() {
             width: 250,
         },
         {
+            title: 'Musician ID',
+            dataIndex: 'musician_id',
+        },
+        {
             title: 'Status',
             dataIndex: 'status',
             render: (text, record) => (
@@ -138,6 +142,7 @@ function RequestChordStatus() {
                                 song_name: item.song_name,
                                 request_date: item.request_date,
                                 completed_date: item.completed_date,
+                                musician_id: item.musician_id,
 
                             }))}
                         />
