@@ -381,7 +381,7 @@ function ViewOrderMusician() {
                                                             {isSubmitting ? 'Submitting...' : 'Submit'}
                                                         </button>
                                                     )}
-                                                    <button className="btn btn-primary" onClick={() => navigate(-1)}>
+                                                    <button className="btn btn-primary" onClick={() => navigate("/orderMusicia")}>
                                                         Close
                                                     </button>
                                                 </>
