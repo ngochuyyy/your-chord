@@ -49,7 +49,7 @@ function RequestChordStatus() {
             dataIndex: 'musician_id',
             render: (text) => (
                 <Space size="middle">
-                    {text ? text : 'Waiting for the recipient'}
+                    {text ? text : 'Waiting for the recipient...'}
                 </Space>
             ),
         },
