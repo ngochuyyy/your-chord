@@ -15,11 +15,10 @@ function OrderHistory() {
         setLoading(true);
 
         axios
-            .get(`${apiUrl}/history/${userId}`)
+            .get(`${apiUrl}/historyMusician/${userId}`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    const filteredData = res.data.Result.filter(order => order.status === 3 && order.musician_id === userId);
-                    setData(filteredData);
+                    setData(res.data.Result);
                 }
             })
             .catch((err) => {
