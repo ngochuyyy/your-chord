@@ -50,6 +50,9 @@ function ManageCourse() {
 
             if (!videoFile && !getYouTubeVideoId(link)) {
                 setAtLeastOneSelected(true);
+                setTimeout(() => {
+                    setAtLeastOneSelected(false);
+                }, 3000);
                 return;
             }
 
