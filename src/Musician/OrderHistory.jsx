@@ -122,7 +122,7 @@ function OrderHistory() {
         const fetchOrderData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`${apiUrl}/historyMusician`);
+                const response = await axios.get(`${apiUrl}/historyMusician/${userId}`);
                 if (response.data.Status === 'Success') {
                     const filteredData = response.data.data.filter(item => item.musician_id === userId && item.status === 3);
                     setOrderData(filteredData);
