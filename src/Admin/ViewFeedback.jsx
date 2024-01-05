@@ -184,6 +184,7 @@ function ViewFeedback() {
                                                                 onChange={e => setNewReply({ ...newReply, reply: e.target.value })}
                                                                 value={newReply.reply}
                                                                 placeholder='Your reply...'
+                                                                required
                                                             >
                                                                 {newReply.reply}
                                                             </textarea>
