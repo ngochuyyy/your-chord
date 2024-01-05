@@ -19,6 +19,8 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItem from '@mui/material/ListItem';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 function ViewFeedback() {
     const [data, setData] = useState({
         email: '',
@@ -37,6 +39,8 @@ function ViewFeedback() {
     const [dataReply, setDataReply] = useState([]);
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
+    const [isReply, setIsReply] = useState(false);
+
     const [newReply, setNewReply] = useState({
         reply: '',
         image_ad: null,
@@ -82,7 +86,10 @@ function ViewFeedback() {
         const userId = token.split(':')[0];
         const { reply, image_ad } = newReply;
         if (!reply) {
-            alert('Please enter a reply.');
+            setIsReply(true);
+            setTimeout(() => {
+                setIsReply(false);
+            }, 2000)
             return;
         }
         const replyData = {
@@ -173,6 +180,11 @@ function ViewFeedback() {
                                             >
                                                 <Box sx={styles}>
                                                     <h4 className="d-flex justify-content-center">REPLY</h4>
+                                                    {isReply && (
+                                                        <Stack sx={{ width: '100%' }} spacing={2}>
+                                                            <Alert severity="error">Please enter a reply !</Alert>
+                                                        </Stack>
+                                                    )}
                                                     <Typography id="modal-modal-title" >
                                                         <br />
                                                         To: <b>{data.username}</b>
