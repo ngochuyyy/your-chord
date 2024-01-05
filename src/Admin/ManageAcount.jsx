@@ -990,11 +990,6 @@ function ManageAccount() {
                                                             :
                                                             <div className="col-md-12"><b>Address Line: </b><p>None</p></div>
                                                         }
-                                                        {viewAccount.email !== "" ?
-                                                            <div className="col-md-12"><b>Email: </b><p>{viewAccount.email}</p></div>
-                                                            :
-                                                            <div className="col-md-12"><b>Email: </b><p>None</p></div>
-                                                        }
                                                         {viewAccount.job !== "" ?
                                                             <div className="col-md-12"><b>Job: </b><p>{viewAccount.job}</p></div>
                                                             :
