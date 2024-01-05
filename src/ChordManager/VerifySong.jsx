@@ -174,12 +174,12 @@ function VerifySong() {
             </div>
             {isVerifySong && (
                 <Stack sx={{ width: '100%' }} spacing={2} >
-                    <Alert severity="warning">The song has been successfully approved!</Alert>
+                    <Alert severity="success">The song has been successfully approved!</Alert>
                 </Stack>
             )}
             {isRejectSong && (
                 <Stack sx={{ width: '100%' }} spacing={2} >
-                    <Alert severity="info">The song has been rejected!</Alert>
+                    <Alert severity="error">The song has been rejected!</Alert>
                 </Stack>
             )}
             <div className="mt-4 pd-left">
