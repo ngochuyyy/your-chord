@@ -203,7 +203,7 @@ function RequestListCourse() {
                 )}
                 {isRejectCourse && (
                     <Stack sx={{ width: '100%' }} spacing={2} >
-                        <Alert severity="error">The course has been denied approval !</Alert>
+                        <Alert severity="error">The course has been denied!</Alert>
                     </Stack>
                 )}
                 <div className='mt-4 pd-left'>
