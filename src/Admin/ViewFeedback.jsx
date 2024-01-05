@@ -81,6 +81,10 @@ function ViewFeedback() {
         const token = sessionStorage.getItem('token');
         const userId = token.split(':')[0];
         const { reply, image_ad } = newReply;
+        if (!reply) {
+            alert('Please enter a reply.');
+            return;
+        }
         const replyData = {
             userId: userId,
             reply: reply,
