@@ -473,7 +473,7 @@ function ViewSong() {
                                                             </ToggleButton>
 
                                                             :
-                                                            <ToggleButton value="#F1F1FB" onClick={handleChordOff} style={{ borderEndStartRadius: '50px' }}>
+                                                            <ToggleButton value="#F1F1FB" onClick={handleChordOff} style={{ borderBottomRightRadius: '50px' }}>
                                                                 <RemoveRedEyeIcon fontSize="medium" />  Chord
                                                             </ToggleButton>
                                                         }
