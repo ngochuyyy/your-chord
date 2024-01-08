@@ -152,7 +152,6 @@ function Course() {
                                             <b>{course.course_name}</b>
                                         </div>
                                     }
-
                                 />
                             ))}
                         </Tabs>
