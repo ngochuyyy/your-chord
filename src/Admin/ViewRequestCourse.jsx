@@ -79,10 +79,11 @@ function ViewRequestCourse() {
                                         <div>
                                             <b htmlFor="title">Course name:</b>
                                             <p>{order.course_name}</p>
-
-                                            <b htmlFor="cc-link" className="text-start">Link youtube</b>
-                                            <br />
-                                            <Link to={order.link} style={{ textDecoration: 'none', marginTop: '10px' }}>{order.link.substring(0, 50)}...</Link>
+                                            <div style={{ marginTop: '10px' }}>
+                                                <b htmlFor="cc-link" className="text-start">Link youtube</b>
+                                                <br />
+                                                <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
+                                            </div>
                                             <br />
                                             <div style={{ marginTop: '10px' }}>
                                                 <b htmlFor="duration" className="form-label text-start">Date created:</b>
