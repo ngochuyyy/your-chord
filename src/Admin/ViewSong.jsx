@@ -412,7 +412,7 @@ function ViewSong() {
                                                     placement="top">
                                                     <Button onClick={decreaseKey} style={{ marginRight: '20px' }}><RemoveIcon /></Button>
                                                 </Tooltip>
-                                                <p style={{ color: "#0d6efd" }}><b>{firstChord}</b></p>
+                                                <Button style={{ color: "#0d6efd" }}><b>{firstChord}</b></Button>
                                                 <Tooltip title={<p>Increase Key</p>}
                                                     arrow
                                                     placement="top">
