@@ -410,13 +410,13 @@ function ViewSong() {
                                                 <Tooltip title={<p>Decrease Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={decreaseKey} style={{ marginRight: '20px' }}><RemoveIcon /></Button>
+                                                    <Button onClick={decreaseKey} style={{ marginRight: '10px' }}><RemoveIcon /></Button>
                                                 </Tooltip>
                                                 <Button style={{ color: "#0d6efd" }}><b>{firstChord}</b></Button>
                                                 <Tooltip title={<p>Increase Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={increaseKey} style={{ marginLeft: '20px' }}><AddIcon /></Button>
+                                                    <Button onClick={increaseKey} style={{ marginLeft: '10px' }}><AddIcon /></Button>
                                                 </Tooltip>
                                                 <StyledToggleButtonGroup
                                                     size="small"
