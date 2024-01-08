@@ -26,7 +26,6 @@ function Login() {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     useEffect(() => {
-        // Clear all local storage when component mounts (user is on the login page)
         localStorage.clear();
     }, []);
     const handleSubmit = (event) => {
