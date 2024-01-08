@@ -82,7 +82,7 @@ function ViewRequestCourse() {
 
                                             <b htmlFor="cc-link" className="text-start">Link youtube</b>
                                             <br />
-                                            <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
+                                            <Link to={order.link} style={{ textDecoration: 'none', marginTop: '10px' }}>{order.link.substring(0, 50)}...</Link>
                                             <br />
                                             <div style={{ marginTop: '10px' }}>
                                                 <b htmlFor="duration" className="form-label text-start">Date created:</b>
