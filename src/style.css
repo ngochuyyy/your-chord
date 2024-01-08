@@ -397,7 +397,7 @@ textarea {
 
 .rounded-image-container:hover {
     transform: scale(1.1);
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 10px 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .playlist-container:hover .collection_name {
