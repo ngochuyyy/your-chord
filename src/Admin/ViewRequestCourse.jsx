@@ -67,7 +67,7 @@ function ViewRequestCourse() {
                 </div>
             )
                 : (
-                    <div className="container payment-container" style={{ width: '1200px', height: 'fit-content' }}>
+                    <div className="container payment-container" style={{ width: '1300px', height: 'fit-content' }}>
                         {requestData.map((order, index) => (
                             <div key={index}>
                                 <div className="py-4 text-center">
