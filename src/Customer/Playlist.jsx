@@ -43,7 +43,7 @@ function Playlist() {
         try {
             const playlistResponse = await axios.get(`${apiUrl}/getPlaylist/` + userId);
             if (playlistResponse.data.Status === "Success") {
-                setLoading(false);
+
                 setData(playlistResponse.data.Result);
                 if (playlistResponse.data.Result.length > 0) {
                     const playlistImages = playlistResponse.data.Result.map(playlist => `${playlist.image}`);
@@ -52,6 +52,7 @@ function Playlist() {
                     for (const playlist of playlistResponse.data.Result) {
                         try {
                             const countResponse = await axios.get(`${apiUrl}/countSongPlaylist/` + playlist.id);
+                            setLoading(false);
                             setPlaylistSongsCount((prevCounts) => {
                                 return { ...prevCounts, [playlist.id]: countResponse.data.songCount };
                             });
