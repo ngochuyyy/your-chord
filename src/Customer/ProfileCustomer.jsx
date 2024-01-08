@@ -135,97 +135,111 @@ function ProfileCustomer() {
             <SearchAppBar />
 
             <div className="profile-container">
-                <div className="profile-content">
-                    <div className="profile-header">
-
-                        <h3 className="profile-header" style={{ color: '#0d6efd' }}><b>Account Settings</b></h3>
-
-                    </div>
-                    <hr style={{ width: '95%' }} />
-                    <div className="profile-image">
-                        {imageURL && (
-                            data.image !== "" ?
-
-                                <img className="profile-avatar" src={`data:image/png;base64,${data.image}`} />
-
-
-                                :
-                                <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px', fontSize: '5rem' }} aria-label="recipe">
-                                    U
-                                </Avatar>
-
-                        )
-                        }
-                        <p style={{ marginTop: '20px' }}>{data.email}</p>
-                    </div>
-                    <div className="mt-2">
-                        <h3><b>Profile</b></h3>
-                    </div>
-                    <div className="mt-4" style={{ display: 'flex', flexDirection: 'row', paddingTop: '50px' }}>
-                        <div className="col-md-6"><b>Name: </b><p>{data.name}</p></div>
-                        {data.surname ?
-                            <div className="col-md-6"><b>Sur name: </b><p>{data.surname}</p></div>
-                            :
-                            <div className="col-md-6"><b>Sur name: </b><p>None</p></div>
-
-                        }
-                    </div>
-                    <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div className="col-md-6"><b>Email: </b>
-                            <p>{data.email}</p>
+                {loading ? (
+                    <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
                         </div>
-                        <div className="col-md-6"><b>Active: </b>
-                            {data.ban == "Enable" ?
-                                <p style={{ color: 'green' }}><b>{data.ban}</b></p>
-                                :
-                                <p style={{ color: 'red' }}><b>{data.ban}</b></p>
-                            }
+                        <p>Loading...</p>
+                    </div>
+                )
+                    :
+                    <>
+                        <div className="profile-content">
+                            <div className="profile-header">
+
+                                <h3 className="profile-header" style={{ color: '#0d6efd' }}><b>Account Settings</b></h3>
+
+                            </div>
+                            <hr style={{ width: '95%' }} />
+                            <div className="profile-image">
+                                {imageURL && (
+                                    data.image !== "" ?
+
+                                        <img className="profile-avatar" src={`data:image/png;base64,${data.image}`} />
+
+
+                                        :
+                                        <Avatar sx={{ bgcolor: red[500], width: '150px', height: '150px', fontSize: '5rem' }} aria-label="recipe">
+                                            U
+                                        </Avatar>
+
+                                )
+                                }
+                                <p style={{ marginTop: '20px' }}>{data.email}</p>
+                            </div>
+                            <div className="mt-2">
+                                <h3><b>Profile</b></h3>
+                            </div>
+                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row', paddingTop: '50px' }}>
+                                <div className="col-md-6"><b>Name: </b><p>{data.name}</p></div>
+                                {data.surname ?
+                                    <div className="col-md-6"><b>Sur name: </b><p>{data.surname}</p></div>
+                                    :
+                                    <div className="col-md-6"><b>Sur name: </b><p>None</p></div>
+
+                                }
+                            </div>
+                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
+                                <div className="col-md-6"><b>Email: </b>
+                                    <p>{data.email}</p>
+                                </div>
+                                <div className="col-md-6"><b>Active: </b>
+                                    {data.ban == "Enable" ?
+                                        <p style={{ color: 'green' }}><b>{data.ban}</b></p>
+                                        :
+                                        <p style={{ color: 'red' }}><b>{data.ban}</b></p>
+                                    }
+                                </div>
+                            </div>
+                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
+                                {data.username !== "" ?
+                                    <div className="col-md-6"><b>Username:</b><p>{data.username}</p></div>
+                                    :
+                                    <div className="col-md-6"><b>Username:</b><p>None</p></div>
+                                }
+                                <div className="col-md-6"><b>Role: </b><p>{data.role}</p></div>
+                            </div>
+
+
+                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }} >
+                                {data.phoneNumber !== "" ?
+                                    <div className="col-md-6"><b>Phone number: </b><p>{data.phoneNumber}</p></div>
+                                    : <div className="col-md-6"><b>Phone number: </b><p>None</p></div>
+                                }
+                                {data.address !== "" ?
+                                    <div className="col-md-6"><b>Address Line: </b><p>{data.address}</p></div>
+                                    :
+                                    <div className="col-md-6"><b>Address Line: </b><p>None</p></div>
+                                }
+
+                            </div>
+                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
+                                <div className="col-md-6"><b>Address Line: </b><p>{data.address}</p></div>
+                                <div className="col-md-6">
+                                    <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
+                                    <b>Register date: </b><p>{moment(data.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
+                            </div>
+
+                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }} >
+                                {data.job !== "" ?
+                                    <div className="col-md-6"><b>Job: </b><p>{data.job}</p></div>
+                                    :
+                                    <div className="col-md-6"><b>Job: </b><p>None</p></div>
+
+                                }
+                            </div>
+
+                            <div className="mt-4 pd-bottom">
+                                <Button variant='contained' onClick={() => { handleProfile(data.userId) }}><ModeEditIcon className='pd-right' fontSize='medium' /> Edit
+                                </Button>
+                            </div>
+
                         </div>
-                    </div>
-                    <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
-                        {data.username !== "" ?
-                            <div className="col-md-6"><b>Username:</b><p>{data.username}</p></div>
-                            :
-                            <div className="col-md-6"><b>Username:</b><p>None</p></div>
-                        }
-                        <div className="col-md-6"><b>Role: </b><p>{data.role}</p></div>
-                    </div>
+                    </>
 
 
-                    <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }} >
-                        {data.phoneNumber !== "" ?
-                            <div className="col-md-6"><b>Phone number: </b><p>{data.phoneNumber}</p></div>
-                            : <div className="col-md-6"><b>Phone number: </b><p>None</p></div>
-                        }
-                        {data.address !== "" ?
-                            <div className="col-md-6"><b>Address Line: </b><p>{data.address}</p></div>
-                            :
-                            <div className="col-md-6"><b>Address Line: </b><p>None</p></div>
-                        }
-
-                    </div>
-                    <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
-                        <div className="col-md-6"><b>Address Line: </b><p>{data.address}</p></div>
-                        <div className="col-md-6">
-                            <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
-                            <b>Register date: </b><p>{moment(data.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
-                    </div>
-
-                    <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }} >
-                        {data.job !== "" ?
-                            <div className="col-md-6"><b>Job: </b><p>{data.job}</p></div>
-                            :
-                            <div className="col-md-6"><b>Job: </b><p>None</p></div>
-
-                        }
-                    </div>
-
-                    <div className="mt-4 pd-bottom">
-                        <Button variant='contained' onClick={() => { handleProfile(data.userId) }}><ModeEditIcon className='pd-right' fontSize='medium' /> Edit
-                        </Button>
-                    </div>
-
-                </div>
+                }
 
                 <Modal
                     open={open}
