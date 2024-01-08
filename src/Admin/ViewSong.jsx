@@ -411,7 +411,7 @@ function ViewSong() {
                                                 <Tooltip title={<p>Decrease Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={decreaseKey} style={{ borderRadius: '50px' }}><RemoveIcon /></Button>
+                                                    <Button onClick={decreaseKey} style={{ borderRadius: '50px', marginLeft: '5px' }}><RemoveIcon /></Button>
                                                 </Tooltip>
                                                 <Button style={{ color: "#0d6efd" }}><b>{firstChord}</b></Button>
                                                 <Tooltip title={<p>Increase Key</p>}
