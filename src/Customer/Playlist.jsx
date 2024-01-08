@@ -162,8 +162,8 @@ function Playlist() {
                                 {filteredPlaylist.map((playlist, index) => (
                                     <div key={index} className="m-4 p-4">
                                         <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                            <div className="d-flex flex-column align-items-center text-center" style={{ ...playlistItemStyle, position: 'relative', borderRadius: '40px' }}>
-                                                <div className="rounded-image-container" >
+                                            <div className="d-flex flex-column align-items-center text-center">
+                                                <div className="rounded-image-container" style={{ ...playlistItemStyle, position: 'relative', borderRadius: '40px' }} >
                                                     {imageURL && (
                                                         <img
                                                             className="rounded-square-image"
