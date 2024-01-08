@@ -24,7 +24,7 @@ function Course() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [selectedCourse, setSelectedCourse] = useState(null);
     const handleTabChange = (event, newValue) => {
         setSelectedCourse(newValue);
@@ -164,7 +164,7 @@ function Course() {
 
                                     <div style={{
                                         width: 'fit-content',
-                                        backgroundColor: setLoading ? '#0d6efd' : '#ffff',
+                                        backgroundColor: setLoading ? '#fff' : '#0d6efd',
                                         padding: '2px',
                                         borderRadius: '5px',
                                         paddingTop: '8px',
