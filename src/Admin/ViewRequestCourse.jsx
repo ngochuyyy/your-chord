@@ -67,32 +67,27 @@ function ViewRequestCourse() {
                 </div>
             )
                 : (
-                    <div className="container" style={{ marginTop: '20px' }}>
+                    <div className="container payment-container" style={{ width: '1300px', height: 'fit-content' }}>
                         {requestData.map((order, index) => (
-                            <div key={index} style={{
-                                backgroundColor: '#f8f9fa',
-                                borderRadius: '8px',
-                                boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-                                padding: '20px',
-                                marginBottom: '20px',
-                            }}>
+                            <div key={index}>
                                 <div className="py-4 text-center">
                                     <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Request Course</h2>
                                 </div>
                                 <div className="row">
-                                    <div className="col-md-6 pe-4">
-                                        <div style={{ marginBottom: '20px' }}>
-                                            <b>Course name:</b>
+                                    <div className="col-md-6 text-start pe-4">
+                                        {/* Left side */}
+                                        <div>
+                                            <b htmlFor="title">Course name:</b>
                                             <p>{order.course_name}</p>
 
-                                            <b style={{ textStart: 'Link YouTube:' }}></b>
+                                            <b htmlFor="cc-link" className="text-start">Link youtube</b>
                                             <br />
-                                            <Link to={order.link} style={{ textDecoration: 'none', color: '#007bff' }}>{order.link.substring(0, 50)}...</Link>
+                                            <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
                                             <br />
                                             <div style={{ marginTop: '10px' }}>
-                                                <b style={{ formLabel: 'Date created:' }} className="form-label text-start">Date created:</b>
-                                                <p>{moment(order.upload_date).format('YYYY-MM-DD HH:mm:ss')}</p>
-                                                <b style={{ formLabel: 'Poster / Uploader:' }} className="form-label">Poster / Uploader:</b>
+                                                <b htmlFor="duration" className="form-label text-start">Date created:</b>
+                                                <p>{moment(order.upload_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
+                                                <b htmlFor="duration" className="form-label">Poster / Uploader:</b>
                                                 <p>{order.userId}</p>
                                             </div>
                                         </div>
@@ -117,11 +112,51 @@ function ViewRequestCourse() {
                                             </video>
                                         )}
                                     </div>
+                                    {/* <div className="col-md-6 text-end pe-4">
+                                        {getYouTubeVideoId(order.link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(order.link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                }}
+                                            />
+                                        )}
+                                        {videoFile && (
+                                            <video controls width="640" height="400">
+                                                <source src={generateBlobUrl(new Uint8Array(videoFile.data).buffer, 'video/*')} type="video/mp4" />
+                                            </video>
+                                        )}
+                                    </div> */}
                                 </div>
-                                <hr style={{ marginBottom: '20px' }} />
+                                {/* <div className="row">
+                                    <div className="col-md-6 mb-3 d-flex justify-content-center">
+                                        {getYouTubeVideoId(order.link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(order.link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                }}
+                                            />
+                                        )}
+                                    </div>
+                                    <div className="col-md-6 mb-3 d-flex justify-content-center">
+                                        {videoFile && (
+                                            <video controls width="640" height="400">
+                                                <source src={generateBlobUrl(new Uint8Array(videoFile.data).buffer, 'video/*')} type="video/mp4" />
+                                            </video>
+                                        )}
+                                    </div>
+                                </div> */}
+                                <hr className="mb-3" />
                                 <div className="row">
-                                    <div className="col-md-12 text-center">
-                                        <button className="btn btn-primary" style={{ backgroundColor: '#0d6efd', borderColor: '#0d6efd' }} onClick={handleClose}>
+                                    <div>
+                                        <button className="btn btn-primary" onClick={handleClose}>
                                             Close
                                         </button>
                                     </div>
