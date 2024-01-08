@@ -28,18 +28,13 @@ function Course() {
     const [selectedCourse, setSelectedCourse] = useState(null);
     const handleTabChange = (event, newValue) => {
         setSelectedCourse(newValue);
-        setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-        }, 2000);
     };
     useEffect(() => {
         setSelectedCourse(null);
     }, [search]);
     useEffect(() => {
         setLoading(true);
-        axios
-            .get(`${apiUrl}/getCourse`)
+        axios.get(`${apiUrl}/getCourse`)
             .then((res) => {
                 if (res.data.Status === 'Success') {
                     setData(res.data.Result);
@@ -169,7 +164,7 @@ function Course() {
 
                                     <div style={{
                                         width: 'fit-content',
-                                        backgroundColor: '#0d6efd',
+                                        backgroundColor: setLoading ? '#fff' : '#0d6efd',
                                         padding: '2px',
                                         borderRadius: '5px',
                                         paddingTop: '8px',
