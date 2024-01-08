@@ -405,19 +405,19 @@ function ViewSong() {
                                                     alignItems: 'center',
                                                     justifyContent: 'space-between',
                                                     flexWrap: 'wrap',
-                                                    borderRadius: '40px'
+                                                    borderRadius: '30px'
                                                 }}
                                             >
                                                 <Tooltip title={<p>Decrease Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={decreaseKey} style={{ borderRadius: '40px' }}><RemoveIcon /></Button>
+                                                    <Button onClick={decreaseKey} style={{ borderRadius: '50px' }}><RemoveIcon /></Button>
                                                 </Tooltip>
                                                 <Button style={{ color: "#0d6efd" }}><b>{firstChord}</b></Button>
                                                 <Tooltip title={<p>Increase Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={increaseKey} style={{ borderRadius: '40px' }}><AddIcon /></Button>
+                                                    <Button onClick={increaseKey} style={{ borderRadius: '50px' }}><AddIcon /></Button>
                                                 </Tooltip>
                                                 <StyledToggleButtonGroup
                                                     size="small"
