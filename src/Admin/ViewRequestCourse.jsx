@@ -89,7 +89,7 @@ function ViewRequestCourse() {
                                                 <b htmlFor="duration" className="form-label text-start">Date created:</b>
                                                 <p>{moment(order.upload_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
                                             </div>
-                                            <div style={{ marginTop: '10px' }}>
+                                            <div style={{ paddingTop: '10px' }}>
                                                 <b htmlFor="duration" className="form-label">Poster / Uploader:</b>
                                                 <p>{order.userId}</p>
                                             </div>
