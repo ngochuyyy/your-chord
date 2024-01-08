@@ -63,16 +63,11 @@ function ProfileCustomer() {
                     image: res.data.Result[0].image,
                     registration_time: res.data.Result[0].registration_time,
                 })
-                if (res.data.Result.length > 0) {
+                if (res.data.Result.length > 0 && res.data.Status === "Success") {
+                    setLoading(false);
                     const profileImages = res.data.Result.map(data => `${data.image}`);
                     setImageURL(profileImages);
                 }
-                if (res.data.Status === "Success") {
-                    setLoading(false);
-                } else {
-                    alert("Error")
-                }
-
             })
             .catch(err => console.log(err));
     }, [])
