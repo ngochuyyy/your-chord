@@ -1,5 +1,5 @@
 import './style.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from "axios";
 import { Link, useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
@@ -25,6 +25,10 @@ function Login() {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    useEffect(() => {
+        // Clear all local storage when component mounts (user is on the login page)
+        localStorage.clear();
+    }, []);
     const handleSubmit = (event) => {
         event.preventDefault();
         setLoading(true);
