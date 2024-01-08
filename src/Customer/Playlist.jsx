@@ -69,8 +69,8 @@ function Playlist() {
         }
     };
     const playlistItemStyle = {
-        maxWidth: '200px',
         transition: 'box-shadow 0.3s ease-in-out',
+
     };
 
     useEffect(() => {
