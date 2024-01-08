@@ -67,14 +67,14 @@ function Playlist() {
             console.error(error);
         }
     };
-    const playlistItemStyle = {
-        maxWidth: '200px', // Adjust the width as needed
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        transition: 'box-shadow 0.3s ease-in-out',
-        ':hover': {
-            boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
-        },
-    };
+    // const playlistItemStyle = {
+    //     maxWidth: '200px', // Adjust the width as needed
+    //     boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+    //     transition: 'box-shadow 0.3s ease-in-out',
+    //     ':hover': {
+    //         boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
+    //     },
+    // };
     useEffect(() => {
         fetchPlaylistData();
     }, []);
@@ -163,7 +163,7 @@ function Playlist() {
                                     <div key={index} className="m-4 p-4" >
                                         <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                             <div className="d-flex flex-column align-items-center text-center">
-                                                <div className="rounded-image-container" style={playlistItemStyle}>
+                                                <div className="rounded-image-container" >
                                                     {imageURL && (
                                                         <img
                                                             className="rounded-square-image"
