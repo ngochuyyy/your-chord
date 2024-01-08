@@ -161,7 +161,7 @@ function Playlist() {
                                     <div key={index} className="m-4 p-4" style={playlistItemStyle}>
                                         <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                             <div className="d-flex flex-column align-items-center text-center">
-                                                <div className="rounded-image-container" style={{ ...playlistItemStyle, position: 'relative', borderRadius: '40px' }} >
+                                                <div className="rounded-image-container" >
                                                     {imageURL && (
                                                         <img
                                                             className="rounded-square-image"
