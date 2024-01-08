@@ -144,24 +144,16 @@ function Course() {
                                 height: '65vh',
                             }}>
                             {filteredRequestCourse.map((course, index) => (
-                                <>
-                                    {filteredRequestCourse.length === 0 ? (
-                                        <div className="no-result-message">
-                                            <p>No result found.</p>
+                                <Tab
+                                    key={index}
+                                    label={
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                            <b>{course.course_name}</b>
                                         </div>
-                                    ) : (
-                                        <Tab
-                                            key={index}
-                                            label={
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
-                                                    <b>{course.course_name}</b>
-                                                </div>
-                                            }
-                                        />
-                                    )}
-                                </>
+                                    }
 
+                                />
                             ))}
                         </Tabs>
 
