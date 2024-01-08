@@ -69,7 +69,6 @@ function Playlist() {
         }
     };
     const playlistItemStyle = {
-        maxWidth: '200px',
         transition: 'box-shadow 0.3s ease-in-out',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
         ':hover': {
