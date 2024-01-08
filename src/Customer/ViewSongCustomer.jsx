@@ -417,7 +417,7 @@ function ViewSongCustomer() {
                                                         placement="top">
                                                         <Button onClick={decreaseKey} style={{ borderRadius: '40px', marginLeft: '5px' }}><RemoveIcon /></Button>
                                                     </Tooltip>
-                                                    <p style={{ color: "#0d6efd" }}><b>{firstChord}</b></p>
+                                                    <Button style={{ color: "#0d6efd" }}><b>{firstChord}</b></Button>
                                                     <Tooltip title={<p>Increase Key</p>}
                                                         arrow
                                                         placement="top">
