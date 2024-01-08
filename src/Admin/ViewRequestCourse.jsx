@@ -67,13 +67,13 @@ function ViewRequestCourse() {
                 </div>
             )
                 : (
-                    <div className="container payment-container" style={{ width: '100%', maxWidth: '1300px', margin: '0 auto', padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+                    <div className="container payment-container" style={{ width: '1300px', height: 'fit-content' }}>
                         {requestData.map((order, index) => (
                             <div key={index}>
                                 <div className="py-4 text-center">
                                     <h2 style={{ color: '#0d6efd', fontWeight: 'bold' }}>Request Course</h2>
                                 </div>
-                                <div className="row" style={{ marginBottom: '20px' }}>
+                                <div className="row">
                                     <div className="col-md-6 text-start pe-4">
                                         {/* Left side */}
                                         <div>
@@ -82,7 +82,7 @@ function ViewRequestCourse() {
 
                                             <b htmlFor="cc-link" className="text-start">Link youtube</b>
                                             <br />
-                                            <Link to={order.link} style={{ color: '#0d6efd', textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
+                                            <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
                                             <br />
                                             <div style={{ marginTop: '10px' }}>
                                                 <b htmlFor="duration" className="form-label text-start">Date created:</b>
@@ -107,16 +107,16 @@ function ViewRequestCourse() {
                                         )}
 
                                         {videoFile && (
-                                            <video controls width="640" height="400" style={{ width: '100%', height: 'auto' }}>
+                                            <video controls width="640" height="400">
                                                 <source src={generateBlobUrl(new Uint8Array(videoFile.data).buffer, 'video/*')} type="video/mp4" />
                                             </video>
                                         )}
                                     </div>
                                 </div>
-                                <hr style={{ border: '0', height: '1px', background: '#ddd', margin: '20px 0' }} />
+                                <hr className="mb-3" />
                                 <div className="row">
                                     <div>
-                                        <button className="btn btn-primary" style={{ backgroundColor: '#0d6efd', color: '#fff', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer', transition: 'background-color 0.3s' }} onClick={handleClose}>
+                                        <button className="btn btn-primary" onClick={handleClose}>
                                             Close
                                         </button>
                                     </div>
