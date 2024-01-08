@@ -405,19 +405,19 @@ function ViewSong() {
                                                     alignItems: 'center',
                                                     justifyContent: 'space-between',
                                                     flexWrap: 'wrap',
-                                                    borderRadius: '30px'
+                                                    borderRadius: '40px'
                                                 }}
                                             >
                                                 <Tooltip title={<p>Decrease Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={decreaseKey} style={{ borderRadius: '50px', marginLeft: '5px' }}><RemoveIcon /></Button>
+                                                    <Button onClick={decreaseKey} style={{ borderRadius: '40px', marginLeft: '5px' }}><RemoveIcon /></Button>
                                                 </Tooltip>
                                                 <Button style={{ color: "#0d6efd" }}><b>{firstChord}</b></Button>
                                                 <Tooltip title={<p>Increase Key</p>}
                                                     arrow
                                                     placement="top">
-                                                    <Button onClick={increaseKey} style={{ borderRadius: '50px' }}><AddIcon /></Button>
+                                                    <Button onClick={increaseKey} style={{ borderRadius: '40px' }}><AddIcon /></Button>
                                                 </Tooltip>
                                                 <StyledToggleButtonGroup
                                                     size="small"
@@ -468,12 +468,12 @@ function ViewSong() {
                                                         arrow
                                                         placement="top">
                                                         {isOn ?
-                                                            <ToggleButton value="#F1F1FB" onClick={handleChordOn}>
+                                                            <ToggleButton value="#F1F1FB" onClick={handleChordOn} style={{ borderBottomRightRadius: '40px', borderTopRightRadius: '40px' }}>
                                                                 <VisibilityOffIcon fontSize="medium" />  Chord
                                                             </ToggleButton>
 
                                                             :
-                                                            <ToggleButton value="#F1F1FB" onClick={handleChordOff} style={{ borderBottomRightRadius: '50px' }}>
+                                                            <ToggleButton value="#F1F1FB" onClick={handleChordOff} style={{ borderBottomRightRadius: '40px', borderTopRightRadius: '40px' }}>
                                                                 <RemoveRedEyeIcon fontSize="medium" />  Chord
                                                             </ToggleButton>
                                                         }
