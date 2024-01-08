@@ -160,10 +160,10 @@ function Playlist() {
                             <div className="d-flex flex-wrap justify-content-start" style={{ marginLeft: '70px' }}>
 
                                 {filteredPlaylist.map((playlist, index) => (
-                                    <div key={index} className="m-4 p-4" style={playlistItemStyle}>
+                                    <div key={index} className="m-4 p-4" >
                                         <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                             <div className="d-flex flex-column align-items-center text-center">
-                                                <div className="rounded-image-container">
+                                                <div className="rounded-image-container" style={playlistItemStyle}>
                                                     {imageURL && (
                                                         <img
                                                             className="rounded-square-image"
