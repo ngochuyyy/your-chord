@@ -73,13 +73,6 @@ function Playlist() {
         transition: 'box-shadow 0.3s ease-in-out',
     };
 
-    const imageContainerStyle = {
-        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-        position: 'relative',
-        ':hover': {
-            boxShadow: '0 0 15px rgba(0, 0, 0, 0.2)',
-        },
-    };
     useEffect(() => {
         fetchPlaylistData();
     }, []);
@@ -166,7 +159,7 @@ function Playlist() {
 
                                 {filteredPlaylist.map((playlist, index) => (
                                     <div key={index} className="m-4 p-4" style={playlistItemStyle}>
-                                        <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', ...imageContainerStyle }}>
+                                        <div className="container rounded bg-white" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                                             <div className="d-flex flex-column align-items-center text-center">
                                                 <div className="rounded-image-container" style={{ ...playlistItemStyle, position: 'relative', borderRadius: '40px' }} >
                                                     {imageURL && (
