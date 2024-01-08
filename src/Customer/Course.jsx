@@ -131,6 +131,7 @@ function Course() {
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+
                         <Tabs
                             orientation="vertical"
                             value={selectedCourse}
@@ -142,9 +143,13 @@ function Course() {
                                 width: '20%',
                                 height: '65vh',
                             }}>
-                            {filteredRequestCourse.length > 0 ?
+                            {filteredRequestCourse.map((course, index) => (
                                 <>
-                                    {filteredRequestCourse.map((course, index) => (
+                                    {filteredRequestCourse.length === 0 ? (
+                                        <div className="no-result-message">
+                                            <p>No result found.</p>
+                                        </div>
+                                    ) : (
                                         <Tab
                                             key={index}
                                             label={
@@ -154,13 +159,10 @@ function Course() {
                                                 </div>
                                             }
                                         />
-                                    ))}
+                                    )}
                                 </>
-                                :
-                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                    <b>No result found</b>
-                                </div>
-                            }
+
+                            ))}
                         </Tabs>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
