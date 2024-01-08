@@ -67,7 +67,11 @@ function ProfileCustomer() {
                     const profileImages = res.data.Result.map(data => `${data.image}`);
                     setImageURL(profileImages);
                 }
-                setLoading(false);
+                if (res.data.Status === "Success") {
+                    setLoading(false);
+                } else {
+                    alert("Error")
+                }
 
             })
             .catch(err => console.log(err));
