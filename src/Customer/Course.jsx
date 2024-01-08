@@ -142,17 +142,25 @@ function Course() {
                                 width: '20%',
                                 height: '65vh',
                             }}>
-                            {filteredRequestCourse.map((course, index) => (
-                                <Tab
-                                    key={index}
-                                    label={
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
-                                            <b>{course.course_name}</b>
-                                        </div>
-                                    }
-                                />
-                            ))}
+                            {filteredRequestCourse.length > 0 ?
+                                <>
+                                    {filteredRequestCourse.map((course, index) => (
+                                        <Tab
+                                            key={index}
+                                            label={
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                                    <b>{course.course_name}</b>
+                                                </div>
+                                            }
+                                        />
+                                    ))}
+                                </>
+                                :
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <b>No result found</b>
+                                </div>
+                            }
                         </Tabs>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
