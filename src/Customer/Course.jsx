@@ -158,7 +158,7 @@ function Course() {
                         <Box sx={{ width: '55%', margin: 'auto' }}>
                             {selectedCourse !== null && (
                                 <div>
-                                    <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
+                                    <h3 style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>
                                         {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p>
@@ -168,10 +168,12 @@ function Course() {
 
                                     <div style={{
                                         width: 'fit-content',
-                                        backgroundColor: '#ccc',
-                                        padding: '5px',
+                                        backgroundColor: '#0d6efd',
+                                        padding: '2px',
                                         borderRadius: '5px',
-                                        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+                                        paddingTop: '8px',
+                                        paddingLeft: '8px',
+                                        paddingRight: '8px',
                                     }}>
                                         {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
                                             <YouTube
