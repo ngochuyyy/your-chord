@@ -164,7 +164,7 @@ function Course() {
 
                                     <div style={{
                                         width: 'fit-content',
-                                        backgroundColor: setLoading ? '#fff' : '#0d6efd',
+                                        backgroundColor: setLoading ? '#0d6efd' : '#ffff',
                                         padding: '2px',
                                         borderRadius: '5px',
                                         paddingTop: '8px',
