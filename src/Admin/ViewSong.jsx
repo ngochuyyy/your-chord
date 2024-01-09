@@ -419,7 +419,7 @@ function ViewSong() {
                                                     placement="top">
                                                     <Button onClick={increaseKey} style={{ borderRadius: '40px' }}><AddIcon /></Button>
                                                 </Tooltip>
-                                                <Divider flexItem orientation="vertical" sx={{ mx: 0.5, my: 1, border: '0.2px dashed #ccc' }} />
+                                                <Divider flexItem orientation="vertical" sx={{ mx: 0.5, my: 1, border: '0.2px dashed black' }} />
                                                 <StyledToggleButtonGroup
                                                     size="small"
                                                     value={alignment}
