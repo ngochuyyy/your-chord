@@ -458,7 +458,7 @@ function ViewSong() {
                                                     </StyledToggleButtonGroup>
 
                                                 </StyledToggleButtonGroup>
-                                                <Divider flexItem orientation="vertical" sx={{ mx: 1, my: 1, fontWeight: 'bold' }} />
+                                                <Divider flexItem orientation="vertical" sx={{ mx: 1, my: 1 }} style={{ fontWeight: 'bold' }} />
                                                 <StyledToggleButtonGroup
                                                     size="small"
                                                     value={formats}
