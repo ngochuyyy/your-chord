@@ -24,7 +24,7 @@ function SongBeatManager() {
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
@@ -111,7 +111,6 @@ function SongBeatManager() {
 
     const fetchData = async () => {
         try {
-            setLoading(true);
             const countRequests = beatGenresData.map((beat) =>
                 axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
             );
@@ -130,7 +129,6 @@ function SongBeatManager() {
 
             setBeatGenres(updatedGenres);
             setBeatSongCounts(songCountsMap);
-            setLoading(false);
         } catch (error) {
             console.error(error);
         }
