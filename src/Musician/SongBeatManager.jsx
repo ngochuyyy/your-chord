@@ -203,7 +203,6 @@ function SongBeatManager() {
         axios.get(`${apiUrl}/getChord`)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    setLoading(false);
                     const chordData = res.data.Result.map(chord => ({
                         name: chord.chord_name,
                         image: chord.image,
@@ -226,7 +225,8 @@ function SongBeatManager() {
                     });
                     setDataMajorChords(majorChordsData);
                     setDataMinorChords(minorChordsData);
-                    setDataC7Chords(c7ChordsData)
+                    setDataC7Chords(c7ChordsData);
+                    setLoading(false);
                 } else {
                     alert("Error")
                 }
