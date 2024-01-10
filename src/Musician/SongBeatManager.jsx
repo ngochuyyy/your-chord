@@ -79,7 +79,6 @@ function SongBeatManager() {
         setIsSongListOpen((prev) => !prev);
     };
     useEffect(() => {
-        setLoading(true)
         axios.get(`${apiUrl}/getSongBeat/` + beat_type)
             .then((res) => {
                 if (res.data.Status === 'Success') {
