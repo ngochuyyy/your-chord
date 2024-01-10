@@ -1311,26 +1311,20 @@ textarea {
 }
 
 .your-chord-text {
-    font-size: 24px;
-    /* Điều chỉnh kích thước chữ theo mong muốn */
     overflow: hidden;
-    /* Ẩn phần chữ vượt ra khỏi khung */
 }
 
 .animated-text {
     display: inline-block;
     animation: slideIn 2s ease-in-out;
-    /* Đặt thời gian và kiểu easing theo mong muốn */
 }
 
 @keyframes slideIn {
     from {
         transform: translateX(-100%);
-        /* Bắt đầu từ vị trí ngoài khung bên trái */
     }
 
     to {
         transform: translateX(0);
-        /* Di chuyển về vị trí ban đầu (0%) */
     }
 }
