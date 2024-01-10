@@ -111,7 +111,6 @@ function SongBeatManager() {
 
     const fetchData = async () => {
         try {
-            setLoading(true);
             const countRequests = beatGenresData.map((beat) =>
                 axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
             );
@@ -130,7 +129,6 @@ function SongBeatManager() {
 
             setBeatGenres(updatedGenres);
             setBeatSongCounts(songCountsMap);
-            setLoading(false);
         } catch (error) {
             console.error(error);
         }
