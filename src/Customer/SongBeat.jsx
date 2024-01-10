@@ -84,7 +84,6 @@ function SongBeat() {
             .catch((err) => console.log(err));
     };
     useEffect(() => {
-        setLoading(true)
         axios.get(`${apiUrl}/getSongBeat/` + beat_type)
             .then((res) => {
                 if (res.data.Status === 'Success') {
@@ -103,7 +102,6 @@ function SongBeat() {
     }, []);
     const fetchData = async () => {
         try {
-            setLoading(true);
             const countRequests = beatGenresData.map((beat) =>
                 axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
             );
@@ -122,10 +120,8 @@ function SongBeat() {
 
             setBeatGenres(updatedGenres);
             setBeatSongCounts(songCountsMap);
-            setLoading(false);
         } catch (error) {
             console.error(error);
-            setLoading(false);
         }
     };
     useEffect(() => {
@@ -184,7 +180,6 @@ function SongBeat() {
         axios.get(`${apiUrl}/getChord`)
             .then(res => {
                 if (res.data.Status === "Success") {
-                    setLoading(false);
                     const chordData = res.data.Result.map(chord => ({
                         name: chord.chord_name,
                         image: chord.image,
@@ -207,7 +202,8 @@ function SongBeat() {
                     });
                     setDataMajorChords(majorChordsData);
                     setDataMinorChords(minorChordsData);
-                    setDataC7Chords(c7ChordsData)
+                    setDataC7Chords(c7ChordsData);
+                    setLoading(false);
                 } else {
                     alert("Error")
                 }
@@ -243,7 +239,8 @@ function SongBeat() {
                 :
                 <>
                     <div className="d-flex">
-                        <div className="col-md-8" >
+                        <div className="col-md-8">
+                            <div style={{ margin: '10px', marginTop: '80px', marginLeft: '50px', fontWeight: 'bold', fontSize: '20px' }}>List of {`${beat_type.charAt(0).toUpperCase()}${beat_type.slice(1)}`} songs:</div>
                             {data.length === 0 ? (
                                 <div style={{
                                     margin: '10px', marginTop: '80px', textAlign: 'center'
@@ -254,7 +251,7 @@ function SongBeat() {
                                 :
                                 (
                                     <div style={{
-                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '80px', marginLeft: '50px'
+                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '20px', marginLeft: '50px'
                                     }}>
 
                                         {
@@ -340,7 +337,7 @@ function SongBeat() {
 
                         <div className="col-md-4">
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed' }}>
-                                <b style={{ color: '#0d6efd', fontWeight: 'bold', textAlign: 'center', marginTop: '50px' }}>Rhythm</b>
+                                <b style={{ color: '#0d6efd', fontWeight: 'bold', textAlign: 'center', marginTop: '90px' }}>Rhythm</b>
                                 <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
                                     <div className="flex-row" style={{
                                         display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', cursor: 'pointer'
