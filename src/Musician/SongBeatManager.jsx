@@ -275,7 +275,7 @@ function SongBeatManager() {
                                 :
                                 (
                                     <div style={{
-                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '50px', marginLeft: '50px'
+                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '40px', marginLeft: '50px'
                                     }}>
 
                                         {
