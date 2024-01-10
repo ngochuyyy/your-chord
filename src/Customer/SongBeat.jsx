@@ -87,7 +87,6 @@ function SongBeat() {
         axios.get(`${apiUrl}/getSongBeat/` + beat_type)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    setLoading(false)
                     setData(res.data.Result);
                     console.log(res.data.Result)
                     if (res.data.Result.length > 0) {
