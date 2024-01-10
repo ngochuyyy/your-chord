@@ -7,8 +7,8 @@ function InfoContainer() {
     return (
         <>
             <div className="project-info-container" style={{ width: '100%', textAlign: 'center' }}>
-                <p style={{ padding: '10px', fontSize: '12px' }}>
-                    Your Chord @2023
+                <p className="your-chord-text">
+                    <span className="animated-text">Your Chord @2023</span>
                     <br />
                     <Link to="/introduction" style={{ textDecoration: 'none' }}> Introduction</Link> |
                     <Link to="/bug-report" style={{ textDecoration: 'none' }}> Report a Bug - Give Feedback</Link> |
