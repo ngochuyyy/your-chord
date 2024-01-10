@@ -264,7 +264,7 @@ function SongBeatManager() {
                 <>
                     <div className="d-flex">
                         <div className="col-md-8" >
-                            <div style={{ margin: '10px', marginLeft: '50px' }}>{`${beat_type}`}</div>
+                            <div style={{ margin: '10px', marginTop: '80px', marginLeft: '50px' }}>{`${beat_type}`}</div>
                             {data.length === 0 ? (
                                 <div style={{
                                     margin: '10px', marginTop: '80px', textAlign: 'center'
@@ -275,7 +275,7 @@ function SongBeatManager() {
                                 :
                                 (
                                     <div style={{
-                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '80px', marginLeft: '50px'
+                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '50px', marginLeft: '50px'
                                     }}>
 
                                         {
