@@ -264,7 +264,7 @@ function SongBeatManager() {
                 <>
                     <div className="d-flex">
                         <div className="col-md-8" >
-                            <div style={{ margin: '10px', marginTop: '80px', marginLeft: '50px', fontWeight: 'bold', fontSize: '20px' }}>List of {`${beat_type.toLocaleUpperCase()}`} songs:</div>
+                            <div style={{ margin: '10px', marginTop: '80px', marginLeft: '50px', fontWeight: 'bold', fontSize: '20px' }}>List of {`${beat_type.toLocaleLowerCase()}`} songs:</div>
                             {data.length === 0 ? (
                                 <div style={{
                                     margin: '10px', marginTop: '80px', textAlign: 'center'
