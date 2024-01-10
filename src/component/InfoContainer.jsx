@@ -21,8 +21,8 @@ function InfoContainer() {
                     <span className="animated-text">YourChords @2023</span>
                     <br />
                     <div className="animated-text">
-                        <Link to="mailto:diepngochuy3@gmail.com" style={{ textDecoration: 'none' }}>Email to us: diepngochuy3@gmail.com</Link> |
-                        <span style={{ textDecoration: 'none', color: 'inherit !important' }}> Hotline: 0918771818</span>
+                        <span>Email to us:</span><Link to="mailto:diepngochuy3@gmail.com" style={{ textDecoration: 'none' }}>diepngochuy3@gmail.com</Link> |
+                        <span style={{ textDecoration: 'none' }}> Hotline: 0918771818</span>
                     </div>
                 </p>
             </div>
