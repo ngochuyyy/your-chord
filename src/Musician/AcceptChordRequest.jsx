@@ -58,31 +58,26 @@ function AcceptChordRequest() {
                         <button className='btn-accept'>
                             Completed
                         </button>
-                    ) :
-                        record.status === 0 ? (
-                            <button className='btn-decline'>
-                                Declined
-                            </button>
-                        ) : record.status === 2 ? (
-                            <button style={{
-                                width: "100px",
-                                border: "transparent",
-                                backgroundColor: "yellow",
-                                borderRadius: "16px",
-                                padding: "3px 10px",
-                            }}>
-                                Do task
-                            </button>
-                        ) : (
-                            <>
-                                <Button className='btn-accept' onClick={() => handleAccept(record.id)}>
-                                    Accept
-                                </Button>
-                                {/* <Button className='btn-decline' onClick={() => handleDecline(record.id)}>
+                    ) : record.status === 2 ? (
+                        <button style={{
+                            width: "100px",
+                            border: "transparent",
+                            backgroundColor: "yellow",
+                            borderRadius: "16px",
+                            padding: "3px 10px",
+                        }}>
+                            Do task
+                        </button>
+                    ) : (
+                        <>
+                            <Button className='btn-accept' onClick={() => handleAccept(record.id)}>
+                                Accept
+                            </Button>
+                            {/* <Button className='btn-decline' onClick={() => handleDecline(record.id)}>
                                     Reject
                                 </Button> */}
-                            </>
-                        )
+                        </>
+                    )
                     }
                 </Space>
             ),
