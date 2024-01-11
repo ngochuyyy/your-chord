@@ -124,7 +124,7 @@ function OrderMusician() {
                 setLoading(true);
                 const response = await axios.get(`${apiUrl}/getOrder`);
                 if (response.data.Status === 'Success') {
-                    const filteredData = response.data.data.filter(item => item.musician_id === null && item.status === null && !isExpired);
+                    const filteredData = response.data.data.filter(item => item.musician_id === null && item.status === null && !isExpired(item));
                     setOrderData(filteredData);
                 } else {
                     console.error('Failed to fetch order data:', response.data.Error);
