@@ -166,7 +166,6 @@ function Course() {
                                         width: 'fit-content',
                                         border: '2px solid #0d6efd',
                                         borderRadius: '5px',
-                                        paddingTop: '8px',
                                         paddingLeft: '8px',
                                         paddingRight: '8px',
                                     }}>
