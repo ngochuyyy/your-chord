@@ -65,13 +65,13 @@ function RequestChordStatus() {
                     ) : (
                         <>
                             {text === 1 ? (
-                                <p style={{ width: '100px', textAlign: 'left' }}>
+                                <span style={{ width: '100px', textAlign: 'left' }}>
                                     In process...
-                                </p>
+                                </span>
                             ) : text === 2 ? (
-                                <p style={{ width: '200px', textAlign: 'left' }}>
+                                <span style={{ width: '200px', textAlign: 'left' }}>
                                     Being completed...
-                                </p>
+                                </span>
                             ) : text === 0 ? (
                                 <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
                                     Declined
