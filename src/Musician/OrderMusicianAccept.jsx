@@ -44,7 +44,7 @@ function OrderMusicianAccept() {
             width: 200,
             render: (text, record) => (
                 <div>
-                    {record.status === 3 && isExpired(record) ?
+                    {record.status === 3 || isExpired(record) ?
                         <p>{text}</p>
                         :
                         <Input
