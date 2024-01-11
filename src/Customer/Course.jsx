@@ -103,7 +103,7 @@ function Course() {
                             <input
                                 type="text"
                                 className="input-box"
-                                placeholder="Search.."
+                                placeholder="Search..."
                                 onChange={(e) => setSearch(e.target.value)}
                             />
                             <SearchIcon className="inputIcon" />
