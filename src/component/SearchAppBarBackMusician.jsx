@@ -30,6 +30,8 @@ import axios from 'axios';
 import DvrIcon from '@mui/icons-material/Dvr';
 import AddIcon from '@mui/icons-material/Add';
 import BookmarkAddedIcon from '@mui/icons-material/BookmarkAdded';
+import SpatialAudioIcon from '@mui/icons-material/SpatialAudio';
+
 const darkTheme = createTheme({
     palette: {
         primary: {
@@ -248,6 +250,17 @@ export default function SearchAppBarBackMusican() {
                                                     <MusicOffIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                                 </ListItemIcon>
                                                 <ListItemText><span className="fontDashboard">Missing Chord</span></ListItemText>
+                                            </ListItemButton>
+                                            <ListItemButton style={{ borderRadius: '20px' }}
+                                                className={`dashboard-button ${activeButton === 'requestChordMusician' ? 'clicked' : ''}`}
+                                                onClick={(e) => {
+                                                    handleButtonClick(e, 'requestChordMusician');
+                                                    navigate('/requestChordMusician')
+                                                }}  >
+                                                <ListItemIcon>
+                                                    <SpatialAudioIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                </ListItemIcon>
+                                                <ListItemText><span className="fontDashboard">Request Chord</span></ListItemText>
                                             </ListItemButton>
                                         </List>
                                     </Collapse>
