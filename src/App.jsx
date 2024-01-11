@@ -144,7 +144,7 @@ function App() {
           <Route path='/orderHistory/:userId/' element={<OrderHistory />}></Route>
           <Route path='/orderMusicianAccept/:userId/' element={<OrderMusicianAccept />}></Route>
           <Route path='/editRequestChordMusician/:id' element={<EditRequestChordMusician />}></Route>
-          <Route path='/acceptRequestChord/:userId/' element={<AcceptChordRequest />}></Route>
+          <Route path='/acceptChordRequest/:userId/' element={<AcceptChordRequest />}></Route>
 
         </Route>
         <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>
