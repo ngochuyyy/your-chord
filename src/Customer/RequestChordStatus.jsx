@@ -24,7 +24,6 @@ function RequestChordStatus() {
                 message.error('Failed to delete request');
             }
         } catch (error) {
-            console.error('Error deleting request:', error.message);
             message.error('An error occurred while deleting the request');
         }
     };
@@ -102,25 +101,27 @@ function RequestChordStatus() {
                     <Button type="primary" style={{ borderRadius: '40px' }}>
                         <Link to={`/viewRequestChord/${record.id}`} style={{ textDecoration: 'none' }}>View</Link>
                     </Button>
-                    <Button
-                        onClick={() => {
-                            Modal.confirm({
-                                title: 'Confirm Deletion',
-                                content: 'Are you sure you want to delete this request?',
-                                onOk() {
-                                    handleDelete(record.id);
-                                },
-                                onCancel() {
-                                    console.log('Cancel');
-                                },
-                            });
-                        }}
-                        type="primary"
-                        danger
-                        style={{ borderRadius: '40px' }}
-                    >
-                        Delete
-                    </Button>
+                    {record.status === 1 &&
+                        <Button
+                            onClick={() => {
+                                Modal.confirm({
+                                    title: 'Confirm Deletion',
+                                    content: 'Are you sure you want to delete this request?',
+                                    onOk() {
+                                        handleDelete(record.id);
+                                    },
+                                    onCancel() {
+                                        console.log('Cancel');
+                                    },
+                                });
+                            }}
+                            type="primary"
+                            danger
+                            style={{ borderRadius: '40px' }}
+                        >
+                            Delete
+                        </Button>
+                    }
                 </Space >
             ),
         },
