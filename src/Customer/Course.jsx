@@ -58,12 +58,11 @@ function Course() {
     const filteredRequestCourse = data
         .filter((request) => {
             return (
-                search.trim() === '' &&
-                request.status === 2
-            ) || (
+                (search.trim() === '' && request.status === 2) ||
+                (request.course_name &&
                     request.course_name.toLowerCase().includes(search.toLowerCase()) &&
-                    request.status === 2
-                );
+                    request.status === 2)
+            );
         });
     return (
         <>
@@ -152,7 +151,7 @@ function Course() {
                         </Tabs>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
-                            {selectedCourse !== null && (
+                            {selectedCourse !== null && filteredRequestCourse.length > 0 && (
                                 <div>
                                     <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
                                         {filteredRequestCourse[selectedCourse].course_name}
