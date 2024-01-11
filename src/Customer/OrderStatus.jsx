@@ -1,6 +1,6 @@
 
 import SearchAppBar from '../component/SearchAppBar';
-import { Space, Table, Button } from 'antd';
+import { Space, Table, Button, Modal } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -92,6 +92,27 @@ function OrderStatus() {
                     <Button type="primary" style={{ borderRadius: '40px' }}>
                         <Link to={`/viewOrderCustomer/${record.id}`} style={{ textDecoration: 'none' }}>View</Link>
                     </Button>
+                    {record.status === null && !isExpired(record) &&
+                        <Button
+                            onClick={() => {
+                                Modal.confirm({
+                                    title: 'Confirm Deletion',
+                                    content: 'Are you sure you want to delete this request?',
+                                    onOk() {
+                                        // handleDelete(record.id);
+                                    },
+                                    onCancel() {
+                                        console.log('Cancel');
+                                    },
+                                });
+                            }}
+                            type="primary"
+                            danger
+                            style={{ borderRadius: '40px' }}
+                        >
+                            Delete
+                        </Button>
+                    }
                 </Space >
             ),
         },
