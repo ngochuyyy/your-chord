@@ -53,9 +53,9 @@ function Playlist() {
                         try {
                             const countResponse = await axios.get(`${apiUrl}/countSongPlaylist/` + playlist.id);
                             setPlaylistSongsCount((prevCounts) => {
+                                setLoading(false);
                                 return { ...prevCounts, [playlist.id]: countResponse.data.songCount };
                             });
-                            setLoading(false);
                         } catch (countError) {
                             console.error("Error fetching song count", countError);
                         }
