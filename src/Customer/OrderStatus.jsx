@@ -22,12 +22,12 @@ function OrderStatus() {
 
             if (response.data.Status === 'Success') {
                 setOrderData((prevOrderData) => prevOrderData.filter(item => item.id !== recordId));
-                message.success('Request deleted successfully');
+                message.success('Order deleted successfully');
             } else {
-                message.error('Failed to delete request');
+                message.error('Failed to delete order');
             }
         } catch (error) {
-            message.error('An error occurred while deleting the request');
+            message.error('An error occurred while deleting the order');
         }
     };
     const columns = [
@@ -111,7 +111,7 @@ function OrderStatus() {
                             onClick={() => {
                                 Modal.confirm({
                                     title: 'Confirm Deletion',
-                                    content: 'Are you sure you want to delete this request?',
+                                    content: 'Are you sure you want to delete this order?',
                                     onOk() {
                                         handleDelete(record.id);
                                     },
