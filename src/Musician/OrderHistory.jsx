@@ -1,6 +1,6 @@
 
 import SearchAppBar from '../component/SearchAppBar';
-import { Space, Table, Input, Button } from 'antd';
+import { Space, Table, Button } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 function OrderHistory() {
     const [orderData, setOrderData] = useState([]);
-    const [editedItemId, setEditedItemId] = useState(null);
+    // const [editedItemId, setEditedItemId] = useState(null);
     const [loading, setLoading] = useState(true);
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
@@ -42,25 +42,25 @@ function OrderHistory() {
             title: 'Price ($)',
             dataIndex: 'price',
             width: 200,
-            render: (text, record) => (
-                <div>
-                    <Input
-                        type="number"
-                        value={text}
-                        onChange={(e) => handlePriceChange(record.id, e.target.value)}
-                        placeholder='$'
-                    />
-                    {editedItemId === record.id ? (
-                        <Button
-                            type="primary"
-                            onClick={() => handleSavePrice(record.id, record.price, userId)}
-                            style={{ marginTop: '10px' }}
-                        >
-                            Save
-                        </Button>
-                    ) : null}
-                </div>
-            ),
+            // render: (text, record) => (
+            //     <div>
+            //         <Input
+            //             type="number"
+            //             value={text}
+            //             onChange={(e) => handlePriceChange(record.id, e.target.value)}
+            //             placeholder='$'
+            //         />
+            //         {editedItemId === record.id ? (
+            //             <Button
+            //                 type="primary"
+            //                 onClick={() => handleSavePrice(record.id, record.price, userId)}
+            //                 style={{ marginTop: '10px' }}
+            //             >
+            //                 Save
+            //             </Button>
+            //         ) : null}
+            //     </div>
+            // ),
         },
         {
             title: 'Status',
@@ -133,49 +133,49 @@ function OrderHistory() {
                 setLoading(false);
             });
     }, []);
-    const handlePriceChange = (itemId, newPrice) => {
-        setOrderData((prevData) => {
-            return prevData.map((item) =>
-                (item.id === itemId && (item.status === 0 || item.status === null))
-                    ? { ...item, price: newPrice }
-                    : item
-            );
-        });
-        if ((newPrice === "") || (orderData.find((item) => item.id === itemId)?.status !== 0 && orderData.find((item) => item.id === itemId)?.status !== null)) {
-            setEditedItemId(null);
-        } else {
-            setEditedItemId(itemId);
-        }
-    };
+    // const handlePriceChange = (itemId, newPrice) => {
+    //     setOrderData((prevData) => {
+    //         return prevData.map((item) =>
+    //             (item.id === itemId && (item.status === 0 || item.status === null))
+    //                 ? { ...item, price: newPrice }
+    //                 : item
+    //         );
+    //     });
+    //     if ((newPrice === "") || (orderData.find((item) => item.id === itemId)?.status !== 0 && orderData.find((item) => item.id === itemId)?.status !== null)) {
+    //         setEditedItemId(null);
+    //     } else {
+    //         setEditedItemId(itemId);
+    //     }
+    // };
 
 
-    const handleSavePrice = async (itemId, newPrice, userId) => {
-        try {
-            const orderToUpdate = orderData.find(item => item.id === itemId);
-            if (orderToUpdate && (orderToUpdate.status === null)) {
-                const response = await axios.put(`${apiUrl}/acceptOrder/${itemId}/${userId}`, {
-                    newPrice: newPrice,
-                });
+    // const handleSavePrice = async (itemId, newPrice, userId) => {
+    //     try {
+    //         const orderToUpdate = orderData.find(item => item.id === itemId);
+    //         if (orderToUpdate && (orderToUpdate.status === null)) {
+    //             const response = await axios.put(`${apiUrl}/acceptOrder/${itemId}/${userId}`, {
+    //                 newPrice: newPrice,
+    //             });
 
-                if (response.data.Status === 'Success') {
-                    window.location.reload(true);
-                    setOrderData((prevData) => {
-                        return prevData.map((item) =>
-                            item.id === itemId ? { ...item, price: newPrice } : item
-                        );
-                    });
-                } else {
-                    console.error('Failed to save price:', response.data.Error);
-                }
-            } else {
-                console.error('Invalid order status for price update');
-            }
-        } catch (error) {
-            console.error('Error saving price:', error.message);
-        } finally {
-            setEditedItemId(null);
-        }
-    };
+    //             if (response.data.Status === 'Success') {
+    //                 window.location.reload(true);
+    //                 setOrderData((prevData) => {
+    //                     return prevData.map((item) =>
+    //                         item.id === itemId ? { ...item, price: newPrice } : item
+    //                     );
+    //                 });
+    //             } else {
+    //                 console.error('Failed to save price:', response.data.Error);
+    //             }
+    //         } else {
+    //             console.error('Invalid order status for price update');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error saving price:', error.message);
+    //     } finally {
+    //         setEditedItemId(null);
+    //     }
+    // };
 
 
     // const handleAccept = (itemId) => {
