@@ -72,10 +72,6 @@ function RequestChordStatus() {
                                 <span style={{ width: '200px', textAlign: 'left' }}>
                                     Being completed...
                                 </span>
-                            ) : text === 0 ? (
-                                <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
-                                    Declined
-                                </button>
                             ) : null
                             }
                         </>
