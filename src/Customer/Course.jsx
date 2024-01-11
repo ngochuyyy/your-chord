@@ -158,7 +158,7 @@ function Course() {
                                         {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p>
-                                        <p>Author:</p> {filteredRequestCourse[selectedCourse].userId}
+                                        <span>Author:</span> {filteredRequestCourse[selectedCourse].userId}
                                     </p>
 
 
