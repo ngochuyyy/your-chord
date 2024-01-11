@@ -165,7 +165,6 @@ function Course() {
                                     <div style={{
                                         width: 'fit-content',
                                         border: '2px solid #0d6efd',
-                                        padding: '2px',
                                         borderRadius: '5px',
                                         paddingTop: '8px',
                                         paddingLeft: '8px',
