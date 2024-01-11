@@ -52,12 +52,10 @@ function Playlist() {
                     for (const playlist of playlistResponse.data.Result) {
                         try {
                             const countResponse = await axios.get(`${apiUrl}/countSongPlaylist/` + playlist.id);
-                            if (countResponse.data.Status === "Success") {
-                                setLoading(false);
-                            }
                             setPlaylistSongsCount((prevCounts) => {
                                 return { ...prevCounts, [playlist.id]: countResponse.data.songCount };
                             });
+                            setLoading(false);
                         } catch (countError) {
                             console.error("Error fetching song count", countError);
                         }
