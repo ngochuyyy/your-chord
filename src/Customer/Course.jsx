@@ -154,11 +154,11 @@ function Course() {
                         <Box sx={{ width: '55%', margin: 'auto' }}>
                             {selectedCourse !== null && (
                                 <div>
-                                    <h3 style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: '50px' }}>
+                                    <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
                                         {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p>
-                                        <b>Poster:</b> {filteredRequestCourse[selectedCourse].userId}
+                                        <p>Author:</p> {filteredRequestCourse[selectedCourse].userId}
                                     </p>
 
 
