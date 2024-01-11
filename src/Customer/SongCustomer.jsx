@@ -241,61 +241,6 @@ function SongCustomer() {
                     </AppBar>
                 </ThemeProvider>
             </Box>
-            <div className="sort-button-container">
-                <button
-                    className={`sort-button ${orderBy === 'all' ? 'active' : ''}`}
-                    onClick={() => handleSort('all')}
-                >
-                    All
-                </button>
-                <button
-                    className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
-                    onClick={() => handleSort('created_at')}
-                >
-                    New
-                </button>
-                <button
-                    className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
-                    onClick={() => handleSort('updated_at')}
-                >
-                    Updated
-                </button>
-                <button
-                    className={`sort-button ${selectedBeatType === 'pop' ? 'active' : ''}`}
-                    onClick={() => handleFilterByBeatType('pop')}
-                >
-                    <SortIcon className="sort-icon" /> Pop
-                </button>
-                <button
-                    className={`sort-button ${selectedBeatType === 'rock' ? 'active' : ''}`}
-                    onClick={() => handleFilterByBeatType('rock')}
-                >
-                    <SortIcon className="sort-icon" /> Rock
-                </button>
-                <button
-                    className={`sort-button ${selectedBeatType === 'jazz' ? 'active' : ''}`}
-                    onClick={() => handleFilterByBeatType('jazz')}
-                >
-                    <SortIcon className="sort-icon" /> Jazz
-                </button>
-                <button
-                    className={`sort-button ${selectedBeatType === 'acoustic' ? 'active' : ''}`}
-                    onClick={() => handleFilterByBeatType('acoustic')}
-                >                    <SortIcon className="sort-icon" /> Acoustic
-                </button>
-                <button
-                    className={`sort-button ${selectedBeatType === 'ballad' ? 'active' : ''}`}
-                    onClick={() => handleFilterByBeatType('ballad')}
-                >
-                    <SortIcon className="sort-icon" /> Ballad
-                </button>
-                <button
-                    className={`sort-button ${selectedBeatType === 'rb' ? 'active' : ''}`}
-                    onClick={() => handleFilterByBeatType('rb')}
-                >
-                    <SortIcon className="sort-icon" /> R&b
-                </button>
-            </div>
             {isRequestAccount && (
                 <Stack sx={{ width: '100%' }} spacing={2} >
                     <Alert severity="info">Request account successfully, your account status is currently pending. The admin will review your account after 3 days!</Alert>
@@ -311,6 +256,61 @@ function SongCustomer() {
             )
                 :
                 <>
+                    <div className="sort-button-container">
+                        <button
+                            className={`sort-button ${orderBy === 'all' ? 'active' : ''}`}
+                            onClick={() => handleSort('all')}
+                        >
+                            All
+                        </button>
+                        <button
+                            className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
+                            onClick={() => handleSort('created_at')}
+                        >
+                            New
+                        </button>
+                        <button
+                            className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
+                            onClick={() => handleSort('updated_at')}
+                        >
+                            Updated
+                        </button>
+                        <button
+                            className={`sort-button ${selectedBeatType === 'pop' ? 'active' : ''}`}
+                            onClick={() => handleFilterByBeatType('pop')}
+                        >
+                            <SortIcon className="sort-icon" /> Pop
+                        </button>
+                        <button
+                            className={`sort-button ${selectedBeatType === 'rock' ? 'active' : ''}`}
+                            onClick={() => handleFilterByBeatType('rock')}
+                        >
+                            <SortIcon className="sort-icon" /> Rock
+                        </button>
+                        <button
+                            className={`sort-button ${selectedBeatType === 'jazz' ? 'active' : ''}`}
+                            onClick={() => handleFilterByBeatType('jazz')}
+                        >
+                            <SortIcon className="sort-icon" /> Jazz
+                        </button>
+                        <button
+                            className={`sort-button ${selectedBeatType === 'acoustic' ? 'active' : ''}`}
+                            onClick={() => handleFilterByBeatType('acoustic')}
+                        >                    <SortIcon className="sort-icon" /> Acoustic
+                        </button>
+                        <button
+                            className={`sort-button ${selectedBeatType === 'ballad' ? 'active' : ''}`}
+                            onClick={() => handleFilterByBeatType('ballad')}
+                        >
+                            <SortIcon className="sort-icon" /> Ballad
+                        </button>
+                        <button
+                            className={`sort-button ${selectedBeatType === 'rb' ? 'active' : ''}`}
+                            onClick={() => handleFilterByBeatType('rb')}
+                        >
+                            <SortIcon className="sort-icon" /> R&b
+                        </button>
+                    </div>
                     {filteredSongs.length === 0 ? (
                         <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
                     ) : (
