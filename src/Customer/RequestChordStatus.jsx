@@ -1,6 +1,6 @@
 
 import SearchAppBar from '../component/SearchAppBar';
-import { Space, Table, Button } from 'antd';
+import { Space, Table, Button, message, Modal } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import moment from 'moment';
@@ -13,6 +13,21 @@ function RequestChordStatus() {
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    const handleDelete = async (recordId) => {
+        try {
+            const response = await axios.delete(`${apiUrl}/deleteRequestChord/${recordId}`);
+
+            if (response.data.Status === 'Success') {
+                setOrderData((prevOrderData) => prevOrderData.filter(item => item.id !== recordId));
+                message.success('Request deleted successfully');
+            } else {
+                message.error('Failed to delete request');
+            }
+        } catch (error) {
+            console.error('Error deleting request:', error.message);
+            message.error('An error occurred while deleting the request');
+        }
+    };
     const columns = [
         {
             title: 'Request ID',
@@ -87,7 +102,25 @@ function RequestChordStatus() {
                     <Button type="primary" style={{ borderRadius: '40px' }}>
                         <Link to={`/viewRequestChord/${record.id}`} style={{ textDecoration: 'none' }}>View</Link>
                     </Button>
-                    <Button type="primary" danger style={{ borderRadius: '40px' }}>Delete</Button>
+                    <Button
+                        onClick={() => {
+                            Modal.confirm({
+                                title: 'Confirm Deletion',
+                                content: 'Are you sure you want to delete this request?',
+                                onOk() {
+                                    handleDelete(record.id);
+                                },
+                                onCancel() {
+                                    console.log('Cancel');
+                                },
+                            });
+                        }}
+                        type="primary"
+                        danger
+                        style={{ borderRadius: '40px' }}
+                    >
+                        Delete
+                    </Button>
                 </Space >
             ),
         },
