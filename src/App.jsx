@@ -46,7 +46,8 @@ import ViewRejectCourse from './Musician/ViewRejectCourse'
 import RequestChordMusician from './Musician/RequestChordMusician';
 import EditRequestChordMusician from './Musician/EditRequestChordMusician';
 import OrderHistory from './Musician/OrderHistory';
-import OrderMusicianAccept from './Musician/OrderMusicianAccept'
+import OrderMusicianAccept from './Musician/OrderMusicianAccept';
+import AcceptChordRequest from './Musician/AcceptChordRequest';
 /////CUSTOMER
 import DashboardCustomer from './Customer/DashboardCustomer'
 import SongCustomer from './Customer/SongCustomer'
@@ -143,6 +144,7 @@ function App() {
           <Route path='/orderHistory/:userId/' element={<OrderHistory />}></Route>
           <Route path='/orderMusicianAccept/:userId/' element={<OrderMusicianAccept />}></Route>
           <Route path='/editRequestChordMusician/:id' element={<EditRequestChordMusician />}></Route>
+          <Route path='/acceptRequestChord/:userId/' element={<AcceptChordRequest />}></Route>
 
         </Route>
         <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>

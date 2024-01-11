@@ -105,7 +105,7 @@ function AcceptChordRequest() {
                 setLoading(true);
                 const response = await axios.get(`${apiUrl}/getRequestChord`);
                 if (response.data.Status === 'Success') {
-                    const filteredData = response.data.data.filter(item => item.status !== 1);
+                    const filteredData = response.data.data.filter(item => item.musician_id === userId);
                     setOrderData(filteredData);
                 } else {
                     console.error('Failed to fetch order data:', response.data.Error);
