@@ -166,9 +166,9 @@ function Course() {
                                         width: 'fit-content',
                                         border: '3px solid #0d6efd',
                                         borderRadius: '5px',
-                                        paddingTop: '8px',
-                                        paddingLeft: '8px',
-                                        paddingRight: '8px',
+                                        paddingTop: '7px',
+                                        paddingLeft: '7px',
+                                        paddingRight: '7px',
                                     }}>
                                         {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
                                             <YouTube
