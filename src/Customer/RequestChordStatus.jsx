@@ -73,7 +73,7 @@ function RequestChordStatus() {
                                     Being completed...
                                 </p>
                             ) : text === 0 ? (
-                                <button className='btn-decline' style={{ width: '100px', textAlign: 'left' }}>
+                                <button className='btn-decline' style={{ width: '100px', textAlign: 'center' }}>
                                     Declined
                                 </button>
                             ) : null

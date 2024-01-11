@@ -78,9 +78,9 @@ function RequestChordMusician() {
                                 <Button className='btn-accept' onClick={() => handleAccept(record.id)}>
                                     Accept
                                 </Button>
-                                <Button className='btn-decline' onClick={() => handleDecline(record.id)}>
+                                {/* <Button className='btn-decline' onClick={() => handleDecline(record.id)}>
                                     Reject
-                                </Button>
+                                </Button> */}
                             </>
                         )
                     }
@@ -130,16 +130,16 @@ function RequestChordMusician() {
             .catch((err) => console.log(err));
     };
 
-    const handleDecline = (itemId) => {
-        axios
-            .put(`${apiUrl}/declineRequestChord/${itemId}/${userId}`)
-            .then((res) => {
-                if (res.data.Status === 'Success') {
-                    window.location.reload(true);
-                }
-            })
-            .catch((err) => console.log(err));
-    };
+    // const handleDecline = (itemId) => {
+    //     axios
+    //         .put(`${apiUrl}/declineRequestChord/${itemId}/${userId}`)
+    //         .then((res) => {
+    //             if (res.data.Status === 'Success') {
+    //                 window.location.reload(true);
+    //             }
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
     return (
         <>
             <SearchAppBar />
