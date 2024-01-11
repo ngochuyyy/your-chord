@@ -235,20 +235,7 @@ function SongBeatManager() {
     return (
         <>
             <SearchAppBarBackMusican />
-            <div className="sort-button-container">
-                <button
-                    className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
-                    onClick={() => handleSort('created_at')}
-                >
-                    New
-                </button>
-                <button
-                    className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
-                    onClick={() => handleSort('updated_at')}
-                >
-                    Updated
-                </button>
-            </div>
+
 
             {loading ? (
                 <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
@@ -260,6 +247,20 @@ function SongBeatManager() {
             )
                 :
                 <>
+                    <div className="sort-button-container">
+                        <button
+                            className={`sort-button ${orderBy === 'created_at' ? 'active' : ''}`}
+                            onClick={() => handleSort('created_at')}
+                        >
+                            New
+                        </button>
+                        <button
+                            className={`sort-button ${orderBy === 'updated_at' ? 'active' : ''}`}
+                            onClick={() => handleSort('updated_at')}
+                        >
+                            Updated
+                        </button>
+                    </div>
                     <div className="d-flex">
                         <div className="col-md-8" >
                             <div style={{ margin: '10px', marginTop: '80px', marginLeft: '50px', fontWeight: 'bold', fontSize: '20px' }}>List of {`${beat_type.charAt(0).toUpperCase()}${beat_type.slice(1)}`} songs:</div>
