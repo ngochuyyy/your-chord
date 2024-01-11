@@ -250,7 +250,7 @@ function SongBeat() {
                                 :
                                 (
                                     <div style={{
-                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '20px', marginLeft: '50px'
+                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '10px', marginLeft: '50px'
                                     }}>
 
                                         {
