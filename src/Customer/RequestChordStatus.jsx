@@ -17,7 +17,7 @@ function RequestChordStatus() {
         {
             title: 'Request ID',
             dataIndex: 'id',
-            width: 150,
+            width: 100,
         },
         {
             title: 'Song name',
@@ -31,7 +31,7 @@ function RequestChordStatus() {
                     {text ? moment(text).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
                 </Space>
             ),
-            width: 250,
+            width: 200,
 
         },
         {
@@ -42,7 +42,7 @@ function RequestChordStatus() {
                     {text ? moment(text).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
                 </Space>
             ),
-            width: 250,
+            width: 200,
         },
         {
             title: 'Musician ID',
