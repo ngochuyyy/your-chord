@@ -36,7 +36,7 @@ function RequestChordMusician() {
                     {text ? moment(text).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
                 </Space>
             ),
-            width: 250,
+            width: 200,
 
         },
         {
@@ -47,7 +47,7 @@ function RequestChordMusician() {
                     {text ? moment(text).format('YYYY-MM-DD HH:mm:ss') : 'N/A'}
                 </Space>
             ),
-            width: 250,
+            width: 200,
         },
         {
             title: 'Status',
