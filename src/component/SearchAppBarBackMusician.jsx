@@ -262,6 +262,17 @@ export default function SearchAppBarBackMusican() {
                                                 </ListItemIcon>
                                                 <ListItemText><span className="fontDashboard">Request Chord</span></ListItemText>
                                             </ListItemButton>
+                                            <ListItemButton style={{ borderRadius: '20px' }}
+                                                className={`dashboard-button ${activeButton === 'acceptChordRequest' ? 'clicked' : ''}`}
+                                                onClick={(e) => {
+                                                    handleButtonClick(e, 'acceptChordRequest');
+                                                    navigate(`/acceptChordRequest/${profile.userId}`)
+                                                }}  >
+                                                <ListItemIcon>
+                                                    <BookmarkAddedIcon style={{ color: '#0d6efd' }} fontSize='medium' />
+                                                </ListItemIcon>
+                                                <ListItemText><span className="fontDashboard">Received Order</span></ListItemText>
+                                            </ListItemButton>
                                         </List>
                                     </Collapse>
                                     <List sx={{ paddingTop: '20px' }}>

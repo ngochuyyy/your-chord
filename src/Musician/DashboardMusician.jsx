@@ -208,6 +208,17 @@ function DashboardMusician() {
                                                             </ListItemIcon>
                                                             <ListItemText><span className="fontDashboard">Request Chord</span></ListItemText>
                                                         </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '20px' }}
+                                                            className={`dashboard-button ${activeButton === 'acceptChordRequest' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'acceptChordRequest');
+                                                                navigate(`/acceptChordRequest/${profile.userId}`)
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <BookmarkAddedIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                            <ListItemText><span className="fontDashboard">Received Order</span></ListItemText>
+                                                        </ListItemButton>
                                                     </List>
                                                 </Collapse>
                                             </List>
@@ -403,7 +414,7 @@ function DashboardMusician() {
                                                                 <SentimentVeryDissatisfiedIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
                                                         </ListItemButton>
-                                                        <ListItemButton style={{ borderRadius: '20px' }}
+                                                        <ListItemButton style={{ borderRadius: '50px' }}
                                                             className={`dashboard-button ${activeButton === 'chordMissMusician' ? 'clicked' : ''}`}
                                                             onClick={(e) => {
                                                                 handleButtonClick(e, 'chordMissMusician');
@@ -411,6 +422,26 @@ function DashboardMusician() {
                                                             }}  >
                                                             <ListItemIcon>
                                                                 <MusicOffIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '50px' }}
+                                                            className={`dashboard-button ${activeButton === 'requestChordMusician' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'requestChordMusician');
+                                                                navigate('/requestChordMusician')
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <SpatialAudioIcon color="primary" fontSize='medium' />
+                                                            </ListItemIcon>
+                                                        </ListItemButton>
+                                                        <ListItemButton style={{ borderRadius: '50px' }}
+                                                            className={`dashboard-button ${activeButton === 'acceptChordRequest' ? 'clicked' : ''}`}
+                                                            onClick={(e) => {
+                                                                handleButtonClick(e, 'acceptChordRequest');
+                                                                navigate(`/acceptChordRequest/${profile.userId}`)
+                                                            }}  >
+                                                            <ListItemIcon>
+                                                                <BookmarkAddedIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
                                                         </ListItemButton>
                                                     </List>
