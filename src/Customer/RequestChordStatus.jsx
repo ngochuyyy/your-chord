@@ -87,6 +87,7 @@ function RequestChordStatus() {
                     <Button type="primary" style={{ borderRadius: '40px' }}>
                         <Link to={`/viewRequestChord/${record.id}`} style={{ textDecoration: 'none' }}>View</Link>
                     </Button>
+                    <Button type="primary" danger style={{ borderRadius: '40px' }}>Delete</Button>
                 </Space >
             ),
         },
