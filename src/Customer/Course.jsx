@@ -151,7 +151,7 @@ function Course() {
                         </Tabs>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
-                            {selectedCourse !== null && filteredRequestCourse.length > 0 && (
+                            {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
                                 <div>
                                     <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
                                         {filteredRequestCourse[selectedCourse].course_name}
