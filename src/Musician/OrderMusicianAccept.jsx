@@ -44,12 +44,16 @@ function OrderMusicianAccept() {
             width: 200,
             render: (text, record) => (
                 <div>
-                    <Input
-                        type="number"
-                        value={text}
-                        onChange={(e) => handlePriceChange(record.id, e.target.value)}
-                        placeholder='$'
-                    />
+                    {record.status === 3 ?
+                        <p>{text}</p>
+                        :
+                        <Input
+                            type="number"
+                            value={text}
+                            onChange={(e) => handlePriceChange(record.id, e.target.value)}
+                            placeholder='$'
+                        />
+                    }
                     {editedItemId === record.id ? (
                         <Button
                             type="primary"
