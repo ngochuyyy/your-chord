@@ -72,7 +72,7 @@ function Beat() {
                     </div>
                 )
                     :
-                    <div className="d-grid" style={{ padding: '5px', marginTop: '50px' }}>
+                    <div className="d-grid pt-4" style={{ padding: '5px' }}>
                         <div className="list-grid">
                             {beatGenres.map((beatGenre, index) => (
                                 <div
