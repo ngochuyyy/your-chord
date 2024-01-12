@@ -292,7 +292,7 @@ export default function SearchAppBarBackCustomer() {
                                             <ListItemIcon>
                                                 <PlaylistPlayIcon style={{ color: '#0d6efd' }} fontSize='medium' />
                                             </ListItemIcon>
-                                            <ListItemText><span className="fontDashboard">Collection Song</span></ListItemText>
+                                            <ListItemText><span className="fontDashboard">Collection</span></ListItemText>
                                             {openPlaylist ? <ExpandLess style={{ color: '#0d6efd' }} fontSize='medium' /> : <ExpandMore style={{ color: '#0d6efd' }} fontSize='medium' />}
                                         </ListItemButton>
                                         <Collapse in={openPlaylist} timeout="auto" unmountOnExit>

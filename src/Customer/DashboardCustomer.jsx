@@ -237,7 +237,7 @@ function DashboardCustomer() {
                                                 <ListItemIcon>
                                                     <PlaylistPlayIcon color="primary" fontSize='medium' />
                                                 </ListItemIcon>
-                                                <ListItemText><span className="fontDashboard">Collection Song</span></ListItemText>
+                                                <ListItemText><span className="fontDashboard">Collection</span></ListItemText>
                                                 {openPlaylist ? <ExpandLess color="primary" fontSize='medium' /> : <ExpandMore color="primary" fontSize='medium' />}
                                             </ListItemButton>
                                             <Collapse in={openPlaylist} timeout="auto" unmountOnExit>
