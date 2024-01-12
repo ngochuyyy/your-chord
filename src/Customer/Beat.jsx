@@ -63,11 +63,6 @@ function Beat() {
         <>
             <SearchAppBar />
             <div className="d-flex flex-column align-items-center pt-2">
-                <div className="d-flex flex-column align-items-center pt-4">
-                    <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>
-                        Beat
-                    </h3>
-                </div>
                 {loading ? (
                     <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                         <div className="spinner-border text-primary" role="status">
