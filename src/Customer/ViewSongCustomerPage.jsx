@@ -227,6 +227,9 @@ function ViewSongCustomerPage() {
             if (chordData[chordName].type === 2) {
                 chordNames = Object.keys(c7ChordsData)
             }
+            if (chordData[chordName].type === 3) {
+                chordNames = Object.keys(cm7ChordsData)
+            }
             const currentIndex = chordNames.indexOf(chordName);
             let newIndex;
             if (direction === 'increase') {
