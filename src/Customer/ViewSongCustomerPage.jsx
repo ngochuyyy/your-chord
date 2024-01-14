@@ -116,7 +116,7 @@ function ViewSongCustomerPage() {
             .catch(err => console.log(err));
     }, [id, currentKey])
 
-    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData };
+    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData, ...cm7ChordsData };
     const majorKeys = Object.keys(majorChordsData);
     const minorKeys = Object.keys(minorChordsData);
     const c7Keys = Object.keys(c7ChordsData);
