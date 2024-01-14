@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchAppBar from '../component/SearchAppBar';
 import axios from 'axios';
 
-function Beat() {
+function BeatPage() {
     const navigate = useNavigate();
     const [beatGenres, setBeatGenres] = useState([]);
     const [beatSongCounts, setBeatSongCounts] = useState({});
@@ -97,4 +97,4 @@ function Beat() {
     );
 }
 
-export default Beat;
+export default BeatPage;

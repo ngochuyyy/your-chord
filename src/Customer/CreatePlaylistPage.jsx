@@ -14,7 +14,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 import SearchAppBar from '../component/SearchAppBar';
 
-function CreatePlaylist() {
+function CreatePlaylistPage() {
     const navigate = useNavigate();
     const [activeStep, setActiveStep] = useState(0);
     const [loading, setLoading] = useState(null);
@@ -208,4 +208,4 @@ function CreatePlaylist() {
     );
 }
 
-export default CreatePlaylist;
+export default CreatePlaylistPage;

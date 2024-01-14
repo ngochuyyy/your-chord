@@ -256,7 +256,7 @@ function ArtistAdminPage() {
                                                     border: '1px solid #f1f1f1'
                                                 }}
                                             >
-                                                <img src={currentItems[0].image_artist} alt={currentItems[0].artist_name} style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
+                                                <img src={currentItems[0].image_artist} alt={currentItems[0].artist_name} style={{ width: '200px', height: '200px', borderRadius: '50%', marginTop: '10px' }} />
                                                 <p style={{
                                                     fontSize: '11px', margin: '5px'
                                                 }}>

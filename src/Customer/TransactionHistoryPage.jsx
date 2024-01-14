@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Table } from 'antd';
 import SearchAppBar from '../component/SearchAppBar';
 import moment from 'moment';
-function TransactionHistory() {
+function TransactionHistoryPage() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -85,4 +85,4 @@ function TransactionHistory() {
     );
 }
 
-export default TransactionHistory;
+export default TransactionHistoryPage;

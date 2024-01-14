@@ -10,7 +10,7 @@ import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import PropTypes from 'prop-types';
 
 
-function OrderStatus() {
+function OrderStatusPage() {
     const [orderData, setOrderData] = useState([]);
     const [loading, setLoading] = useState(true);
     const token = sessionStorage.getItem('token');
@@ -281,4 +281,4 @@ function OrderStatus() {
         </>
     );
 }
-export default OrderStatus;
+export default OrderStatusPage;

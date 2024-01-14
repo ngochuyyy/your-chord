@@ -4,30 +4,33 @@ import Box from '@mui/material/Box';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import SearchAppBarBackCustomer from '../component/SearchAppBarBackCustomer';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import InfoContainer from '../component/InfoContainer';
-import moment from 'moment';
-function Artist() {
+
+function SongBeatPage() {
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
     const [order, setOrder] = useState('asc');
     const [modalOpen, setModalOpen] = useState(false);
     const [dataPlaylist, setDataPlaylist] = useState([]);
     const [imageURL, setImageURL] = useState(null);
+    const [beatGenres, setBeatGenres] = useState([]);
+    const [beatSongCounts, setBeatSongCounts] = useState({});
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
-    const { artist_id } = useParams();
-    const [loading, setLoading] = useState(true);
+    const { beat_type } = useParams();
     const [selectedSong, setSelectedSong] = useState(null);
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
     // Pagination logic
@@ -47,12 +50,27 @@ function Artist() {
         width: '1200px',
         borderRadius: '30px'
     };
+    const beatGenresData = [
+        { beat_id: 'Ballad', beat_name: 'Ballad' },
+        { beat_id: 'BluesTune', beat_name: 'Blues Tune' },
+        { beat_id: 'DiscoTune', beat_name: 'Disco Tune' },
+        { beat_id: 'SlowTune', beat_name: 'Slow Tune' },
+        { beat_id: 'BolleroTune', beat_name: 'Bollero Tune' },
+        { beat_id: 'FoxTune', beat_name: 'Fox Tune' },
+        { beat_id: 'ValseTune', beat_name: 'Valse Tune' },
+        { beat_id: 'TangoTune', beat_name: 'Tango Tune' },
+        { beat_id: 'PopTune', beat_name: 'Pop Tune' },
+        { beat_id: 'BostonTune', beat_name: 'Boston Tune' },
+        { beat_id: 'WaltzTune', beat_name: 'Waltz' },
+        { beat_id: 'Chachachadance', beat_name: 'Chachacha Dance' },
+        { beat_id: 'RockTune', beat_name: 'Rock Tune' },
+        { beat_id: 'Dhumbadance', beat_name: 'Dhumba Dance' },
+        { beat_id: 'BossaNova', beat_name: 'Bossa Nova' },
+    ];
     const handleFavorite = () => {
-        setLoading(true);
         axios.get(`${apiUrl}/getPlaylist/` + userId)
             .then((res) => {
                 if (res.data.Status === 'Success') {
-                    setLoading(false);
                     setDataPlaylist(res.data.Result);
                     if (res.data.Result.length > 0) {
                         const songImages = res.data.Result.map(playlist => `${playlist.image}`);
@@ -66,20 +84,47 @@ function Artist() {
             .catch((err) => console.log(err));
     };
     useEffect(() => {
-        setLoading(true);
-        axios.get(`${apiUrl}/getSongArtist/` + artist_id, data)
-            .then(res => {
-                if (res.data.Status === "Success") {
-                    setLoading(false);
+        axios.get(`${apiUrl}/getSongBeat/` + beat_type)
+            .then((res) => {
+                if (res.data.Status === 'Success') {
                     setData(res.data.Result);
                     console.log(res.data.Result)
-                    setImageURL(`data:image/png;base64, ${res.data.Result.image}`);
-
+                    if (res.data.Result.length > 0) {
+                        const songImages = res.data.Result.map(data => `${data.image}`);
+                        setImageURL(songImages);
+                    }
                 } else {
-                    alert("Error")
+                    alert('Error fetching songs.');
                 }
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
+    }, []);
+    const fetchData = async () => {
+        try {
+            const countRequests = beatGenresData.map((beat) =>
+                axios.get(`${apiUrl}/countSongBeat/${beat.beat_id}`)
+            );
+
+            const countResponses = await Promise.all(countRequests);
+
+            const updatedGenres = beatGenresData.map((beat, index) => ({
+                ...beat,
+                song_count: countResponses[index].data.songCount,
+            }));
+
+            const songCountsMap = {};
+            updatedGenres.forEach((beat) => {
+                songCountsMap[beat.beat_id] = beat.song_count;
+            });
+
+            setBeatGenres(updatedGenres);
+            setBeatSongCounts(songCountsMap);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+    useEffect(() => {
+        fetchData();
     }, []);
 
     const handleSort = (field) => {
@@ -130,6 +175,7 @@ function Artist() {
         return Array.from(uniqueChords);
     };
     useEffect(() => {
+        setLoading(true);
         axios.get(`${apiUrl}/getChord`)
             .then(res => {
                 if (res.data.Status === "Success") {
@@ -155,7 +201,8 @@ function Artist() {
                     });
                     setDataMajorChords(majorChordsData);
                     setDataMinorChords(minorChordsData);
-                    setDataC7Chords(c7ChordsData)
+                    setDataC7Chords(c7ChordsData);
+                    setLoading(false);
                 } else {
                     alert("Error")
                 }
@@ -169,11 +216,12 @@ function Artist() {
             {loading ? (
                 <div className="d-flex flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
                     <div className="spinner-border text-primary" role="status">
-                        <p className="visually-hidden">Loading...</p>
+                        <span className="visually-hidden">Loading...</span>
                     </div>
                     <p>Loading...</p>
                 </div>
-            ) :
+            )
+                :
                 <>
                     <div className="sort-button-container">
                         <button
@@ -190,7 +238,8 @@ function Artist() {
                         </button>
                     </div>
                     <div className="d-flex">
-                        <div className="col-md-8" >
+                        <div className="col-md-8">
+                            <div style={{ margin: '10px', marginTop: '80px', marginLeft: '50px', fontWeight: 'bold', fontSize: '20px' }}>List of {`${beat_type.charAt(0).toUpperCase()}${beat_type.slice(1)}`} songs:</div>
                             {data.length === 0 ? (
                                 <div style={{
                                     margin: '10px', marginTop: '80px', textAlign: 'center'
@@ -201,7 +250,7 @@ function Artist() {
                                 :
                                 (
                                     <div style={{
-                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '80px', marginLeft: '50px'
+                                        borderRadius: '10px', border: '1px solid #ccc', margin: '10px', marginTop: '10px', marginLeft: '50px'
                                     }}>
 
                                         {
@@ -226,8 +275,7 @@ function Artist() {
                                                             <Link to={`/viewSongCustomer/` + song.id} key={index} className="song-card-list" style={{ color: 'black', textDecoration: 'none' }}>
                                                                 <div className='column'>
                                                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                                        <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
-                                                                        <span style={{ fontSize: '20px', marginRight: '10px', paddingLeft: '10px' }}>{song.artist_name}</span>
+                                                                        <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span>
                                                                         <div style={{ display: 'flex', textAlign: 'center' }}>
 
                                                                             {songChords.map((chord, chordIndex) => (
@@ -283,18 +331,24 @@ function Artist() {
                                     size="large"
                                 />
                             </Stack>
-                        </div>
+                        </div >
 
 
                         <div className="col-md-4">
                             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'fixed' }}>
-                                <b style={{ color: '#0d6efd', fontWeight: 'bold', textAlign: 'center', marginTop: '50px' }}>Information</b>
+                                <b style={{ color: '#0d6efd', fontWeight: 'bold', textAlign: 'center', marginTop: '90px' }}>Rhythm</b>
                                 <div className="card mx-3 my-1" style={{ width: '90%', padding: '5px' }}>
                                     <div className="flex-row" style={{
-                                        display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'
+                                        display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', cursor: 'pointer'
                                     }}>
-                                        {currentItems.length > 0 && (
+                                        {beatGenres.map((beatGenre, index) => (
                                             <div
+                                                key={index}
+                                                className={`item-grid item-${index + 1}`}
+                                                onClick={() => {
+                                                    navigate(`/songBeat/${userId}/${beatGenre.beat_id.toLowerCase()}`);
+                                                    window.location.reload();
+                                                }}
                                                 style={{
                                                     width: 'fit-content',
                                                     padding: '0 11px',
@@ -308,29 +362,22 @@ function Artist() {
                                                     border: '1px solid #f1f1f1'
                                                 }}
                                             >
-                                                <img src={currentItems[0].image_artist} alt={currentItems[0].artist_name} style={{ width: '200px', height: '200px', borderRadius: '50%' }} />
                                                 <p style={{
                                                     fontSize: '11px', margin: '5px'
                                                 }}>
-                                                    {currentItems[0].artist_name}
-                                                </p>
-                                                <p style={{
-                                                    fontSize: '11px', margin: '5px'
-                                                }}>
-                                                    Date of birth: {moment(currentItems[0].date_of_birth).format("YYYY - MM - DD")}
-                                                </p>
-                                                <p style={{
-                                                    fontSize: '11px', margin: '5px'
-                                                }}>
-                                                    Link: <Link to={currentItems[0].social_media_link} style={{ textDecoration: 'none' }}>{currentItems[0].social_media_link}</Link>
+                                                    {beatGenre.beat_name} {'('}
+                                                    {beatSongCounts[beatGenre.beat_id] !== undefined
+                                                        ? `${beatSongCounts[beatGenre.beat_id]} bài`
+                                                        : '0 bài'}
+                                                    {')'}
                                                 </p>
                                             </div>
-                                        )}
+                                        ))}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div >
                 </>
             }
             <InfoContainer />
@@ -339,57 +386,48 @@ function Artist() {
                 onClose={() => { setModalOpen(false) }}
             >
                 <Box sx={styles} >
-                    {loading ? (
-                        <div className="d-flex flex-column justify-content-center align-items-center" style={{ paddingTop: '100px' }}>
-                            <div className="spinner-border text-primary" role="status">
-                                <p className="visually-hidden">Loading...</p>
-                            </div>
-                        </div>
-                    ) :
-                        <>
-                            <div className="d-flex flex-wrap justify-content-start">
-                                <div className="w-100 text-center">
-                                    <h2 className="mb-1 pd-top" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Playlist</h2>
-                                </div>
 
-                                {dataPlaylist.map((playlist, index) => (
-                                    <div key={index} className="m-4 p-2 playlist-container ">
-                                        <div className="container rounded " style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                                            <div className="d-flex flex-column align-items-center text-center">
-                                                <div className="rounded-image-container">
-                                                    {imageURL && (
-                                                        <img
-                                                            className="rounded-square-image"
-                                                            src={`data:image/png;base64,${playlist.image}`}
-                                                        />
-                                                    )}
-                                                    <div className="image-overlay">
-                                                        <p className="playlist-name-modal">
-                                                            <AddIcon
-                                                                onClick={() => {
-                                                                    setSelectedPlaylist(playlist);
-                                                                    handleAddToPlayList();
-                                                                }}
-                                                                fontSize='large'
-                                                                style={{ cursor: 'pointer' }}
-                                                            />
-                                                            <br />
-                                                            <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
-                                                                onClick={() => {
-                                                                    setSelectedPlaylist(playlist);
-                                                                    handleAddToPlayList();
-                                                                }} className="playlist-name-modal">Add to playlist</Link>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <b className="playlist-name-modal">{playlist.collection_name}</b>
+                    <div className="d-flex flex-wrap justify-content-start">
+                        <div className="w-100 text-center">
+                            <h2 className="mb-1 pd-top" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Playlist</h2>
+                        </div>
+
+                        {dataPlaylist.map((playlist, index) => (
+                            <div key={index} className="m-4 p-2 playlist-container ">
+                                <div className="container rounded " style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <div className="d-flex flex-column align-items-center text-center">
+                                        <div className="rounded-image-container">
+                                            {imageURL && (
+                                                <img
+                                                    className="rounded-square-image"
+                                                    src={`data:image/png;base64,${playlist.image}`}
+                                                />
+                                            )}
+                                            <div className="image-overlay">
+                                                <p className="playlist-name-modal">
+                                                    <AddIcon
+                                                        onClick={() => {
+                                                            setSelectedPlaylist(playlist);
+                                                            handleAddToPlayList();
+                                                        }}
+                                                        fontSize='large'
+                                                        style={{ cursor: 'pointer' }}
+                                                    />
+                                                    <br />
+                                                    <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
+                                                        onClick={() => {
+                                                            setSelectedPlaylist(playlist);
+                                                            handleAddToPlayList();
+                                                        }} className="playlist-name-modal">Add to playlist</Link>
+                                                </p>
                                             </div>
                                         </div>
+                                        <b className="playlist-name-modal">{playlist.collection_name}</b>
                                     </div>
-                                ))}
+                                </div>
                             </div>
-                        </>
-                    }
+                        ))}
+                    </div>
                 </Box>
 
             </Modal>
@@ -397,4 +435,4 @@ function Artist() {
     );
 }
 
-export default Artist;
+export default SongBeatPage;

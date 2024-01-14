@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
-function ProfileCustomer() {
+function ProfileCustomerPage() {
     const [data, setData] = useState({
         name: '',
         email: '',
@@ -341,4 +341,4 @@ function ProfileCustomer() {
         </>
     )
 }
-export default ProfileCustomer;
+export default ProfileCustomerPage;

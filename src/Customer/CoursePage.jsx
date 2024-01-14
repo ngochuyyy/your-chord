@@ -20,7 +20,7 @@ const darkTheme = createTheme({
     },
 });
 
-function Course() {
+function CoursePage() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -203,4 +203,4 @@ function Course() {
     );
 }
 
-export default Course;
+export default CoursePage;

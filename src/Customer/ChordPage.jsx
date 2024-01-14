@@ -20,7 +20,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 // import FormControl from '@mui/material/FormControl';
 import SearchAppBarBackCustomer from '../component/SearchAppBarBackCustomer';
 import InfoContainer from '../component/InfoContainer';
-function Chord() {
+function ChordPage() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [openRoot, setOpenRoot] = useState(false);
     const [openShowMore, setOpenShowMore] = useState(false);
@@ -691,4 +691,4 @@ function Chord() {
 
 }
 
-export default Chord;
+export default ChordPage;

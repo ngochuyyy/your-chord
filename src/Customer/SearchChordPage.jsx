@@ -18,7 +18,7 @@ import Modal from '@mui/material/Modal';
 import InfoContainer from '../component/InfoContainer';
 import { Link } from 'react-router-dom';
 
-function SearchChord() {
+function SearchChordPage() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [data, setData] = useState([]);
     const [buttonClickedChord, setButtonClickedChord] = useState(null);
@@ -450,4 +450,4 @@ function SearchChord() {
 
 }
 
-export default SearchChord;
+export default SearchChordPage;

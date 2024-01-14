@@ -12,7 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-function Playlist() {
+function PlaylistPage() {
     const [data, setData] = useState([]);
     const { userId } = useParams();
     const [search, setSearch] = useState("");
@@ -214,4 +214,4 @@ function Playlist() {
 }
 
 
-export default Playlist;
+export default PlaylistPage;

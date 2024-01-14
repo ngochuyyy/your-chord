@@ -27,7 +27,7 @@ import finger_3 from '../../src/assets/finger/finger_3.png'
 import finger_4 from '../../src/assets/finger/finger_4.png'
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoContainer from "../component/InfoContainer";
-function ViewSongCustomer() {
+function ViewSongCustomerPage() {
     const [data, setData] = useState([]);
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
@@ -609,4 +609,4 @@ function ViewSongCustomer() {
     )
 
 }
-export default ViewSongCustomer;
+export default ViewSongCustomerPage;

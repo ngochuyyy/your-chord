@@ -5,7 +5,7 @@ import SearchAppBar from '../component/SearchAppBar';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
-function ViewOrderCustomer() {
+function ViewOrderCustomerPage() {
     const [orderData, setOrderData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
@@ -222,4 +222,4 @@ function ViewOrderCustomer() {
     );
 }
 
-export default ViewOrderCustomer;
+export default ViewOrderCustomerPage;

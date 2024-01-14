@@ -14,7 +14,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Link } from 'react-router-dom';
-function ViewPlaylist() {
+function ViewPlaylistPage() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
     const [orderBy, setOrderBy] = useState('updated_at');
@@ -298,4 +298,4 @@ function ViewPlaylist() {
     );
 }
 
-export default ViewPlaylist;
+export default ViewPlaylistPage;

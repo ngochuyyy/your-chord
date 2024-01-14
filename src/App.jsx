@@ -47,31 +47,32 @@ import EditRequestChordMusician from './Musician/EditRequestChordMusician';
 import OrderHistory from './Musician/OrderHistory';
 import OrderMusicianAccept from './Musician/OrderMusicianAccept';
 import AcceptChordRequest from './Musician/AcceptChordRequest';
-/////CUSTOMER
-import Artist from './Customer/Artist'
-import DashboardCustomer from './Customer/DashboardCustomer'
-import SongCustomer from './Customer/SongCustomer'
-import ViewSongCustomer from './Customer/ViewSongCustomer'
-import ProfileCustomer from './Customer/ProfileCustomer'
-import Playlist from './Customer/Playlist'
-import CreatePlaylist from './Customer/CreatePlaylist'
-import ViewPlaylist from './Customer/ViewPlaylist'
-import Chord from './Customer/Chord'
-import SearchChord from './Customer/SearchChord'
-import Feedback from './Customer/Feedback'
-import ViewFeedbackCustomer from './Customer/ViewFeedbackCustomer'
-import Beat from './Customer/Beat'
-import SongBeat from './Customer/SongBeat'
-import OrderCustomer from './Customer/OrderCustomer'
-import ViewFeedbackCustomerAll from './Customer/ViewFeedBackCustomerAll'
-import OrderStatus from './Customer/OrderStatus'
-import ViewOrderCustomer from './Customer/ViewOrderCustomer'
-import TransactionHistory from './Customer/TransactionHistory'
-import Course from './Customer/Course'
-import RequestChord from './Customer/RequestChord';
-import RequestChordStatus from './Customer/RequestChordStatus';
-import ViewRequestChord from './Customer/ViewRequestChord';
 import ViewRequestChordMusician from './Musician/ViewRequestChordMusician';
+
+/////CUSTOMER
+import Artist from './Customer/ArtistPage'
+import DashboardCustomer from './Customer/DashboardCustomer'
+import SongCustomer from './Customer/SongCustomerPage'
+import ViewSongCustomer from './Customer/ViewSongCustomerPage'
+import ProfileCustomer from './Customer/ProfileCustomerPage'
+import Playlist from './Customer/PlaylistPage'
+import CreatePlaylist from './Customer/CreatePlaylistPage'
+import ViewPlaylist from './Customer/ViewPlaylistPage'
+import Chord from './Customer/ChordPage'
+import SearchChord from './Customer/SearchChordPage'
+import Feedback from './Customer/FeedbackPage'
+import ViewFeedbackCustomer from './Customer/ViewFeedbackCustomerPage'
+import Beat from './Customer/BeatPage'
+import SongBeat from './Customer/SongBeatPage'
+import OrderCustomer from './Customer/OrderCustomerPage'
+import ViewFeedbackCustomerAll from './Customer/ViewFeedBackCustomerAllPage'
+import OrderStatus from './Customer/OrderStatusPage'
+import ViewOrderCustomer from './Customer/ViewOrderCustomerPage'
+import TransactionHistory from './Customer/TransactionHistoryPage'
+import Course from './Customer/CoursePage'
+import RequestChord from './Customer/RequestChordPage';
+import RequestChordStatus from './Customer/RequestChordStatusPage';
+import ViewRequestChord from './Customer/ViewRequestChordPage';
 function ScrollToTop() {
   const { pathname } = useLocation();
 

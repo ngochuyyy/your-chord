@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function RequestChord() {
+function RequestChordPage() {
     const [title, setTitle] = useState('');
     const [lyrics, setLyric] = useState('');
     const [artist, setArtist] = useState('');
@@ -139,4 +139,4 @@ function RequestChord() {
     )
 }
 
-export default RequestChord;
+export default RequestChordPage;

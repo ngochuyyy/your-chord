@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function OrderCustomer() {
+function OrderCustomerPage() {
   const [title, setTitle] = useState('');
   const [lyric, setLyric] = useState('');
   const [artist, setArtist] = useState('');
@@ -165,4 +165,4 @@ function OrderCustomer() {
   )
 }
 
-export default OrderCustomer;
+export default OrderCustomerPage;

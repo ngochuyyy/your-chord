@@ -18,7 +18,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItem from '@mui/material/ListItem';
-function ViewFeedbackCustomerAll() {
+function ViewFeedBackCustomerAllPage() {
     const [data, setData] = useState({
         email: '',
         address: '',
@@ -380,4 +380,4 @@ function ViewFeedbackCustomerAll() {
         </>
     )
 }
-export default ViewFeedbackCustomerAll
+export default ViewFeedBackCustomerAllPage

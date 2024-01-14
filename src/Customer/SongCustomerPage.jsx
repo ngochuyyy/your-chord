@@ -15,7 +15,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-function SongCustomer() {
+function SongCustomerPage() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
     const [orderBy, setOrderBy] = useState('all');
@@ -416,4 +416,4 @@ function SongCustomer() {
     );
 }
 
-export default SongCustomer;
+export default SongCustomerPage;
