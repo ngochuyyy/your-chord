@@ -115,7 +115,7 @@ function ViewSongPage() {
     const majorKeys = Object.keys(majorChordsData);
     const minorKeys = Object.keys(minorChordsData);
     const c7Keys = Object.keys(c7ChordsData);
-    const cm7Keys = Object.keys(c7ChordsData);
+    const cm7Keys = Object.keys(cm7ChordsData);
 
     const keys = {
         major: majorKeys,
