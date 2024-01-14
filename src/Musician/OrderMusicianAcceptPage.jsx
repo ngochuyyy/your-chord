@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 
-function OrderMusicianAccept() {
+function OrderMusicianAcceptPage() {
     const [orderData, setOrderData] = useState([]);
     const [editedItemId, setEditedItemId] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -239,4 +239,4 @@ function OrderMusicianAccept() {
         </>
     );
 }
-export default OrderMusicianAccept;
+export default OrderMusicianAcceptPage;
