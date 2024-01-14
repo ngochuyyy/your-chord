@@ -28,6 +28,7 @@ function ViewSongPage() {
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
+    const [cm7ChordsData, setDataCm7Chords] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
     const [alignment, setAlignment] = useState('left');
@@ -42,7 +43,6 @@ function ViewSongPage() {
     const [transpose, setTranspose] = useState(0);
     const [imageURL, setImageURL] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [cm7ChordsData, setDataCm7Chords] = useState([]);
 
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
