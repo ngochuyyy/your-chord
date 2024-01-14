@@ -42,6 +42,7 @@ function ViewSongPage() {
     const [transpose, setTranspose] = useState(0);
     const [imageURL, setImageURL] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [cm7ChordsData, setDataCm7Chords] = useState([]);
 
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const StyledToggleButtonGroup = styled(ToggleButtonGroup)(({ theme }) => ({
@@ -83,6 +84,7 @@ function ViewSongPage() {
                     const majorChordsData = {};
                     const minorChordsData = {};
                     const c7ChordsData = {};
+                    const cm7ChordsData = {};
                     chordData.forEach(chord => {
                         if (chord.type === 0) {
                             majorChordsData[chord.name] = chord;
@@ -93,10 +95,15 @@ function ViewSongPage() {
                         if (chord.type === 2) {
                             c7ChordsData[chord.name] = chord;
                         }
+                        if (chord.type === 3) {
+                            c7ChordsData[chord.name] = chord;
+                        }
                     });
                     setDataMajorChords(majorChordsData);
                     setDataMinorChords(minorChordsData);
                     setDataC7Chords(c7ChordsData)
+                    setDataCm7Chords(cm7ChordsData)
+
                 } else {
                     alert("Error")
                 }
@@ -104,14 +111,18 @@ function ViewSongPage() {
             .catch(err => console.log(err));
     }, [id, currentKey])
 
-    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData };
+    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData, ...cm7ChordsData };
     const majorKeys = Object.keys(majorChordsData);
     const minorKeys = Object.keys(minorChordsData);
     const c7Keys = Object.keys(c7ChordsData);
+    const cm7Keys = Object.keys(c7ChordsData);
+
     const keys = {
         major: majorKeys,
         minor: minorKeys,
         c7: c7Keys,
+        cm7: cm7Keys,
+
     };
 
     const increaseKey = (isMajorChord) => {
@@ -122,6 +133,8 @@ function ViewSongPage() {
             chordNames = keys.minor;
         } else if (!isMajorChord && keys.c7.includes(currentKey)) {
             chordNames = keys.c7;
+        } else if (!isMajorChord && keys.cm7.includes(currentKey)) {
+            chordNames = keys.cm7;
         }
         setCurrentKey((currentKey + 1) % chordNames.length);
         handleCloseAllPopups();
@@ -135,6 +148,8 @@ function ViewSongPage() {
             chordNames = keys.minor;
         } else if (!isMajorChord && keys.c7.includes(currentKey)) {
             chordNames = keys.c7;
+        } else if (!isMajorChord && keys.cm7.includes(currentKey)) {
+            chordNames = keys.cm7;
         }
         setCurrentKey((currentKey - 1 + chordNames.length) % chordNames.length);
         handleCloseAllPopups();
@@ -208,6 +223,9 @@ function ViewSongPage() {
             if (chordData[chordName].type === 2) {
                 chordNames = Object.keys(c7ChordsData)
             }
+            if (chordData[chordName].type === 3) {
+                chordNames = Object.keys(cm7ChordsData)
+            }
             const currentIndex = chordNames.indexOf(chordName);
             let newIndex;
             if (direction === 'increase') {
@@ -275,6 +293,7 @@ function ViewSongPage() {
                         const chordNamesMajor = majorKeys
                         const chordNamesMinor = minorKeys
                         const chordNamesC7 = c7Keys
+                        const chordNamesCm7 = cm7Keys
 
                         let hiddenChord = dataChord.replace(
                             /\[(?<chord>\w+)\]/g,
@@ -295,6 +314,11 @@ function ViewSongPage() {
                                 const indexInKeys = chordNamesC7.indexOf(chord);
                                 const transposedIndex = (indexInKeys + currentKey + transpose) % chordNamesC7.length;
                                 return `<strong class='chord'>${chordNamesC7[transposedIndex]}</strong>`;
+                            }
+                            if (chordNamesCm7.includes(chord)) {
+                                const indexInKeys = chordNamesCm7.indexOf(chord);
+                                const transposedIndex = (indexInKeys + currentKey + transpose) % chordNamesCm7.length;
+                                return `<strong class='chord'>${chordNamesCm7[transposedIndex]}</strong>`;
                             }
                             return match;
                         });
@@ -318,6 +342,13 @@ function ViewSongPage() {
                                 const indexInKeys = chordNamesC7.indexOf(chord);
                                 const transposedIndex = (indexInKeys + currentKey + transpose) % chordNamesC7.length;
                                 const transposedChord = chordNamesC7[transposedIndex];
+                                uniqueChords.add(transposedChord);
+                                return `<strong class='chord' data-chord="${transposedChord}">${transposedChord}</strong>`;
+                            }
+                            if (chordNamesCm7.includes(chord)) {
+                                const indexInKeys = chordNamesCm7.indexOf(chord);
+                                const transposedIndex = (indexInKeys + currentKey + transpose) % chordNamesCm7.length;
+                                const transposedChord = chordNamesCm7[transposedIndex];
                                 uniqueChords.add(transposedChord);
                                 return `<strong class='chord' data-chord="${transposedChord}">${transposedChord}</strong>`;
                             }

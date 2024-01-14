@@ -33,7 +33,6 @@ function ViewSongCustomerPage() {
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
     const [cm7ChordsData, setDataCm7Chords] = useState([]);
-
     const { id } = useParams();
     const navigate = useNavigate();
     const [alignment, setAlignment] = useState('left');
