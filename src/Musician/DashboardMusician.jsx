@@ -217,7 +217,7 @@ function DashboardMusician() {
                                                             <ListItemIcon>
                                                                 <BookmarkAddedIcon color="primary" fontSize='medium' />
                                                             </ListItemIcon>
-                                                            <ListItemText><span className="fontDashboard">Received Order</span></ListItemText>
+                                                            <ListItemText><span className="fontDashboard">Chord Request Received</span></ListItemText>
                                                         </ListItemButton>
                                                     </List>
                                                 </Collapse>
