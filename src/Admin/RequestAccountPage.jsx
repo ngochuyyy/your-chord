@@ -52,7 +52,7 @@ const style = {
     p: 4,
 };
 
-function RequestAccount() {
+function RequestAccountPage() {
     const [isAcceptAccount, setIsAcceptAccount] = useState(false);
     const [isRejectAccount, setIsRejectAccount] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -674,4 +674,4 @@ function RequestAccount() {
     );
 }
 
-export default RequestAccount;
+export default RequestAccountPage;

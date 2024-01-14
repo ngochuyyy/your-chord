@@ -23,7 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Tooltip from '@material-ui/core/Tooltip';
 import InfoContainer from "../component/InfoContainer";
-function ViewSong() {
+function ViewSongPage() {
     const [data, setData] = useState([]);
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
@@ -562,4 +562,4 @@ function ViewSong() {
     )
 
 }
-export default ViewSong;
+export default ViewSongPage;

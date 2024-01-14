@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import InfoContainer from '../component/InfoContainer';
 import SearchAppBarBackAdmin from '../component/SearchAppBarBackAdmin';
 import moment from 'moment';
-function ArtistAdmin() {
+function ArtistAdminPage() {
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
     const [order, setOrder] = useState('asc');
@@ -286,4 +286,4 @@ function ArtistAdmin() {
     );
 }
 
-export default ArtistAdmin;
+export default ArtistAdminPage;

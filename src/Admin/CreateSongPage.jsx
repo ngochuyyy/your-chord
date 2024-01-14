@@ -11,7 +11,7 @@ import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 import SearchAppBar from '../component/SearchAppBar';
 
-function CreateSong() {
+function CreateSongPage() {
     const navigate = useNavigate();
     const [activeStep, setActiveStep] = useState(0);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -228,4 +228,4 @@ function CreateSong() {
     );
 }
 
-export default CreateSong;
+export default CreateSongPage;

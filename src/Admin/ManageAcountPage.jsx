@@ -57,7 +57,7 @@ const style = {
 };
 
 
-function ManageAccount() {
+function ManageAcountPage() {
     const [isDeleted, setIsDeleted] = useState(false);
     const [isBanAccount, setIsBanAccount] = useState(false);
     const [isUnBanAccount, setIsUnBanAccount] = useState(false);
@@ -1010,4 +1010,4 @@ function ManageAccount() {
     );
 }
 
-export default ManageAccount;
+export default ManageAcountPage;

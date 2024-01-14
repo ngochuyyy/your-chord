@@ -21,7 +21,7 @@ import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItem from '@mui/material/ListItem';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-function ViewFeedback() {
+function ViewFeedbackPage() {
     const [data, setData] = useState({
         email: '',
         address: '',
@@ -402,4 +402,4 @@ function ViewFeedback() {
         </>
     )
 }
-export default ViewFeedback
+export default ViewFeedbackPage

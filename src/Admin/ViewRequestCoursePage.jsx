@@ -7,7 +7,7 @@ import axios from 'axios';
 import moment from 'moment';
 import YouTube from 'react-youtube';
 
-function ViewRequestCourse() {
+function ViewRequestCoursePage() {
     const [requestData, setRequestData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
@@ -132,4 +132,4 @@ function ViewRequestCourse() {
     );
 }
 
-export default ViewRequestCourse;
+export default ViewRequestCoursePage;

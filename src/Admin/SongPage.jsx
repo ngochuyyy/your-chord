@@ -25,7 +25,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 
 
-function Song() {
+function SongPage() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
     const [orderBy, setOrderBy] = useState("song_title");
@@ -307,4 +307,4 @@ function Song() {
     );
 }
 
-export default Song;
+export default SongPage;

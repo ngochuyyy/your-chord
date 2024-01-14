@@ -32,7 +32,7 @@ const darkTheme = createTheme({
 });
 import { Button } from 'antd';
 
-function RequestListCourse() {
+function RequestListCoursePage() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState("username");
@@ -346,4 +346,4 @@ function RequestListCourse() {
     );
 }
 
-export default RequestListCourse;
+export default RequestListCoursePage;
