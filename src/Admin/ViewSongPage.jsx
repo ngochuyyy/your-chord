@@ -96,7 +96,7 @@ function ViewSongPage() {
                             c7ChordsData[chord.name] = chord;
                         }
                         if (chord.type === 3) {
-                            c7ChordsData[chord.name] = chord;
+                            cm7ChordsData[chord.name] = chord;
                         }
                     });
                     setDataMajorChords(majorChordsData);
