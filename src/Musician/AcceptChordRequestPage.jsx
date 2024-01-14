@@ -149,7 +149,7 @@ function AcceptChordRequestPage() {
                 :
                 <div className='d-flex flex-column pt-2'>
                     <div className='d-flex flex-column pt-4'>
-                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Receive Order</h3>
+                        <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Chord Request Received</h3>
                     </div>
                     <div style={{ width: '90%', margin: '0 auto' }}>
                         <Table
