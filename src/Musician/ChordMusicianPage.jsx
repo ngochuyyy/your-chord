@@ -3,6 +3,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 import moment from 'moment'
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import SearchIcon from '@mui/icons-material/Search';
+import HeadsetIcon from '@mui/icons-material/Headset';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
 import {
     Table,
     TableBody,
@@ -13,36 +20,28 @@ import {
     Paper,
     TableSortLabel,
 } from "@mui/material";
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import SearchIcon from '@mui/icons-material/Search';
-import HeadsetIcon from '@mui/icons-material/Headset';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-function ChordMissMusician() {
-    const [data, setData] = useState([])
+function ChordMusicianPage() {
+    const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
     const [orderBy, setOrderBy] = useState("song_title");
     const [order, setOrder] = useState("asc");
+    const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
     const [imageURL, setImageURL] = useState(null);
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-
     const itemsPerPage = 5;
-    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const primaryColor = "#F1F1FB";
     const darkTheme = createTheme({
         palette: {
-            mode: "dark",
+            mode: 'dark',
             primary: {
-                main: "#F1F1FB",
+                main: '#F1F1FB',
             },
         },
     });
+    const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     useEffect(() => {
         setLoading(true);
         axios.get(`${apiUrl}/getSongChordManager`)
@@ -92,12 +91,11 @@ function ChordMissMusician() {
         });
     }
     const filteredSongs = sortData(data)
-        .filter((song) => {
+        .filter(song => {
             let dataChord = song.lyrics;
             dataChord = dataChord.replace(/.+/g, "<section>$&</section>");
             let songChord = dataChord.replace(/\[(?<chord>\w+)\]/g, "<strong>$<chord></strong>");
-            return !songChord.includes('<strong>') && (search.trim() === '' ? true : song.song_title.toLowerCase().includes(search.toLowerCase()));
-
+            return songChord.includes('<strong>') && (search.trim() === '' ? true : song.song_title.toLowerCase().includes(search.toLowerCase()));
         })
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -151,9 +149,9 @@ function ChordMissMusician() {
                 </ThemeProvider>
             </Box>
             <div className="d-flex flex-column align-items-center pt-4">
-                <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }}>Missing Chord</h3>
+                <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold' }} >Waiting Approve</h3>
             </div>
-            <div className="mt-4 pd-left">
+            <div className='mt-4 pd-left'>
                 {filteredSongs.length === 0 ? (
                     <>
                         <TableContainer component={Paper}>
@@ -164,9 +162,6 @@ function ChordMissMusician() {
                                         <TableCell></TableCell>
                                         <TableCell>
                                             <TableSortLabel
-                                                active={orderBy === 'song_title'}
-                                                direction={orderBy === 'song_title' ? order : 'asc'}
-                                                onClick={() => handleSort('song_title')}
                                             >
                                                 <b>Name song</b>
                                             </TableSortLabel>
@@ -174,8 +169,6 @@ function ChordMissMusician() {
                                         <TableCell><b>Link</b></TableCell>
                                         <TableCell>
                                             <TableSortLabel
-                                                active={orderBy === 'created_at'}
-                                                direction={orderBy === 'created_at' ? order : 'asc'}
                                                 onClick={() => handleSort("created_at")}
                                             >
                                                 <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date created</b>
@@ -183,8 +176,6 @@ function ChordMissMusician() {
                                         </TableCell>
                                         <TableCell>
                                             <TableSortLabel
-                                                active={orderBy === 'updated_at'}
-                                                direction={orderBy === 'updated_at' ? order : 'asc'}
                                                 onClick={() => handleSort("updated_at")}
                                             >
                                                 <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date updated</b>
@@ -210,7 +201,6 @@ function ChordMissMusician() {
                         }
                     </>
                 ) : (
-
                     <TableContainer component={Paper}>
                         <Table>
                             <TableHead sx={{ backgroundColor: primaryColor }}>
@@ -219,9 +209,6 @@ function ChordMissMusician() {
                                     <TableCell></TableCell>
                                     <TableCell>
                                         <TableSortLabel
-                                            active={orderBy === 'song_title'}
-                                            direction={orderBy === 'song_title' ? order : 'asc'}
-                                            onClick={() => handleSort('song_title')}
                                         >
                                             <b>Name song</b>
                                         </TableSortLabel>
@@ -229,8 +216,6 @@ function ChordMissMusician() {
                                     <TableCell><b>Link</b></TableCell>
                                     <TableCell>
                                         <TableSortLabel
-                                            active={orderBy === 'created_at'}
-                                            direction={orderBy === 'created_at' ? order : 'asc'}
                                             onClick={() => handleSort("created_at")}
                                         >
                                             <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date created</b>
@@ -238,8 +223,6 @@ function ChordMissMusician() {
                                     </TableCell>
                                     <TableCell>
                                         <TableSortLabel
-                                            active={orderBy === 'updated_at'}
-                                            direction={orderBy === 'updated_at' ? order : 'asc'}
                                             onClick={() => handleSort("updated_at")}
                                         >
                                             <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b><b>Date updated</b>
@@ -249,7 +232,6 @@ function ChordMissMusician() {
                                     <TableCell></TableCell>
                                 </TableRow>
                             </TableHead>
-
                             <TableBody>
                                 {
                                     currentItems.map((song, index) => (
@@ -257,7 +239,6 @@ function ChordMissMusician() {
                                             <TableCell>{song.id}</TableCell>
                                             <TableCell>
                                                 {imageURL && <img className="song_image" src={`data:image/png;base64,${song.thumbnail}`} />}
-
                                             </TableCell>
                                             <TableCell>
                                                 {song.song_title.length > 30 ?
@@ -274,15 +255,16 @@ function ChordMissMusician() {
                                                 <TableCell>{moment(song.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</TableCell> :
                                                 <TableCell>Not update</TableCell>
                                             }
-                                            <TableCell className="text-warning"><b>Missing Chord</b></TableCell>
+                                            <TableCell className="text-warning"><b>Waiting Approve</b></TableCell>
                                             <TableCell>
                                                 {song.status === 0 ?
-                                                    <p
+                                                    <Link
                                                         onClick={(e) => {
                                                             e.stopPropagation();
                                                             handleDelete(song.id);
                                                         }}
-                                                        className='btn btn-sm btn-danger'><DeleteIcon /></p> :
+                                                        className='btn btn-sm btn-danger'><DeleteIcon /></Link>
+                                                    :
                                                     ""
                                                 }
                                             </TableCell>
@@ -301,10 +283,8 @@ function ChordMissMusician() {
                         size="large"
                     />
                 </Stack>
-
-
             </div>
         </>
     )
 }
-export default ChordMissMusician;
+export default ChordMusicianPage;

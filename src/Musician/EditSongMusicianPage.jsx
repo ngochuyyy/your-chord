@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchAppBar from '../component/SearchAppBar';
 
-function EditSongMusician() {
+function EditSongMusicianPage() {
     const [data, setData] = useState({
         song_title: '',
         lyrics: '',
@@ -213,4 +213,4 @@ function EditSongMusician() {
     );
 }
 
-export default EditSongMusician;
+export default EditSongMusicianPage;

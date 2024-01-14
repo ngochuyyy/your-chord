@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
-function RejectSong() {
+function RejectSongPage() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState("");
     const [orderBy, setOrderBy] = useState("song_title");
@@ -289,4 +289,4 @@ function RejectSong() {
         </>
     )
 }
-export default RejectSong;
+export default RejectSongPage;

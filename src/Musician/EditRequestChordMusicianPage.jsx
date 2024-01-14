@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import SearchAppBar from '../component/SearchAppBar';
 import moment from 'moment';
-function EditRequestChordMusician() {
+function EditRequestChordMusicianPage() {
     const [data, setData] = useState({
         song_name: '',
         lyrics: '',
@@ -189,4 +189,4 @@ function EditRequestChordMusician() {
     );
 }
 
-export default EditRequestChordMusician;
+export default EditRequestChordMusicianPage;

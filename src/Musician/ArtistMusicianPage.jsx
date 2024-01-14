@@ -7,7 +7,7 @@ import InfoContainer from '../component/InfoContainer';
 import SearchAppBarBackMusican from '../component/SearchAppBarBackMusician';
 import moment from 'moment';
 
-function ArtistMusician() {
+function ArtistMusicianPage() {
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
     const [order, setOrder] = useState('asc');
@@ -268,4 +268,4 @@ function ArtistMusician() {
     );
 }
 
-export default ArtistMusician;
+export default ArtistMusicianPage;

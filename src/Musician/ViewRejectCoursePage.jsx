@@ -8,7 +8,7 @@ import moment from 'moment';
 import YouTube from 'react-youtube';
 import TextField from '@mui/material/TextField';
 
-function ViewRejectCourse() {
+function ViewRejectCoursePage() {
     const [requestData, setRequestData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
@@ -263,4 +263,4 @@ function ViewRejectCourse() {
     );
 }
 
-export default ViewRejectCourse;
+export default ViewRejectCoursePage;

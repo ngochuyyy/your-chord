@@ -6,7 +6,7 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 import YouTube from 'react-youtube';
 
-function ManageCourse() {
+function ManageCoursePage() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
     const userId = token.split(':')[0];
@@ -183,4 +183,4 @@ function ManageCourse() {
     );
 }
 
-export default ManageCourse;
+export default ManageCoursePage;

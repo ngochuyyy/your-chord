@@ -5,7 +5,7 @@ import SearchAppBar from '../component/SearchAppBar';
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import moment from 'moment';
-function ViewRequestChordMusician() {
+function ViewRequestChordMusicianPage() {
     const [requestData, setRequestData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const { id } = useParams();
@@ -167,4 +167,4 @@ function ViewRequestChordMusician() {
     );
 }
 
-export default ViewRequestChordMusician;
+export default ViewRequestChordMusicianPage;

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import SearchAppBar from '../component/SearchAppBar';
 import axios from 'axios';
 
-function ManageBeat() {
+function ManageBeatPage() {
     const navigate = useNavigate();
     const [beatGenres, setBeatGenres] = useState([]);
     const [beatSongCounts, setBeatSongCounts] = useState({});
@@ -99,4 +99,4 @@ function ManageBeat() {
     );
 }
 
-export default ManageBeat;
+export default ManageBeatPage;

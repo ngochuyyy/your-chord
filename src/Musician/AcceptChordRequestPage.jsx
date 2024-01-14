@@ -7,7 +7,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 
-function AcceptChordRequest() {
+function AcceptChordRequestPage() {
     const [orderData, setOrderData] = useState([]);
     const [loading, setLoading] = useState(true);
     const token = sessionStorage.getItem('token');
@@ -173,4 +173,4 @@ function AcceptChordRequest() {
         </>
     );
 }
-export default AcceptChordRequest;
+export default AcceptChordRequestPage;

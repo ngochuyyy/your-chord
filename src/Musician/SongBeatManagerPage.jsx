@@ -11,7 +11,7 @@ import Stack from '@mui/material/Stack';
 import SearchAppBarBackMusican from '../component/SearchAppBarBackMusician';
 import InfoContainer from '../component/InfoContainer';
 import { Button } from '@mui/material';
-function SongBeatManager() {
+function SongBeatManagerPage() {
     const [data, setData] = useState([]);
     const [allSongs, setAllSongs] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
@@ -463,4 +463,4 @@ function SongBeatManager() {
     );
 }
 
-export default SongBeatManager;
+export default SongBeatManagerPage;

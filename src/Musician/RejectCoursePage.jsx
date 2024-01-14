@@ -31,7 +31,7 @@ const darkTheme = createTheme({
 });
 import { Button } from 'antd';
 
-function RejectCourse() {
+function RejectCoursePage() {
     const [search, setSearch] = useState('');
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState("username");
@@ -310,4 +310,4 @@ function RejectCourse() {
     );
 }
 
-export default RejectCourse;
+export default RejectCoursePage;

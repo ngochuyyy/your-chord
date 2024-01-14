@@ -8,7 +8,7 @@ import moment from 'moment';
 import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 
-function ViewOrderMusician() {
+function ViewOrderMusicianPage() {
     const [orderData, setOrderData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
@@ -399,4 +399,4 @@ function ViewOrderMusician() {
     );
 }
 
-export default ViewOrderMusician;
+export default ViewOrderMusicianPage;

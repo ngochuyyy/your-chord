@@ -7,7 +7,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 
 
-function OrderHistory() {
+function OrderHistoryPage() {
     const [orderData, setOrderData] = useState([]);
     // const [editedItemId, setEditedItemId] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -242,4 +242,4 @@ function OrderHistory() {
         </>
     );
 }
-export default OrderHistory;
+export default OrderHistoryPage;
