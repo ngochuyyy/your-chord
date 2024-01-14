@@ -13,7 +13,7 @@ import { Button } from '@mui/material';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
-function ProfileChordManager() {
+function ProfileChordManagerPage() {
     const [data, setData] = useState({
         name: '',
         email: '',
@@ -336,4 +336,4 @@ function ProfileChordManager() {
         </>
     )
 }
-export default ProfileChordManager;
+export default ProfileChordManagerPage;

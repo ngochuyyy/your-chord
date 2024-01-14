@@ -7,7 +7,7 @@ import InfoContainer from '../component/InfoContainer';
 import SearchAppBarBackChordManager from '../component/SearchAppBarBackChordManager';
 import moment from 'moment';
 
-function ArtistChordManager() {
+function ArtistChordManagerPage() {
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
     const [order, setOrder] = useState('asc');
@@ -263,4 +263,4 @@ function ArtistChordManager() {
     );
 }
 
-export default ArtistChordManager;
+export default ArtistChordManagerPage;

@@ -25,7 +25,7 @@ import {
 import Pagination from '@mui/material/Pagination';
 import Alert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
-function VerifySong() {
+function VerifySongPage() {
     const [data, setData] = useState([])
     const [search, setSearch] = useState("");
     const [orderBy, setOrderBy] = useState("song_title");
@@ -354,4 +354,4 @@ function VerifySong() {
     )
 }
 
-export default VerifySong;
+export default VerifySongPage;
