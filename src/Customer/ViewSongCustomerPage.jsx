@@ -89,6 +89,7 @@ function ViewSongCustomerPage() {
                     const majorChordsData = {};
                     const minorChordsData = {};
                     const c7ChordsData = {};
+                    const cm7ChordsData = {};
                     chordData.forEach(chord => {
                         if (chord.type === 0) {
                             majorChordsData[chord.name] = chord;
