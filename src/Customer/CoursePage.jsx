@@ -121,9 +121,8 @@ function CoursePage() {
             )
                 :
                 <>
-                    <div className="profile-content">
+                    <div>
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
-                        <hr style={{ width: '95%' }} />
                     </div>
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
 
@@ -134,6 +133,8 @@ function CoursePage() {
                             sx={{
                                 position: 'flex',
                                 borderRight: 1,
+                                borderTop: 1,
+                                borderBottom: 1,
                                 borderColor: 'divider',
                                 width: '20%',
                                 height: '65vh',
