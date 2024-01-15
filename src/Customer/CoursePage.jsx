@@ -141,7 +141,7 @@ function CoursePage() {
                                     transition: 'background-color 0.3s, color 0.3s',
                                 },
                                 borderRadius: '40px',
-                                height: '35px',
+                                height: '50px',
                                 padding: '12px',
                             }}>
                             {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
