@@ -129,10 +129,17 @@ function CoursePage() {
                     </div>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
-                        <ArrowBackIcon
-                            onClick={() => setTabVisible(!tabVisible)}
-                            style={{ marginRight: '16px', cursor: 'pointer' }}
-                        />
+                        {tabVisible ?
+                            <ArrowBackIcon
+                                onClick={() => setTabVisible(!tabVisible)}
+                                style={{ marginRight: '16px', cursor: 'pointer' }}
+                            />
+                            :
+                            <PlayCircleIcon
+                                onClick={() => setTabVisible(tabVisible)}
+                                style={{ marginRight: '16px', cursor: 'pointer' }}
+                            />
+                        }
                         {tabVisible &&
                             <Tabs
                                 orientation="vertical"
