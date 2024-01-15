@@ -155,7 +155,7 @@ function DashboardCustomer() {
                                         </ListItem>
                                         <span type="text" className='fs-100 font pd-left '>Date current: <b>{displaytodaysdate}</b></span>
                                         <List sx={{
-                                            width: '40%'
+                                            width: '45%'
                                         }}>
                                             <ListItemButton style={{ borderRadius: '20px' }}
                                                 className={`dashboard-button ${activeButton === 'songCustomer' ? 'clicked' : ''}`}
