@@ -13,7 +13,6 @@ import Tabs from '@mui/material/Tabs';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Button } from '@mui/material';
 
 const darkTheme = createTheme({
     palette: {
@@ -162,9 +161,9 @@ function CoursePage() {
                                 ))}
                             </Tabs>
                         )}
-                        <Button
+                        <button
                             onClick={() => setTabVisible(!tabVisible)}
-                            sx={{
+                            style={{
                                 height: '40px',
                                 borderRight: 1,
                                 borderTop: 1,
@@ -176,7 +175,7 @@ function CoursePage() {
                             }}
                         >
                             {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 25 }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 25 }} />}
-                        </Button>
+                        </button>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
                             {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
