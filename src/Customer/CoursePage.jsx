@@ -174,7 +174,7 @@ function CoursePage() {
 
                             }}
                         >
-                            {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.1)' } }} style={{ fontSize: 32 }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.1)' } }} style={{ fontSize: 32 }} />}
+                            {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 32 }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 32 }} />}
                         </Button>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
