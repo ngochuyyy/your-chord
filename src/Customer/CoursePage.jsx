@@ -172,6 +172,9 @@ function CoursePage() {
                                 borderColor: tabVisible ? "" : "#0d6efd",
                                 borderTopRightRadius: '4px',
                                 borderBottomRightRadius: '4px',
+                                '&:hover': {
+                                    transform: 'scale(1.2)',
+                                },
 
                             }}
                         >
