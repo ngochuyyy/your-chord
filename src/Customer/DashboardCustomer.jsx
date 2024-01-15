@@ -155,7 +155,7 @@ function DashboardCustomer() {
                                         </ListItem>
                                         <span type="text" className='fs-100 font pd-left '>Date current: <b>{displaytodaysdate}</b></span>
                                         <List sx={{
-                                            width: '45%'
+                                            width: '42%'
                                         }}>
                                             <ListItemButton style={{ borderRadius: '20px' }}
                                                 className={`dashboard-button ${activeButton === 'songCustomer' ? 'clicked' : ''}`}
@@ -185,7 +185,7 @@ function DashboardCustomer() {
                                             </ListItemButton>
                                         </List>
 
-                                        <List sx={{ width: '40%', paddingTop: '5px' }}>
+                                        <List sx={{ width: '42%', paddingTop: '5px' }}>
                                             <ListItemButton onClick={handleClickChord} style={{ borderRadius: '20px' }} >
                                                 <ListItemIcon>
                                                     <GraphicEqIcon color="primary" fontSize='medium' />
