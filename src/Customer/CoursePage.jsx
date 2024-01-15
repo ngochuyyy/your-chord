@@ -159,6 +159,7 @@ function CoursePage() {
                                     borderColor: 'divider',
                                     width: '20%',
                                     height: '65vh',
+                                    flexShrink: 0, // Ensure Tabs don't shrink
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
