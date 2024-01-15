@@ -127,7 +127,7 @@ function DashboardChordManager() {
                                                     } />
                                             </ListItem>
                                             <span type="text" className='fs-100  font pd-left'>Date current: <b>{displaytodaysdate}</b></span>
-                                            <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                            <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                 <ListItemButton onClick={handleClick} style={{ borderRadius: '20px' }} >
                                                     <ListItemIcon>
                                                         <MusicNoteIcon color="primary" fontSize='medium' />
@@ -162,7 +162,7 @@ function DashboardChordManager() {
                                                     </List>
                                                 </Collapse>
                                             </List>
-                                            <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                            <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                 <ListItemButton style={{ borderRadius: '20px' }}
                                                     className={`dashboard-button ${activeButton === 'profileChordManager' ? 'clicked' : ''}`}
                                                     onClick={(e) => {
@@ -175,7 +175,7 @@ function DashboardChordManager() {
                                                     <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                                 </ListItemButton>
                                             </List>
-                                            <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                            <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                 <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                                     <ListItemIcon>
                                                         <LogoutIcon color="primary" fontSize='medium' />

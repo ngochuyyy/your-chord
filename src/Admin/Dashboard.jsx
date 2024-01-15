@@ -130,7 +130,7 @@ function Dashboard() {
                                                         } />
                                                 </ListItem>
                                                 <span type="text" className='fs-100 font pd-left'>Date current: <b>{displaytodaysdate}</b></span>
-                                                <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                                <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                     <ListItemButton
                                                         style={{ borderRadius: '20px' }}
                                                         className={`dashboard-button ${activeButton === 'manageAccount' ? 'clicked' : ''}`}
@@ -145,7 +145,7 @@ function Dashboard() {
                                                         <ListItemText><span className="fontDashboard">Manage Account</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
-                                                <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                                <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }}
                                                         className={`dashboard-button ${activeButton === 'requestAccount' ? 'clicked' : ''}`}
                                                         onClick={(e) => {
@@ -159,7 +159,7 @@ function Dashboard() {
                                                         <ListItemText><span className="fontDashboard">Request Account</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
-                                                <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                                <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }}
                                                         onClick={handleClickSong} >
                                                         <ListItemIcon>
@@ -198,7 +198,7 @@ function Dashboard() {
                                                     </Collapse>
                                                 </List>
                                                 <List sx={{
-                                                    width: '40%', paddingTop: '20px'
+                                                    width: '42%', paddingTop: '20px'
                                                 }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }}
                                                         className={`dashboard-button ${activeButton === 'requestCourse' ? 'clicked' : ''}`}
@@ -212,7 +212,7 @@ function Dashboard() {
                                                         <ListItemText><span className="fontDashboard">Request Course</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
-                                                <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                                <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }}
                                                         className={`dashboard-button ${activeButton === 'manageFeedback' ? 'clicked' : ''}`}
                                                         onClick={(e) => {
@@ -225,7 +225,7 @@ function Dashboard() {
                                                         <ListItemText><span className="fontDashboard">Manage Feedback</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
-                                                <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                                <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }}
                                                         className={`dashboard-button ${activeButton === 'profile' ? 'clicked' : ''}`}
                                                         onClick={(e) => {
@@ -238,7 +238,7 @@ function Dashboard() {
                                                         <ListItemText><span className="fontDashboard">Profile</span></ListItemText>
                                                     </ListItemButton>
                                                 </List>
-                                                <List sx={{ width: '40%', paddingTop: '20px' }}>
+                                                <List sx={{ width: '42%', paddingTop: '20px' }}>
                                                     <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                                         <ListItemIcon>
                                                             <LogoutIcon color="primary" fontSize='medium' />
