@@ -77,30 +77,22 @@ function OrderMusicianPage() {
                         </button>
                     ) : (
                         <>
-                            {record.price === null ? (
-                                <button className='btn-decline' onClick={() => handleDecline(record.id)}>
-                                    Reject
-                                </button>
-                            ) : (
-                                <>
-                                    {
-                                        record.status === 1 ? (
-                                            <button className='btn-payment'>
-                                                Waiting for payment
-                                            </button>
-                                        ) : record.status === 2 ? (
-                                            <button className='btn-do'>
-                                                Do task
-                                            </button>
-                                        ) : record.status === 3 && (
-                                            <button className='btn-accept'>
-                                                Completed
-                                            </button>
-                                        )
+                            {
+                                record.status === 1 ? (
+                                    <button className='btn-payment'>
+                                        Waiting for payment
+                                    </button>
+                                ) : record.status === 2 ? (
+                                    <button className='btn-do'>
+                                        Do task
+                                    </button>
+                                ) : record.status === 3 && (
+                                    <button className='btn-accept'>
+                                        Completed
+                                    </button>
+                                )
 
-                                    }
-                                </>
-                            )}
+                            }
                         </>
                     )}
                 </Space>
@@ -198,16 +190,16 @@ function OrderMusicianPage() {
     //         .catch((err) => console.log(err));
     // };
 
-    const handleDecline = (itemId) => {
-        axios
-            .put(`${apiUrl}/declineOrder/` + itemId)
-            .then((res) => {
-                if (res.data.Status === 'Success') {
-                    window.location.reload(true);
-                }
-            })
-            .catch((err) => console.log(err));
-    };
+    // const handleDecline = (itemId) => {
+    //     axios
+    //         .put(`${apiUrl}/declineOrder/` + itemId)
+    //         .then((res) => {
+    //             if (res.data.Status === 'Success') {
+    //                 window.location.reload(true);
+    //             }
+    //         })
+    //         .catch((err) => console.log(err));
+    // };
     const isExpired = (record) => {
         const currentDate = moment();
         const durationDate = moment(record.duration);
