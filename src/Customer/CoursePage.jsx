@@ -30,7 +30,7 @@ function CoursePage() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [loading, setLoading] = useState(true);
     const [selectedCourse, setSelectedCourse] = useState(null);
-    const [tabVisible, setTabVisible] = useState(true); // New state for tab visibility
+    const [tabVisible, setTabVisible] = useState(true);
     const handleTabChange = (event, newValue) => {
         setSelectedCourse(newValue);
     };
@@ -131,19 +131,7 @@ function CoursePage() {
                     </div>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
-                        <IconButton onClick={() => setTabVisible(!tabVisible)}
-                            sx={{
-                                color: '#1A73E8',
-                                backgroundColor: 'transparent',
-                                height: '100%',
-                                '&:hover': {
-                                    backgroundColor: 'transparent',
-                                    height: '100%',
-                                    color: '#1565C0',
-                                },
-                            }}>
-                            {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
-                        </IconButton>
+
                         {tabVisible && (
                             <Tabs
                                 orientation="vertical"
@@ -159,7 +147,7 @@ function CoursePage() {
                                     borderColor: 'divider',
                                     width: '20%',
                                     height: '65vh',
-                                    flexShrink: 0, // Ensure Tabs don't shrink
+                                    flexShrink: 0,
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
@@ -175,7 +163,19 @@ function CoursePage() {
                                 ))}
                             </Tabs>
                         )}
-
+                        <IconButton onClick={() => setTabVisible(!tabVisible)}
+                            sx={{
+                                color: '#1A73E8',
+                                backgroundColor: 'transparent',
+                                height: '100%',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    height: '100%',
+                                    color: '#1565C0',
+                                },
+                            }}>
+                            {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
+                        </IconButton>
                         <Box sx={{ width: '55%', margin: 'auto' }}>
                             {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
                                 <div>
