@@ -121,10 +121,10 @@ function CoursePage() {
             )
                 :
                 <>
-                    <div>
+                    <div className="profile-content">
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
+                        <hr style={{ width: '95%' }} />
                     </div>
-                    <hr style={{ width: '95%' }} />
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
 
                         <Tabs
