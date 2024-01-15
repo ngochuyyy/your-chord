@@ -382,7 +382,7 @@ function SearchChordPage() {
                                         ) : (
                                             searchedChords && data.length === 0 &&
                                             <div className="d-flex justify-content-center">
-                                                <h5 style={{ color: '#0d6efd', fontWeight: 'bold' }}>
+                                                <h5 style={{ fontWeight: 'bold' }}>
                                                     Not Found
                                                 </h5>
                                             </div>
