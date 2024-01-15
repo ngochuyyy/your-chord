@@ -143,7 +143,7 @@ function CoursePage() {
                                     borderBottom: 1,
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
-                                    width: '20%',
+                                    width: '30%',
                                     height: '65vh',
                                     flexShrink: 0,
                                 }}>
