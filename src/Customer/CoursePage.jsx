@@ -169,6 +169,7 @@ function CoursePage() {
                                 borderRight: 1,
                                 borderTop: 1,
                                 borderBottom: 1,
+                                borderColor: 'divider',
                                 borderTopRightRadius: '4px',
                                 borderBottomRightRadius: '4px',
 
