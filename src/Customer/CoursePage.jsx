@@ -11,8 +11,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import IconButton from '@mui/material/IconButton';
 
 const darkTheme = createTheme({
@@ -130,16 +130,28 @@ function CoursePage() {
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            marginLeft: '10px',
+                            alignItems: 'center',
+                            padding: '10px',
+                            backgroundColor: '#F1F1FB',
+                            borderRadius: '8px',
+                            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                        }}
+                    >
                         <IconButton onClick={() => setTabVisible(!tabVisible)}
                             sx={{
                                 color: '#1A73E8',
+                                backgroundColor: 'transparent',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
                                     color: '#1565C0',
                                 },
                             }}>
-                            {tabVisible ? <ArrowBackIcon /> : <ArrowForwardIcon />}
+                            {tabVisible ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                         </IconButton>
                         {tabVisible && (
                             <Tabs
