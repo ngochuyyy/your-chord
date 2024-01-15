@@ -135,7 +135,7 @@ function CoursePage() {
                             sx={{
                                 color: '#1A73E8',
                                 backgroundColor: 'transparent',
-                                height: '50px',
+                                height: '100%',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
                                     height: '50px',
