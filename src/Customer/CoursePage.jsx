@@ -166,6 +166,9 @@ function CoursePage() {
                             onClick={() => setTabVisible(!tabVisible)}
                             sx={{
                                 height: '40px',
+                                borderRight: 1,
+                                borderTop: 1,
+                                borderBottom: 1,
                                 borderTopRightRadius: '4px',
                                 borderBottomRightRadius: '4px',
 
