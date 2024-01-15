@@ -169,7 +169,9 @@ function CoursePage() {
                                 borderTop: '1px solid #1A73E8',
                                 borderRight: '1px solid #1A73E8',
                                 borderBottom: '1px solid #1A73E8',
-                                borderRadius: '4px',
+                                borderTopRightRadius: '4px',
+                                borderBottomRightRadius: '4px',
+
                             }}
                         >
                             {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.1)' } }} style={{ fontSize: 32 }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.1)' } }} style={{ fontSize: 32 }} />}
