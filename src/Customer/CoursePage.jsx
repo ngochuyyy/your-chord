@@ -132,7 +132,14 @@ function CoursePage() {
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
                         <IconButton onClick={() => setTabVisible(!tabVisible)}
-                        >
+                            sx={{
+                                color: '#1A73E8',
+                                backgroundColor: 'transparent',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    color: '#1565C0',
+                                },
+                            }}>
                             {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
                         </IconButton>
                         {tabVisible && (
