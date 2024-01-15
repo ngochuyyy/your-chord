@@ -134,7 +134,6 @@ function CoursePage() {
                         <IconButton onClick={() => setTabVisible(!tabVisible)}
                             sx={{
                                 color: '#1A73E8',
-                                backgroundColor: 'transparent',
                                 '&:hover': {
                                     backgroundColor: '#E3F2FD',
                                     color: '#1565C0',
