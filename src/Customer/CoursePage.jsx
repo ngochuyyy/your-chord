@@ -168,7 +168,7 @@ function CoursePage() {
                                 borderRight: 1,
                                 borderTop: 1,
                                 borderBottom: 1,
-                                border: tabVisible ? 1 : 0,
+                                borderLeft: 0,
                                 borderColor: tabVisible ? '' : "#0d6efd",
                                 borderTopRightRadius: '4px',
                                 borderBottomRightRadius: '4px',
