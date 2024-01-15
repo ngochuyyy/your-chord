@@ -12,6 +12,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import IconButton from '@mui/material/IconButton';
 
 const darkTheme = createTheme({
     palette: {
@@ -130,10 +131,18 @@ function CoursePage() {
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
                         {tabVisible ?
-                            <ArrowBackIcon
+                            <IconButton
                                 onClick={() => setTabVisible(!tabVisible)}
-                                style={{ marginRight: '16px', cursor: 'pointer' }}
-                            />
+                                sx={{
+                                    color: '#1A73E8',
+                                    '&:hover': {
+                                        backgroundColor: 'transparent',
+                                        color: '#1565C0',
+                                    },
+                                }}
+                            >
+                                <ArrowBackIcon />
+                            </IconButton>
                             :
                             <PlayCircleIcon
                                 onClick={() => setTabVisible(!tabVisible)}
