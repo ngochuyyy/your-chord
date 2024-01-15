@@ -163,19 +163,25 @@ function CoursePage() {
                                 ))}
                             </Tabs>
                         )}
-                        <IconButton onClick={() => setTabVisible(!tabVisible)}
+                        <IconButton
+                            onClick={() => setTabVisible(!tabVisible)}
                             sx={{
                                 color: '#1A73E8',
                                 backgroundColor: 'transparent',
                                 height: '100%',
+                                border: '1px solid #1A73E8',
+                                borderRadius: '4px',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
                                     height: '100%',
                                     color: '#1565C0',
+                                    border: '1px solid #1565C0',
                                 },
-                            }}>
+                            }}
+                        >
                             {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
                         </IconButton>
+
                         <Box sx={{ width: '55%', margin: 'auto' }}>
                             {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
                                 <div>
