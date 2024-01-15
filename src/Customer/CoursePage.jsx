@@ -168,12 +168,10 @@ function CoursePage() {
                             sx={{
                                 color: '#1A73E8',
                                 backgroundColor: 'transparent',
-                                height: '100%',
                                 border: '1px solid #1A73E8',
                                 borderRadius: '4px',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
-                                    height: '100%',
                                     color: '#1565C0',
                                     border: '1px solid #1565C0',
                                 },
