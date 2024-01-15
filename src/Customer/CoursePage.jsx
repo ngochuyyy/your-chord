@@ -73,10 +73,6 @@ function CoursePage() {
                 <ThemeProvider theme={darkTheme}>
                     <AppBar position="static" color="primary" enableColorOnDark>
                         <Toolbar>
-                            <ArrowBackIcon
-                                onClick={() => setTabVisible(!tabVisible)}
-                                style={{ marginRight: '16px', cursor: 'pointer' }}
-                            />
                             <Typography
                                 variant="h5"
                                 noWrap
@@ -133,6 +129,10 @@ function CoursePage() {
                     </div>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+                        <ArrowBackIcon
+                            onClick={() => setTabVisible(!tabVisible)}
+                            style={{ marginRight: '16px', cursor: 'pointer' }}
+                        />
                         {tabVisible &&
                             <Tabs
                                 orientation="vertical"
