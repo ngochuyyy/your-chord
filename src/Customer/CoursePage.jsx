@@ -136,7 +136,7 @@ function CoursePage() {
                             />
                             :
                             <PlayCircleIcon
-                                onClick={() => setTabVisible(tabVisible)}
+                                onClick={() => setTabVisible(!tabVisible)}
                                 style={{ marginRight: '16px', cursor: 'pointer' }}
                             />
                         }
