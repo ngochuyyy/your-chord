@@ -134,6 +134,7 @@ function CoursePage() {
                                 position: 'flex',
                                 borderRight: 1,
                                 borderTop: 1,
+                                borderTopRightRadius: '20px',
                                 borderBottom: 1,
                                 borderColor: 'divider',
                                 width: '20%',
