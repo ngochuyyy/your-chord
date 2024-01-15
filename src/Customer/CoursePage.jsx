@@ -137,6 +137,7 @@ function CoursePage() {
                                 backgroundColor: 'transparent',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
+                                    height: '50px',
                                     color: '#1565C0',
                                 },
                             }}>
