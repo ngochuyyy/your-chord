@@ -131,9 +131,9 @@ function CoursePage() {
                     <div>
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
-                    {tabVisible &&
-                        <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
 
+                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+                        {tabVisible &&
                             <Tabs
                                 orientation="vertical"
                                 value={selectedCourse}
@@ -162,55 +162,55 @@ function CoursePage() {
                                     />
                                 ))}
                             </Tabs>
+                        }
 
-                            <Box sx={{ width: '55%', margin: 'auto' }}>
-                                {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
-                                    <div>
-                                        <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
-                                            {filteredRequestCourse[selectedCourse].course_name}
-                                        </h3>
-                                        <p>
-                                            <span>Author:</span> {filteredRequestCourse[selectedCourse].userId}
-                                        </p>
+                        <Box sx={{ width: '55%', margin: 'auto' }}>
+                            {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
+                                <div>
+                                    <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
+                                        {filteredRequestCourse[selectedCourse].course_name}
+                                    </h3>
+                                    <p>
+                                        <span>Author:</span> {filteredRequestCourse[selectedCourse].userId}
+                                    </p>
 
 
-                                        <div style={{
-                                            width: 'fit-content',
-                                            border: '3px solid #0d6efd',
-                                            borderRadius: '5px',
-                                            paddingTop: '7px',
-                                            paddingLeft: '7px',
-                                            paddingRight: '7px',
-                                        }}>
-                                            {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
-                                                <YouTube
-                                                    videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
-                                                    opts={{
-                                                        playerVars: {
-                                                            modestbranding: 1,
-                                                        },
-                                                        host: 'https://www.youtube-nocookie.com',
-                                                    }}
+                                    <div style={{
+                                        width: 'fit-content',
+                                        border: '3px solid #0d6efd',
+                                        borderRadius: '5px',
+                                        paddingTop: '7px',
+                                        paddingLeft: '7px',
+                                        paddingRight: '7px',
+                                    }}>
+                                        {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
+                                            <YouTube
+                                                videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
+                                                opts={{
+                                                    playerVars: {
+                                                        modestbranding: 1,
+                                                    },
+                                                    host: 'https://www.youtube-nocookie.com',
+                                                }}
+                                            />
+                                        )}
+
+                                        {filteredRequestCourse[selectedCourse].videoFile && (
+                                            <video controls width="640" height="400" controlsList="nodownload">
+                                                <source
+                                                    src={generateBlobUrl(
+                                                        new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
+                                                        'video/*'
+                                                    )}
+                                                    type="video/mp4"
                                                 />
-                                            )}
-
-                                            {filteredRequestCourse[selectedCourse].videoFile && (
-                                                <video controls width="640" height="400" controlsList="nodownload">
-                                                    <source
-                                                        src={generateBlobUrl(
-                                                            new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
-                                                            'video/*'
-                                                        )}
-                                                        type="video/mp4"
-                                                    />
-                                                </video>
-                                            )}
-                                        </div>
+                                            </video>
+                                        )}
                                     </div>
-                                )}
-                            </Box>
+                                </div>
+                            )}
                         </Box>
-                    }
+                    </Box>
                 </>
             }
         </>
