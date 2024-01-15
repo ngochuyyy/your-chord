@@ -72,26 +72,29 @@ function BeatPage() {
                     </div>
                 )
                     :
-                    <div className="d-grid pt-4" style={{ padding: '5px' }}>
-                        <div className="list-grid">
+                    (
+                        <div className="d-grid pt-4" style={{ padding: '5px' }}>
                             {beatGenres.map((beatGenre, index) => (
                                 <div
                                     key={index}
                                     className={`item-grid item-${index + 1}`}
                                     onClick={() => navigate(`/songBeat/${userId}/${beatGenre.beat_id.toLowerCase()}`)}
-                                    style={{ cursor: 'pointer', border: '1px solid #ccc' }}
+                                    style={{
+                                        cursor: 'pointer',
+                                        backgroundColor: '#fff',
+                                        border: '1px solid #ccc',
+                                        padding: '10px',
+                                        transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                                    }}
                                 >
-                                    <h3>{beatGenre.beat_name}</h3>
-                                    <h6 style={{ fontWeight: 'bold' }}>
-                                        {beatSongCounts[beatGenre.beat_id] !== undefined
-                                            ? `${beatSongCounts[beatGenre.beat_id]} bài`
-                                            : '0 bài'}
+                                    <h3 style={{ fontFamily: 'Your Chosen Font', color: '#333', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>{beatGenre.beat_name}</h3>
+                                    <h6 style={{ fontWeight: 'bold', color: '#555', overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis' }}>
+                                        {beatSongCounts[beatGenre.beat_id] !== undefined ? `${beatSongCounts[beatGenre.beat_id]} bài` : '0 bài'}
                                     </h6>
                                 </div>
                             ))}
                         </div>
-                    </div>
-                }
+                    )}
             </div>
         </>
     );
