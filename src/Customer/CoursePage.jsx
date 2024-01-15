@@ -140,7 +140,7 @@ function CoursePage() {
                                     color: '#1565C0',
                                 },
                             }}>
-                            {tabVisible ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                            {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
                         </IconButton>
                         {tabVisible && (
                             <Tabs
