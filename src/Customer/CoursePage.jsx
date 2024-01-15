@@ -140,7 +140,7 @@ function CoursePage() {
                                     color: '#1565C0',
                                     transition: 'background-color 0.3s, color 0.3s',
                                 },
-                                borderRadius: '40px',
+                                borderRadius: '50px',
                                 height: '30px',
                                 padding: '12px',
                             }}>
