@@ -164,9 +164,11 @@ function CoursePage() {
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
                             style={{
-                                height: '47px',
-                                border: 1,
-                                borderColor: 'divider',
+                                height: '48px',
+                                borderRight: 1,
+                                borderTop: 1,
+                                borderBottom: 1,
+                                borderColor: '#0d6efd',
                                 borderTopRightRadius: '4px',
                                 borderBottomRightRadius: '4px',
 
