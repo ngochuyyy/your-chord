@@ -138,7 +138,7 @@ function CoursePage() {
                                 height: '100%',
                                 '&:hover': {
                                     backgroundColor: 'transparent',
-                                    height: '50px',
+                                    height: '100%',
                                     color: '#1565C0',
                                 },
                             }}>
