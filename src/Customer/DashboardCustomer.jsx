@@ -170,7 +170,7 @@ function DashboardCustomer() {
                                             </ListItemButton>
                                         </List>
                                         <List sx={{
-                                            width: '40%', paddingTop: '5px'
+                                            width: '42%', paddingTop: '5px'
                                         }}>
                                             <ListItemButton style={{ borderRadius: '20px' }}
                                                 className={`dashboard-button ${activeButton === 'course' ? 'clicked' : ''}`}
@@ -232,7 +232,7 @@ function DashboardCustomer() {
                                             </Collapse>
                                         </List>
 
-                                        <List sx={{ width: '40%', paddingTop: '5px' }}>
+                                        <List sx={{ width: '42%', paddingTop: '5px' }}>
                                             <ListItemButton onClick={handleClickPlaylist} style={{ borderRadius: '20px' }} >
                                                 <ListItemIcon>
                                                     <PlaylistPlayIcon color="primary" fontSize='medium' />
@@ -267,7 +267,7 @@ function DashboardCustomer() {
                                                 </List>
                                             </Collapse>
                                         </List>
-                                        <List sx={{ width: '40%', paddingTop: '5px' }}>
+                                        <List sx={{ width: '42%', paddingTop: '5px' }}>
                                             <ListItemButton onClick={handleClickOrder} style={{ borderRadius: '20px' }}>
                                                 <ListItemIcon>
                                                     <HandshakeIcon color="primary" fontSize='medium' />
@@ -315,7 +315,7 @@ function DashboardCustomer() {
                                                 </Collapse>
                                             </List>
                                         </List>
-                                        <List sx={{ width: '40%', paddingTop: '5px' }}>
+                                        <List sx={{ width: '42%', paddingTop: '5px' }}>
                                             <ListItemButton style={{ borderRadius: '20px' }}
                                                 className={`dashboard-button ${activeButton === 'beat' ? 'clicked' : ''}`}
                                                 onClick={(e) => {
@@ -329,7 +329,7 @@ function DashboardCustomer() {
                                             </ListItemButton>
                                         </List>
                                         <List sx={{
-                                            width: '40%', paddingTop: '5px'
+                                            width: '42%', paddingTop: '5px'
                                         }}>
                                             <ListItemButton style={{ borderRadius: '20px' }}
                                                 className={`dashboard-button ${activeButton === 'feedback' ? 'clicked' : ''}`}
@@ -344,7 +344,7 @@ function DashboardCustomer() {
                                             </ListItemButton>
                                         </List>
                                         <List sx={{
-                                            width: '40%', paddingTop: '5px',
+                                            width: '42%', paddingTop: '5px',
                                         }}>
                                             <ListItemButton style={{ borderRadius: '20px' }}
                                                 className={`dashboard-button ${activeButton === 'profileCustomer' ? 'clicked' : ''}`}
@@ -360,7 +360,7 @@ function DashboardCustomer() {
                                         </List>
 
                                         <List sx={{
-                                            width: '40%', paddingTop: '5px'
+                                            width: '42%', paddingTop: '5px'
                                         }}>
                                             <ListItemButton style={{ borderRadius: '20px' }} onClick={handleSignOut}>
                                                 <ListItemIcon>
