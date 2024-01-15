@@ -150,7 +150,7 @@ function CoursePage() {
                                             <b>{course.course_name}</b>
                                         </div>
                                     }
-                                    style={{ borderRadius: '20px' }}
+                                    style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
                                 />
                             ))}
                         </Tabs>
