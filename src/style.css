@@ -523,6 +523,7 @@ textarea {
 .sort-button {
     background-color: #ccc;
     color: white;
+    font-weight: bold;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
