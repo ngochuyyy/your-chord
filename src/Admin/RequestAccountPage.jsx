@@ -354,7 +354,7 @@ function RequestAccountPage() {
                                         </div>
                                     ) :
                                         <div>
-                                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result. Try again !</p>
+                                            <p className="d-flex justify-content-center" style={{ paddingTop: '50px' }}>No result. Try again !</p>
                                         </div>
                                     }
                                 </>
@@ -497,7 +497,7 @@ function RequestAccountPage() {
                                         </div>
                                     ) :
                                         <div>
-                                            <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result. Try again !</p>
+                                            <p className="d-flex justify-content-center" style={{ paddingTop: '50px' }}>No result. Try again !</p>
                                         </div>
                                     }
                                 </>

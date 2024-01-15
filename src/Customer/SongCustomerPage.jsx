@@ -312,7 +312,7 @@ function SongCustomerPage() {
                         </button>
                     </div>
                     {filteredSongs.length === 0 ? (
-                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
+                        <p className="d-flex justify-content-center" style={{ paddingTop: '200px' }}>No result found. Try again !</p>
                     ) : (
                         <div className="song-list-container">
                             {filteredSongs.map((song, index) => (

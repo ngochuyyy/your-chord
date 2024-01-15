@@ -202,7 +202,7 @@ function SongPage() {
                                 </div>
                             ) :
                                 <div>
-                                    <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '50px' }}>No result found. Try again !</p>
+                                    <p className="d-flex justify-content-center" style={{ paddingTop: '50px' }}>No result found. Try again !</p>
                                 </div>
                             }
                         </>

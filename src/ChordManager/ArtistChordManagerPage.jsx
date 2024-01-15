@@ -132,7 +132,7 @@ function ArtistChordManagerPage() {
                                 <div style={{
                                     margin: '10px', marginTop: '80px', textAlign: 'center'
                                 }}>
-                                    <p style={{ color: '#0d6efd', fontWeight: 'bold' }}>No results found</p>
+                                    <p style={{ fontWeight: 'bold' }}>No results found</p>
                                 </div>
                             )
                                 :

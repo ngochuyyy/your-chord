@@ -148,7 +148,7 @@ function PlaylistPage() {
                 :
                 <>
                     {filteredPlaylist.length === 0 ? (
-                        <p className="d-flex justify-content-center" style={{ color: '#0d6efd', paddingTop: '200px' }}>No result found. Try again !</p>
+                        <p className="d-flex justify-content-center" style={{ paddingTop: '200px' }}>No result found. Try again !</p>
                     ) : (
                         <>
                             <div className="d-flex flex-wrap justify-content-start" style={{ marginLeft: '70px' }}>
