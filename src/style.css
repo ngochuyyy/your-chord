@@ -533,11 +533,11 @@ textarea {
 }
 
 .sort-button.active {
-    background-color: #ff4000;
+    background-color: #0d6efd;
 }
 
 .sort-button:hover {
-    background-color: #ff4000;
+    background-color: #0d6efd;
 }
 
 .sort-button-container {
