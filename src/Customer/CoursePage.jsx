@@ -131,47 +131,45 @@ function CoursePage() {
                     </div>
 
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+                        <IconButton onClick={() => setTabVisible(!tabVisible)}
+                            sx={{
+                                color: '#1A73E8',
+                                '&:hover': {
+                                    backgroundColor: 'transparent',
+                                    color: '#1565C0',
+                                },
+                            }}>
+                            {tabVisible ? <ArrowBackIcon /> : <ArrowForwardIcon />}
+                        </IconButton>
                         {tabVisible && (
-                            <>
-                                <IconButton onClick={() => setTabVisible(!tabVisible)}
-                                    sx={{
-                                        color: '#1A73E8',
-                                        '&:hover': {
-                                            backgroundColor: 'transparent',
-                                            color: '#1565C0',
-                                        },
-                                    }}>
-                                    {tabVisible ? <ArrowBackIcon /> : <ArrowForwardIcon />}
-                                </IconButton>
-                                <Tabs
-                                    orientation="vertical"
-                                    value={selectedCourse}
-                                    onChange={handleTabChange}
-                                    sx={{
-                                        position: 'flex',
-                                        borderRight: 1,
-                                        borderTop: 1,
-                                        borderTopRightRadius: '20px',
-                                        borderBottom: 1,
-                                        borderBottomRightRadius: '20px',
-                                        borderColor: 'divider',
-                                        width: '20%',
-                                        height: '65vh',
-                                    }}>
-                                    {filteredRequestCourse.map((course, index) => (
-                                        <Tab
-                                            key={index}
-                                            label={
-                                                <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                    {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
-                                                    <b>{course.course_name}</b>
-                                                </div>
-                                            }
-                                            style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
-                                        />
-                                    ))}
-                                </Tabs>
-                            </>
+                            <Tabs
+                                orientation="vertical"
+                                value={selectedCourse}
+                                onChange={handleTabChange}
+                                sx={{
+                                    position: 'flex',
+                                    borderRight: 1,
+                                    borderTop: 1,
+                                    borderTopRightRadius: '20px',
+                                    borderBottom: 1,
+                                    borderBottomRightRadius: '20px',
+                                    borderColor: 'divider',
+                                    width: '20%',
+                                    height: '65vh',
+                                }}>
+                                {filteredRequestCourse.map((course, index) => (
+                                    <Tab
+                                        key={index}
+                                        label={
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                                <b>{course.course_name}</b>
+                                            </div>
+                                        }
+                                        style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
+                                    />
+                                ))}
+                            </Tabs>
                         )}
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
