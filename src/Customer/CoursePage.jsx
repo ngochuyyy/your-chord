@@ -166,7 +166,9 @@ function CoursePage() {
                             onClick={() => setTabVisible(!tabVisible)}
                             sx={{
                                 height: '40px',
-                                border: '1px solid #1A73E8',
+                                borderTop: '1px solid #1A73E8',
+                                borderRight: '1px solid #1A73E8',
+                                borderBottom: '1px solid #1A73E8',
                                 borderRadius: '4px',
                                 '&:hover': {
                                     border: '1px solid #1565C0',
