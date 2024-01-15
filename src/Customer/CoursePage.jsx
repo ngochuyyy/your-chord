@@ -11,6 +11,8 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -26,6 +28,7 @@ function CoursePage() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const [loading, setLoading] = useState(true);
     const [selectedCourse, setSelectedCourse] = useState(null);
+    const [tabVisible, setTabVisible] = useState(true); // New state for tab visibility
     const handleTabChange = (event, newValue) => {
         setSelectedCourse(newValue);
     };
@@ -70,6 +73,10 @@ function CoursePage() {
                 <ThemeProvider theme={darkTheme}>
                     <AppBar position="static" color="primary" enableColorOnDark>
                         <Toolbar>
+                            <ArrowBackIcon
+                                onClick={() => setTabVisible(!tabVisible)}
+                                style={{ marginRight: '16px', cursor: 'pointer' }}
+                            />
                             <Typography
                                 variant="h5"
                                 noWrap
@@ -124,84 +131,86 @@ function CoursePage() {
                     <div>
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
-                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+                    {tabVisible &&
+                        <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
 
-                        <Tabs
-                            orientation="vertical"
-                            value={selectedCourse}
-                            onChange={handleTabChange}
-                            sx={{
-                                position: 'flex',
-                                borderRight: 1,
-                                borderTop: 1,
-                                borderTopRightRadius: '20px',
-                                borderBottom: 1,
-                                borderBottomRightRadius: '20px',
-                                borderColor: 'divider',
-                                width: '20%',
-                                height: '65vh',
-                            }}>
-                            {filteredRequestCourse.map((course, index) => (
-                                <Tab
-                                    key={index}
-                                    label={
-                                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                                            {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
-                                            <b>{course.course_name}</b>
-                                        </div>
-                                    }
-                                    style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
-                                />
-                            ))}
-                        </Tabs>
+                            <Tabs
+                                orientation="vertical"
+                                value={selectedCourse}
+                                onChange={handleTabChange}
+                                sx={{
+                                    position: 'flex',
+                                    borderRight: 1,
+                                    borderTop: 1,
+                                    borderTopRightRadius: '20px',
+                                    borderBottom: 1,
+                                    borderBottomRightRadius: '20px',
+                                    borderColor: 'divider',
+                                    width: '20%',
+                                    height: '65vh',
+                                }}>
+                                {filteredRequestCourse.map((course, index) => (
+                                    <Tab
+                                        key={index}
+                                        label={
+                                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                                <b>{course.course_name}</b>
+                                            </div>
+                                        }
+                                        style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
+                                    />
+                                ))}
+                            </Tabs>
 
-                        <Box sx={{ width: '55%', margin: 'auto' }}>
-                            {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
-                                <div>
-                                    <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
-                                        {filteredRequestCourse[selectedCourse].course_name}
-                                    </h3>
-                                    <p>
-                                        <span>Author:</span> {filteredRequestCourse[selectedCourse].userId}
-                                    </p>
+                            <Box sx={{ width: '55%', margin: 'auto' }}>
+                                {selectedCourse !== null && filteredRequestCourse.length > 0 && selectedCourse < filteredRequestCourse.length && (
+                                    <div>
+                                        <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
+                                            {filteredRequestCourse[selectedCourse].course_name}
+                                        </h3>
+                                        <p>
+                                            <span>Author:</span> {filteredRequestCourse[selectedCourse].userId}
+                                        </p>
 
 
-                                    <div style={{
-                                        width: 'fit-content',
-                                        border: '3px solid #0d6efd',
-                                        borderRadius: '5px',
-                                        paddingTop: '7px',
-                                        paddingLeft: '7px',
-                                        paddingRight: '7px',
-                                    }}>
-                                        {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
-                                            <YouTube
-                                                videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
-                                                opts={{
-                                                    playerVars: {
-                                                        modestbranding: 1,
-                                                    },
-                                                    host: 'https://www.youtube-nocookie.com',
-                                                }}
-                                            />
-                                        )}
-
-                                        {filteredRequestCourse[selectedCourse].videoFile && (
-                                            <video controls width="640" height="400" controlsList="nodownload">
-                                                <source
-                                                    src={generateBlobUrl(
-                                                        new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
-                                                        'video/*'
-                                                    )}
-                                                    type="video/mp4"
+                                        <div style={{
+                                            width: 'fit-content',
+                                            border: '3px solid #0d6efd',
+                                            borderRadius: '5px',
+                                            paddingTop: '7px',
+                                            paddingLeft: '7px',
+                                            paddingRight: '7px',
+                                        }}>
+                                            {getYouTubeVideoId(filteredRequestCourse[selectedCourse].link) && (
+                                                <YouTube
+                                                    videoId={getYouTubeVideoId(filteredRequestCourse[selectedCourse].link)}
+                                                    opts={{
+                                                        playerVars: {
+                                                            modestbranding: 1,
+                                                        },
+                                                        host: 'https://www.youtube-nocookie.com',
+                                                    }}
                                                 />
-                                            </video>
-                                        )}
+                                            )}
+
+                                            {filteredRequestCourse[selectedCourse].videoFile && (
+                                                <video controls width="640" height="400" controlsList="nodownload">
+                                                    <source
+                                                        src={generateBlobUrl(
+                                                            new Uint8Array(filteredRequestCourse[selectedCourse].videoFile.data).buffer,
+                                                            'video/*'
+                                                        )}
+                                                        type="video/mp4"
+                                                    />
+                                                </video>
+                                            )}
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                )}
+                            </Box>
                         </Box>
-                    </Box>
+                    }
                 </>
             }
         </>
