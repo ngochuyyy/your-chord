@@ -170,15 +170,9 @@ function CoursePage() {
                                 borderRight: '1px solid #1A73E8',
                                 borderBottom: '1px solid #1A73E8',
                                 borderRadius: '4px',
-                                '&:hover': {
-                                    transform: 'scale(1.1)',
-                                    borderTop: '1px solid #1A73E8',
-                                    borderRight: '1px solid #1A73E8',
-                                    borderBottom: '1px solid #1A73E8',
-                                },
                             }}
                         >
-                            {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
+                            {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.1)' } }} style={{ fontSize: 32 }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.1)' } }} style={{ fontSize: 32 }} />}
                         </Button>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
