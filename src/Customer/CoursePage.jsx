@@ -138,7 +138,6 @@ function CoursePage() {
                                 '&:hover': {
                                     backgroundColor: '#E3F2FD',
                                     color: '#1565C0',
-                                    transition: 'background-color 0.3s, color 0.3s',
                                 }
                             }}>
                             {tabVisible ? <ChevronLeftIcon style={{ fontSize: 32 }} /> : <ChevronRightIcon style={{ fontSize: 32 }} />}
