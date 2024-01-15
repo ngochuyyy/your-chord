@@ -164,7 +164,7 @@ function CoursePage() {
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
                             style={{
-                                height: '40px',
+                                height: '42px',
                                 borderRight: 1,
                                 borderTop: 1,
                                 borderBottom: 1,
@@ -174,7 +174,7 @@ function CoursePage() {
 
                             }}
                         >
-                            {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 25 }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 25 }} />}
+                            {tabVisible ? <ChevronLeftIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 28, color: '#0d6efd' }} /> : <ChevronRightIcon sx={{ '&:hover': { transform: 'scale(1.2)' } }} style={{ fontSize: 28, color: '#0d6efd' }} />}
                         </button>
 
                         <Box sx={{ width: '55%', margin: 'auto' }}>
