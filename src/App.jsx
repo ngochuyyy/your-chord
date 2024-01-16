@@ -73,6 +73,7 @@ import Course from './Customer/CoursePage'
 import RequestChord from './Customer/RequestChordPage';
 import RequestChordStatus from './Customer/RequestChordStatusPage';
 import ViewRequestChord from './Customer/ViewRequestChordPage';
+import ViewRequestChordCompletedPage from './Customer/ViewRequestChordCompletedPage';
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -172,6 +173,7 @@ function App() {
           <Route path='/requestChord/:user_id/' element={<RequestChord />}></Route>
           <Route path='/requestChordStatus/:user_id/' element={<RequestChordStatus />}></Route>
           <Route path='/viewRequestChord/:id/' element={<ViewRequestChord />}></Route>
+          <Route path='/ViewRequestChordCompletedPage/:id' element={<ViewRequestChordCompletedPage />}></Route>
 
         </Route>
         <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>

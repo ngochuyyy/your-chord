@@ -138,6 +138,11 @@ function ViewRequestChordPage() {
                                             <button className="btn btn-primary" onClick={handleClose}>
                                                 Close
                                             </button>
+                                            {request.status === 3 &&
+                                                <button className="btn btn-primary" onClick={() => navigate(`/ViewRequestChordCompletedPage/` + request.id)}>
+                                                    Close
+                                                </button>
+                                            }
                                         </div>
                                     </form>
                                 </div>
