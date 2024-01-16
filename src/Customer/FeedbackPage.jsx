@@ -416,7 +416,7 @@ export default function FeedbackPage() {
 
                                     </List>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginLeft: '10px' }}>
 
                                     <Button variant={'contained'} onClick={openModal}>Send Feedback</Button>
                                 </div>
