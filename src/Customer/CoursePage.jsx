@@ -130,7 +130,7 @@ function CoursePage() {
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px', overflowY: 'auto', height: '70vh' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
 
                         {tabVisible && (
                             <Tabs
@@ -145,6 +145,7 @@ function CoursePage() {
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
+                                    overflowY: 'auto',
                                     height: '70vh',
                                     flexShrink: 0,
                                 }}>
