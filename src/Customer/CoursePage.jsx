@@ -14,7 +14,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import moment from 'moment';
-import Scrollview from '@mui/material/Scrollview';
+import ScrollView from '@mui/material/ScrollView';
 
 const darkTheme = createTheme({
     palette: {
@@ -134,7 +134,7 @@ function CoursePage() {
                     <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
 
                         {tabVisible && (
-                            <Scrollview
+                            <ScrollView
                                 sx={{
                                     width: '22%',
                                     height: '70vh',
@@ -167,7 +167,7 @@ function CoursePage() {
                                         />
                                     ))}
                                 </Tabs>
-                            </Scrollview>
+                            </ScrollView>
                         )}
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
