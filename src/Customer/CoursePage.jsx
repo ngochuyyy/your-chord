@@ -144,9 +144,9 @@ function CoursePage() {
                                     onChange={handleTabChange}
                                     sx={{
                                         position: 'flex',
-                                        borderRight: '1px solid',
-                                        borderTop: '1px solid',
-                                        borderBottom: '1px solid',
+                                        borderRight: '2px solid',
+                                        borderTop: '2px solid',
+                                        borderBottom: '2px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
                                         width: '98%',
