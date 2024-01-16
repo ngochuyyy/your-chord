@@ -177,7 +177,7 @@ export default function FeedbackPage() {
                             {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
                         </td>
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
-                        <td style={{ verticalAlign: 'middle' }}>{feedbackUser.rating}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
@@ -195,7 +195,7 @@ export default function FeedbackPage() {
                             {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
                         </td>
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
-                        <td style={{ verticalAlign: 'middle' }}>{feedbackUser.rating}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
