@@ -146,6 +146,7 @@ function CoursePage() {
                                     borderColor: 'divider',
                                     width: '22%',
                                     overflowY: 'scroll',
+                                    maxHeight: '60vh',
                                     height: '70vh',
                                     flexShrink: 0,
                                 }}>
