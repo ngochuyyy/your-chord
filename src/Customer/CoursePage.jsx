@@ -148,6 +148,7 @@ function CoursePage() {
                                         borderTop: '1.5px solid',
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
+                                        borderTopRightRadius: '20px',
                                         borderColor: 'divider',
                                         width: '99%',
                                         height: '73vh',
