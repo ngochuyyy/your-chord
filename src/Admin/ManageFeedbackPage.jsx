@@ -151,7 +151,7 @@ export default function BottomAppBar() {
                                 </ListItem>
 
                                 <List sx={{ mb: 2 }}>
-                                    <div className='mt-4 pd-left'>
+                                    <div className='mt-4'>
                                         {!renderTableRows('today').some(row => row !== null) ?
                                             (
 
@@ -181,7 +181,7 @@ export default function BottomAppBar() {
                                 </ListItem>
 
                                 <List sx={{ mb: 2 }}>
-                                    <div className='mt-4 pd-left'>
+                                    <div className='mt-4'>
                                         {!renderTableRows('recently').some(row => row !== null) ?
                                             (
 
