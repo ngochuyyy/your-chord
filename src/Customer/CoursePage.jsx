@@ -145,8 +145,8 @@ function CoursePage() {
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
-                                    maxHeight: '700px',
-                                    overflowY: '500px',
+                                    maxHeight: '500px',
+                                    overflowY: 'auto',
                                     flexShrink: 0,
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
