@@ -145,7 +145,7 @@ function CoursePage() {
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
-                                    overflowY: '50px',
+                                    overflowY: 'scroll',
                                     height: '70vh',
                                     flexShrink: 0,
                                 }}>
