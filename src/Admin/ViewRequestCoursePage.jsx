@@ -80,7 +80,7 @@ function ViewRequestCoursePage() {
                                             <b htmlFor="title">Course name:</b>
                                             <p>{order.course_name}</p>
                                             <div style={{ paddingTop: '20px' }}>
-                                                <b htmlFor="cc-link" className="text-start fs-24">Link youtube</b>
+                                                <b htmlFor="cc-link" className="text-start" style={{ fontSize: '24px' }}>Link youtube</b>
                                                 <br />
                                                 <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
                                             </div>
