@@ -140,7 +140,7 @@ function ViewRequestChordPage() {
                                             </button>
                                             {request.status === 3 &&
                                                 <button className="btn btn-primary" onClick={() => navigate(`/ViewRequestChordCompletedPage/` + request.id)}>
-                                                    Close
+                                                    Display song details
                                                 </button>
                                             }
                                         </div>
