@@ -145,7 +145,7 @@ function CoursePage() {
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
-                                    height: '65vh',
+                                    height: '70vh',
                                     flexShrink: 0,
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
@@ -184,7 +184,7 @@ function CoursePage() {
                                         {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p><span>Author:</span> {filteredRequestCourse[selectedCourse].userId}</p>
-                                    <p><span>Date created:</span>{moment(filteredRequestCourse[selectedCourse].upload_date).format('YYYY/MM/DD - HH:mm:ss')}</p>
+                                    <p><span>Date created:</span> {moment(filteredRequestCourse[selectedCourse].upload_date).format('YYYY/MM/DD - HH:mm:ss')}</p>
                                     <div style={{
                                         width: 'fit-content',
                                         border: '3px solid #0d6efd',
