@@ -149,7 +149,7 @@ function CoursePage() {
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '100%',
+                                        width: '99%',
                                         height: '73vh',
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
