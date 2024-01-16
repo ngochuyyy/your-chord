@@ -77,20 +77,20 @@ function ViewRequestCoursePage() {
                                     <div className="col-md-6 text-start pe-4">
                                         {/* Left side */}
                                         <div>
-                                            <b htmlFor="title" style={{ fontSize: '20px' }}>Course name:</b>
+                                            <b htmlFor="title" style={{ fontSize: '18px' }}>Course name:</b>
                                             <p>{order.course_name}</p>
                                             <div style={{ paddingTop: '20px' }}>
-                                                <b htmlFor="cc-link" className="text-start" style={{ fontSize: '20px' }}>Link youtube</b>
+                                                <b htmlFor="cc-link" className="text-start" style={{ fontSize: '18px' }}>Link youtube</b>
                                                 <br />
                                                 <Link to={order.link} style={{ textDecoration: 'none' }}>{order.link.substring(0, 50)}...</Link>
                                             </div>
                                             <br />
                                             <div style={{ marginTop: '10px' }}>
-                                                <b htmlFor="duration" className="form-label text-start" style={{ fontSize: '20px' }}>Date created:</b>
+                                                <b htmlFor="duration" className="form-label text-start" style={{ fontSize: '18px' }}>Date created:</b>
                                                 <p>{moment(order.upload_date).format('YYYY-MM-DD  HH:mm:ss')}</p>
                                             </div>
                                             <div style={{ paddingTop: '20px' }}>
-                                                <b htmlFor="duration" className="form-label" style={{ fontSize: '20px' }}>Poster / Uploader:</b>
+                                                <b htmlFor="duration" className="form-label" style={{ fontSize: '18px' }}>Poster / Uploader:</b>
                                                 <p>{order.userId}</p>
                                             </div>
                                         </div>
