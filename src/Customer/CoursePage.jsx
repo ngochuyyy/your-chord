@@ -140,6 +140,7 @@ function CoursePage() {
                                 value={selectedCourse}
                                 onChange={handleTabChange}
                                 sx={{
+                                    display: 'flex',
                                     position: 'absolute',
                                     borderRight: 1,
                                     borderTop: 1,
