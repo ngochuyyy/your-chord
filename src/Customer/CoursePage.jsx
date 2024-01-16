@@ -136,7 +136,7 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Scrollbars style={{ width: '24%', height: '70vh', border: '0.5px' }}>
+                            <Scrollbars style={{ width: '24%', height: '70vh' }}>
 
                                 <Tabs
                                     orientation="vertical"
@@ -144,9 +144,9 @@ function CoursePage() {
                                     onChange={handleTabChange}
                                     sx={{
                                         position: 'flex',
-                                        borderRight: 1,
-                                        borderTop: 1,
-                                        borderBottom: 1,
+                                        borderRight: '1px solid',
+                                        borderTop: '1px solid',
+                                        borderBottom: '1px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
                                         width: '98%',
