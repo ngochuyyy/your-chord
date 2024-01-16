@@ -397,13 +397,11 @@ function ViewRequestChordCompletedPage() {
                                     <div className="col-md-7">
                                         <div className="row">
                                             <div className="col-md-6">
-                                                <p><b>Artist:</b>
-                                                    {viewSong.artist_name != null ?
-                                                        <p> {viewSong.artist_name}</p>
-                                                        :
-                                                        " Updating"
-                                                    }
-                                                </p>
+                                                {viewSong.artist_name != null ?
+                                                    <p><b>Artist:</b> {viewSong.artist_name}</p>
+                                                    :
+                                                    <p><b>Artist:</b> Updating</p>
+                                                }
                                                 {viewSong.link != null ? (
                                                     <p><b>Link:</b> <Link to={viewSong.link} style={{ textDecoration: 'none', cursor: 'pointer' }}>{viewSong.link.substring(0, 30)}</Link></p>
                                                 ) : (
@@ -411,8 +409,8 @@ function ViewRequestChordCompletedPage() {
                                                 )}
                                             </div>
                                             <div className="col-md-6">
-                                                <p><b>Date created:</b> {moment(viewSong.created_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
-                                                {viewSong.updated_at != null ? (
+                                                <p><b>Date created:</b> {moment(viewSong.request_date).format('YYYY/MM/DD - HH:mm:ss')}</p>
+                                                {viewSong.author != null ? (
                                                     <p><b>Date updated:</b> {moment(viewSong.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
                                                 ) : (
                                                     <p><b>Date updated:</b> Not updated</p>
