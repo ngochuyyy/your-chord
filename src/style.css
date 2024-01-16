@@ -405,10 +405,6 @@ textarea {
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.playlist-container:hover .collection_name {
-    color: #0d6efd;
-}
-
 .collection_name {
     transition: text-decoration 0.3s, color 0.3s;
 }
@@ -419,7 +415,7 @@ textarea {
 }
 
 .playlist-container:hover .playlist-name {
-    color: #333;
+    color: #0d6efd;
     transform: scale(1.1);
 
 }
