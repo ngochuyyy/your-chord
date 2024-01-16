@@ -304,9 +304,11 @@ function SearchChordPage() {
                                                                                                     borderRadius: '5px'
                                                                                                 }}
                                                                                             >
-                                                                                                {chord}{songChords.length > 10 ? "..." : ""}
+                                                                                                {chord}
                                                                                             </div>
                                                                                         ))}
+                                                                                        {songChords.length > 9 ? "..." : ""}
+
 
                                                                                     </div>
                                                                                 </div>
