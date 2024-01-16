@@ -14,6 +14,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import moment from 'moment';
+import { ScrollView } from 'antd';
 
 const darkTheme = createTheme({
     palette: {
@@ -135,33 +136,36 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Tabs
-                                orientation="vertical"
-                                value={selectedCourse}
-                                onChange={handleTabChange}
-                                sx={{
-                                    display: 'flex',
-                                    borderRight: 1,
-                                    borderTop: 1,
-                                    borderBottom: 1,
-                                    borderBottomRightRadius: '20px',
-                                    borderColor: 'divider',
-                                    width: '22%',
-                                    height: '70vh',
-                                }}>
-                                {filteredRequestCourse.map((course, index) => (
-                                    <Tab
-                                        key={index}
-                                        label={
-                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
-                                                <b>{course.course_name}</b>
-                                            </div>
-                                        }
-                                        style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
-                                    />
-                                ))}
-                            </Tabs>
+                            <ScrollView style={{ overflowY: 'auto', height: '70vh', width: '78%' }}>
+
+                                <Tabs
+                                    orientation="vertical"
+                                    value={selectedCourse}
+                                    onChange={handleTabChange}
+                                    sx={{
+                                        display: 'flex',
+                                        borderRight: 1,
+                                        borderTop: 1,
+                                        borderBottom: 1,
+                                        borderBottomRightRadius: '20px',
+                                        borderColor: 'divider',
+                                        width: '22%',
+                                        height: '70vh',
+                                    }}>
+                                    {filteredRequestCourse.map((course, index) => (
+                                        <Tab
+                                            key={index}
+                                            label={
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                                    <b>{course.course_name}</b>
+                                                </div>
+                                            }
+                                            style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
+                                        />
+                                    ))}
+                                </Tabs>
+                            </ScrollView>
                         )}
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
