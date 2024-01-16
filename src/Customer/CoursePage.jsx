@@ -148,7 +148,7 @@ function CoursePage() {
                                     borderColor: 'divider',
                                     width: '22%',
                                     height: '550px',
-                                    overflowY: 'auto'
+                                    overflowY: 'scroll'
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
