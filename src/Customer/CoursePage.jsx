@@ -14,7 +14,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import moment from 'moment';
-import { ScrollView } from 'antd';
+import Scrollbars from 'react-custom-scrollbars';
 
 const darkTheme = createTheme({
     palette: {
@@ -136,7 +136,7 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <ScrollView style={{ overflowY: 'auto', height: '70vh', width: '78%' }}>
+                            <Scrollbars style={{ width: '22%', height: '50vh' }}>
 
                                 <Tabs
                                     orientation="vertical"
@@ -149,8 +149,10 @@ function CoursePage() {
                                         borderBottom: 1,
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '22%',
+                                        width: '100%',
                                         height: '70vh',
+                                        flexShrink: 0,
+
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
@@ -165,7 +167,7 @@ function CoursePage() {
                                         />
                                     ))}
                                 </Tabs>
-                            </ScrollView>
+                            </Scrollbars>
                         )}
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
