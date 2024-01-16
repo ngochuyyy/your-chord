@@ -130,7 +130,10 @@ function CoursePage() {
                         <h3 className="d-flex justify-content-center" style={{ color: '#0d6efd', fontWeight: 'bold', marginTop: "50px" }}>Course</h3>
                     </div>
 
-                    <Box sx={{ display: 'flex', flexDirection: 'row', marginLeft: '10px' }}>
+                    <Box sx={{
+                        display: 'flex', flexDirection: 'row', marginLeft: '10px', maxHeight: '600px',
+                        overflowY: 'auto'
+                    }}>
 
                         {tabVisible && (
                             <Tabs
@@ -145,9 +148,8 @@ function CoursePage() {
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
-                                    maxHeight: '500px',
-                                    overflowY: 'auto',
-                                    flexShrink: 0,
+                                    // maxHeight: '500px',
+                                    // overflowY: 'auto',
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
