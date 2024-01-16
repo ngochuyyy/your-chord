@@ -144,12 +144,12 @@ function CoursePage() {
                                     onChange={handleTabChange}
                                     sx={{
                                         position: 'flex',
-                                        borderRight: '2px solid',
-                                        borderTop: '2px solid',
-                                        borderBottom: '2px solid',
+                                        borderRight: '1.5px solid',
+                                        borderTop: '1.5px solid',
+                                        borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '98%',
+                                        width: '100%',
                                         height: '73vh',
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
