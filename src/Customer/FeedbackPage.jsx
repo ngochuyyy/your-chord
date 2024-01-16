@@ -247,7 +247,7 @@ export default function FeedbackPage() {
                                             {!renderTableRows('today').some(row => row !== null) ?
                                                 (
 
-                                                    <div className="text-center"><b>No comment available</b></div>
+                                                    <div className="text-center"><p>No comment available</p></div>
                                                 )
                                                 :
                                                 <table className='custom-table table'>
@@ -275,7 +275,7 @@ export default function FeedbackPage() {
                                             {!renderTableRows('recently').some(row => row !== null) ?
                                                 (
 
-                                                    <div className="text-center"><b>No comment available</b></div>
+                                                    <div className="text-center"><p>No comment available</p></div>
                                                 )
                                                 :
                                                 <table className='custom-table table'>
@@ -310,7 +310,7 @@ export default function FeedbackPage() {
                                             {!renderTableRows('today').some(row => row !== null) ?
                                                 (
 
-                                                    <div className="text-center"><b>No comment available</b></div>
+                                                    <div className="text-center"><p>No comment available</p></div>
                                                 )
                                                 :
                                                 <table className='custom-table table'>
@@ -339,7 +339,7 @@ export default function FeedbackPage() {
                                             {!renderTableRows('recently').some(row => row !== null) ?
                                                 (
 
-                                                    <div className="text-center"><b>No comment available</b></div>
+                                                    <div className="text-center"><p>No comment available</p></div>
                                                 )
                                                 :
                                                 <table className='custom-table table'>
