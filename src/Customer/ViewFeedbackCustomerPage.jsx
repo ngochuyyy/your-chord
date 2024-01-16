@@ -245,7 +245,7 @@ function ViewFeedbackCustomerPage() {
                                                                     readOnly
                                                                     emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
                                                                 />
-                                                                <span>{labels[reply.rating]}</span>
+                                                                <span style={{ fontSize: '15px', marginLeft: '10px' }}>{labels[reply.rating]}</span>
 
 
                                                             </Box>
