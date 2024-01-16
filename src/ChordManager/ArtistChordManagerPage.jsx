@@ -176,7 +176,7 @@ function ArtistChordManagerPage() {
                                                                 </div>
                                                                 <span style={{ color: 'gray', fontStyle: 'italic' }}>{song.lyrics.substring(0, 100)}...</span>
                                                                 <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start' }}>
-                                                                    {Array.from(uniqueChordsSet).slice(0, 5).map((chordName, index) => (
+                                                                    {Array.from(uniqueChordsSet).slice(0, 6).map((chordName, index) => (
                                                                         <div key={index} className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
                                                                             <p style={{ marginTop: '5px' }}>{chordData[chordName]?.name}</p>
                                                                             {chordData[chordName]?.image && (
@@ -184,7 +184,7 @@ function ArtistChordManagerPage() {
                                                                             )}
                                                                         </div>
                                                                     ))}
-                                                                    {Array.from(uniqueChordsSet).length > 5 && (
+                                                                    {Array.from(uniqueChordsSet).length > 6 && (
                                                                         <div className="chord-box" style={{ position: 'relative', textAlign: 'center', margin: '10px' }}>
                                                                             <p style={{ marginTop: '5px', fontSize: '15px' }}>View more</p>
                                                                         </div>
