@@ -143,16 +143,13 @@ function CoursePage() {
                                     value={selectedCourse}
                                     onChange={handleTabChange}
                                     sx={{
-                                        display: 'flex',
+                                        position: 'flex',
                                         borderRight: 1,
                                         borderTop: 1,
                                         borderBottom: 1,
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '100%',
                                         height: '70vh',
-                                        flexShrink: 0,
-
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
