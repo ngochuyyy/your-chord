@@ -418,10 +418,13 @@ textarea {
     padding-top: 20px;
 }
 
+.playlist-name:hover {
+    color: #0d6efd;
+}
+
 .playlist-container:hover .playlist-name {
     color: #0d6efd;
     transform: scale(1.1);
-
 }
 
 .playlist-name-modal {
