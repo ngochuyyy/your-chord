@@ -139,17 +139,16 @@ function CoursePage() {
                                 orientation="vertical"
                                 value={selectedCourse}
                                 onChange={handleTabChange}
+                                style={{ overflowY: 'scroll', height: '400px' }}
                                 sx={{
                                     display: 'flex',
-                                    position: 'absolute',
                                     borderRight: 1,
                                     borderTop: 1,
                                     borderBottom: 1,
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
-                                    height: '550px',
-                                    overflowY: 'auto'
+                                    height: '70vh',
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
