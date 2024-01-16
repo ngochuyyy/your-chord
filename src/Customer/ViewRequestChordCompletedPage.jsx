@@ -409,11 +409,7 @@ function ViewRequestChordCompletedPage() {
                                             </div>
                                             <div className="col-md-6">
                                                 <p><b>Date created:</b> {moment(viewSong.request_date).format('YYYY/MM/DD - HH:mm:ss')}</p>
-                                                {viewSong.author != null ? (
-                                                    <p><b>Date updated:</b> {moment(viewSong.updated_at).format('YYYY/MM/DD - HH:mm:ss')}</p>
-                                                ) : (
-                                                    <p><b>Date updated:</b> Not updated</p>
-                                                )}
+                                                <p><b>Author:</b> {viewSong.musician_id}</p>
                                             </div>
 
                                         </div>

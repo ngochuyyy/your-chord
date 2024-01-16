@@ -83,17 +83,17 @@ function ViewRequestChordPage() {
                                     <form className="needs-validation" noValidate>
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="title">Song title</b>
+                                                <b htmlFor="title">Song title:</b>
                                                 <p>{request.song_name}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="cc-link">Musician</b>
+                                                <b htmlFor="cc-link">Author:</b>
                                                 <p>{request.musician_id === null ? "None" : request.musician_id}</p>
                                             </div>
                                         </div>
 
                                         <div className="mb-3">
-                                            <b htmlFor="lyric">Lyric</b>
+                                            <b htmlFor="lyric">Lyric:</b>
                                             <div className="input-group">
                                                 <textarea
                                                     id="lyric"
@@ -114,7 +114,7 @@ function ViewRequestChordPage() {
 
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="artist">Artist</b>
+                                                <b htmlFor="artist">Artist:</b>
                                                 <p>{request.artist_name}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
@@ -125,11 +125,11 @@ function ViewRequestChordPage() {
 
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="cc-genre">Genre</b>
+                                                <b htmlFor="cc-genre">Genre:</b>
                                                 <p>{request.genre}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="cc-link">Link</b>
+                                                <b htmlFor="cc-link">Link:</b>
                                                 <p>{request.link}</p>
                                             </div>
                                         </div>
