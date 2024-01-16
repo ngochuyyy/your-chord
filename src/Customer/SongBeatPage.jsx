@@ -29,6 +29,7 @@ function SongBeatPage() {
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
     const [c7ChordsData, setDataC7Chords] = useState([]);
+    const [cm7ChordsData, setDataCm7Chords] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const [currentPage, setCurrentPage] = useState(1);
@@ -187,6 +188,7 @@ function SongBeatPage() {
                     const majorChordsData = {};
                     const minorChordsData = {};
                     const c7ChordsData = {};
+                    const cm7ChordsData = {};
 
                     chordData.forEach(chord => {
                         if (chord.type === 0) {
@@ -198,10 +200,15 @@ function SongBeatPage() {
                         if (chord.type === 2) {
                             c7ChordsData[chord.name] = chord;
                         }
+                        if (chord.type === 3) {
+                            cm7ChordsData[chord.name] = chord;
+                        }
                     });
                     setDataMajorChords(majorChordsData);
                     setDataMinorChords(minorChordsData);
                     setDataC7Chords(c7ChordsData);
+                    setDataCm7Chords(cm7ChordsData);
+
                     setLoading(false);
                 } else {
                     alert("Error")
@@ -209,7 +216,7 @@ function SongBeatPage() {
             })
             .catch(err => console.log(err));
     }, [])
-    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData };
+    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData, ...cm7ChordsData };
     return (
         <>
             <SearchAppBarBackCustomer />
