@@ -139,7 +139,6 @@ function CoursePage() {
                                 orientation="vertical"
                                 value={selectedCourse}
                                 onChange={handleTabChange}
-                                style={{ overflowY: 'scroll', height: '400px' }}
                                 sx={{
                                     display: 'flex',
                                     borderRight: 1,
