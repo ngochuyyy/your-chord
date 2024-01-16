@@ -136,7 +136,7 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Scrollbars style={{ width: '24%', height: '70vh', left: '50px' }}>
+                            <Scrollbars style={{ width: '24%', height: '70vh' }}>
 
                                 <Tabs
                                     orientation="vertical"
@@ -151,6 +151,7 @@ function CoursePage() {
                                         borderColor: 'divider',
                                         width: '98%',
                                         height: '73vh',
+                                        left: '50px',
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
