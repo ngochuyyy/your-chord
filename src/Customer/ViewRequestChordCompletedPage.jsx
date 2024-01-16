@@ -392,14 +392,14 @@ function ViewRequestChordCompletedPage() {
                                 });
                             }
                             return <div key={index}>
-                                <h3 className="d-flex justify-content-center"><b>{viewSong.song_title}</b></h3>
+                                <h3 className="d-flex justify-content-center"><b>{viewSong.song_name}</b></h3>
                                 <div className="row mt-5 d-flex justify-content-center">
                                     <div className="col-md-7">
                                         <div className="row">
                                             <div className="col-md-6">
                                                 <p><b>Artist:</b>
                                                     {viewSong.artist_name != null ?
-                                                        <Link to={`/artist/${viewSong.id}/${viewSong.artist_id}`} style={{ textDecoration: 'none', cursor: 'pointer' }}> {viewSong.artist_name}</Link>
+                                                        <p> {viewSong.artist_name}</p>
                                                         :
                                                         " Updating"
                                                     }
