@@ -181,11 +181,11 @@ export default function FeedbackPage() {
                             {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
                         </td>
-                        <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
                         {feedbackUser.status === 1 ?
-                            <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
+                            <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
-                            <td className="text-warning"><b>Not reply</b></td>
+                            <td className="text-warning" style={{ verticalAlign: 'middle' }}><b>Not reply</b></td>
                         }
                     </tr>
                 );
@@ -198,11 +198,11 @@ export default function FeedbackPage() {
                         <td>
                             {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
                         </td>
-                        <td>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
                         {feedbackUser.status === 1 ?
-                            <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
+                            <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
-                            <td className="text-warning"><b>Not reply</b></td>
+                            <td className="text-warning" style={{ verticalAlign: 'middle' }}><b>Not reply</b></td>
                         }
                     </tr>
                 );
