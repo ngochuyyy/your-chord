@@ -131,8 +131,8 @@ function CoursePage() {
                     </div>
 
                     <Box sx={{
-                        display: 'flex', flexDirection: 'row', marginLeft: '10px', maxHeight: '600px',
-                        overflowY: 'auto'
+                        display: 'flex', flexDirection: 'row', marginLeft: '10px', maxHeight: '550px',
+                        overflowY: 'scroll'
                     }}>
 
                         {tabVisible && (
