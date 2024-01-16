@@ -237,7 +237,7 @@ function SongBeatManagerPage() {
             })
             .catch(err => console.log(err));
     }, [])
-    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData, cm7ChordsData };
+    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData, ...cm7ChordsData };
     return (
         <>
             <SearchAppBarBackMusican />
