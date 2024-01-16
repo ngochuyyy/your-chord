@@ -26,11 +26,12 @@ function SearchChordPage() {
     const predefinedChords = ["C,G,Am,Em,F", "Am,F,C,G", "G,Em,C,D", "D,Bm,G,A", "C,Am,Dm,G", "Am,Dm,E"];
     const [majorChordsData, setDataMajorChords] = useState([]);
     const [minorChordsData, setDataMinorChords] = useState([]);
+    const [c7ChordsData, setDataC7Chords] = useState([]);
+    const [cm7ChordsData, setDataCm7Chords] = useState([]);
     const [dataPlaylist, setDataPlaylist] = useState([]);
     const [imageURL, setImageURL] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
     const [selectedPlaylist, setSelectedPlaylist] = useState(null);
-    const [c7ChordsData, setDataC7Chords] = useState([]);
     const [selectedSong, setSelectedSong] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -157,6 +158,7 @@ function SearchChordPage() {
                     const majorChordsData = {};
                     const minorChordsData = {};
                     const c7ChordsData = {};
+                    const cm7ChordsData = {};
 
                     chordData.forEach(chord => {
                         if (chord.type === 0) {
@@ -168,17 +170,22 @@ function SearchChordPage() {
                         if (chord.type === 2) {
                             c7ChordsData[chord.name] = chord;
                         }
+                        if (chord.type === 3) {
+                            cm7ChordsData[chord.name] = chord;
+                        }
                     });
                     setDataMajorChords(majorChordsData);
                     setDataMinorChords(minorChordsData);
-                    setDataC7Chords(c7ChordsData)
+                    setDataC7Chords(c7ChordsData);
+                    setDataCm7Chords(cm7ChordsData)
+
                 } else {
                     alert("Error")
                 }
             })
             .catch(err => console.log(err));
     }, [])
-    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData };
+    const chordData = { ...majorChordsData, ...minorChordsData, ...c7ChordsData, ...cm7ChordsData };
     return (
         <>
             <SearchAppBarBackCustomer />
