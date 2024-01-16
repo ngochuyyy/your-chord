@@ -182,9 +182,9 @@ function CoursePage() {
                                     <h3 style={{ fontWeight: 'bold', marginTop: '50px' }}>
                                         {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
-                                    <p>
-                                        <span>Author:</span> {filteredRequestCourse[selectedCourse].userId}
-                                    </p>
+                                    <p><span>Author:</span> {filteredRequestCourse[selectedCourse].userId}</p>
+                                    <p><span>Date created:</span> {filteredRequestCourse[selectedCourse].upload_date}</p>
+
                                     <div style={{
                                         width: 'fit-content',
                                         border: '3px solid #0d6efd',
