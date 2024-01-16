@@ -411,7 +411,6 @@ function ViewRequestChordCompletedPage() {
                                                 <p><b>Date created:</b> {moment(viewSong.request_date).format('YYYY/MM/DD - HH:mm:ss')}</p>
                                                 <p><b>Author:</b> {viewSong.musician_id}</p>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
