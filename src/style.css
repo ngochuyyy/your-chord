@@ -416,6 +416,7 @@ textarea {
 .playlist-name {
     transition: color 0.3s;
     padding-top: 20px;
+    color: black;
 }
 
 .playlist-container:hover .playlist-name {

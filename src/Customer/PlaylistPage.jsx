@@ -197,8 +197,7 @@ function PlaylistPage() {
 
                                                 </div>
                                                 <Link to={'/viewPlaylist/' + playlist.id} className="playlist-name" style={{ textDecoration: 'none' }} >
-                                                    <b style={{ color: 'black' }}>{playlist.collection_name}
-                                                    </b>
+                                                    <b>{playlist.collection_name}</b>
                                                 </Link>
                                             </div>
                                         </div>
