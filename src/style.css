@@ -42,7 +42,7 @@
 
 .custom-table th:nth-child(2),
 .custom-table td:nth-child(2) {
-    width: 40%;
+    width: 30%;
 }
 
 .custom-table th:nth-child(3),
