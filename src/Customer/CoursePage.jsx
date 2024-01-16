@@ -136,7 +136,7 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Scrollbars style={{ width: '26%', height: '69vh' }}>
+                            <Scrollbars style={{ width: '35%', height: '69vh' }}>
 
                                 <Tabs
                                     orientation="vertical"
