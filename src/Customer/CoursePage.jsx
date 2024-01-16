@@ -13,6 +13,7 @@ import Tabs from '@mui/material/Tabs';
 import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import moment from 'moment';
 
 const darkTheme = createTheme({
     palette: {
@@ -183,8 +184,7 @@ function CoursePage() {
                                         {filteredRequestCourse[selectedCourse].course_name}
                                     </h3>
                                     <p><span>Author:</span> {filteredRequestCourse[selectedCourse].userId}</p>
-                                    <p><span>Date created:</span> {filteredRequestCourse[selectedCourse].upload_date}</p>
-
+                                    <p><span>Date created:</span>{moment(filteredRequestCourse[selectedCourse].upload_date).format('YYYY/MM/DD - HH:mm:ss')}</p>
                                     <div style={{
                                         width: 'fit-content',
                                         border: '3px solid #0d6efd',
