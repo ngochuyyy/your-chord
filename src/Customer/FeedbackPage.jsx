@@ -416,7 +416,7 @@ export default function FeedbackPage() {
 
                                     </List>
                                 </div>
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ display: 'flex', flexDirection: 'column' }}>
                                     <Button variant={'contained'} onClick={openModal}>Send Feedback</Button>
                                 </div>
                             </TabPanel>
