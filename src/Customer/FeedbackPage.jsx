@@ -335,7 +335,7 @@ export default function FeedbackPage() {
                                         <ListItemText primary="Recently" style={{ color: '#0d6efd' }} />
                                     </ListItem>
                                     <List sx={{ mb: 2 }}>
-                                        <div className="mt-4 pd-left">
+                                        <div className="mt-4">
                                             {!renderTableRows('recently').some(row => row !== null) ?
                                                 (
 
