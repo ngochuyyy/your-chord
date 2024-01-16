@@ -19,6 +19,7 @@ export default function BottomAppBar() {
     axios.defaults.withCredentials = true;
     let showDate = new Date();
     let displaytodaysdate = showDate.getFullYear() + '-' + (showDate.getMonth() + 1) + '-' + showDate.getDate();
+
     useEffect(() => {
         setLoading(true);
 
@@ -39,6 +40,7 @@ export default function BottomAppBar() {
 
             .catch(err => console.log(err));
     }, [])
+
     const renderTableRows = (filterDate) => {
         return data.map((feedbackUser, index) => {
             const date1 = moment(displaytodaysdate).format("YYYY-MM-DD");
@@ -66,6 +68,7 @@ export default function BottomAppBar() {
 
                         </td>
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green' }}><CheckCircleIcon color='success' /></td>
                             :
@@ -96,9 +99,9 @@ export default function BottomAppBar() {
                                     } />
                             </ListItem>
                         </td>
-                        <td style={{ verticalAlign: 'middle' }}>
-                            {moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}
-                        </td>
+                        <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
+
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
@@ -110,6 +113,18 @@ export default function BottomAppBar() {
 
             return null;
         });
+    };
+    const labels = {
+        0.5: 'Useless',
+        1: 'Useless+',
+        1.5: 'Poor',
+        2: 'Poor+',
+        2.5: 'Ok',
+        3: 'Ok+',
+        3.5: 'Good',
+        4: 'Good+',
+        4.5: 'Excellent',
+        5: 'Excellent+',
     };
     return (
         <>
@@ -148,6 +163,7 @@ export default function BottomAppBar() {
                                                     <tr>
                                                         <th></th>
                                                         <th>Date</th>
+                                                        <th>Rating</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
@@ -177,6 +193,7 @@ export default function BottomAppBar() {
                                                     <tr>
                                                         <th></th>
                                                         <th>Date</th>
+                                                        <th>Rating</th>
                                                         <th>Status</th>
                                                     </tr>
                                                 </thead>
