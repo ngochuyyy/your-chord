@@ -58,7 +58,6 @@ export default function FeedbackPage() {
 
             try {
                 if (value === '1') {
-                    // Fetch all feedback
                     const response = await axios.get(`${apiUrl}/getFeedback`);
                     if (response.data.Status === 'Success') {
                         setLoading(false);
@@ -71,7 +70,6 @@ export default function FeedbackPage() {
                         alert('Error fetching all feedback');
                     }
                 } else if (value === '2') {
-                    // Fetch user-specific feedback
                     const response = await axios.get(`${apiUrl}/getFeedback/` + userId);
                     if (response.data.Status === 'Success') {
                         setLoading(false);
@@ -94,7 +92,6 @@ export default function FeedbackPage() {
     const handleFeedbackSubmission = () => {
         const { comment, rating } = newFeedback;
 
-        // Check if the comment is empty
         if (!comment.trim()) {
             alert('Please provide a comment before submitting.');
             return;
@@ -177,11 +174,10 @@ export default function FeedbackPage() {
                 return (
                     <tr key={index} onClick={() => value === '2' ? navigate(`/viewFeedbackCustomer/` + feedbackUser.id) : navigate(`/viewFeedbackCustomerAll/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
                         <td>
-
                             {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
-
                         </td>
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{feedbackUser.reply}</td>
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
@@ -199,6 +195,7 @@ export default function FeedbackPage() {
                             {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
                         </td>
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
+                        <td style={{ verticalAlign: 'middle' }}>{feedbackUser.reply}</td>
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
@@ -258,6 +255,7 @@ export default function FeedbackPage() {
                                                         <tr>
                                                             <th></th>
                                                             <th>Date</th>
+                                                            <th>Rating</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -285,6 +283,7 @@ export default function FeedbackPage() {
                                                         <tr>
                                                             <th></th>
                                                             <th>Date</th>
+                                                            <th>Rating</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -319,6 +318,7 @@ export default function FeedbackPage() {
                                                         <tr>
                                                             <th></th>
                                                             <th>Date</th>
+                                                            <th>Rating</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
@@ -347,6 +347,7 @@ export default function FeedbackPage() {
                                                         <tr>
                                                             <th></th>
                                                             <th>Date</th>
+                                                            <th>Rating</th>
                                                             <th>Status</th>
                                                         </tr>
                                                     </thead>
