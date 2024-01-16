@@ -397,8 +397,7 @@ function ViewRequestChordCompletedPage() {
                                     <div className="col-md-7">
                                         <div className="row">
                                             <div className="col-md-6">
-                                                {viewSong.artist_name != null ?
-                                                    <p><b>Artist:</b> {viewSong.artist_name}</p>
+                                                {viewSong.artist_name != null ? <p><b>Artist:</b> {viewSong.artist_name}</p>
                                                     :
                                                     <p><b>Artist:</b> Updating</p>
                                                 }
