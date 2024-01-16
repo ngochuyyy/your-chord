@@ -131,8 +131,7 @@ function CoursePage() {
                     </div>
 
                     <Box sx={{
-                        display: 'flex', flexDirection: 'row', marginLeft: '10px', maxHeight: '550px',
-                        overflowY: 'scroll'
+                        display: 'flex', flexDirection: 'row', marginLeft: '10px',
                     }}>
 
                         {tabVisible && (
@@ -148,8 +147,8 @@ function CoursePage() {
                                     borderBottomRightRadius: '20px',
                                     borderColor: 'divider',
                                     width: '22%',
-                                    // maxHeight: '500px',
-                                    // overflowY: 'auto',
+                                    maxHeight: '550px',
+                                    overflowY: 'scroll'
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
