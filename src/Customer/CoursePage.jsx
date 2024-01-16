@@ -140,7 +140,7 @@ function CoursePage() {
                                 value={selectedCourse}
                                 onChange={handleTabChange}
                                 sx={{
-                                    display: 'flex',
+                                    position: 'absolute',
                                     borderRight: 1,
                                     borderTop: 1,
                                     borderBottom: 1,
@@ -148,7 +148,7 @@ function CoursePage() {
                                     borderColor: 'divider',
                                     width: '22%',
                                     height: '550px',
-                                    overflowY: 'scroll'
+                                    overflowY: 'auto'
                                 }}>
                                 {filteredRequestCourse.map((course, index) => (
                                     <Tab
