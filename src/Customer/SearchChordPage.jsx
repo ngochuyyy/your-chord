@@ -291,8 +291,7 @@ function SearchChordPage() {
                                                                                 <div style={{ display: 'flex', alignItems: 'center' }}>
                                                                                     <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span>
                                                                                     <div style={{ display: 'flex', textAlign: 'center' }}>
-
-                                                                                        {songChords.slice(0, 10).map((chord, chordIndex) => (
+                                                                                        {songChords.slice(0, 12).map((chord, chordIndex) => (
                                                                                             <div
                                                                                                 key={chordIndex}
                                                                                                 style={{
@@ -307,9 +306,7 @@ function SearchChordPage() {
                                                                                                 {chord}
                                                                                             </div>
                                                                                         ))}
-                                                                                        {songChords.length > 9 ? "..." : ""}
-
-
+                                                                                        {songChords.length > 12 ? "..." : ""}
                                                                                     </div>
                                                                                 </div>
                                                                             </div>

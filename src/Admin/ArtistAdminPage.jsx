@@ -184,8 +184,7 @@ function ArtistAdminPage() {
                                                                         <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span> -
                                                                         <span style={{ fontSize: '20px', marginRight: '10px', paddingLeft: '10px' }}>{song.artist_name}</span>
                                                                         <div style={{ display: 'flex', textAlign: 'center' }}>
-
-                                                                            {songChords.map((chord, chordIndex) => (
+                                                                            {songChords.slice(0, 12).map((chord, chordIndex) => (
                                                                                 <div
                                                                                     key={chordIndex}
                                                                                     style={{
@@ -200,7 +199,7 @@ function ArtistAdminPage() {
                                                                                     {chord}
                                                                                 </div>
                                                                             ))}
-
+                                                                            {songChords.length > 12 ? "..." : ""}
                                                                         </div>
                                                                     </div>
                                                                 </div>

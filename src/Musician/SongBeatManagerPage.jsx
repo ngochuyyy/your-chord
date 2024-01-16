@@ -223,7 +223,7 @@ function SongBeatManagerPage() {
                             c7ChordsData[chord.name] = chord;
                         }
                         if (chord.type === 3) {
-                            c7ChordsData[chord.name] = chord;
+                            cm7ChordsData[chord.name] = chord;
                         }
                     });
                     setDataMajorChords(majorChordsData);
@@ -321,8 +321,7 @@ function SongBeatManagerPage() {
                                                                     <div style={{ display: 'flex', alignItems: 'center' }}>
                                                                         <span style={{ fontSize: '20px', marginRight: '10px' }}>{song.song_title}</span>
                                                                         <div style={{ display: 'flex', textAlign: 'center' }}>
-
-                                                                            {songChords.map((chord, chordIndex) => (
+                                                                            {songChords.slice(0, 12).map((chord, chordIndex) => (
                                                                                 <div
                                                                                     key={chordIndex}
                                                                                     style={{
@@ -337,7 +336,7 @@ function SongBeatManagerPage() {
                                                                                     {chord}
                                                                                 </div>
                                                                             ))}
-
+                                                                            {songChords.length > 12 ? "..." : ""}
                                                                         </div>
                                                                     </div>
                                                                 </div>
