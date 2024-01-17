@@ -175,24 +175,30 @@ export default function FeedbackPage() {
             if (date1 === date2 && filterDate === 'today') {
                 return (
                     <tr key={index} onClick={() => value === '2' ? navigate(`/viewFeedbackCustomer/` + feedbackUser.id) : navigate(`/viewFeedbackCustomerAll/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
-                        <td>
-                            <ListItem >
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                        {value === '1' ?
+                            <td>
+                                <ListItem >
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText className="font" primary={
-                                    <b>{feedbackUser.username} </b>
-                                }
-                                    secondary={feedbackUser.email.length > 17 ?
-                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
-                                        :
-                                        <b>{feedbackUser.email} </b>
-                                    } />
-                            </ListItem>
-                        </td>
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText className="font" primary={
+                                        <b>{feedbackUser.username} </b>
+                                    }
+                                        secondary={feedbackUser.email.length > 17 ?
+                                            <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                            :
+                                            <b>{feedbackUser.email} </b>
+                                        } />
+                                </ListItem>
+                            </td>
+                            :
+                            <td>
+                                {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                            </td>
+                        }
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
                         <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
                         {feedbackUser.status === 1 ?
@@ -208,24 +214,30 @@ export default function FeedbackPage() {
                 return (
                     <tr key={index} onClick={() => value === '2' ? navigate(`/viewFeedbackCustomer/` + feedbackUser.id) : navigate(`/viewFeedbackCustomerAll/` + feedbackUser.id)} style={{ cursor: 'pointer' }} >
 
-                        <td>
-                            <ListItem >
-                                <ListItemAvatar>
-                                    <Avatar>
-                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                        {value === '1' ?
+                            <td>
+                                <ListItem >
+                                    <ListItemAvatar>
+                                        <Avatar>
+                                            {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
 
-                                    </Avatar>
-                                </ListItemAvatar>
-                                <ListItemText className="font" primary={
-                                    <b>{feedbackUser.username} </b>
-                                }
-                                    secondary={feedbackUser.email.length > 17 ?
-                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
-                                        :
-                                        <b>{feedbackUser.email} </b>
-                                    } />
-                            </ListItem>
-                        </td>
+                                        </Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText className="font" primary={
+                                        <b>{feedbackUser.username} </b>
+                                    }
+                                        secondary={feedbackUser.email.length > 17 ?
+                                            <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                            :
+                                            <b>{feedbackUser.email} </b>
+                                        } />
+                                </ListItem>
+                            </td>
+                            :
+                            <td>
+                                {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+                            </td>
+                        }
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
                         <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
                         {feedbackUser.status === 1 ?
