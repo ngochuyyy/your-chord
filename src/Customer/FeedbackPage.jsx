@@ -18,6 +18,8 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 export default function FeedbackPage() {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -174,8 +176,22 @@ export default function FeedbackPage() {
                 return (
                     <tr key={index} onClick={() => value === '2' ? navigate(`/viewFeedbackCustomer/` + feedbackUser.id) : navigate(`/viewFeedbackCustomerAll/` + feedbackUser.id)} style={{ cursor: 'pointer' }}>
                         <td>
-                            {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
-                        </td>
+                            <ListItem >
+                                <ListItemAvatar>
+                                    <Avatar>
+                                        {imageURL && <img className="song_image" src={`data:image/png;base64,${feedbackUser.image}`} />}
+
+                                    </Avatar>
+                                </ListItemAvatar>
+                                <ListItemText className="font" primary={
+                                    <b>{feedbackUser.username} </b>
+                                }
+                                    secondary={feedbackUser.email.length > 17 ?
+                                        <b>{feedbackUser.email.substring(0, 17)}...</b>
+                                        :
+                                        <b>{feedbackUser.email} </b>
+                                    } />
+                            </ListItem>                        </td>
                         <td style={{ verticalAlign: 'middle' }}>{moment(feedbackUser.date_feedback).format('YYYY-MM-DD - HH:mm:ss')}</td>
                         <td style={{ verticalAlign: 'middle' }}>{labels[feedbackUser.rating]}</td>
                         {feedbackUser.status === 1 ?
