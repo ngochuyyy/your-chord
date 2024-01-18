@@ -585,7 +585,7 @@ function RequestAccountPage() {
                                                                     e.stopPropagation();
                                                                     ModalConfirm.confirm({
                                                                         title: 'Confirm',
-                                                                        content: `Are you sure you want to reject "${userAccount.username}" account - Musician role?`,
+                                                                        content: `Are you sure you want to reject "${userAccount.username}" account - Musician role ?`,
                                                                         onOk() {
                                                                             handleRejectAccountMusician(userAccount.username);
                                                                         },

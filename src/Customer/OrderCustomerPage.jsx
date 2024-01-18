@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import Modal from 'antd/es/modal/Modal';
 function OrderCustomerPage() {
   const [title, setTitle] = useState('');
   const [lyric, setLyric] = useState('');
@@ -79,7 +79,17 @@ function OrderCustomerPage() {
           </div>
 
           <div className="col-md-8 order-md-1">
-            <form className="needs-validation" noValidate onSubmit={handleConfirmOrder}>
+            <form className="needs-validation" noValidate onSubmit={
+              Modal.confirm({
+                title: 'Confirm',
+                content: `Are you sure you want to submit this order ?`,
+                onOk() {
+                  handleConfirmOrder
+                },
+                onCancel() {
+                  console.log('Cancel');
+                },
+              })}>
               <div className="row">
                 <div className="mb-3">
                   <label htmlFor="title">Song title</label>
@@ -160,7 +170,7 @@ function OrderCustomerPage() {
             </form>
           </div>
         </div>
-      </div>
+      </div >
     </>
   )
 }
