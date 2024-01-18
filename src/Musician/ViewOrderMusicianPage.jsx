@@ -25,7 +25,7 @@ function ViewOrderMusicianPage() {
     const [videoFile, setVideoFile] = useState(null);
     const [videoFileName, setVideoFileName] = useState(null);
     const [openErrorVideo, setOpenErrorVideo] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [data, setData] = useState({
         collection_name: '',
         image: null,
