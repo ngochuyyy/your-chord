@@ -88,20 +88,22 @@ function App() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
   useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const token = sessionStorage.getItem('token');
-        const userId = token.split(':')[0];
-        const response = await axios.get(`${apiUrl}/getProfile/` + userId);
-        setUserRole(response.data.role);
-        console.log(response.data.role)
-      } catch (error) {
-        console.error('Error fetching profile:', error);
-      }
+    const fetchProfile = () => {
+      const token = sessionStorage.getItem('token');
+      const userId = token.split(':')[0];
+
+      axios.get(`${apiUrl}/getProfile/` + userId)
+        .then((response) => {
+          setUserRole(response.data.role);
+        })
+        .catch((error) => {
+          console.error('Error fetching profile:', error);
+        });
     };
 
     fetchProfile();
   }, []);
+
   return (
     // <BrowserRouter>
 
