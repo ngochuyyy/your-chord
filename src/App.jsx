@@ -94,6 +94,7 @@ function App() {
         <Route
           path="/"
           element={<Navigate to="/login" />}
+          action={sessionStorage.removeItem('token')}
         />
         <Route path='/login' element={<Login />} action={sessionStorage.removeItem('token')}></Route>
         <Route path='/signUp' element={<SignUp />} action={sessionStorage.removeItem('token')}></Route>
