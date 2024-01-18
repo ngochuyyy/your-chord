@@ -34,7 +34,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import Pagination from '@mui/material/Pagination';
 import { red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
-import { ModalConfirm } from 'antd';
+import { Modal as ModalConfirm } from 'antd';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
