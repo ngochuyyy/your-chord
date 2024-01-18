@@ -141,10 +141,10 @@ function CoursePage() {
                                     <div
                                         {...props}
                                         style={{
-                                            backgroundColor: '#f1f1fb',
+                                            backgroundColor: '#ccc',
                                             width: '4px',
                                             borderRadius: '3px',
-                                            marginRight: '2px',
+                                            marginLeft: '2px',
                                         }} />
                                 )}>
                                 <Tabs
