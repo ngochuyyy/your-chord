@@ -96,7 +96,7 @@ function App() {
           const response = await axios.get(`${apiUrl}/getProfile/` + userId);
           setUserRole(response.data.role);
         } else {
-          console.log('Token is null');
+          return 0;
         }
       } catch (error) {
         console.error('Error fetching profile:', error);
