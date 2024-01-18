@@ -136,7 +136,13 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Scrollbars style={{ width: '24%', height: '70vh', scrollbarWidth: 'thin', scrollbarColor: '#ccc #f1f1fb' }} thumbMinSize={30}>
+                            <Scrollbars style={{ width: '24%', height: '70vh' }}
+                                renderThumbVertical={(props) => (
+                                    <div
+                                        {...props}
+                                        style={{ backgroundColor: '#ccc', width: '8px', borderRadius: '4px' }}
+                                    />
+                                )}>
                                 <Tabs
                                     orientation="vertical"
                                     value={selectedCourse}
