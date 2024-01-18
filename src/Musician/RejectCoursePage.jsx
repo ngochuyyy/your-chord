@@ -21,6 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import HeadsetIcon from '@mui/icons-material/Headset';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Pagination from '@mui/material/Pagination';
+import { Modal } from 'antd';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -282,8 +283,18 @@ function RejectCoursePage() {
                                                         style={{ width: '100px', textAlign: 'center', backgroundColor: '#dc3545', color: '#fff', marginLeft: '5px', borderRadius: '40px' }}
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            handleDeleteCourse(request.id);
-                                                        }}>
+                                                            Modal.confirm({
+                                                                title: 'Confirm',
+                                                                content: `Are you sure you want to delete ${request.course_name} course ?`,
+                                                                onOk() {
+                                                                    handleDeleteCourse(request.id);
+                                                                },
+                                                                onCancel() {
+                                                                    console.log('Cancel');
+                                                                },
+                                                            });
+                                                        }}
+                                                    >
                                                         Delete
                                                     </Button>
                                                 </TableCell>
