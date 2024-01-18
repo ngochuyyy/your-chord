@@ -211,21 +211,16 @@ function ProfileMusicianPage() {
 
                             </div>
                             <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }}>
-                                <div className="col-md-6"><b>Address Line: </b><p>{data.address}</p></div>
-                                <div className="col-md-6">
-                                    <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
-                                    <b>Register date: </b><p>{moment(data.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
-                            </div>
-
-                            <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }} >
                                 {data.job !== "" ?
                                     <div className="col-md-6"><b>Job: </b><p>{data.job}</p></div>
                                     :
                                     <div className="col-md-6"><b>Job: </b><p>None</p></div>
 
                                 }
+                                <div className="col-md-6">
+                                    <b className="bi bi-calendar-day text-primary fs-5 pd-right"></b>
+                                    <b>Register date: </b><p>{moment(data.registration_time).format('YYYY/MM/DD - HH:mm:ss')}</p></div>
                             </div>
-
                             <div className="mt-4 pd-bottom">
                                 <Button variant='contained' onClick={() => { handleProfile(data.userId) }}><ModeEditIcon className='pd-right' fontSize='medium' /> Edit
                                 </Button>
