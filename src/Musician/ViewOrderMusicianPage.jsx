@@ -376,7 +376,7 @@ function ViewOrderMusicianPage() {
                                         <hr className="mb-4" />
                                         <div className="d-flex justify-content-between">
                                             {isExpired(order) && order.status !== 3 ? (
-                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={() => navigate("/orderMusician")}>
+                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={handleClose}>
                                                     Expired
                                                 </button>
                                             ) : (
