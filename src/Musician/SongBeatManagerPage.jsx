@@ -435,7 +435,16 @@ function SongBeatManagerPage() {
                                                         transition: 'background 0.3s',
                                                     }}
                                                     onClick={() => {
-                                                        handleAddSongToBeatType(song.id);
+                                                        Modal.confirm({
+                                                            title: 'Confirm Deletion',
+                                                            content: `Are you sure you want to add ${song.song_title} to ${beat_type} ?`,
+                                                            onOk() {
+                                                                handleAddSongToBeatType(song.id);
+                                                            },
+                                                            onCancel() {
+                                                                console.log('Cancel');
+                                                            },
+                                                        });
                                                         handleSongListToggle();
                                                     }}
                                                 >
