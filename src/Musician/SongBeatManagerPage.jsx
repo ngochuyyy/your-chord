@@ -312,7 +312,20 @@ function SongBeatManagerPage() {
                                                                     onClose={handleMenuClose}
                                                                 >
                                                                     <MenuItem >
-                                                                        <h6 className="text-danger" onClick={handleDeleteSongBeat(song.id)}>
+                                                                        <h6 className="text-danger"
+                                                                            onClick={() => {
+                                                                                Modal.confirm({
+                                                                                    title: 'Confirm',
+                                                                                    content: `Are you sure you want to delete ${song.song_title} in ${beat_type.charAt(0).toUpperCase()}${beat_type.slice(1)} type ?`,
+                                                                                    onOk() {
+                                                                                        handleDeleteSongBeat(song.id);
+                                                                                    },
+                                                                                    onCancel() {
+                                                                                        console.log('Cancel');
+                                                                                    },
+                                                                                });
+                                                                                handleSongListToggle();
+                                                                            }}>
                                                                             <i className="bi bi-trash"></i> Delete
                                                                         </h6>
                                                                     </MenuItem>
@@ -440,8 +453,8 @@ function SongBeatManagerPage() {
                                                     }}
                                                     onClick={() => {
                                                         Modal.confirm({
-                                                            title: 'Confirm Deletion',
-                                                            content: `Are you sure you want to add ${song.song_title} to ${beat_type} ?`,
+                                                            title: 'Confirm',
+                                                            content: `Are you sure you want to add ${song.song_title} to ${beat_type.charAt(0).toUpperCase()}${beat_type.slice(1)} type ?`,
                                                             onOk() {
                                                                 handleAddSongToBeatType(song.id);
                                                             },
