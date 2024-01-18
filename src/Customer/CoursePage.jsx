@@ -149,7 +149,9 @@ function CoursePage() {
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
                                         width: '99%',
-                                        height: '100%',
+                                        maxHeight: '70vh',  // Set maxHeight to limit the height
+                                        display: 'flex',     // Allow the Tabs to fill the available height
+                                        flexDirection: 'column',  // Arrange tabs in a column
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
