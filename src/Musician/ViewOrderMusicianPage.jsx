@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate, useHistory } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SearchAppBar from '../component/SearchAppBar';
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,7 +9,6 @@ import Stack from '@mui/material/Stack';
 import Alert from '@mui/material/Alert';
 
 function ViewOrderMusicianPage() {
-    const history = useHistory();
     const [orderData, setOrderData] = useState([]);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const token = sessionStorage.getItem('token');
@@ -179,7 +178,7 @@ function ViewOrderMusicianPage() {
         return URL.createObjectURL(blob);
     };
     const handleClose = () => {
-        history.goBack();
+        window.history.back();
     };
     return (
         <>
