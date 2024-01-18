@@ -622,15 +622,54 @@ function ManageAcountPage() {
                                                         <TableCell>
                                                             <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
                                                             {userAccount.ban === 'Enable' ? (
-                                                                <button onClick={() => handleBanAccount(userAccount.username)} className='btn btn-sm btn-warning me-2'>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        ModalConfirm.confirm({
+                                                                            title: 'Confirm',
+                                                                            content: `Are you sure you want to ban "${userAccount.username}" account ?`,
+                                                                            onOk() {
+                                                                                handleBanAccount(userAccount.username);
+                                                                            },
+                                                                            onCancel() {
+                                                                                console.log('Cancel');
+                                                                            },
+                                                                        });
+                                                                    }}
+                                                                    className='btn btn-sm btn-warning me-2'>
                                                                     <LockIcon />
                                                                 </button>
                                                             ) : (
-                                                                <button onClick={() => handleUnBanAccount(userAccount.username)} className='btn btn-sm btn-primary me-2'>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        ModalConfirm.confirm({
+                                                                            title: 'Confirm',
+                                                                            content: `Are you sure you want to unban "${userAccount.username}" account ?`,
+                                                                            onOk() {
+                                                                                handleUnBanAccount(userAccount.username);
+                                                                            },
+                                                                            onCancel() {
+                                                                                console.log('Cancel');
+                                                                            },
+                                                                        });
+                                                                    }}
+                                                                    className='btn btn-sm btn-primary me-2'>
                                                                     <LockOpenIcon />
                                                                 </button>
                                                             )}
-                                                            <button onClick={() => handleDelete(userAccount.username)} className='btn btn-sm btn-danger me-2'>
+                                                            <button
+                                                                onClick={() => {
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to remove "${userAccount.username}" account ?`,
+                                                                        onOk() {
+                                                                            handleDelete(userAccount.username);
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
+                                                                }}
+                                                                className='btn btn-sm btn-danger me-2'>
                                                                 <DeleteIcon />
                                                             </button>
                                                         </TableCell>
@@ -772,15 +811,54 @@ function ManageAcountPage() {
                                                         <TableCell>
                                                             <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
                                                             {userAccount.ban === 'Enable' ? (
-                                                                <button onClick={() => handleBanAccount(userAccount.username)} className='btn btn-sm btn-warning me-2'>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        ModalConfirm.confirm({
+                                                                            title: 'Confirm',
+                                                                            content: `Are you sure you want to ban "${userAccount.username}" account ?`,
+                                                                            onOk() {
+                                                                                handleBanAccount(userAccount.username);
+                                                                            },
+                                                                            onCancel() {
+                                                                                console.log('Cancel');
+                                                                            },
+                                                                        });
+                                                                    }}
+                                                                    className='btn btn-sm btn-warning me-2'>
                                                                     <LockIcon />
                                                                 </button>
                                                             ) : (
-                                                                <button onClick={() => handleUnBanAccount(userAccount.username)} className='btn btn-sm btn-primary me-2'>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        ModalConfirm.confirm({
+                                                                            title: 'Confirm',
+                                                                            content: `Are you sure you want to unban "${userAccount.username}" account ?`,
+                                                                            onOk() {
+                                                                                handleUnBanAccount(userAccount.username);
+                                                                            },
+                                                                            onCancel() {
+                                                                                console.log('Cancel');
+                                                                            },
+                                                                        });
+                                                                    }}
+                                                                    className='btn btn-sm btn-primary me-2'>
                                                                     <LockOpenIcon />
                                                                 </button>
                                                             )}
-                                                            <button onClick={() => handleDelete(userAccount.username)} className='btn btn-sm btn-danger me-2'>
+                                                            <button
+                                                                onClick={() => {
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to remove "${userAccount.username}" account ?`,
+                                                                        onOk() {
+                                                                            handleDelete(userAccount.username);
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
+                                                                }}
+                                                                className='btn btn-sm btn-danger me-2'>
                                                                 <DeleteIcon />
                                                             </button>
                                                         </TableCell>
@@ -923,15 +1001,54 @@ function ManageAcountPage() {
                                                         <TableCell>
                                                             <Link onClick={() => { handleProfile(userAccount.username) }} className='btn btn-success btn-sm me-2' style={{ textDecoration: 'none' }}><RemoveRedEyeIcon /></Link>
                                                             {userAccount.ban === 'Enable' ? (
-                                                                <button onClick={() => handleBanAccount(userAccount.username)} className='btn btn-sm btn-warning me-2'>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        ModalConfirm.confirm({
+                                                                            title: 'Confirm',
+                                                                            content: `Are you sure you want to ban "${userAccount.username}" account ?`,
+                                                                            onOk() {
+                                                                                handleBanAccount(userAccount.username);
+                                                                            },
+                                                                            onCancel() {
+                                                                                console.log('Cancel');
+                                                                            },
+                                                                        });
+                                                                    }}
+                                                                    className='btn btn-sm btn-warning me-2'>
                                                                     <LockIcon />
                                                                 </button>
                                                             ) : (
-                                                                <button onClick={() => handleUnBanAccount(userAccount.username)} className='btn btn-sm btn-primary me-2'>
+                                                                <button
+                                                                    onClick={() => {
+                                                                        ModalConfirm.confirm({
+                                                                            title: 'Confirm',
+                                                                            content: `Are you sure you want to unban "${userAccount.username}" account ?`,
+                                                                            onOk() {
+                                                                                handleUnBanAccount(userAccount.username);
+                                                                            },
+                                                                            onCancel() {
+                                                                                console.log('Cancel');
+                                                                            },
+                                                                        });
+                                                                    }}
+                                                                    className='btn btn-sm btn-primary me-2'>
                                                                     <LockOpenIcon />
                                                                 </button>
                                                             )}
-                                                            <button onClick={() => handleDelete(userAccount.username)} className='btn btn-sm btn-danger me-2'>
+                                                            <button
+                                                                onClick={() => {
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to remove "${userAccount.username}" account ?`,
+                                                                        onOk() {
+                                                                            handleDelete(userAccount.username);
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
+                                                                }}
+                                                                className='btn btn-sm btn-danger me-2'>
                                                                 <DeleteIcon />
                                                             </button>
                                                         </TableCell>
