@@ -177,9 +177,7 @@ function ViewOrderMusicianPage() {
         const blob = new Blob([data], { type: mimeType });
         return URL.createObjectURL(blob);
     };
-    const handleClose = () => {
-        window.history.back();
-    };
+
     return (
         <>
             <SearchAppBar />
@@ -374,7 +372,7 @@ function ViewOrderMusicianPage() {
                                         <hr className="mb-4" />
                                         <div className="d-flex justify-content-between">
                                             {isExpired(order) && order.status !== 3 ? (
-                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={handleClose}>
+                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={navigate(-2)}>
                                                     Expired
                                                 </button>
                                             ) : (
@@ -384,7 +382,7 @@ function ViewOrderMusicianPage() {
                                                             {isSubmitting ? 'Submitting...' : 'Submit'}
                                                         </button>
                                                     )}
-                                                    <button className="btn btn-primary" onClick={handleClose}>
+                                                    <button className="btn btn-primary" onClick={navigate(-2)}>
                                                         Close
                                                     </button>
                                                 </>
