@@ -34,6 +34,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import Pagination from '@mui/material/Pagination';
 import { red } from '@mui/material/colors';
 import Avatar from '@mui/material/Avatar';
+import { ModalConfirm } from 'antd';
 const darkTheme = createTheme({
     palette: {
         mode: 'dark',
@@ -437,7 +438,21 @@ function ManageAcountPage() {
                                                                     <LockOpenIcon />
                                                                 </button>
                                                             )}
-                                                            <button onClick={() => handleDelete(userAccount.username)} className='btn btn-sm btn-danger me-2'>
+                                                            <button
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to remove "${userAccount.username}" account ?`,
+                                                                        onOk() {
+                                                                            handleDelete(userAccount.username);
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
+                                                                }}
+                                                                className='btn btn-sm btn-danger me-2'>
                                                                 <DeleteIcon />
                                                             </button>
                                                         </TableCell>
