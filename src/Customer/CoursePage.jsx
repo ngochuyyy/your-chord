@@ -140,7 +140,7 @@ function CoursePage() {
                                 renderThumbVertical={(props) => (
                                     <div
                                         {...props}
-                                        style={{ backgroundColor: '#ccc', width: '1px', borderRadius: '4px' }}
+                                        style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '50px' }}
                                     />
                                 )}>
                                 <Tabs
