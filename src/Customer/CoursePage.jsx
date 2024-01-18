@@ -133,27 +133,24 @@ function CoursePage() {
 
                     <Box sx={{
                         display: 'flex', flexDirection: 'row', marginLeft: '10px', overflowY: 'auto'
-
                     }}>
 
                         {tabVisible && (
-
-                            <Tabs
-                                orientation="vertical"
-                                value={selectedCourse}
-                                onChange={handleTabChange}
-                                sx={{
-                                    position: 'flex',
-                                    borderRight: '1.5px solid',
-                                    borderTop: '1.5px solid',
-                                    borderBottom: '1.5px solid',
-                                    borderBottomRightRadius: '20px',
-                                    borderColor: 'divider',
-                                    width: '99%',
-                                    height: '73vh',
-                                }}>
-                                <Scrollbars style={{ width: '24%', height: '70vh' }}>
-
+                            <Scrollbars style={{ width: '24%', height: '70vh' }}>
+                                <Tabs
+                                    orientation="vertical"
+                                    value={selectedCourse}
+                                    onChange={handleTabChange}
+                                    sx={{
+                                        position: 'flex',
+                                        borderRight: '1.5px solid',
+                                        borderTop: '1.5px solid',
+                                        borderBottom: '1.5px solid',
+                                        borderBottomRightRadius: '20px',
+                                        borderColor: 'divider',
+                                        width: '99%',
+                                        height: '73vh',
+                                    }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
                                             key={index}
@@ -166,9 +163,8 @@ function CoursePage() {
                                             style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
                                         />
                                     ))}
-                                </Scrollbars>
-
-                            </Tabs>
+                                </Tabs>
+                            </Scrollbars>
                         )}
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
