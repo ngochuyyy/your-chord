@@ -1319,18 +1319,3 @@ textarea {
 .your-chord-text {
     overflow: hidden;
 }
-
-.animated-text {
-    display: inline-block;
-    animation: slideIn 4s ease-in-out infinite;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(0);
-    }
-}

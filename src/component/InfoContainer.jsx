@@ -18,7 +18,7 @@ function InfoContainer() {
             </div> */}
             <div className="project-info-container" style={{ width: '100%', textAlign: 'center' }}>
                 <p className="your-chord-text">
-                    <span className="animated-text">YourChords @2023</span>
+                    <span>YourChords @2023</span>
                     <br />
                     <span>Email to us: </span><Link to="mailto:diepngochuy3@gmail.com" style={{ textDecoration: 'none' }}>diepngochuy3@gmail.com</Link> |
                     <span style={{ textDecoration: 'none' }}> Hotline: 0918771818</span>
