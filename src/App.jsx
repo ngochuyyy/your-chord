@@ -124,8 +124,8 @@ function App() {
 
 
         {/* ADMIN ROLE */}
-        <Route path='/' element={<Dashboard />}>
-          <Route path='/profile/:userId' element={<Profile />}></Route>
+        <Route path='/' element={userRole === 'admin' ? <Dashboard /> : <Navigate to="/login" />}>
+          <Route path='/profile/:userId' element={userRole === 'admin' ? <Profile /> : <Navigate to="/login" />}></Route>
           <Route path='/song' element={userRole === 'admin' ? <Song /> : <Navigate to="/login" />}></Route>
           <Route path='/manageAccount' element={userRole === 'admin' ? <ManageAccount /> : <Navigate to="/login" />}></Route>
           <Route path='/requestAccount' element={userRole === 'admin' ? <RequestAccount /> : <Navigate to="/login" />}></Route>
