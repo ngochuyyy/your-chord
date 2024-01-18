@@ -178,7 +178,9 @@ function ViewOrderMusicianPage() {
         return URL.createObjectURL(blob);
     };
     const handleClose = () => {
-        window.history.back();
+        setTimeout(() => {
+            window.history.back();
+        }, 0);
     };
     return (
         <>
