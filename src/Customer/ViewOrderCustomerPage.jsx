@@ -159,7 +159,7 @@ function ViewOrderCustomerPage() {
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
                                                 <b htmlFor="cc-genre">Genre</b>
-                                                <p>{order.genre}</p>
+                                                <p>{order.genre.charAt(0).toUpperCase() + order.genre.slice(1)}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
                                                 <b htmlFor="cc-link">Link</b>
