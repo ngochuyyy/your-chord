@@ -144,7 +144,6 @@ function CoursePage() {
                                             backgroundColor: '#ccc',
                                             width: '4px',
                                             borderRadius: '3px',
-                                            marginLeft: '2px',
                                         }} />
                                 )}>
                                 <Tabs
