@@ -128,24 +128,24 @@ function App() {
           <Route path='/profile/:userId' element={<Profile />}></Route>
           <Route path='/song' element={userRole === 'admin' ? <Song /> : <Navigate to="/login" />}></Route>
           <Route path='/manageAccount' element={userRole === 'admin' ? <ManageAccount /> : <Navigate to="/login" />}></Route>
-          <Route path='/requestAccount' element={<RequestAccount />}></Route>
-          <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
-          <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
-          <Route path='/createSong' element={<CreateSong />}></Route>
-          <Route path='/requestCourse' element={<RequestListCourse />}></Route>
-          <Route path='/viewRequestCourse/:id/' element={<ViewRequestCourse />}></Route>
+          <Route path='/requestAccount' element={userRole === 'admin' ? <RequestAccount /> : <Navigate to="/login" />}></Route>
+          <Route path='/manageFeedback/:userId' element={userRole === 'admin' ? <ManageFeedback /> : <Navigate to="/login" />}></Route>
+          <Route path='/viewFeedback/:id' element={userRole === 'admin' ? <ViewFeedback /> : <Navigate to="/login" />}></Route>
+          <Route path='/createSong' element={userRole === 'admin' ? <CreateSong /> : <Navigate to="/login" />}></Route>
+          <Route path='/requestCourse' element={userRole === 'admin' ? <RequestListCourse /> : <Navigate to="/login" />}></Route>
+          <Route path='/viewRequestCourse/:id/' element={userRole === 'admin' ? <ViewRequestCourse /> : <Navigate to="/login" />}></Route>
         </Route>
-        <Route path='/viewSong/:id' element={<ViewSong />}></Route>
-        <Route path='/artistAdmin/:id/:artist_id' element={<ArtistAdmin />}></Route>
+        <Route path='/viewSong/:id' element={userRole === 'admin' ? <ViewSong /> : <Navigate to="/login" />}></Route>
+        <Route path='/artistAdmin/:id/:artist_id' element={userRole === 'admin' ? <ArtistAdmin /> : <Navigate to="/login" />}></Route>
 
         {/* CHORD MANAGER ROLE */}
         <Route path='/' element={<DashboardChordManager />}>
-          <Route path='/verifySong' element={<VerifySong />}></Route>
-          <Route path='/profileChordManager/:userId' element={<ProfileChordManager />}></Route>
-          <Route path='/songChordManager' element={<SongChordManager />}></Route>
+          <Route path='/verifySong' element={userRole === 'chord' ? <VerifySong /> : <Navigate to="/login" />}></Route>
+          <Route path='/profileChordManager/:userId' element={userRole === 'chord' ? <ProfileChordManager /> : <Navigate to="/login" />}></Route>
+          <Route path='/songChordManager' element={userRole === 'chord' ? <SongChordManager /> : <Navigate to="/login" />}></Route>
         </Route>
-        <Route path='/viewSongChordManager/:id' element={<ViewSongChordManager />}></Route>
-        <Route path='/artistChordManager/:id/:artist_id' element={<ArtistChordManager />}></Route>
+        <Route path='/viewSongChordManager/:id' element={userRole === 'chord' ? <ViewSongChordManager /> : <Navigate to="/login" />}></Route>
+        <Route path='/artistChordManager/:id/:artist_id' element={userRole === 'chord' ? <ArtistChordManager /> : <Navigate to="/login" />}></Route>
 
 
         {/* MUSICIAN ROLE */}
@@ -205,7 +205,7 @@ function App() {
         <Route path='/artist/:id/:artist_id' element={<Artist />}></Route>
 
       </Routes>
-    </Router>
+    </Router >
   )
 }
 
