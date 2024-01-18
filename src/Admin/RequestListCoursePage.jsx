@@ -30,7 +30,7 @@ const darkTheme = createTheme({
         },
     },
 });
-import { Button } from 'antd';
+import { Button, Modal } from 'antd';
 
 function RequestListCoursePage() {
     const [search, setSearch] = useState('');
@@ -307,7 +307,16 @@ function RequestListCoursePage() {
                                                         style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            handleAcceptCourse(request.id);
+                                                            Modal.confirm({
+                                                                title: 'Confirm',
+                                                                content: `Are you sure you want to approve ${request.course_name} course ?`,
+                                                                onOk() {
+                                                                    handleAcceptCourse(request.id);
+                                                                },
+                                                                onCancel() {
+                                                                    console.log('Cancel');
+                                                                },
+                                                            });
                                                         }}>
                                                         Accept
                                                     </Button>
@@ -315,8 +324,18 @@ function RequestListCoursePage() {
                                                         style={{ width: '100px', textAlign: 'center', backgroundColor: '#dc3545', color: '#fff', marginLeft: '5px', borderRadius: '40px' }}
                                                         onClick={(e) => {
                                                             e.stopPropagation();
-                                                            handleRejectCourse(request.id);
-                                                        }}>
+                                                            Modal.confirm({
+                                                                title: 'Confirm',
+                                                                content: `Are you sure you want to reject ${request.course_name} course ?`,
+                                                                onOk() {
+                                                                    handleRejectCourse(request.id);
+                                                                },
+                                                                onCancel() {
+                                                                    console.log('Cancel');
+                                                                },
+                                                            });
+                                                        }}
+                                                    >
                                                         Decline
                                                     </Button>
                                                 </TableCell>
