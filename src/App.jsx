@@ -1,7 +1,7 @@
 import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect } from 'react';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import SignUp from './SignUp'
 import Login from './Login'
 /////ADMIN
@@ -84,6 +84,24 @@ function ScrollToTop() {
   return null;
 }
 function App() {
+  const [userRole, setUserRole] = useState(null);
+  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = sessionStorage.getItem('token');
+        const userId = token.split(':')[0];
+        const response = await axios.get(`${apiUrl}/getProfile/` + userId);
+        setUserRole(response.data.role);
+        console.log(response.data.role)
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
+    };
+
+    fetchProfile();
+  }, []);
   return (
     // <BrowserRouter>
 
@@ -105,7 +123,7 @@ function App() {
         <Route path='/' element={<Dashboard />}>
           <Route path='/profile/:userId' element={<Profile />}></Route>
           <Route path='/song' element={<Song />}></Route>
-          <Route path='/manageAccount' element={<ManageAccount />}></Route>
+          <Route path='/manageAccount' element={userRole === 'admin' ? <ManageAccount /> : <Navigate to="/login" />}></Route>
           <Route path='/requestAccount' element={<RequestAccount />}></Route>
           <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
           <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
