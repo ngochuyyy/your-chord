@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
+import ModalPlaylist from '@mui/material/Modal';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
@@ -11,6 +11,8 @@ import Stack from '@mui/material/Stack';
 import SearchAppBarBackMusican from '../component/SearchAppBarBackMusician';
 import InfoContainer from '../component/InfoContainer';
 import { Button } from '@mui/material';
+import { message, Modal } from 'antd';
+
 function SongBeatManagerPage() {
     const [data, setData] = useState([]);
     const [allSongs, setAllSongs] = useState([]);
@@ -144,10 +146,12 @@ function SongBeatManagerPage() {
         try {
             const response = await axios.put(`${apiUrl}/addSongToBeatType/${songId}/${beat_type}`);
             if (response.data.Status === 'Success') {
+                message.success('Add song successfully');
+
                 fetchData();
                 window.location.reload(true);
             } else {
-                alert('Error adding song to beat type.');
+                message.error('Failed to adding song to beat type.');
             }
         } catch (error) {
             console.error(error);
@@ -460,7 +464,7 @@ function SongBeatManagerPage() {
                 </>
             }
             <InfoContainer />
-            <Modal
+            <ModalPlaylist
                 open={modalOpen}
                 onClose={() => { setModalOpen(false) }}
             >
@@ -472,7 +476,7 @@ function SongBeatManagerPage() {
 
                     </div>
                 </Box>
-            </Modal>
+            </ModalPlaylist>
         </>
     );
 }
