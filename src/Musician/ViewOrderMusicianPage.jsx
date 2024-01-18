@@ -371,7 +371,7 @@ function ViewOrderMusicianPage() {
                                         <hr className="mb-4" />
                                         <div className="d-flex justify-content-between">
                                             {isExpired(order) && order.status !== 3 ? (
-                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={() => window.history.back()}>
+                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={() => window.history.back()} type="button">
                                                     Expired
                                                 </button>
                                             ) : (
@@ -381,7 +381,7 @@ function ViewOrderMusicianPage() {
                                                             {isSubmitting ? 'Submitting...' : 'Submit'}
                                                         </button>
                                                     )}
-                                                    <button className="btn btn-primary" onClick={() => window.history.back()}>
+                                                    <button className="btn btn-primary" onClick={() => window.history.back()} type="button">
                                                         Close
                                                     </button>
                                                 </>
