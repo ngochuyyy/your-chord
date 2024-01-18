@@ -372,7 +372,7 @@ function ViewOrderMusicianPage() {
                                         <hr className="mb-4" />
                                         <div className="d-flex justify-content-between">
                                             {isExpired(order) && order.status !== 3 ? (
-                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={navigate(-2)}>
+                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={navigate(-1)}>
                                                     Expired
                                                 </button>
                                             ) : (
@@ -382,7 +382,7 @@ function ViewOrderMusicianPage() {
                                                             {isSubmitting ? 'Submitting...' : 'Submit'}
                                                         </button>
                                                     )}
-                                                    <button className="btn btn-primary" onClick={navigate(-2)}>
+                                                    <button className="btn btn-primary" onClick={navigate(-1)}>
                                                         Close
                                                     </button>
                                                 </>
