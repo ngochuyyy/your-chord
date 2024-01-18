@@ -136,7 +136,7 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Scrollbars style={{ width: '24%', height: '70vh', scrollbarWidth: 'thin', scrollbarColor: '#ccc' }}>
+                            <Scrollbars style={{ width: '24%', height: '70vh', scrollbarWidth: 'thin', scrollbarColor: '#ccc #f1f1fb' }} thumbMinSize={30}>
                                 <Tabs
                                     orientation="vertical"
                                     value={selectedCourse}
