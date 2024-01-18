@@ -87,24 +87,22 @@ function App() {
   const [userRole, setUserRole] = useState(null);
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const token = sessionStorage.getItem('token');
-        if (token) {
-          const userId = token.split(':')[0];
-          const response = await axios.get(`${apiUrl}/getProfile/` + userId);
-          setUserRole(response.data.role);
-        } else {
-          return false;
-        }
-      } catch (error) {
-        console.error('Error fetching profile:', error);
+  const fetchProfile = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      if (token) {
+        const userId = token.split(':')[0];
+        const response = await axios.get(`${apiUrl}/getProfile/` + userId);
+        setUserRole(response.data.role);
+      } else {
+        return false;
       }
-    };
+    } catch (error) {
+      console.error('Error fetching profile:', error);
+    }
+  };
 
-    fetchProfile();
-  }, []);
+  fetchProfile();
 
   return (
     // <BrowserRouter>
