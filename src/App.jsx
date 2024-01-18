@@ -87,22 +87,24 @@ function App() {
   const [userRole, setUserRole] = useState(null);
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
-  const fetchProfile = async () => {
-    try {
-      const token = sessionStorage.getItem('token');
-      if (token) {
-        const userId = token.split(':')[0];
-        const response = await axios.get(`${apiUrl}/getProfile/` + userId);
-        setUserRole(response.data.role);
-      } else {
-        return false;
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+          const userId = token.split(':')[0];
+          const response = await axios.get(`${apiUrl}/getProfile/` + userId);
+          setUserRole(response.data.role);
+        } else {
+          return false;
+        }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
       }
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-    }
-  };
+    };
 
-  fetchProfile();
+    fetchProfile();
+  }, []);
 
   return (
     // <BrowserRouter>
@@ -115,27 +117,32 @@ function App() {
           path="/"
           element={<Navigate to="/login" />}
         />
-        <Route path='/login' element={<Login />}></Route>
-        <Route path='/signUp' element={<SignUp />}></Route>
+        <Route path='/login' element={<Login />} action={sessionStorage.removeItem('token')}></Route>
+        <Route path='/signUp' element={<SignUp />} action={sessionStorage.removeItem('token')}></Route>
 
 
 
 
         {/* ADMIN ROLE */}
-        <Route path='/' element={<Dashboard />}>
-          <Route path='/profile/:userId' element={userRole === 'admin' ? <Profile /> : <Navigate to="/login" />}></Route>
-          <Route path='/song' element={userRole === 'admin' ? <Song /> : <Navigate to="/login" />}></Route>
-          <Route path='/manageAccount' element={userRole === 'admin' ? <ManageAccount /> : <Navigate to="/login" />}></Route>
-          <Route path='/requestAccount' element={userRole === 'admin' ? <RequestAccount /> : <Navigate to="/login" />}></Route>
-          <Route path='/manageFeedback/:userId' element={userRole === 'admin' ? <ManageFeedback /> : <Navigate to="/login" />}></Route>
-          <Route path='/viewFeedback/:id' element={userRole === 'admin' ? <ViewFeedback /> : <Navigate to="/login" />}></Route>
-          <Route path='/createSong' element={userRole === 'admin' ? <CreateSong /> : <Navigate to="/login" />}></Route>
-          <Route path='/requestCourse' element={userRole === 'admin' ? <RequestListCourse /> : <Navigate to="/login" />}></Route>
-          <Route path='/viewRequestCourse/:id/' element={userRole === 'admin' ? <ViewRequestCourse /> : <Navigate to="/login" />}></Route>
-        </Route>
-        <Route path='/viewSong/:id' element={userRole === 'admin' ? <ViewSong /> : <Navigate to="/login" />}></Route>
-        <Route path='/artistAdmin/:id/:artist_id' element={userRole === 'admin' ? <ArtistAdmin /> : <Navigate to="/login" />}></Route>
-
+        {userRole === 'admin' ?
+          <>
+            <Route path='/' element={<Dashboard />}>
+              <Route path='/profile/:userId' element={<Profile />}></Route>
+              <Route path='/song' element={<Song />}></Route>
+              <Route path='/manageAccount' element={<ManageAccount />}></Route>
+              <Route path='/requestAccount' element={<RequestAccount />}></Route>
+              <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
+              <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
+              <Route path='/createSong' element={<CreateSong />}></Route>
+              <Route path='/requestCourse' element={<RequestListCourse />}></Route>
+              <Route path='/viewRequestCourse/:id/' element={<ViewRequestCourse />}></Route>
+            </Route>
+            <Route path='/viewSong/:id' element={<ViewSong />}></Route>
+            <Route path='/artistAdmin/:id/:artist_id' element={<ArtistAdmin />}></Route>
+          </>
+          :
+          <Navigate to="/login" />
+        }
         {/* CHORD MANAGER ROLE */}
         <Route path='/' element={<DashboardChordManager />}>
           <Route path='/verifySong' element={userRole === 'chord' ? <VerifySong /> : <Navigate to="/login" />}></Route>
