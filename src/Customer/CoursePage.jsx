@@ -146,7 +146,7 @@ function CoursePage() {
                                 renderTrackVertical={(props) => (
                                     <div
                                         {...props}
-                                        style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '50px' }}
+                                        style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '70vh' }}
                                     />
                                 )}>
                                 <Tabs
