@@ -148,7 +148,7 @@ function CoursePage() {
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '99%',
+                                        width: '98%',
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
