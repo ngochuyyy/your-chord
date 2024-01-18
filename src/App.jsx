@@ -88,17 +88,19 @@ function App() {
   const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
 
   useEffect(() => {
-    const fetchProfile = () => {
-      const token = sessionStorage.getItem('token');
-      const userId = token.split(':')[0];
-
-      axios.get(`${apiUrl}/getProfile/` + userId)
-        .then((response) => {
+    const fetchProfile = async () => {
+      try {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+          const userId = token.split(':')[0];
+          const response = await axios.get(`${apiUrl}/getProfile/` + userId);
           setUserRole(response.data.role);
-        })
-        .catch((error) => {
-          console.error('Error fetching profile:', error);
-        });
+        } else {
+          console.log('Token is null');
+        }
+      } catch (error) {
+        console.error('Error fetching profile:', error);
+      }
     };
 
     fetchProfile();
