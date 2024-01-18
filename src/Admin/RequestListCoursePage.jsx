@@ -309,7 +309,7 @@ function RequestListCoursePage() {
                                                             e.stopPropagation();
                                                             Modal.confirm({
                                                                 title: 'Confirm',
-                                                                content: `Are you sure you want to approve ${request.course_name} course ?`,
+                                                                content: `Are you sure you want to approve "${request.course_name}" course ?`,
                                                                 onOk() {
                                                                     handleAcceptCourse(request.id);
                                                                 },
@@ -326,7 +326,7 @@ function RequestListCoursePage() {
                                                             e.stopPropagation();
                                                             Modal.confirm({
                                                                 title: 'Confirm',
-                                                                content: `Are you sure you want to reject ${request.course_name} course ?`,
+                                                                content: `Are you sure you want to reject "${request.course_name}" course ?`,
                                                                 onOk() {
                                                                     handleRejectCourse(request.id);
                                                                 },
