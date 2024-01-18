@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
@@ -20,6 +20,10 @@ function SignUp() {
     const [isAccountExisted, setIsAccountExisted] = useState(false);
     const [passwordMismatch, setPasswordMismatch] = useState(false);
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+    useEffect(() => {
+        localStorage.clear();
+        sessionStorage.clear();
+    }, []);
     const handleSignUp = (event) => {
         setLoading(true);
         event.preventDefault();

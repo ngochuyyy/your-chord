@@ -27,6 +27,7 @@ function Login() {
     const [confirmPassword, setConfirmPassword] = useState('');
     useEffect(() => {
         localStorage.clear();
+        sessionStorage.clear();
     }, []);
     const handleSubmit = (event) => {
         event.preventDefault();
