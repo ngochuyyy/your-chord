@@ -137,10 +137,18 @@ function CoursePage() {
 
                         {tabVisible && (
                             <Scrollbars style={{ width: '24%', height: '70vh' }}
+                                renderView={(props) => (
+                                    <div
+                                        {...props}
+                                        style={{
+                                            backgroundColor: '#0d6efd',
+                                        }}
+                                    />
+                                )}
                                 renderTrackVertical={(props) => (
                                     <div
                                         {...props}
-                                        style={{ backgroundColor: '#0d6efd', width: '4px', borderRadius: '3px', height: '70vh' }}
+                                        style={{ backgroundColor: '#ccc', width: '4px', borderRadius: '3px', height: '70vh' }}
                                     />
                                 )}>
                                 <Tabs
