@@ -136,7 +136,7 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-                            <Scrollbars style={{ width: '24%', height: '70vh' }}>
+                            <Scrollbars style={{ width: '24%', height: '70vh', scrollbarWidth: 'thin', scrollbarColor: '#ffffff #e0e0e0' }}>
                                 <Tabs
                                     orientation="vertical"
                                     value={selectedCourse}
@@ -148,7 +148,7 @@ function CoursePage() {
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '98%',
+                                        width: '97%',
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
