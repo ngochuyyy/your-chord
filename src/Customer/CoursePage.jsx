@@ -137,7 +137,7 @@ function CoursePage() {
 
                         {tabVisible && (
                             <Scrollbars style={{ width: '24%', height: '70vh' }}
-                                renderView={(props) => (
+                                renderThumbVertical={(props) => (
                                     <div
                                         {...props}
                                         style={{
