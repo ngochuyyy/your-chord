@@ -25,7 +25,7 @@ function ViewOrderMusicianPage() {
     const [videoFile, setVideoFile] = useState(null);
     const [videoFileName, setVideoFileName] = useState(null);
     const [openErrorVideo, setOpenErrorVideo] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [data, setData] = useState({
         collection_name: '',
         image: null,
@@ -36,8 +36,8 @@ function ViewOrderMusicianPage() {
 
     useEffect(() => {
         const fetchOrderData = async () => {
-            setLoading(true);
             try {
+                setLoading(true);
 
                 const response = await axios.get(`${apiUrl}/getOrderMusician/${id}`);
                 const orders = response.data.data;
@@ -177,7 +177,6 @@ function ViewOrderMusicianPage() {
         const blob = new Blob([data], { type: mimeType });
         return URL.createObjectURL(blob);
     };
-
     return (
         <>
             <SearchAppBar />
@@ -372,7 +371,7 @@ function ViewOrderMusicianPage() {
                                         <hr className="mb-4" />
                                         <div className="d-flex justify-content-between">
                                             {isExpired(order) && order.status !== 3 ? (
-                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={navigate(-1)}>
+                                                <button className="btn btn-danger" style={{ width: '1000px' }} onClick={() => navigate(-1)}>
                                                     Expired
                                                 </button>
                                             ) : (
@@ -382,7 +381,7 @@ function ViewOrderMusicianPage() {
                                                             {isSubmitting ? 'Submitting...' : 'Submit'}
                                                         </button>
                                                     )}
-                                                    <button className="btn btn-primary" onClick={navigate(-1)}>
+                                                    <button className="btn btn-primary" onClick={() => navigate(-1)}>
                                                         Close
                                                     </button>
                                                 </>
