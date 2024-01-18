@@ -36,8 +36,8 @@ function ViewOrderMusicianPage() {
 
     useEffect(() => {
         const fetchOrderData = async () => {
+            setLoading(true);
             try {
-                setLoading(true);
 
                 const response = await axios.get(`${apiUrl}/getOrderMusician/${id}`);
                 const orders = response.data.data;
@@ -178,9 +178,7 @@ function ViewOrderMusicianPage() {
         return URL.createObjectURL(blob);
     };
     const handleClose = () => {
-        setTimeout(() => {
-            window.history.back();
-        }, 0);
+        window.history.back();
     };
     return (
         <>
