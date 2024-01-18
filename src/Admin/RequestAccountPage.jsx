@@ -29,6 +29,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Pagination from '@mui/material/Pagination';
 import { Button } from 'antd';
+import { Modal as ModalConfirm } from 'antd';
 
 const darkTheme = createTheme({
     palette: {
@@ -547,7 +548,16 @@ function RequestAccountPage() {
                                                                 style={{ width: '100px', textAlign: 'center', backgroundColor: '#28a745', color: '#fff', borderRadius: '40px' }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();
-                                                                    handleAcceptAccountMusician(userAccount.username);
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to remove "${userAccount.username}" account ?`,
+                                                                        onOk() {
+                                                                            handleAcceptAccountMusician(userAccount.username);
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
                                                                 }}>
                                                                 Accept
                                                             </Button>
@@ -555,7 +565,16 @@ function RequestAccountPage() {
                                                                 style={{ width: '100px', textAlign: 'center', backgroundColor: '#dc3545', color: '#fff', marginLeft: '5px', borderRadius: '40px' }}
                                                                 onClick={(e) => {
                                                                     e.stopPropagation();
-                                                                    handleRejectAccountMusician(userAccount.username);
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to remove "${userAccount.username}" account ?`,
+                                                                        onOk() {
+                                                                            handleRejectAccountMusician(userAccount.username);
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
                                                                 }}>
                                                                 Decline
                                                             </Button>
