@@ -204,7 +204,7 @@ export default function FeedbackPage() {
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
-                            <td className="text-warning" style={{ verticalAlign: 'middle' }}><b>Not reply</b></td>
+                            <td className="text-warning" style={{ verticalAlign: 'middle' }}><b>In process...</b></td>
                         }
                     </tr>
                 );
@@ -243,7 +243,7 @@ export default function FeedbackPage() {
                         {feedbackUser.status === 1 ?
                             <td style={{ color: 'green', verticalAlign: 'middle' }}><CheckCircleIcon color='success' /></td>
                             :
-                            <td className="text-warning" style={{ verticalAlign: 'middle' }}><b>Not reply</b></td>
+                            <td className="text-warning" style={{ verticalAlign: 'middle' }}><b>In process...</b></td>
                         }
                     </tr>
                 );
