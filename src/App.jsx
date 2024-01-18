@@ -1,7 +1,6 @@
 import { HashRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 // import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
 import SignUp from './SignUp'
 import Login from './Login'
 /////ADMIN
@@ -84,22 +83,6 @@ function ScrollToTop() {
   return null;
 }
 function App() {
-  const [userRole, setUserRole] = useState(null);
-  const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-
-  useEffect(() => {
-    const checkTokenAndNavigate = async () => {
-      const token = sessionStorage.getItem('token');
-      if (token) {
-        const userId = token.split(':')[0];
-        const response = await axios.get(`${apiUrl}/getProfile/` + userId);
-        setUserRole(response.data.role);
-      } else {
-        return false;
-      }
-    };
-    checkTokenAndNavigate();
-  }, []);
 
   return (
     // <BrowserRouter>
@@ -119,37 +102,33 @@ function App() {
 
 
         {/* ADMIN ROLE */}
-        {userRole === 'admin' ?
-          <>
-            <Route path='/' element={<Dashboard />}>
-              <Route path='/profile/:userId' element={<Profile />}></Route>
-              <Route path='/song' element={<Song />}></Route>
-              <Route path='/manageAccount' element={<ManageAccount />}></Route>
-              <Route path='/requestAccount' element={<RequestAccount />}></Route>
-              <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
-              <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
-              <Route path='/createSong' element={<CreateSong />}></Route>
-              <Route path='/requestCourse' element={<RequestListCourse />}></Route>
-              <Route path='/viewRequestCourse/:id/' element={<ViewRequestCourse />}></Route>
-            </Route>
-            <Route path='/viewSong/:id' element={<ViewSong />}></Route>
-            <Route path='/artistAdmin/:id/:artist_id' element={<ArtistAdmin />}></Route>
-          </>
-          :
-          <Navigate to="/login" />
-        }
+        <Route path='/' element={<Dashboard />}>
+          <Route path='/profile/:userId' element={<Profile />}></Route>
+          <Route path='/song' element={<Song />}></Route>
+          <Route path='/manageAccount' element={<ManageAccount />}></Route>
+          <Route path='/requestAccount' element={<RequestAccount />}></Route>
+          <Route path='/manageFeedback/:userId' element={<ManageFeedback />}></Route>
+          <Route path='/viewFeedback/:id' element={<ViewFeedback />}></Route>
+          <Route path='/createSong' element={<CreateSong />}></Route>
+          <Route path='/requestCourse' element={<RequestListCourse />}></Route>
+          <Route path='/viewRequestCourse/:id/' element={<ViewRequestCourse />}></Route>
+        </Route>
+        <Route path='/viewSong/:id' element={<ViewSong />}></Route>
+        <Route path='/artistAdmin/:id/:artist_id' element={<ArtistAdmin />}></Route>
+
+
         {/* CHORD MANAGER ROLE */}
         <Route path='/' element={<DashboardChordManager />}>
-          <Route path='/verifySong' element={userRole === 'chord' ? <VerifySong /> : <Navigate to="/login" />}></Route>
-          <Route path='/profileChordManager/:userId' element={userRole === 'chord' ? <ProfileChordManager /> : <Navigate to="/login" />}></Route>
-          <Route path='/songChordManager' element={userRole === 'chord' ? <SongChordManager /> : <Navigate to="/login" />}></Route>
+          <Route path='/verifySong' element={<VerifySong />}></Route>
+          <Route path='/profileChordManager/:userId' element={<ProfileChordManager />}></Route>
+          <Route path='/songChordManager' element={<SongChordManager />}></Route>
         </Route>
-        <Route path='/viewSongChordManager/:id' element={userRole === 'chord' ? <ViewSongChordManager /> : <Navigate to="/login" />}></Route>
-        <Route path='/artistChordManager/:id/:artist_id' element={userRole === 'chord' ? <ArtistChordManager /> : <Navigate to="/login" />}></Route>
+        <Route path='/viewSongChordManager/:id' element={<ViewSongChordManager />}></Route >
+        <Route path='/artistChordManager/:id/:artist_id' element={<ArtistChordManager />}></Route >
 
 
         {/* MUSICIAN ROLE */}
-        <Route path='/' element={<DashboardMusician />}>
+        < Route path='/' element={< DashboardMusician />}>
           <Route path='/chordMissMusician' element={<ChordMissMusician />}></Route>
           <Route path='/editSongMusician/:id' element={<EditSongMusician />}></Route>
           <Route path='/profileMusician/:userId' element={<ProfileMusician />}></Route>
@@ -170,7 +149,7 @@ function App() {
           <Route path='/editRequestChordMusician/:id' element={<EditRequestChordMusician />}></Route>
           <Route path='/acceptChordRequest/:userId/' element={<AcceptChordRequest />}></Route>
 
-        </Route>
+        </Route >
         <Route path='/viewSongMusician/:id' element={<ViewSongMusician />}></Route>
         <Route path='/songBeatManager/:user_id/:beat_type' element={<SongBeatManager />}></Route>
         <Route path='/artistMusician/:id/:artist_id' element={<ArtistMusician />}></Route>
@@ -204,7 +183,7 @@ function App() {
         <Route path='/viewSongCustomer/:id' element={<ViewSongCustomer />}></Route>
         <Route path='/artist/:id/:artist_id' element={<Artist />}></Route>
 
-      </Routes>
+      </Routes >
     </Router >
   )
 }
