@@ -137,16 +137,16 @@ function CoursePage() {
 
                         {tabVisible && (
                             <Scrollbars style={{ width: '24%', height: '70vh' }}
-                                renderThumbVertical={(props) => (
-                                    <div
-                                        {...props}
-                                        style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '50px' }}
-                                    />
-                                )}
+                                // renderThumbVertical={(props) => (
+                                //     <div
+                                //         {...props}
+                                //         style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '50px' }}
+                                //     />
+                                // )}
                                 renderTrackVertical={(props) => (
                                     <div
                                         {...props}
-                                        style={{ backgroundColor: '#f1f1fb', width: '3px', borderRadius: '4px' }}
+                                        style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '50px' }}
                                     />
                                 )}>
                                 <Tabs
