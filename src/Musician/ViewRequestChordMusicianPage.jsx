@@ -10,7 +10,8 @@ function ViewRequestChordMusicianPage() {
     const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
     const { id } = useParams();
     const [loading, setLoading] = useState(true);
-
+    const token = sessionStorage.getItem('token');
+    const userId = token.split(':')[0];
     const navigate = useNavigate();
     useEffect(() => {
         setLoading(true);
@@ -29,7 +30,7 @@ function ViewRequestChordMusicianPage() {
     }, [apiUrl, id]);
 
     const handleClose = () => {
-        navigate(-1)
+        navigate(`/acceptChordRequest/${userId}`)
     };
 
     const handleLyricChange = (event, index) => {
