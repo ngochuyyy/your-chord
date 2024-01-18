@@ -79,7 +79,7 @@ function OrderCustomerPage() {
           </div>
 
           <div className="col-md-8 order-md-1">
-            <form className="needs-validation" noValidate onSubmit={
+            <form className="needs-validation" noValidate onSubmit={() =>
               Modal.confirm({
                 title: 'Confirm',
                 content: `Are you sure you want to submit this order ?`,
