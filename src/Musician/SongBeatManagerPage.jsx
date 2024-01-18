@@ -324,7 +324,6 @@ function SongBeatManagerPage() {
                                                                                         console.log('Cancel');
                                                                                     },
                                                                                 });
-                                                                                handleSongListToggle();
                                                                             }}>
                                                                             <i className="bi bi-trash"></i> Delete
                                                                         </h6>
