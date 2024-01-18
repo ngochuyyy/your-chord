@@ -106,7 +106,7 @@ function OrderStatusPage() {
                     <Button type="primary" style={{ borderRadius: '40px' }}>
                         <Link to={`/viewOrderCustomer/${record.id}`} style={{ textDecoration: 'none' }}>View</Link>
                     </Button>
-                    {record.status === null || record.status === 0 || !isExpired(record) &&
+                    {record.status === null || record.status === 0 &&
                         <Button
                             onClick={() => {
                                 Modal.confirm({
