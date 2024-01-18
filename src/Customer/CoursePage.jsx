@@ -14,6 +14,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import moment from 'moment';
+import Scrollbars from 'react-custom-scrollbars';
 
 const darkTheme = createTheme({
     palette: {
@@ -135,34 +136,35 @@ function CoursePage() {
                     }}>
 
                         {tabVisible && (
-
-                            <Tabs
-                                orientation="vertical"
-                                value={selectedCourse}
-                                onChange={handleTabChange}
-                                sx={{
-                                    position: 'flex',
-                                    borderRight: '1.5px solid',
-                                    borderTop: '1.5px solid',
-                                    borderBottom: '1.5px solid',
-                                    borderBottomRightRadius: '20px',
-                                    borderColor: 'divider',
-                                    width: '22%',
-                                    height: '100%',
-                                }}>
-                                {filteredRequestCourse.map((course, index) => (
-                                    <Tab
-                                        key={index}
-                                        label={
-                                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                                {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
-                                                <b>{course.course_name}</b>
-                                            </div>
-                                        }
-                                        style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
-                                    />
-                                ))}
-                            </Tabs>
+                            <Scrollbars style={{ width: '24%', height: 'auto' }}>
+                                <Tabs
+                                    orientation="vertical"
+                                    value={selectedCourse}
+                                    onChange={handleTabChange}
+                                    sx={{
+                                        position: 'flex',
+                                        borderRight: '1.5px solid',
+                                        borderTop: '1.5px solid',
+                                        borderBottom: '1.5px solid',
+                                        borderBottomRightRadius: '20px',
+                                        borderColor: 'divider',
+                                        width: '99%',
+                                        height: '100%',
+                                    }}>
+                                    {filteredRequestCourse.map((course, index) => (
+                                        <Tab
+                                            key={index}
+                                            label={
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    {selectedCourse === index && <PlayCircleIcon style={{ marginRight: '8px' }} />}
+                                                    <b>{course.course_name}</b>
+                                                </div>
+                                            }
+                                            style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
+                                        />
+                                    ))}
+                                </Tabs>
+                            </Scrollbars>
                         )}
                         <button
                             onClick={() => setTabVisible(!tabVisible)}
