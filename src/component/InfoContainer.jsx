@@ -21,7 +21,6 @@ function InfoContainer() {
                     <span>YourChords @2023</span>
                     <br />
                     <span>Email to us: </span><Link to="mailto:diepngochuy3@gmail.com" style={{ textDecoration: 'none' }}>diepngochuy3@gmail.com</Link> |
-                    <span style={{ textDecoration: 'none' }}> Hotline: 0918771818</span>
                 </p>
             </div>
         </>
