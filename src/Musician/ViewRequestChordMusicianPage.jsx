@@ -29,7 +29,7 @@ function ViewRequestChordMusicianPage() {
     }, [apiUrl, id]);
 
     const handleClose = () => {
-        navigate(`/requestChordMusician/`)
+        navigate(-1)
     };
 
     const handleLyricChange = (event, index) => {
