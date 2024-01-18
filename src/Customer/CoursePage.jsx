@@ -146,7 +146,7 @@ function CoursePage() {
                                 renderTrackVertical={(props) => (
                                     <div
                                         {...props}
-                                        style={{ backgroundColor: '#ccc', width: '3px', borderRadius: '4px', height: '70vh' }}
+                                        style={{ backgroundColor: '#ccc', width: '5px', borderRadius: '4px', height: '70vh' }}
                                     />
                                 )}>
                                 <Tabs
@@ -160,7 +160,7 @@ function CoursePage() {
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
                                         borderColor: 'divider',
-                                        width: '97%',
+                                        width: '100%',
                                     }}>
                                     {filteredRequestCourse.map((course, index) => (
                                         <Tab
