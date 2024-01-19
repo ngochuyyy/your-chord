@@ -196,8 +196,6 @@ function ProfileMusicianPage() {
                                 }
                                 <div className="col-md-6"><b>Role: </b><p>{data.role}</p></div>
                             </div>
-
-
                             <div className="mt-4" style={{ display: 'flex', flexDirection: 'row' }} >
                                 {data.phoneNumber !== "" ?
                                     <div className="col-md-6"><b>Phone number: </b><p>{data.phoneNumber}</p></div>
