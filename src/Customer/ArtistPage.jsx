@@ -11,6 +11,8 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import InfoContainer from '../component/InfoContainer';
 import moment from 'moment';
+import { Modal as ModalConfirm } from 'antd';
+
 function ArtistPage() {
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
@@ -373,8 +375,17 @@ function ArtistPage() {
                                                         <p className="playlist-name-modal">
                                                             <AddIcon
                                                                 onClick={() => {
-                                                                    setSelectedPlaylist(playlist);
-                                                                    handleAddToPlayList();
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to add this song to "${playlist.collection_name}" playlist ?`,
+                                                                        onOk() {
+                                                                            setSelectedPlaylist(playlist);
+                                                                            handleAddToPlayList();
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
                                                                 }}
                                                                 fontSize='large'
                                                                 style={{ cursor: 'pointer' }}
@@ -382,9 +393,19 @@ function ArtistPage() {
                                                             <br />
                                                             <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
                                                                 onClick={() => {
-                                                                    setSelectedPlaylist(playlist);
-                                                                    handleAddToPlayList();
-                                                                }} className="playlist-name-modal">Add to playlist</Link>
+                                                                    ModalConfirm.confirm({
+                                                                        title: 'Confirm',
+                                                                        content: `Are you sure you want to add this song to "${playlist.collection_name}" playlist ?`,
+                                                                        onOk() {
+                                                                            setSelectedPlaylist(playlist);
+                                                                            handleAddToPlayList();
+                                                                        },
+                                                                        onCancel() {
+                                                                            console.log('Cancel');
+                                                                        },
+                                                                    });
+                                                                }}
+                                                                className="playlist-name-modal">Add to playlist</Link>
                                                         </p>
                                                     </div>
                                                 </div>
