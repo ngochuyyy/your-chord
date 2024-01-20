@@ -126,7 +126,7 @@ function ViewRequestChordPage() {
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
                                                 <b htmlFor="cc-genre">Genre:</b>
-                                                <p>{request.genre}</p>
+                                                <p>{request.genre.charAt(0).toUpperCase() + request.genre.slice(1)}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
                                                 <b htmlFor="cc-link">Link:</b>
