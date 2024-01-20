@@ -89,7 +89,6 @@ function ArtistPage() {
     };
 
     const handleAddToPlayList = () => {
-        setLoading(true);
         if (selectedSong && selectedPlaylist) {
             const songId = selectedSong.id;
             const collectionId = selectedPlaylist.id;
@@ -100,7 +99,6 @@ function ArtistPage() {
                 .then((res) => {
                     if (res.data.Status === 'Success') {
                         alert('Song added to the playlist');
-                        setLoading(false);
                         window.location.reload(true);
                     } else {
                         alert('Song is existed. Please try again');
@@ -373,31 +371,20 @@ function ArtistPage() {
                                                     )}
                                                     <div className="image-overlay">
                                                         <p className="playlist-name-modal">
-                                                            {loading ?
-                                                                <div className="d-flex flex-column justify-content-center align-items-center">
-                                                                    <div className="spinner-border text-primary" role="status">
-                                                                        <p className="visually-hidden">Loading...</p>
-                                                                    </div>
-                                                                    <p>Loading...</p>
-                                                                </div>
-                                                                :
-                                                                <>
-                                                                    <AddIcon
-                                                                        onClick={() => {
-                                                                            setSelectedPlaylist(playlist);
-                                                                            handleAddToPlayList();
-                                                                        }}
-                                                                        fontSize='large'
-                                                                        style={{ cursor: 'pointer' }}
-                                                                    />
-                                                                    <br />
-                                                                    <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
-                                                                        onClick={() => {
-                                                                            setSelectedPlaylist(playlist);
-                                                                            handleAddToPlayList();
-                                                                        }} className="playlist-name-modal">Add to playlist</Link>
-                                                                </>
-                                                            }
+                                                            <AddIcon
+                                                                onClick={() => {
+                                                                    setSelectedPlaylist(playlist);
+                                                                    handleAddToPlayList();
+                                                                }}
+                                                                fontSize='large'
+                                                                style={{ cursor: 'pointer' }}
+                                                            />
+                                                            <br />
+                                                            <Link style={{ cursor: 'pointer', textDecoration: 'none' }}
+                                                                onClick={() => {
+                                                                    setSelectedPlaylist(playlist);
+                                                                    handleAddToPlayList();
+                                                                }} className="playlist-name-modal">Add to playlist</Link>
                                                         </p>
                                                     </div>
                                                 </div>
