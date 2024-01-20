@@ -38,7 +38,6 @@ function OrderMusicianAcceptPage() {
             title: 'Genre',
             dataIndex: 'genre',
             render: (text) => {
-                // Chuyển đổi text để chữ cái đầu tiên viết hoa
                 const genre = text.charAt(0).toUpperCase() + text.slice(1);
                 return genre;
             },

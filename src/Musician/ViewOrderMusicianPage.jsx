@@ -290,7 +290,7 @@ function ViewOrderMusicianPage() {
                                                 <p>{order.audio_link}</p>
                                             </div>
                                         </div>
-                                        {docxFile && (
+                                        {docxFile && order.status === 3 && (
                                             <div className="mb-3 file-download">
                                                 <b>Download DOCX File:</b>
                                                 <a href={generateBlobUrl(new Uint8Array(docxFile.data).buffer, 'application/vnd.openxmlformats-officedocument.wordprocessingml.document')}
@@ -300,7 +300,7 @@ function ViewOrderMusicianPage() {
                                                 </a>
                                             </div>
                                         )}
-                                        {imageFile && (
+                                        {imageFile && order.status === 3 && (
                                             <div className="mb-3 file-download">
                                                 <b>Download Image:</b>
                                                 <a href={`data:image/png;base64,${imageFile}`} download="image.png">
@@ -308,7 +308,7 @@ function ViewOrderMusicianPage() {
                                                 </a>
                                             </div>
                                         )}
-                                        {videoFile && (
+                                        {videoFile && order.status === 3 && (
                                             <video controls width="400" height="300">
                                                 <source src={generateBlobUrl(new Uint8Array(videoFile.data).buffer, 'video/*')} type="video/mp4" />
                                             </video>
