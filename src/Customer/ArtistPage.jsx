@@ -11,6 +11,7 @@ import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import InfoContainer from '../component/InfoContainer';
 import moment from 'moment';
+import { message } from 'antd';
 function ArtistPage() {
     const [data, setData] = useState([]);
     const [orderBy, setOrderBy] = useState('created_at');
@@ -98,10 +99,10 @@ function ArtistPage() {
             })
                 .then((res) => {
                     if (res.data.Status === 'Success') {
-                        alert('Song added to the playlist');
+                        message.success('Song added to the playlist');
                         window.location.reload(true);
                     } else {
-                        alert('Song is existed. Please try again');
+                        message.error('Song is existed. Please try again');
                     }
                 })
                 .catch((err) => console.log(err));
@@ -372,7 +373,6 @@ function ArtistPage() {
                                                     <div className="image-overlay">
                                                         <p className="playlist-name-modal">
                                                             <AddIcon
-
                                                                 onClick={() => {
                                                                     setSelectedPlaylist(playlist);
                                                                     handleAddToPlayList();
