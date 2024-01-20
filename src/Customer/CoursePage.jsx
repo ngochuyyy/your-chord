@@ -161,11 +161,11 @@ function CoursePage() {
                                         borderTop: '1.5px solid',
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
+                                        height: "70vh",
                                         borderColor: 'divider',
-                                        height: filteredRequestCourse.length > 0 ? "70vh" : "auto",
                                         width: '100%',
                                     }}>
-                                    {filteredRequestCourse.map((course, index) => (
+                                    {filteredRequestCourse.length > 0 && filteredRequestCourse.map((course, index) => (
                                         <Tab
                                             key={index}
                                             label={
@@ -177,6 +177,17 @@ function CoursePage() {
                                             style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
                                         />
                                     ))}
+                                    {filteredRequestCourse.length === 0 && (
+                                        <Tab
+
+                                            label={
+                                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                                    <b>No Search result was found</b>
+                                                </div>
+                                            }
+                                            style={{ borderTopRightRadius: '20px', borderBottomRightRadius: '20px' }}
+                                        />
+                                    )}
                                 </Tabs>
                             </Scrollbars>
                         )}
