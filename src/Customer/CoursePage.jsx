@@ -161,6 +161,7 @@ function CoursePage() {
                                         borderTop: '1.5px solid',
                                         borderBottom: '1.5px solid',
                                         borderBottomRightRadius: '20px',
+                                        minHeight: '70vh',
                                         borderColor: 'divider',
                                         width: '100%',
                                     }}>
