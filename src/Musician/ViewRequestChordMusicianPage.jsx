@@ -79,17 +79,17 @@ function ViewRequestChordMusicianPage() {
                                     <form className="needs-validation" noValidate>
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="title">Song title</b>
+                                                <b htmlFor="title">Song title:</b>
                                                 <p>{request.song_name}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="title">Username</b>
+                                                <b htmlFor="title">Username:</b>
                                                 <p>{request.user_id}</p>
                                             </div>
                                         </div>
 
                                         <div className="mb-3">
-                                            <b htmlFor="lyric">Lyric</b>
+                                            <b htmlFor="lyric">Lyric:</b>
                                             <div className="input-group">
                                                 <textarea
                                                     id="lyric"
@@ -110,7 +110,7 @@ function ViewRequestChordMusicianPage() {
 
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="artist">Artist</b>
+                                                <b htmlFor="artist">Artist:</b>
                                                 <p>{request.artist_name}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
@@ -121,11 +121,11 @@ function ViewRequestChordMusicianPage() {
 
                                         <div className="row">
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="cc-genre">Genre</b>
-                                                <p>{request.genre}</p>
+                                                <b htmlFor="cc-genre">Genre:</b>
+                                                <p>{request.genre.charAt(0).toUpperCase() + request.genre.slice(1)}</p>
                                             </div>
                                             <div className="col-md-6 mb-3">
-                                                <b htmlFor="cc-link">Link</b>
+                                                <b htmlFor="cc-link">Link:</b>
                                                 <p>{request.link}</p>
                                             </div>
                                         </div>
