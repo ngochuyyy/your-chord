@@ -174,9 +174,9 @@ function App() {
           <Route path='/requestChord/:user_id/' element={<RequestChord />}></Route>
           <Route path='/requestChordStatus/:user_id/' element={<RequestChordStatus />}></Route>
           <Route path='/viewRequestChord/:id/' element={<ViewRequestChord />}></Route>
-          <Route path='/ViewRequestChordCompletedPage/:id' element={<ViewRequestChordCompletedPage />}></Route>
 
         </Route>
+        <Route path='/ViewRequestChordCompletedPage/:id' element={<ViewRequestChordCompletedPage />}></Route>
         <Route path='/songBeat/:user_id/:beat_type' element={<SongBeat />}></Route>
         <Route path='/chord' element={<Chord />}></Route>
         <Route path='/searchChord' element={<SearchChord />}></Route>
